@@ -16,7 +16,7 @@ import random
 import sys
 
 from ratings import compute as v1_compute, load_games
-from solver import solve, DEFAULT_PRIOR_WEIGHT
+from solver import solve, DEFAULT_PRIOR_WEIGHT, is_d1_game
 from prior import (
     build_prior, build_prior_from_rosters, compute_returning_share,
     league_average_prior,
@@ -173,6 +173,42 @@ def test_conf_fields_accepted_and_ignored():
     assert set(teams) == {"A", "B"}
     for t in teams.values():
         assert math.isfinite(t["net"])
+
+
+def test_zero_possession_game_is_skipped_not_crash():
+    # Full-season data has a few games with a final score but an
+    # empty boxscore (stats_missing): possessions = 0, so 100*pts/poss
+    # used to raise ZeroDivisionError. Those games carry no
+    # efficiency information and must be skipped, not crash.
+    empty = {"fga": 0, "orb": 0, "tov": 0, "fta": 0}
+    bad = _game("A", "B", 80, 70)
+    bad["home_stats"] = dict(empty)
+    bad["away_stats"] = dict(empty)
+    bad["stats_missing"] = True
+    games = [_game("A", "B", 80, 70), _game("B", "A", 75, 72), bad]
+    teams, _, _, info = solve(games, return_info=True)
+    assert set(teams) == {"A", "B"}
+    assert info["n_games"] == 2, info
+    assert info["n_skipped_zero_poss"] == 1, info
+    for t in teams.values():
+        assert math.isfinite(t["net"])
+
+
+def test_non_d1_games_are_skipped():
+    # KenPom rates D1 teams only. Full-season games carry
+    # conferenceId; a game with a missing conf id on either side
+    # is a non-D1 game and must not enter the solve.
+    d1 = _game("A", "B", 80, 70, conf=True)
+    non_d1 = _game("A", "C", 90, 60)
+    non_d1["home_conf_id"] = 1
+    non_d1["away_conf_id"] = None
+    assert is_d1_game(d1)
+    assert not is_d1_game(non_d1)
+    teams, _, _, info = solve([d1, _game("B", "A", 75, 72, conf=True), non_d1],
+                              return_info=True)
+    assert set(teams) == {"A", "B"}
+    assert info["n_games"] == 2, info
+    assert info["n_skipped_non_d1"] == 1, info
 
 
 def test_single_game_component_does_not_explode():

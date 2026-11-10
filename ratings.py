@@ -58,14 +58,26 @@ NON_D1 = {
 def possessions(stats):
     return stats["fga"] - stats["orb"] + stats["tov"] + 0.44 * stats["fta"]
 
+def is_d1_game(g):
+    """True if both teams are D1. Full-season files carry
+    conferenceId (a team is D1 iff it has one); KenPom excludes
+    non-D1 games entirely. Prototype games carry no conference
+    fields, so they fall back to the NON_D1 name list."""
+    if "home_conf_id" in g or "away_conf_id" in g:
+        return g.get("home_conf_id") is not None and g.get("away_conf_id") is not None
+    return g["home"] not in NON_D1 and g["away"] not in NON_D1
+
+
 def load_games():
     games = json.loads((GAMES).read_text())
     out = []
     for g in games:
         if g["home_score"] == 0 and g["away_score"] == 0:
             continue  # not played yet
-        if g["home"] in NON_D1 or g["away"] in NON_D1:
+        if not is_d1_game(g):
             continue
+        if g.get("stats_missing"):
+            continue  # final score but empty boxscore, possessions would be 0
         out.append(g)
     return out
 
@@ -73,10 +85,18 @@ def compute(games):
     # per-team raw totals
     teams = {}
     for g in games:
+        if not is_d1_game(g):
+            # KenPom rates D1 teams only; non-D1 games are excluded.
+            continue
+        poss = (possessions(g["home_stats"]) + possessions(g["away_stats"])) / 2
+        if poss <= 0:
+            # Final score but empty boxscore (stats_missing): no
+            # possessions to divide by, so the game carries no
+            # efficiency information. Skip it, never crash on it.
+            continue
         for side, opp in (("home", "away"), ("away", "home")):
             name = g[side]
             opp_name = g[opp]
-            poss = (possessions(g[f"{side}_stats"]) + possessions(g[f"{opp}_stats"])) / 2
             pts = g[f"{side}_score"]
             opp_pts = g[f"{opp}_score"]
             t = teams.setdefault(name, {"games": 0, "poss": 0.0, "pts": 0, "opp_pts": 0, "opponents": []})

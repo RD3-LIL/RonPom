@@ -135,15 +135,27 @@ def possessions(stats):
     return stats["fga"] - stats["orb"] + stats["tov"] + 0.44 * stats["fta"]
 
 
+def is_d1_game(g):
+    """True if both teams are D1. Full-season files carry
+    conferenceId (a team is D1 iff it has one); KenPom excludes
+    non-D1 games entirely. Prototype games carry no conference
+    fields, so they fall back to the NON_D1 name list."""
+    if "home_conf_id" in g or "away_conf_id" in g:
+        return g.get("home_conf_id") is not None and g.get("away_conf_id") is not None
+    return g["home"] not in NON_D1 and g["away"] not in NON_D1
+
+
 def load_games():
-    """Same filter as ratings.py: played games only, no obvious non-D1."""
+    """Same filter as ratings.py: played games only, D1 vs D1 only."""
     games = json.loads(GAMES.read_text())
     out = []
     for g in games:
         if g["home_score"] == 0 and g["away_score"] == 0:
             continue  # not played yet
-        if g["home"] in NON_D1 or g["away"] in NON_D1:
+        if not is_d1_game(g):
             continue
+        if g.get("stats_missing"):
+            continue  # final score but empty boxscore, possessions would be 0
         out.append(g)
     return out
 
@@ -211,8 +223,20 @@ def solve(games, prior=None, prior_weight=DEFAULT_PRIOR_WEIGHT,
     off_obs = {}    # team -> [(opp, eff, poss, home_sign)]
     def_obs = {}    # team -> [(opp, eff, poss, home_sign_of_opp)]
     tempo_obs = {}  # team -> [(opp, game_poss)]
+    skipped_zero_poss = 0
+    skipped_non_d1 = 0
     for g in games:
+        if not is_d1_game(g):
+            # KenPom rates D1 teams only; non-D1 games are excluded.
+            skipped_non_d1 += 1
+            continue
         poss = (possessions(g["home_stats"]) + possessions(g["away_stats"])) / 2
+        if poss <= 0:
+            # Final score but empty boxscore (stats_missing): no
+            # possessions to divide by, so the game carries no
+            # efficiency information. Skip it, never crash on it.
+            skipped_zero_poss += 1
+            continue
         for side, opp_side, s in (("home", "away", 1), ("away", "home", -1)):
             name = g[side]
             opp_name = g[opp_side]
@@ -236,7 +260,9 @@ def solve(games, prior=None, prior_weight=DEFAULT_PRIOR_WEIGHT,
     if not teams:
         info = {"iterations": 0, "converged": True, "max_change": 0.0,
                 "prior_weight": prior_weight, "home_court": home_court,
-                "damping": damping, "n_games": 0, "n_teams": 0}
+                "damping": damping, "n_games": 0, "n_teams": 0,
+                "n_skipped_zero_poss": skipped_zero_poss,
+                "n_skipped_non_d1": skipped_non_d1}
         if return_info:
             return teams, 0.0, 0.0, info
         return teams, 0.0, 0.0
@@ -329,7 +355,10 @@ def solve(games, prior=None, prior_weight=DEFAULT_PRIOR_WEIGHT,
             "max_change": max_change, "prior_weight": prior_weight,
             "home_court": home_court, "damping": damping,
             "league_o": league_o, "league_t": league_t,
-            "n_games": len(games), "n_teams": len(teams)}
+            "n_games": len(games) - skipped_zero_poss - skipped_non_d1,
+            "n_teams": len(teams),
+            "n_skipped_zero_poss": skipped_zero_poss,
+            "n_skipped_non_d1": skipped_non_d1}
     if return_info:
         return teams, league_o, league_t, info
     return teams, league_o, league_t

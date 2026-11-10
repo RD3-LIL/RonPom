@@ -34,6 +34,31 @@ Formulas (standard, documented here so they can be checked):
 Percentages are None when the denominator is zero, never 0 by
 default, so a player with no attempts is not shown as a 0% shooter.
 
+Ratings (added Nov 10, 2026, KenPom-style, from the same box scores):
+  ORtg (approx) = 100 * PTS / possessions used, where possessions
+      used = FGA + 0.44 * FTA + TO. This is the simplest form of
+      Dean Oliver's offensive rating ("points produced divided by
+      possessions used"). It gives no credit for assists and no
+      adjustment for offensive rebounds, unlike KenPom's full
+      formula, so it underrates playmakers. Labeled approx in the
+      output. Anything over 110 is good, 120 excellent for a
+      workhorse. Always read it with %Poss, as KenPom instructs.
+  %Poss (usage) = Basketball-Reference usage formula:
+      100 * (player poss used * (team MIN / 5))
+          / (player MIN * team poss used)
+      20% is average, 25% a go-to guy, 15% a limited role.
+  %Min = player MIN / team MIN (team minutes include overtime).
+  RPR (RonPom Rating) = our own single-number rating, in the
+      spirit of KenPom's kPOY but a different, documented formula
+      (kPOY itself is proprietary and not published):
+      (ORtg - 100) * poss used per game / 100
+          + 0.5 * (AST - TO) per game
+          + (STL + BLK) per game
+          + 0.25 * REB per game
+      Rough scale: a star is about +6 to +10, an average rotation
+      player about +1 to +3, below average about 0 or negative.
+      None when ORtg is None (no possessions used).
+
 DNP handling: a player with didNotPlay true, or with an empty stats
 array, does not count as a game played and contributes nothing.
 
@@ -101,6 +126,59 @@ def _pct(made, att):
     if not att:
         return None
     return made / att
+
+
+def possessions_used(totals):
+    """Possessions a player used: shots, free-throw trips, turnovers."""
+    return totals["fga"] + 0.44 * totals["fta"] + totals["to"]
+
+
+def compute_ortg(totals):
+    """Simplified ORtg: points per 100 possessions used.
+
+    No assist credit and no offensive-rebound adjustment, unlike
+    KenPom's full Dean Oliver formula, so it underrates
+    playmakers. None when the player used no possessions.
+    """
+    poss = possessions_used(totals)
+    if not poss:
+        return None
+    return 100 * totals["pts"] / poss
+
+
+def compute_usage(totals, team):
+    """%Poss (usage), Basketball-Reference formula.
+
+    team is {"fga", "fta", "to", "min"} for the player's team and
+    season, from the parsed games (shots/turnovers) and the player
+    minutes in this file. None when a denominator is zero.
+    """
+    player_poss = possessions_used(totals)
+    team_poss = team["fga"] + 0.44 * team["fta"] + team["to"]
+    if not player_poss or not team_poss:
+        return None
+    if not totals["min"] or not team["min"]:
+        return None
+    return 100 * (player_poss * (team["min"] / 5)) / (
+        totals["min"] * team_poss)
+
+
+def compute_rpr(ortg, poss_used_per_game, per_game):
+    """RonPom Rating: our own single-number player rating.
+
+    (ORtg - 100) * possessions used per game / 100
+        + 0.5 * (AST - TO) per game
+        + (STL + BLK) per game
+        + 0.25 * REB per game
+    Baseline ORtg 100 is about average. None when ORtg is None.
+    This is NOT KenPom's kPOY; that formula is proprietary.
+    """
+    if ortg is None:
+        return None
+    return ((ortg - 100) * poss_used_per_game / 100
+            + 0.5 * (per_game["ast"] - per_game["to"])
+            + (per_game["stl"] + per_game["blk"])
+            + 0.25 * per_game["reb"])
 
 
 def load_game_map(data_dir=DATA):
@@ -287,6 +365,51 @@ def aggregate_players(data_dir=DATA, season_filter=None):
         }
         profiles_by_season.setdefault(season, []).append(profile)
 
+    # Team totals per (season, team) for usage and %Min. Shots and
+    # turnovers come from the parsed games (deduplicated by event in
+    # game_map); minutes come from the player totals themselves, so
+    # overtime is included automatically.
+    team_totals = {}
+    for game in game_map.values():
+        season = game.get("season")
+        if season_filter and season != season_filter:
+            continue
+        if season is None:
+            continue
+        for side in ("home", "away"):
+            name = game.get(side)
+            if not name:
+                continue
+            stats = game.get(f"{side}_stats") or {}
+            team = team_totals.setdefault(
+                (season, name), {"fga": 0, "fta": 0, "to": 0, "min": 0})
+            team["fga"] += stats.get("fga") or 0
+            team["fta"] += stats.get("fta") or 0
+            team["to"] += stats.get("tov") or 0
+    for season, profiles in profiles_by_season.items():
+        for profile in profiles:
+            key = (season, profile["team"])
+            team_totals.setdefault(key, {"fga": 0, "fta": 0, "to": 0,
+                                         "min": 0})
+            team_totals[key]["min"] += profile["totals"]["min"]
+    for season, profiles in profiles_by_season.items():
+        for profile in profiles:
+            totals = profile["totals"]
+            team = team_totals.get((season, profile["team"]),
+                                   {"fga": 0, "fta": 0, "to": 0, "min": 0})
+            ortg = compute_ortg(totals)
+            poss_used_pg = (possessions_used(totals) / totals["gp"]
+                            if totals["gp"] else 0.0)
+            team_min = team["min"]
+            profile["ratings"] = {
+                "ortg": ortg,
+                "poss_pct": compute_usage(totals, team),
+                "min_pct": (100 * totals["min"] / team_min
+                            if team_min else None),
+                "rpr": compute_rpr(ortg, poss_used_pg,
+                                   profile["per_game"]),
+            }
+
     for season in profiles_by_season:
         profiles_by_season[season].sort(
             key=lambda p: (p["totals"]["pts"], p["totals"]["min"]),
@@ -307,7 +430,11 @@ def write_players_json(season, profiles, games_included, out_path):
             "Totals and derived stats from ESPN raw box scores on disk. "
             "No height, weight, or class year: rosters have not been "
             "pulled yet. Percentages are null when the denominator is "
-            "zero. DNP players are excluded."
+            "zero. DNP players are excluded. ratings.ortg is a "
+            "simplified ORtg (points per 100 possessions used, no "
+            "assist credit), an approximation of KenPom's full Dean "
+            "Oliver formula. ratings.rpr is RonPom's own single-number "
+            "rating, not KenPom's proprietary kPOY."
         ),
     }
     Path(out_path).write_text(json.dumps(payload, separators=(",", ":")))
@@ -329,7 +456,7 @@ def write_players_csv(season, profiles, out_path):
               "fg3m", "fg3a", "ftm", "fta", "reb", "oreb", "dreb",
               "ast", "to", "stl", "blk", "pf", "pts_pg", "reb_pg",
               "ast_pg", "fg_pct", "fg3_pct", "ft_pct", "efg_pct",
-              "ts_pct"]
+              "ts_pct", "ortg", "poss_pct", "min_pct", "rpr"]
     with open(out_path, "w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
@@ -375,6 +502,17 @@ def write_players_csv(season, profiles, out_path):
                             if shooting["efg_pct"] is not None else ""),
                 "ts_pct": (round(shooting["ts_pct"], 3)
                            if shooting["ts_pct"] is not None else ""),
+                "ortg": (round(profile["ratings"]["ortg"], 1)
+                         if profile["ratings"]["ortg"] is not None
+                         else ""),
+                "poss_pct": (round(profile["ratings"]["poss_pct"], 1)
+                             if profile["ratings"]["poss_pct"] is not None
+                             else ""),
+                "min_pct": (round(profile["ratings"]["min_pct"], 1)
+                            if profile["ratings"]["min_pct"] is not None
+                            else ""),
+                "rpr": (round(profile["ratings"]["rpr"], 2)
+                        if profile["ratings"]["rpr"] is not None else ""),
             }
             writer.writerow(row)
     return out_path
@@ -401,6 +539,15 @@ def print_profile(profile):
           f'PTS {profile["per_40"]["pts"]:.1f} '
           f'REB {profile["per_40"]["reb"]:.1f} '
           f'AST {profile["per_40"]["ast"]:.1f}')
+    r = profile.get("ratings") or {}
+    ortg = r.get("ortg")
+    poss = r.get("poss_pct")
+    min_pct = r.get("min_pct")
+    rpr = r.get("rpr")
+    print(f'    ORtg {"%.1f" % ortg if ortg is not None else "-"} (approx) '
+          f'%Poss {"%.1f%%" % poss if poss is not None else "-"} '
+          f'%Min {"%.1f%%" % min_pct if min_pct is not None else "-"} '
+          f'RPR {"%.2f" % rpr if rpr is not None else "-"}')
 
 
 def main(argv=None):
@@ -489,6 +636,8 @@ def main(argv=None):
                     field[:-len("_per40")], 0)
             if field in profile["shooting"]:
                 return profile["shooting"][field] or 0
+            if field in profile.get("ratings", {}):
+                return profile["ratings"][field] or 0
             raise KeyError(field)
         try:
             selected = [p for p in selected

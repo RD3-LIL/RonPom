@@ -12,7 +12,9 @@ from pathlib import Path
 HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE))
 
-from player_profiles import aggregate_players, load_game_map  # noqa: E402
+from player_profiles import (aggregate_players, compute_ortg,  # noqa: E402
+                             compute_rpr, compute_usage,
+                             load_game_map, possessions_used)
 
 
 def _athlete(athlete_id, name, minutes, pts, fg, fg3, ft, reb, ast, to,
@@ -237,6 +239,62 @@ def test_bad_and_unmapped_files_skipped():
         assert "100" in game_map and "999" not in game_map
 
 
+def test_ratings_formulas():
+    """ORtg, usage, and RPR math on hand-computed numbers."""
+    totals = {"pts": 30, "fga": 20, "fta": 2, "to": 3, "min": 50}
+    assert abs(possessions_used(totals) - 23.88) < 1e-9
+    # ORtg = 100 * 30 / 23.88
+    assert abs(compute_ortg(totals) - 125.628) < 0.01
+    assert compute_ortg({"pts": 0, "fga": 0, "fta": 0, "to": 0}) is None
+    team = {"fga": 125, "fta": 38, "to": 23, "min": 65}
+    # usage = 100 * (23.88 * 13) / (50 * 164.72)
+    assert abs(compute_usage(totals, team) - 3.769) < 0.01
+    assert compute_usage(totals, {"fga": 0, "fta": 0, "to": 0,
+                                  "min": 0}) is None
+    per_game = {"ast": 3.0, "to": 1.5, "stl": 0.5, "blk": 0.5, "reb": 6.0}
+    # RPR = 25.628 * 11.94 / 100 + 0.5 * 1.5 + 1.0 + 1.5
+    assert abs(compute_rpr(125.628, 11.94, per_game) - 6.31) < 0.01
+    assert compute_rpr(None, 11.94, per_game) is None
+
+
+def test_ratings_on_real_aggregation():
+    """Sam Star's ORtg, %Poss, %Min, and RPR from the two-game set."""
+    with tempfile.TemporaryDirectory() as tmp:
+        games = [_game("100", "2026-27", "Alpha", "Beta"),
+                 _game("101", "2026-27", "Alpha", "Beta")]
+        games[0]["home_stats"] = {"fga": 60, "fta": 20, "tov": 12}
+        games[0]["away_stats"] = {"fga": 55, "fta": 15, "tov": 10}
+        games[1]["home_stats"] = {"fga": 65, "fta": 18, "tov": 11}
+        games[1]["away_stats"] = {"fga": 58, "fta": 22, "tov": 13}
+        summaries = {
+            "100": _summary("100", "Alpha", "Beta",
+                            [_athlete("7", "Sam Star", 20, 10, "4-8",
+                                      "2-4", "0-0", 5, 2, 1, 1, 0, 2, 3,
+                                      1, starter=True)],
+                            [_athlete("8", "Ben Bench", 10, 2, "1-3",
+                                      "0-1", "0-0", 1, 0, 0, 0, 0, 0, 1,
+                                      0)]),
+            "101": _summary("101", "Alpha", "Beta",
+                            [_athlete("7", "Sam Star", 30, 20, "8-12",
+                                      "2-5", "2-2", 7, 4, 2, 0, 1, 3, 4,
+                                      2, starter=True)],
+                            [_athlete("8", "Ben Bench", 5, 0, "0-1",
+                                      "0-0", "0-0", 0, 1, 1, 0, 0, 0, 0,
+                                      0)]),
+        }
+        data = _setup(tmp, games, summaries)
+        profiles, _ = aggregate_players(data)
+        sam = [p for p in profiles["2026-27"] if p["name"] == "Sam Star"][0]
+        r = sam["ratings"]
+        assert abs(r["ortg"] - 125.628) < 0.01, r
+        # Ben Bench is on Beta (away) in this fixture, so Alpha's
+        # team minutes are Sam's 50 alone: usage is
+        # 100 * (23.88 * 10) / (50 * 164.72), and %Min is 100.
+        assert abs(r["poss_pct"] - 2.899) < 0.01, r
+        assert abs(r["min_pct"] - 100.0) < 0.01, r
+        assert abs(r["rpr"] - 6.31) < 0.01, r
+
+
 def test_zero_attempts_give_null_percentages():
     """No shot attempts: percentages are None, not 0."""
     with tempfile.TemporaryDirectory() as tmp:
@@ -262,4 +320,6 @@ if __name__ == "__main__":
     test_multi_team_flagged()
     test_bad_and_unmapped_files_skipped()
     test_zero_attempts_give_null_percentages()
+    test_ratings_formulas()
+    test_ratings_on_real_aggregation()
     print("all player profile tests passed")

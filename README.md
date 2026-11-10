@@ -106,6 +106,13 @@ python3 player_profiles.py --season 2026-27 --player "Stojakovic"
 python3 player_profiles.py --season 2026-27 --top pts_per_game --min-games 2 --limit 10
 ```
 
+Each profile carries totals, per-game and per-40 numbers, shooting
+splits (FG%, 3P%, FT%, eFG%, TS%), and KenPom-style ratings: ORtg
+(simplified approximation, points per 100 possessions used, no
+assist credit), %Poss usage, %Min, and RPR, RonPom's own
+single-number rating (not KenPom's proprietary kPOY). The full JSON
+stays local (too large for the push route); the repo gets the CSV.
+
 Each profile has totals (GP, GS, MIN, PTS, FGM/FGA, 3PM/3PA, FTM/FTA,
 REB, OREB, DREB, AST, TO, STL, BLK, PF), per-game and per-40 numbers,
 and shooting: FG%, 3P%, FT%, eFG% = (FGM + 0.5*3PM)/FGA,
