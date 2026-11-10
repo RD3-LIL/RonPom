@@ -74,7 +74,11 @@ Usage:
         Prints matching players.
     python3 player_profiles.py --season 2026-27 --top pts_per_game --limit 10
         Prints the top 10 scorers (min 1 game; add --min-games 2 to
-        require at least 2 games).
+        require at least 2 games). Leaderboards have a minutes floor:
+        a player must have played at least 40% of his team's minutes
+        to qualify, so a two-minute cameo cannot top the ORtg list.
+        Use --min-min-pct 0 to turn the floor off, or another number
+        to change it.
     python3 player_profiles.py --season 2025-26 --out /tmp/p.json
         Writes only that season to the given path.
 """
@@ -367,8 +371,12 @@ def aggregate_players(data_dir=DATA, season_filter=None):
 
     # Team totals per (season, team) for usage and %Min. Shots and
     # turnovers come from the parsed games (deduplicated by event in
-    # game_map); minutes come from the player totals themselves, so
-    # overtime is included automatically.
+    # game_map); minutes come from the player totals themselves.
+    # %Min is minutes played over minutes available to one roster
+    # spot, games * 40. That is the KenPom-style definition: a
+    # starter playing 30 minutes a game shows about 75%. It is
+    # slightly high in overtime games, where a spot really has 45
+    # minutes available, but that is under a point across a season.
     team_totals = {}
     for game in game_map.values():
         season = game.get("season")
@@ -382,30 +390,33 @@ def aggregate_players(data_dir=DATA, season_filter=None):
                 continue
             stats = game.get(f"{side}_stats") or {}
             team = team_totals.setdefault(
-                (season, name), {"fga": 0, "fta": 0, "to": 0, "min": 0})
+                (season, name), {"fga": 0, "fta": 0, "to": 0, "min": 0,
+                                 "games": 0})
             team["fga"] += stats.get("fga") or 0
             team["fta"] += stats.get("fta") or 0
             team["to"] += stats.get("tov") or 0
+            team["games"] += 1
     for season, profiles in profiles_by_season.items():
         for profile in profiles:
             key = (season, profile["team"])
             team_totals.setdefault(key, {"fga": 0, "fta": 0, "to": 0,
-                                         "min": 0})
+                                         "min": 0, "games": 0})
             team_totals[key]["min"] += profile["totals"]["min"]
     for season, profiles in profiles_by_season.items():
         for profile in profiles:
             totals = profile["totals"]
             team = team_totals.get((season, profile["team"]),
-                                   {"fga": 0, "fta": 0, "to": 0, "min": 0})
+                                   {"fga": 0, "fta": 0, "to": 0, "min": 0,
+                                    "games": 0})
             ortg = compute_ortg(totals)
             poss_used_pg = (possessions_used(totals) / totals["gp"]
                             if totals["gp"] else 0.0)
-            team_min = team["min"]
+            team_games = team["games"]
             profile["ratings"] = {
                 "ortg": ortg,
                 "poss_pct": compute_usage(totals, team),
-                "min_pct": (100 * totals["min"] / team_min
-                            if team_min else None),
+                "min_pct": (100 * totals["min"] / (team_games * 40)
+                            if team_games else None),
                 "rpr": compute_rpr(ortg, poss_used_pg,
                                    profile["per_game"]),
             }
@@ -522,6 +533,43 @@ def _fmt_pct(value):
     return f"{100 * value:.1f}%" if value is not None else "-"
 
 
+def player_field(profile, field):
+    """Value of one leaderboard field for one profile.
+
+    Raises KeyError for an unknown field.
+    """
+    if field in profile["totals"]:
+        return profile["totals"][field]
+    if field.endswith("_per_game"):
+        return profile["per_game"].get(field[:-len("_per_game")], 0)
+    if field.endswith("_per40"):
+        return profile["per_40"].get(field[:-len("_per40")], 0)
+    if field in profile["shooting"]:
+        return profile["shooting"][field] or 0
+    if field in profile.get("ratings", {}):
+        return profile["ratings"][field] or 0
+    raise KeyError(field)
+
+
+def rank_players(profiles, field, min_games=1, min_min_pct=40.0):
+    """Leaderboard: players meeting the games and minutes floors,
+    sorted best-first by field.
+
+    The minutes floor is the KenPom-style fix for tiny-sample
+    leaderboards: a player must have played at least min_min_pct
+    percent of his team's minutes to qualify, so a two-minute
+    cameo cannot top the ORtg list. Pass min_min_pct=0 to turn
+    the floor off.
+    """
+    selected = [p for p in profiles if p["totals"]["gp"] >= min_games]
+    if min_min_pct > 0:
+        selected = [p for p in selected
+                    if (p.get("ratings") or {}).get("min_pct") is not None
+                    and p["ratings"]["min_pct"] >= min_min_pct]
+    selected.sort(key=lambda p: player_field(p, field), reverse=True)
+    return selected
+
+
 def print_profile(profile):
     """One compact line per player, plus a shooting line."""
     t = profile["totals"]
@@ -566,6 +614,9 @@ def main(argv=None):
                         help="how many rows to print with --top")
     parser.add_argument("--min-games", type=int, default=1,
                         help="minimum GP for --top (default 1)")
+    parser.add_argument("--min-min-pct", type=float, default=40.0,
+                        help="minimum %%Min for --top (default 40, "
+                             "KenPom-style floor; 0 turns it off)")
     parser.add_argument("--out", default=None,
                         help="write the selected season JSON to this path")
     parser.add_argument("--data-dir", default=str(DATA),
@@ -624,28 +675,16 @@ def main(argv=None):
         selected = [p for p in selected
                     if args.player.lower() in p["name"].lower()]
     if args.top:
-        def _top_key(profile):
-            field = args.top
-            if field in profile["totals"]:
-                return profile["totals"][field]
-            if field.endswith("_per_game"):
-                return profile["per_game"].get(
-                    field[:-len("_per_game")], 0)
-            if field.endswith("_per40"):
-                return profile["per_40"].get(
-                    field[:-len("_per40")], 0)
-            if field in profile["shooting"]:
-                return profile["shooting"][field] or 0
-            if field in profile.get("ratings", {}):
-                return profile["ratings"][field] or 0
-            raise KeyError(field)
         try:
-            selected = [p for p in selected
-                        if p["totals"]["gp"] >= args.min_games]
-            selected.sort(key=_top_key, reverse=True)
+            selected = rank_players(selected, args.top,
+                                    min_games=args.min_games,
+                                    min_min_pct=args.min_min_pct)
         except KeyError:
             print(f"Unknown --top field: {args.top}")
             return 1
+        print(f"Top {args.limit} by {args.top} "
+              f"(min {args.min_games} GP, "
+              f"min {args.min_min_pct:g}% of team minutes):")
         for profile in selected[:args.limit]:
             print_profile(profile)
     elif args.team or args.player:

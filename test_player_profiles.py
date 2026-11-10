@@ -4,6 +4,8 @@ Uses only synthetic raw summaries in a temp dir, never the real
 data on disk and never the network.
 """
 
+import contextlib
+import io
 import json
 import sys
 import tempfile
@@ -14,7 +16,8 @@ sys.path.insert(0, str(HERE))
 
 from player_profiles import (aggregate_players, compute_ortg,  # noqa: E402
                              compute_rpr, compute_usage,
-                             load_game_map, possessions_used)
+                             load_game_map, main, possessions_used,
+                             rank_players)
 
 
 def _athlete(athlete_id, name, minutes, pts, fg, fg3, ft, reb, ast, to,
@@ -291,8 +294,66 @@ def test_ratings_on_real_aggregation():
         # team minutes are Sam's 50 alone: usage is
         # 100 * (23.88 * 10) / (50 * 164.72), and %Min is 100.
         assert abs(r["poss_pct"] - 2.899) < 0.01, r
-        assert abs(r["min_pct"] - 100.0) < 0.01, r
+        # Alpha played 2 games, so one roster spot had 80 minutes
+        # available; Sam played 50 of them.
+        assert abs(r["min_pct"] - 62.5) < 0.01, r
         assert abs(r["rpr"] - 6.31) < 0.01, r
+
+
+def test_top_minutes_floor():
+    """A two-minute cameo cannot top the ORtg list by default,
+    but does when the floor is turned off."""
+    with tempfile.TemporaryDirectory() as tmp:
+        games = [_game("100", "2026-27", "Alpha", "Beta"),
+                 _game("101", "2026-27", "Alpha", "Beta")]
+        games[0]["home_stats"] = {"fga": 60, "fta": 20, "tov": 12}
+        games[0]["away_stats"] = {"fga": 55, "fta": 15, "tov": 10}
+        games[1]["home_stats"] = {"fga": 65, "fta": 18, "tov": 11}
+        games[1]["away_stats"] = {"fga": 58, "fta": 22, "tov": 13}
+        summaries = {
+            "100": _summary("100", "Alpha", "Beta",
+                            [_athlete("7", "Sam Star", 20, 10, "4-8",
+                                      "2-4", "0-0", 5, 2, 1, 1, 0, 2, 3,
+                                      1, starter=True),
+                             _athlete("9", "Cal Cup", 2, 8, "3-4",
+                                      "0-0", "2-2", 0, 0, 0, 0, 0, 0, 0,
+                                      0)],
+                            [_athlete("8", "Ben Bench", 10, 2, "1-3",
+                                      "0-1", "0-0", 1, 0, 0, 0, 0, 0, 1,
+                                      0)]),
+            "101": _summary("101", "Alpha", "Beta",
+                            [_athlete("7", "Sam Star", 30, 20, "8-12",
+                                      "2-5", "2-2", 7, 4, 2, 0, 1, 3, 4,
+                                      2, starter=True)],
+                            [_athlete("8", "Ben Bench", 5, 0, "0-1",
+                                      "0-0", "0-0", 0, 1, 1, 0, 0, 0, 0,
+                                      0)]),
+        }
+        data = _setup(tmp, games, summaries)
+        profiles, _ = aggregate_players(data)
+        all_profiles = profiles["2026-27"]
+        cal = [p for p in all_profiles if p["name"] == "Cal Cup"][0]
+        # ORtg 100 * 8 / (4 + 0.44 * 2) = 163.9, on 2 of 80
+        # available minutes (Alpha played 2 games).
+        assert abs(cal["ratings"]["ortg"] - 163.9) < 0.1, cal["ratings"]
+        assert abs(cal["ratings"]["min_pct"] - 2.5) < 0.01
+        ranked = rank_players(all_profiles, "ortg")
+        names = [p["name"] for p in ranked]
+        assert "Cal Cup" not in names, names
+        assert names[0] == "Sam Star", names
+        ranked_off = rank_players(all_profiles, "ortg", min_min_pct=0)
+        assert ranked_off[0]["name"] == "Cal Cup", (
+            [p["name"] for p in ranked_off])
+        # The --top CLI applies the floor and says so in its header.
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = main(["--season", "2026-27", "--top", "ortg",
+                       "--limit", "5", "--data-dir", str(data)])
+        assert rc == 0
+        out = buf.getvalue()
+        assert "min 40% of team minutes" in out, out
+        assert "Cal Cup" not in out, out
+        assert "Sam Star" in out, out
 
 
 def test_zero_attempts_give_null_percentages():
@@ -322,4 +383,5 @@ if __name__ == "__main__":
     test_zero_attempts_give_null_percentages()
     test_ratings_formulas()
     test_ratings_on_real_aggregation()
+    test_top_minutes_floor()
     print("all player profile tests passed")

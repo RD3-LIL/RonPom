@@ -112,6 +112,10 @@ splits (FG%, 3P%, FT%, eFG%, TS%), and KenPom-style ratings: ORtg
 assist credit), %Poss usage, %Min, and RPR, RonPom's own
 single-number rating (not KenPom's proprietary kPOY). The full JSON
 stays local (too large for the push route); the repo gets the CSV.
+Leaderboards (`--top`) have a minutes floor: a player must have
+played at least 40% of his team's minutes to qualify, so a
+two-minute cameo cannot top the ORtg list. Use `--min-min-pct 0`
+to turn the floor off, or another number to change it.
 
 Each profile has totals (GP, GS, MIN, PTS, FGM/FGA, 3PM/3PA, FTM/FTA,
 REB, OREB, DREB, AST, TO, STL, BLK, PF), per-game and per-40 numbers,
