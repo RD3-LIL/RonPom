@@ -1,0 +1,2483 @@
+{
+  "season_2025_26": {
+    "label": "2025-26",
+    "start": "2025-11-03",
+    "end": "2026-04-06",
+    "days": 155,
+    "total_events_groups50": 6318,
+    "unique_teams_all": 728,
+    "unique_d1_teams_conferenceId": 365,
+    "unique_non_d1_teams_no_conferenceId": 363,
+    "d1_vs_d1_games": 5767,
+    "d1_vs_non_d1_games": 551,
+    "non_d1_vs_non_d1_games": 0,
+    "non_d1_team_names": [
+      "Adams State Grizzlies",
+      "Adrian Bulldogs",
+      "Alaska Anchorage Seawolves",
+      "Albany State Golden Rams",
+      "Alfred State Pioneers",
+      "Alice Lloyd Eagles",
+      "Allegheny Gators",
+      "Angelo State Rams",
+      "Apprentice School Builders",
+      "Aquinas Saints",
+      "Arcadia ARCADIA",
+      "Arkansas Baptist Buffaloes",
+      "Arkansas Tech Wonder Boys",
+      "Arlington Baptist Patriots",
+      "Auburn Montgomery Senators",
+      "Averett Cougars",
+      "Baptist (Fl) Eagles",
+      "Barber Scotia BARBER SCOTIA",
+      "Belmont Abbey Crusaders",
+      "Benedictine (IL) Eagles",
+      "Benedictine Mesa Redhawks",
+      "Berea Mountaineers",
+      "Bethany (WV) Bison",
+      "Bethel (TN) Wildcats",
+      "Bethesda Flames",
+      "Blackburn Beavers",
+      "Bloomfield Deacons",
+      "Bloomsburg Huskies",
+      "Blue Mountain Christian Toppers",
+      "Bluefield Ramblin' Rams",
+      "Bluefield State Big Blue",
+      "Bob Jones Bruins",
+      "Bowie State Bulldogs",
+      "Boyce Bulldogs",
+      "Brandeis Judges",
+      "Brescia Bearcats",
+      "Brevard Tornados",
+      "Brewton Parker Wildcats",
+      "Bryan Lions",
+      "Bryant & Stratton (OH) Bobcats",
+      "Bryant & Stratton-Albany Bobcats",
+      "Buena Vista Beavers",
+      "Cal Poly Humboldt Lumberjacks",
+      "Caldwell Cougars",
+      "Caltech CALTECH",
+      "Calumet St. Joseph Crimson Wave",
+      "Cameron Aggies",
+      "Campbellsville Tigers",
+      "Capital Crusaders",
+      "Carolina University Bruins",
+      "Catawba Indians",
+      "Centenary (LA) Ladies",
+      "Centenary (NJ) Cyclones",
+      "Central Penn Knights",
+      "Central State Marauders",
+      "Chaminade Silverswords",
+      "Champion Christian Tigers",
+      "Cheyney (PA) Wolves",
+      "Christendom Crusaders",
+      "Christian Brothers Buccaneers",
+      "Cincinnati Clermont Cougars",
+      "City College NY Beavers",
+      "Cleary University Cougars",
+      "Clinton Golden Bears",
+      "Coastal Georgia Mariner",
+      "Coe Kohawks",
+      "College of Biblical Studies Ambassadors",
+      "Colorado Christian Cougars",
+      "Colorado College Tigers",
+      "Colorado Colorado Springs Mountain Lions",
+      "Columbia (SC) Fighting Koalas",
+      "Columbia International Rams",
+      "Concord Mountain Lions",
+      "Concordia (NE) Clippers",
+      "Converse Valkyries",
+      "Crookston (MN) Golden Eagles",
+      "Crown Polars",
+      "Culver Stockton Wildcats",
+      "Cumberland Phoenix",
+      "Cumberlands Patriots",
+      "Curry Colonels",
+      "Dakota State Trojans",
+      "Dakota Wesleyan Tigers",
+      "Dallas Christian Crusaders",
+      "Dallas Crusaders",
+      "DeSales Bulldogs",
+      "Defiance Yellow Jackets",
+      "Dickinson Red Devils",
+      "District of Columbia Firebirds",
+      "Doane Tigers",
+      "Dominican (CA) Penguins",
+      "Dominican (IL) Dominican",
+      "Earlham Quakers",
+      "East West Phantoms",
+      "Eastern Eagles",
+      "Eastern Oregon Mountaineers",
+      "Ecclesia Royals",
+      "Elizabeth City State Vikings",
+      "Elmira Soaring Eagles",
+      "Elms Blazers",
+      "Embry Riddle (AZ) Eagles",
+      "Emerson Lions",
+      "Emmanuel (MA) Lions",
+      "Erskine Flying Fleet",
+      "Eureka Red Devils",
+      "Evangel Crusaders",
+      "Evergreen State Geoducks",
+      "Farmingdale State Rams",
+      "Fisher Eagles",
+      "Fisk Bulldogs",
+      "Florida Memorial Lions",
+      "Florida National Conquistadors",
+      "Fort Lauderdale Eagles",
+      "Fort Valley State Wildcats",
+      "Franciscan Barons",
+      "Franklin Grizzlies",
+      "Franklin Pierce Ravens",
+      "Fresno Pacific Sunbirds",
+      "Gallaudet Bison",
+      "Geneva Golden Tornadoes",
+      "George Fox Bruins",
+      "Georgia College Bobcats",
+      "Georgian Court Lions",
+      "Greensboro Pride",
+      "Gwynedd Mercy Griffins",
+      "Hannibal LaGrange Trojans",
+      "Hanover Panthers",
+      "Harris Stowe State Hornets",
+      "Haskell Jayhawks",
+      "Hawai\u02bbi Hilo Vulcans",
+      "Hawai\u02bbi Pacific Sea Warriors",
+      "Health Sciences & Pharmacy Eutectics",
+      "Holy Cross (IN) Saints",
+      "Holy Family Tigers",
+      "Houghton Highlanders",
+      "Howard Payne Yellow Jackets",
+      "Huntingdon Hawks",
+      "Huston Tillotson Rams",
+      "IU Columbus Crimson Pride",
+      "IU East IU EAST",
+      "Illinois Tech Scarlet Hawks",
+      "Jamestown Jimmies",
+      "Jarvis Christian Bulldogs",
+      "Jessup Warriors",
+      "John Brown Golden Eagles",
+      "John Jay Bloodhounds",
+      "Johnson & Wales Griffins",
+      "Johnson & Wales-Charlotte JOHNSON & WALES-CHARLOTTE",
+      "Johnson C. Smith Golden Bulls",
+      "Justice Lions",
+      "Kansas Christian Falcons",
+      "Kean Cougars",
+      "Kentucky Christian Knights",
+      "Kentucky State Thorobreds",
+      "La Sierra Golden Eagles",
+      "La Verne Leopards",
+      "LaGrange Panthers",
+      "Lancaster Bible Chargers",
+      "Lane College Dragons",
+      "Lawrence Vikings",
+      "LeTourneau Yellow Jackets",
+      "Lehman Bridges",
+      "Lewis & Clark River Otters",
+      "Life Pacific Warriors",
+      "Lincoln (CA) Oaklanders",
+      "Loras Duhawks",
+      "Louisiana Christian Wildcats",
+      "Lourdes Gray Wolves",
+      "Lynchburg Hornets",
+      "Lyon Scots",
+      "MIT Engineers",
+      "Maine Augusta Moose",
+      "Maine Fort Kent Bengals",
+      "Manhattan Christian Thunder",
+      "Manhattanville Valiants",
+      "Manor Blue Jays",
+      "Mansfield Mountaineers",
+      "Mary Baldwin Fighting Squirrels",
+      "Marywood Pacers",
+      "Mayville State Comets",
+      "McKendree Bearcats",
+      "McMurry War Hawks",
+      "McPherson McPHERSON",
+      "Menlo Oaks",
+      "Merchant Marine Mariners",
+      "Mercy Mavericks",
+      "Miami (OH) Hamilton Harriers",
+      "Miami (OH) Middletown ThunderHawks",
+      "Mid America Christian Evangels",
+      "Mid Atlantic Christian Mustangs",
+      "Midway Eagles",
+      "Midwestern State Mustangs",
+      "Milligan Buffaloes",
+      "Millsaps Majors",
+      "Misericordia Cougars",
+      "Mississippi U for Women Owls",
+      "Missouri Baptist Spartans",
+      "Missouri Southern State Lions",
+      "Mitchell Mariners",
+      "Mobile Rams",
+      "Molloy Lions",
+      "Montana Tech Orediggers",
+      "Montana Western Bulldogs",
+      "Morehouse Maroon Tigers",
+      "Morris Hornets",
+      "Mount Marty Lancers",
+      "Mount Olive Trojans",
+      "Mount St Mary Knights",
+      "New College Mighty Banyans",
+      "New Mexico Highlands Cowboys",
+      "Nobel Knights",
+      "North Central (IL) Cardinals",
+      "North Central (MN) Rams",
+      "North Greenville Trailblazers",
+      "Northeastern State RiverHawks",
+      "Northern New Mexico Eagles",
+      "Northern State Wolves",
+      "Northwest Indian RedHawks",
+      "Northwest University Eagles",
+      "Northwestern (OK) Rangers",
+      "Northwood Timberwolves",
+      "Notre Dame (MD) Gators",
+      "Oakland City Mighty Oaks",
+      "Oakwood Ambassadors",
+      "Occidental Tigers",
+      "Oglethorpe Stormy Petrels",
+      "Ohio Christian Trailblazers",
+      "Ohio Wesleyan Battling Bishops",
+      "Oklahoma Christian OKLAHOMA CHRISTIAN",
+      "Olivet Comets",
+      "Ottawa (AZ) Spirit",
+      "Our Lady of the Lake Saints",
+      "Ozark Christian Ambassadors",
+      "Pacific Lutheran Lutes",
+      "Pacific Union PACIFIC UNION",
+      "Paine Lions",
+      "Park University Gilbert Buccaneers",
+      "Paul Quinn Tigers",
+      "Paul Smith's Bobcats",
+      "Penn State Abington Nittany Lions",
+      "Penn State Behrend Lions",
+      "Penn State Brandywine Lions",
+      "Penn State Hazleton Nittany Lions",
+      "Penn State New Kensington Lions",
+      "Penn State Shenango Nittany Lions",
+      "Penn State York Nittany Lions",
+      "Pensacola Christian PENSACOLA CHRISTIAN",
+      "Peru State PERU STATE",
+      "Pfeiffer Falcons",
+      "Piedmont Lions",
+      "Pittsburgh-Greensburg GREENSBURG",
+      "Plattsburgh Cardinals",
+      "Point Skyhawks",
+      "Principia PRINCIPIA",
+      "Puget Sound Loggers",
+      "RIT Tigers",
+      "Randolph Wildcats",
+      "Redlands Bulldogs",
+      "Regent Royals",
+      "Regis College Pride",
+      "Regis University REGIS UNIVERSITY",
+      "Reinhardt Eagles",
+      "Rhodes Lynx",
+      "Ripon Red Hawks",
+      "Rivier Raiders",
+      "Roberts Wesleyan Redhawks",
+      "Rockford Regents",
+      "Rosemont Ravens",
+      "Rowan Profs",
+      "Rust Bearcats",
+      "Rutgers-Camden RUTGERS-CAMDEN",
+      "SUNY Canton Roos",
+      "SUNY Cobleskill Fighting Tigers",
+      "SUNY Delhi Broncos",
+      "SUNY Maritime Privateers",
+      "SUNY Old Westbury Panthers",
+      "SUNY Oneonta Red Dragons",
+      "Saint Elizabeth Eagles",
+      "Saint John's (MN) Johnnies",
+      "Saint Leo Monarchs",
+      "Saint Mary of the Woods Pomeroys",
+      "Saint Xavier Cougars",
+      "Salish Kootenai Bison",
+      "Salve Regina Seahawks",
+      "San Francisco State Gators",
+      "Sarah Lawrence Gryphons",
+      "Schreiner Mountaineers",
+      "Science and Arts (OK) Drovers",
+      "Shaw Bears",
+      "Shenandoah Hornets",
+      "Siena Heights Saints",
+      "Simpson (CA) Red Hawks",
+      "Simpson (IA) Storm",
+      "Southern Arkansas Muleriders",
+      "Southern New Orleans Knights",
+      "Southern Virginia Knights",
+      "Southern Wesleyan Warriors",
+      "Southwest Mustangs",
+      "Southwestern Adventist Knights",
+      "Southwestern Christian U Eagles",
+      "Spring Hill Badgers",
+      "Spurgeon Knights",
+      "St. Ambrose Fighting Bees",
+      "St. Francis (IL) Fighting Saints",
+      "St. John Fisher Cardinals",
+      "St. Joseph's Brooklyn Bears",
+      "St. Joseph's Long Island Golden Eagles",
+      "St. Mary's (MD) Seahawks",
+      "St. Scholastica Saints",
+      "St. Thomas (TX) Celts",
+      "Stanton Elks",
+      "Tennessee Wesleyan Bulldogs",
+      "Texas A&M-San Antonio Jaguars",
+      "Texas Lutheran Bulldogs",
+      "Thiel Tomcats",
+      "Thomas College Terriers",
+      "Tiffin Dragons",
+      "Toccoa Falls Eagles",
+      "Tougaloo Bulldogs",
+      "Trinity (FL) Tigers",
+      "Trinity (TX) Tigers",
+      "Trinity Christian Trolls",
+      "Trinity College of Jacksonville Eagles",
+      "Truett McConnell Bears",
+      "Tusculum Pioneers",
+      "UC Merced Bobcats",
+      "UC Santa Cruz Banana Slugs",
+      "UMass Boston Beacons",
+      "UNT Dallas Trailblazers",
+      "UT Permian Basin Falcons",
+      "UT Southern Firehawks",
+      "Union Commonwealth (KY) Bulldogs",
+      "Valley Forge Patriots",
+      "Vassar Brewers",
+      "Vermont State Johnson Badgers",
+      "Vermont State Lyndon Hornets",
+      "Virginia Lynchburg Dragons",
+      "Virginia State Trojans",
+      "Voorhees Tigers",
+      "WVU Tech Golden Bears",
+      "Warner Pacific Knights",
+      "Warren Wilson Owls",
+      "Washington Adventist Shock",
+      "Washington Maryland Shoremen",
+      "Washington and Lee Generals",
+      "Waynesburg Yellow Jackets",
+      "Webster Gorloks",
+      "West Coast Baptist Eagles",
+      "West Virginia Wesleyan Bobcats",
+      "Western New England Golden Bears",
+      "Western New Mexico Mustangs",
+      "Westminster (UT) Griffins",
+      "Whitman Blues",
+      "Whittier Poets",
+      "Widener Pride",
+      "Willamette Bearcats",
+      "William Carey Crusaders",
+      "William Peace Pacers",
+      "Williams Baptist Eagles",
+      "Wilmington (DE) Wildcats",
+      "Wilson WILSON",
+      "Worcester State Lancers",
+      "York (NE) Panthers"
+    ],
+    "per_date": [
+      {
+        "date": "20251103",
+        "events": 169,
+        "d1_vs_d1": 108
+      },
+      {
+        "date": "20251104",
+        "events": 36,
+        "d1_vs_d1": 20
+      },
+      {
+        "date": "20251105",
+        "events": 35,
+        "d1_vs_d1": 14
+      },
+      {
+        "date": "20251106",
+        "events": 44,
+        "d1_vs_d1": 25
+      },
+      {
+        "date": "20251107",
+        "events": 76,
+        "d1_vs_d1": 57
+      },
+      {
+        "date": "20251108",
+        "events": 68,
+        "d1_vs_d1": 59
+      },
+      {
+        "date": "20251109",
+        "events": 34,
+        "d1_vs_d1": 29
+      },
+      {
+        "date": "20251110",
+        "events": 40,
+        "d1_vs_d1": 26
+      },
+      {
+        "date": "20251111",
+        "events": 82,
+        "d1_vs_d1": 66
+      },
+      {
+        "date": "20251112",
+        "events": 54,
+        "d1_vs_d1": 43
+      },
+      {
+        "date": "20251113",
+        "events": 26,
+        "d1_vs_d1": 16
+      },
+      {
+        "date": "20251114",
+        "events": 50,
+        "d1_vs_d1": 46
+      },
+      {
+        "date": "20251115",
+        "events": 82,
+        "d1_vs_d1": 73
+      },
+      {
+        "date": "20251116",
+        "events": 34,
+        "d1_vs_d1": 30
+      },
+      {
+        "date": "20251117",
+        "events": 34,
+        "d1_vs_d1": 25
+      },
+      {
+        "date": "20251118",
+        "events": 68,
+        "d1_vs_d1": 56
+      },
+      {
+        "date": "20251119",
+        "events": 50,
+        "d1_vs_d1": 38
+      },
+      {
+        "date": "20251120",
+        "events": 38,
+        "d1_vs_d1": 33
+      },
+      {
+        "date": "20251121",
+        "events": 73,
+        "d1_vs_d1": 67
+      },
+      {
+        "date": "20251122",
+        "events": 45,
+        "d1_vs_d1": 38
+      },
+      {
+        "date": "20251123",
+        "events": 43,
+        "d1_vs_d1": 42
+      },
+      {
+        "date": "20251124",
+        "events": 62,
+        "d1_vs_d1": 56
+      },
+      {
+        "date": "20251125",
+        "events": 78,
+        "d1_vs_d1": 66
+      },
+      {
+        "date": "20251126",
+        "events": 72,
+        "d1_vs_d1": 62
+      },
+      {
+        "date": "20251127",
+        "events": 20,
+        "d1_vs_d1": 20
+      },
+      {
+        "date": "20251128",
+        "events": 58,
+        "d1_vs_d1": 52
+      },
+      {
+        "date": "20251129",
+        "events": 68,
+        "d1_vs_d1": 51
+      },
+      {
+        "date": "20251130",
+        "events": 33,
+        "d1_vs_d1": 28
+      },
+      {
+        "date": "20251201",
+        "events": 19,
+        "d1_vs_d1": 11
+      },
+      {
+        "date": "20251202",
+        "events": 58,
+        "d1_vs_d1": 51
+      },
+      {
+        "date": "20251203",
+        "events": 78,
+        "d1_vs_d1": 69
+      },
+      {
+        "date": "20251204",
+        "events": 11,
+        "d1_vs_d1": 9
+      },
+      {
+        "date": "20251205",
+        "events": 22,
+        "d1_vs_d1": 18
+      },
+      {
+        "date": "20251206",
+        "events": 116,
+        "d1_vs_d1": 105
+      },
+      {
+        "date": "20251207",
+        "events": 48,
+        "d1_vs_d1": 39
+      },
+      {
+        "date": "20251208",
+        "events": 7,
+        "d1_vs_d1": 6
+      },
+      {
+        "date": "20251209",
+        "events": 35,
+        "d1_vs_d1": 23
+      },
+      {
+        "date": "20251210",
+        "events": 38,
+        "d1_vs_d1": 29
+      },
+      {
+        "date": "20251211",
+        "events": 13,
+        "d1_vs_d1": 8
+      },
+      {
+        "date": "20251212",
+        "events": 13,
+        "d1_vs_d1": 8
+      },
+      {
+        "date": "20251213",
+        "events": 102,
+        "d1_vs_d1": 93
+      },
+      {
+        "date": "20251214",
+        "events": 32,
+        "d1_vs_d1": 24
+      },
+      {
+        "date": "20251215",
+        "events": 14,
+        "d1_vs_d1": 7
+      },
+      {
+        "date": "20251216",
+        "events": 45,
+        "d1_vs_d1": 36
+      },
+      {
+        "date": "20251217",
+        "events": 59,
+        "d1_vs_d1": 50
+      },
+      {
+        "date": "20251218",
+        "events": 32,
+        "d1_vs_d1": 27
+      },
+      {
+        "date": "20251219",
+        "events": 28,
+        "d1_vs_d1": 23
+      },
+      {
+        "date": "20251220",
+        "events": 75,
+        "d1_vs_d1": 64
+      },
+      {
+        "date": "20251221",
+        "events": 61,
+        "d1_vs_d1": 53
+      },
+      {
+        "date": "20251222",
+        "events": 61,
+        "d1_vs_d1": 42
+      },
+      {
+        "date": "20251223",
+        "events": 12,
+        "d1_vs_d1": 11
+      },
+      {
+        "date": "20251224",
+        "events": 0,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20251225",
+        "events": 0,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20251226",
+        "events": 0,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20251227",
+        "events": 3,
+        "d1_vs_d1": 1
+      },
+      {
+        "date": "20251228",
+        "events": 41,
+        "d1_vs_d1": 20
+      },
+      {
+        "date": "20251229",
+        "events": 68,
+        "d1_vs_d1": 58
+      },
+      {
+        "date": "20251230",
+        "events": 39,
+        "d1_vs_d1": 32
+      },
+      {
+        "date": "20251231",
+        "events": 49,
+        "d1_vs_d1": 47
+      },
+      {
+        "date": "20260101",
+        "events": 39,
+        "d1_vs_d1": 38
+      },
+      {
+        "date": "20260102",
+        "events": 33,
+        "d1_vs_d1": 32
+      },
+      {
+        "date": "20260103",
+        "events": 120,
+        "d1_vs_d1": 120
+      },
+      {
+        "date": "20260104",
+        "events": 40,
+        "d1_vs_d1": 40
+      },
+      {
+        "date": "20260105",
+        "events": 19,
+        "d1_vs_d1": 19
+      },
+      {
+        "date": "20260106",
+        "events": 29,
+        "d1_vs_d1": 29
+      },
+      {
+        "date": "20260107",
+        "events": 54,
+        "d1_vs_d1": 54
+      },
+      {
+        "date": "20260108",
+        "events": 57,
+        "d1_vs_d1": 57
+      },
+      {
+        "date": "20260109",
+        "events": 15,
+        "d1_vs_d1": 14
+      },
+      {
+        "date": "20260110",
+        "events": 149,
+        "d1_vs_d1": 149
+      },
+      {
+        "date": "20260111",
+        "events": 20,
+        "d1_vs_d1": 20
+      },
+      {
+        "date": "20260112",
+        "events": 17,
+        "d1_vs_d1": 17
+      },
+      {
+        "date": "20260113",
+        "events": 35,
+        "d1_vs_d1": 35
+      },
+      {
+        "date": "20260114",
+        "events": 61,
+        "d1_vs_d1": 61
+      },
+      {
+        "date": "20260115",
+        "events": 49,
+        "d1_vs_d1": 49
+      },
+      {
+        "date": "20260116",
+        "events": 7,
+        "d1_vs_d1": 7
+      },
+      {
+        "date": "20260117",
+        "events": 145,
+        "d1_vs_d1": 144
+      },
+      {
+        "date": "20260118",
+        "events": 13,
+        "d1_vs_d1": 12
+      },
+      {
+        "date": "20260119",
+        "events": 41,
+        "d1_vs_d1": 39
+      },
+      {
+        "date": "20260120",
+        "events": 36,
+        "d1_vs_d1": 34
+      },
+      {
+        "date": "20260121",
+        "events": 54,
+        "d1_vs_d1": 54
+      },
+      {
+        "date": "20260122",
+        "events": 49,
+        "d1_vs_d1": 49
+      },
+      {
+        "date": "20260123",
+        "events": 25,
+        "d1_vs_d1": 25
+      },
+      {
+        "date": "20260124",
+        "events": 136,
+        "d1_vs_d1": 136
+      },
+      {
+        "date": "20260125",
+        "events": 7,
+        "d1_vs_d1": 7
+      },
+      {
+        "date": "20260126",
+        "events": 15,
+        "d1_vs_d1": 15
+      },
+      {
+        "date": "20260127",
+        "events": 35,
+        "d1_vs_d1": 35
+      },
+      {
+        "date": "20260128",
+        "events": 53,
+        "d1_vs_d1": 53
+      },
+      {
+        "date": "20260129",
+        "events": 55,
+        "d1_vs_d1": 55
+      },
+      {
+        "date": "20260130",
+        "events": 23,
+        "d1_vs_d1": 23
+      },
+      {
+        "date": "20260131",
+        "events": 139,
+        "d1_vs_d1": 139
+      },
+      {
+        "date": "20260201",
+        "events": 25,
+        "d1_vs_d1": 25
+      },
+      {
+        "date": "20260202",
+        "events": 18,
+        "d1_vs_d1": 18
+      },
+      {
+        "date": "20260203",
+        "events": 31,
+        "d1_vs_d1": 31
+      },
+      {
+        "date": "20260204",
+        "events": 62,
+        "d1_vs_d1": 62
+      },
+      {
+        "date": "20260205",
+        "events": 51,
+        "d1_vs_d1": 51
+      },
+      {
+        "date": "20260206",
+        "events": 9,
+        "d1_vs_d1": 9
+      },
+      {
+        "date": "20260207",
+        "events": 155,
+        "d1_vs_d1": 155
+      },
+      {
+        "date": "20260208",
+        "events": 11,
+        "d1_vs_d1": 11
+      },
+      {
+        "date": "20260209",
+        "events": 28,
+        "d1_vs_d1": 27
+      },
+      {
+        "date": "20260210",
+        "events": 22,
+        "d1_vs_d1": 22
+      },
+      {
+        "date": "20260211",
+        "events": 54,
+        "d1_vs_d1": 54
+      },
+      {
+        "date": "20260212",
+        "events": 57,
+        "d1_vs_d1": 57
+      },
+      {
+        "date": "20260213",
+        "events": 16,
+        "d1_vs_d1": 16
+      },
+      {
+        "date": "20260214",
+        "events": 132,
+        "d1_vs_d1": 132
+      },
+      {
+        "date": "20260215",
+        "events": 32,
+        "d1_vs_d1": 32
+      },
+      {
+        "date": "20260216",
+        "events": 24,
+        "d1_vs_d1": 24
+      },
+      {
+        "date": "20260217",
+        "events": 30,
+        "d1_vs_d1": 30
+      },
+      {
+        "date": "20260218",
+        "events": 59,
+        "d1_vs_d1": 59
+      },
+      {
+        "date": "20260219",
+        "events": 53,
+        "d1_vs_d1": 53
+      },
+      {
+        "date": "20260220",
+        "events": 13,
+        "d1_vs_d1": 13
+      },
+      {
+        "date": "20260221",
+        "events": 148,
+        "d1_vs_d1": 148
+      },
+      {
+        "date": "20260222",
+        "events": 21,
+        "d1_vs_d1": 21
+      },
+      {
+        "date": "20260223",
+        "events": 9,
+        "d1_vs_d1": 9
+      },
+      {
+        "date": "20260224",
+        "events": 36,
+        "d1_vs_d1": 36
+      },
+      {
+        "date": "20260225",
+        "events": 54,
+        "d1_vs_d1": 54
+      },
+      {
+        "date": "20260226",
+        "events": 57,
+        "d1_vs_d1": 57
+      },
+      {
+        "date": "20260227",
+        "events": 21,
+        "d1_vs_d1": 21
+      },
+      {
+        "date": "20260228",
+        "events": 143,
+        "d1_vs_d1": 143
+      },
+      {
+        "date": "20260301",
+        "events": 23,
+        "d1_vs_d1": 23
+      },
+      {
+        "date": "20260302",
+        "events": 18,
+        "d1_vs_d1": 18
+      },
+      {
+        "date": "20260303",
+        "events": 53,
+        "d1_vs_d1": 53
+      },
+      {
+        "date": "20260304",
+        "events": 40,
+        "d1_vs_d1": 40
+      },
+      {
+        "date": "20260305",
+        "events": 46,
+        "d1_vs_d1": 46
+      },
+      {
+        "date": "20260306",
+        "events": 37,
+        "d1_vs_d1": 37
+      },
+      {
+        "date": "20260307",
+        "events": 92,
+        "d1_vs_d1": 92
+      },
+      {
+        "date": "20260308",
+        "events": 32,
+        "d1_vs_d1": 32
+      },
+      {
+        "date": "20260309",
+        "events": 14,
+        "d1_vs_d1": 14
+      },
+      {
+        "date": "20260310",
+        "events": 24,
+        "d1_vs_d1": 24
+      },
+      {
+        "date": "20260311",
+        "events": 38,
+        "d1_vs_d1": 38
+      },
+      {
+        "date": "20260312",
+        "events": 44,
+        "d1_vs_d1": 44
+      },
+      {
+        "date": "20260313",
+        "events": 34,
+        "d1_vs_d1": 34
+      },
+      {
+        "date": "20260314",
+        "events": 21,
+        "d1_vs_d1": 21
+      },
+      {
+        "date": "20260315",
+        "events": 5,
+        "d1_vs_d1": 5
+      },
+      {
+        "date": "20260316",
+        "events": 0,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20260317",
+        "events": 10,
+        "d1_vs_d1": 10
+      },
+      {
+        "date": "20260318",
+        "events": 10,
+        "d1_vs_d1": 10
+      },
+      {
+        "date": "20260319",
+        "events": 16,
+        "d1_vs_d1": 16
+      },
+      {
+        "date": "20260320",
+        "events": 16,
+        "d1_vs_d1": 16
+      },
+      {
+        "date": "20260321",
+        "events": 10,
+        "d1_vs_d1": 10
+      },
+      {
+        "date": "20260322",
+        "events": 14,
+        "d1_vs_d1": 14
+      },
+      {
+        "date": "20260323",
+        "events": 0,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20260324",
+        "events": 2,
+        "d1_vs_d1": 2
+      },
+      {
+        "date": "20260325",
+        "events": 2,
+        "d1_vs_d1": 2
+      },
+      {
+        "date": "20260326",
+        "events": 4,
+        "d1_vs_d1": 4
+      },
+      {
+        "date": "20260327",
+        "events": 4,
+        "d1_vs_d1": 4
+      },
+      {
+        "date": "20260328",
+        "events": 2,
+        "d1_vs_d1": 2
+      },
+      {
+        "date": "20260329",
+        "events": 2,
+        "d1_vs_d1": 2
+      },
+      {
+        "date": "20260330",
+        "events": 0,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20260331",
+        "events": 0,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20260401",
+        "events": 2,
+        "d1_vs_d1": 2
+      },
+      {
+        "date": "20260402",
+        "events": 4,
+        "d1_vs_d1": 4
+      },
+      {
+        "date": "20260403",
+        "events": 0,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20260404",
+        "events": 4,
+        "d1_vs_d1": 4
+      },
+      {
+        "date": "20260405",
+        "events": 2,
+        "d1_vs_d1": 2
+      },
+      {
+        "date": "20260406",
+        "events": 1,
+        "d1_vs_d1": 1
+      }
+    ]
+  },
+  "season_2026_27_to_date": {
+    "label": "2026-27",
+    "start": "2026-11-02",
+    "end": "2026-11-09",
+    "days": 8,
+    "total_events_groups50": 521,
+    "unique_teams_all": 503,
+    "unique_d1_teams_conferenceId": 364,
+    "unique_non_d1_teams_no_conferenceId": 139,
+    "d1_vs_d1_games": 359,
+    "d1_vs_non_d1_games": 161,
+    "non_d1_vs_non_d1_games": 1,
+    "non_d1_team_names": [
+      "Adams State Grizzlies",
+      "Albion Britons",
+      "Allen Yellow Jackets",
+      "Alma Scots",
+      "Andrew Fighting Tigers",
+      "Arkansas Monticello Boll Weevils",
+      "Baptist (Fl) Eagles",
+      "Berry Vikings",
+      "Bethesda Flames",
+      "Biola Eagles",
+      "Blue Mountain Christian Toppers",
+      "Bob Jones Bruins",
+      "Boyce Bulldogs",
+      "Brescia Bearcats",
+      "Briar Cliff Chargers",
+      "Bridgewater Eagles",
+      "Cal State San Marcos Cougars",
+      "Calumet St. Joseph Crimson Wave",
+      "Cameron Aggies",
+      "Carnegie Mellon Tartans",
+      "Central Bible Saints",
+      "Central College Dutch",
+      "Central Penn Knights",
+      "Central State Marauders",
+      "Centre Colonels",
+      "Champion Christian Tigers",
+      "Chapman Panthers",
+      "Cheyney (PA) Wolves",
+      "Chicago Maroons",
+      "Christendom Crusaders",
+      "City College NY Beavers",
+      "Coast Guard Bears",
+      "College of Biblical Studies Ambassadors",
+      "Colorado College Tigers",
+      "Columbia International Rams",
+      "Concordia Chicago Cougars",
+      "Cornell (IA) Rams",
+      "Cornell Big Red",
+      "Covenant Fighting Scots",
+      "Crookston (MN) Golden Eagles",
+      "Curry Colonels",
+      "Dallas Christian Crusaders",
+      "East West Phantoms",
+      "Elmira Soaring Eagles",
+      "Erskine Flying Fleet",
+      "Eureka Red Devils",
+      "Fisk Bulldogs",
+      "Fort Valley State Wildcats",
+      "Framingham State Rams",
+      "Fresno Pacific Sunbirds",
+      "George Fox Bruins",
+      "Georgia Gwinnett Grizzlies",
+      "Grace University Lancers",
+      "Hiram Terriers",
+      "Howard Payne Yellow Jackets",
+      "IU Kokomo Cougars",
+      "Jessup Warriors",
+      "Kalamazoo Hornets",
+      "Kentucky Christian Knights",
+      "Kentucky Wesleyan Panthers",
+      "Keuka Storm",
+      "King's Monarchs",
+      "La Sierra Golden Eagles",
+      "La Verne Leopards",
+      "LaGrange Panthers",
+      "Lane College Dragons",
+      "Lawrence Vikings",
+      "Lewis & Clark River Otters",
+      "Lincoln (CA) Oaklanders",
+      "Lincoln (MO) Blue Tigers",
+      "Louisiana Christian Wildcats",
+      "Loyola New Orleans Wolfpack",
+      "Lyon Scots",
+      "MIT Engineers",
+      "Maryville (MO) Saints",
+      "McDaniel Green Terror",
+      "Menlo Oaks",
+      "Miami (OH) Middletown ThunderHawks",
+      "Michigan Dearborn Wolves",
+      "Mid America Christian Evangels",
+      "Midway Eagles",
+      "Milligan Buffaloes",
+      "Mississippi U for Women Owls",
+      "Monmouth (IL) Fighting Scots",
+      "Morris Hornets",
+      "Mount Marty Lancers",
+      "Mount Olive Trojans",
+      "Mount St Mary Knights",
+      "Muskingum Fighting Muskies",
+      "New College Mighty Banyans",
+      "Newberry Wolves",
+      "North American Stallions",
+      "Northwestern (OK) Rangers",
+      "Notre Dame (MD) Gators",
+      "Oakwood Ambassadors",
+      "Ottawa (KS) Braves",
+      "Paul Quinn Tigers",
+      "Penn State Schuylkill Nittany Lions",
+      "Penn State Shenango Nittany Lions",
+      "Pfeiffer Falcons",
+      "Randolph Wildcats",
+      "Regent Regent Royals",
+      "Regis University REGIS UNIVERSITY",
+      "Reinhardt Eagles",
+      "Rhode Island College Anchormen",
+      "Ripon Red Hawks",
+      "Rivier Raiders",
+      "Roberts Wesleyan Redhawks",
+      "SUNY Old Westbury Panthers",
+      "Saint Mary of the Woods Pomeroys",
+      "Saint Vincent Bearcats",
+      "Salish Kootenai Bison",
+      "San Francisco State Gators",
+      "Schreiner Mountaineers",
+      "Simpson (IA) Storm",
+      "Southeastern Baptist Chargers",
+      "Southern New Orleans Knights",
+      "Southern Virginia Knights",
+      "Southern Wesleyan Warriors",
+      "Southwestern Christian U Eagles",
+      "St. Francis (IL) Fighting Saints",
+      "St. Joseph's Long Island Golden Eagles",
+      "Stanton Elks",
+      "Texas A&M-Kingsville Javelinas",
+      "Texas Lutheran Bulldogs",
+      "Tougaloo Bulldogs",
+      "Trinity College of Jacksonville Eagles",
+      "Truman State Bulldogs",
+      "UNT Dallas Trailblazers",
+      "Union (TN) Bulldogs",
+      "Virginia Lynchburg Dragons",
+      "Warren Wilson Owls",
+      "Washington Maryland Shoremen",
+      "Webster Gorloks",
+      "West Coast Baptist Eagles",
+      "Western Colorado Mountaineers",
+      "Western New Mexico Mustangs",
+      "Whittier Poets",
+      "Willamette Bearcats"
+    ],
+    "per_date": [
+      {
+        "date": "20261102",
+        "events": 182,
+        "d1_vs_d1": 118
+      },
+      {
+        "date": "20261103",
+        "events": 29,
+        "d1_vs_d1": 19
+      },
+      {
+        "date": "20261104",
+        "events": 26,
+        "d1_vs_d1": 10
+      },
+      {
+        "date": "20261105",
+        "events": 65,
+        "d1_vs_d1": 42
+      },
+      {
+        "date": "20261106",
+        "events": 72,
+        "d1_vs_d1": 59
+      },
+      {
+        "date": "20261107",
+        "events": 61,
+        "d1_vs_d1": 48
+      },
+      {
+        "date": "20261108",
+        "events": 36,
+        "d1_vs_d1": 29
+      },
+      {
+        "date": "20261109",
+        "events": 50,
+        "d1_vs_d1": 34
+      }
+    ]
+  },
+  "season_2024_25": {
+    "label": "2024-25",
+    "start": "2024-11-04",
+    "end": "2025-04-07",
+    "days": 155,
+    "total_events_groups50": 6299,
+    "unique_teams_all": 702,
+    "unique_d1_teams_conferenceId": 364,
+    "unique_non_d1_teams_no_conferenceId": 338,
+    "d1_vs_d1_games": 5769,
+    "d1_vs_non_d1_games": 530,
+    "non_d1_vs_non_d1_games": 0,
+    "non_d1_team_names": [
+      "Alice Lloyd Eagles",
+      "Anderson (IN) Ravens",
+      "Apprentice School Builders",
+      "Aquinas Saints",
+      "Arkansas Baptist Buffaloes",
+      "Arlington Baptist Patriots",
+      "Asbury Eagles",
+      "Auburn Montgomery Senators",
+      "Augusta Jaguars",
+      "Averett Cougars",
+      "Avila Eagles",
+      "Baldwin Wallace Yellow Jackets",
+      "Benedictine (IL) Eagles",
+      "Benedictine Mesa Redhawks",
+      "Bethany (WV) Bison",
+      "Bethel (TN) Wildcats",
+      "Bethesda Flames",
+      "Blackburn Beavers",
+      "Bluefield Ramblin' Rams",
+      "Bluffton Beavers",
+      "Bob Jones Bruins",
+      "Bowdoin Polar Bears",
+      "Bowie State Bulldogs",
+      "Boyce Bulldogs",
+      "Brescia Bearcats",
+      "Brevard Tornados",
+      "Brewton Parker Wildcats",
+      "Brockport Golden Eagles",
+      "Bryan Lions",
+      "Bryn Athyn Lions",
+      "Cairn University Highlanders",
+      "Cal Maritime Keelhaulers",
+      "Calumet St. Joseph Crimson Wave",
+      "Calvary Warriors",
+      "Campbellsville (HB) Pioneers",
+      "Campbellsville Tigers",
+      "Capital Crusaders",
+      "Carolina Christian Centurions",
+      "Carolina University Bruins",
+      "Central Penn Knights",
+      "Central State Marauders",
+      "Chadron State Eagles",
+      "Champion Christian Tigers",
+      "Chapman Panthers",
+      "Chatham Cougars",
+      "Chestnut Hill Griffins",
+      "Cheyney (PA) Wolves",
+      "Christendom Crusaders",
+      "Cleary University Cougars",
+      "Coastal Georgia Mariner",
+      "Colby Sawyer Chargers",
+      "College of Biblical Studies Ambassadors",
+      "Colorado Christian Cougars",
+      "Colorado College Tigers",
+      "Colorado Colorado Springs Mountain Lions",
+      "Columbia (SC) Fighting Koalas",
+      "Columbia International Rams",
+      "Concordia Ann Arbor Cardinals",
+      "Concordia St. Paul Golden Bears",
+      "Corban Warriors",
+      "Crookston (MN) Golden Eagles",
+      "Crowley's Ridge Pioneers",
+      "Crown Polars",
+      "Cumberlands Patriots",
+      "Dakota Wesleyan Tigers",
+      "Dallas Christian Crusaders",
+      "Dallas Crusaders",
+      "Dalton State Roadrunners",
+      "Davenport Panthers",
+      "Davis & Elkins Senators",
+      "Dean Bulldogs",
+      "Defiance Yellow Jackets",
+      "Dickinson Red Devils",
+      "Dickinson State Blue Hawks",
+      "Dillard Blue Devils",
+      "District of Columbia Firebirds",
+      "Dubuque Spartans",
+      "Earlham Quakers",
+      "East West Phantoms",
+      "Eastern Oregon Mountaineers",
+      "Ecclesia Royals",
+      "Edward Waters Tigers",
+      "Elizabeth City State Vikings",
+      "Elms Blazers",
+      "Embry Riddle (AZ) Eagles",
+      "Emerson Lions",
+      "Endicott Gulls",
+      "Erskine Flying Fleet",
+      "Eureka Red Devils",
+      "Evergreen State Geoducks",
+      "Ferrum Panthers",
+      "Fisher Eagles",
+      "Fisk Bulldogs",
+      "Florida National Conquistadors",
+      "Florida Tech Panthers",
+      "Fort Lauderdale Eagles",
+      "Fort Valley State Wildcats",
+      "Framingham State Rams",
+      "Franciscan Barons",
+      "Franklin Grizzlies",
+      "Franklin Pierce Ravens",
+      "Friends Falcons",
+      "Frostburg State Bobcats",
+      "Gallaudet Bison",
+      "Georgian Court Lions",
+      "Goshen Maple Leafs",
+      "Gwynedd Mercy Griffins",
+      "Hannibal LaGrange Trojans",
+      "Hardin Simmons Cowboys",
+      "Harris Stowe State Hornets",
+      "Haskell Jayhawks",
+      "Hawai\u02bbi Hilo Vulcans",
+      "Hawai\u02bbi Pacific Sea Warriors",
+      "Health Sciences & Pharmacy Eutectics",
+      "Heidelberg Student Princes",
+      "Holy Cross (IN) Saints",
+      "Holy Family Tigers",
+      "Houghton Highlanders",
+      "Howard Payne Yellow Jackets",
+      "IU Columbus Crimson Pride",
+      "Immaculata Mighty Macs",
+      "Jamestown Jimmies",
+      "Jessup Warriors",
+      "John Jay Bloodhounds",
+      "John Melvin Millers",
+      "Johnson & Wales Griffins",
+      "Johnson Royals",
+      "Judson Eagles",
+      "Justice Lions",
+      "Kansas Christian Falcons",
+      "Kean Cougars",
+      "Kentucky Christian Knights",
+      "Kentucky State Thorobreds",
+      "Kentucky Wesleyan Panthers",
+      "LSU Alexandria Bull Terriers",
+      "La Sierra Golden Eagles",
+      "La Verne Leopards",
+      "LaGrange Panthers",
+      "Lakeland Muskies",
+      "Lancaster Bible Chargers",
+      "Lane College Dragons",
+      "LeTourneau Yellow Jackets",
+      "Lehman Bridges",
+      "Lesley Lynx",
+      "Lewis & Clark River Otters",
+      "Life Pacific Warriors",
+      "Lincoln (CA) Oaklanders",
+      "Lincoln (MO) Blue Tigers",
+      "Lindsey Wilson Blue Raiders",
+      "Livingstone Blue Bears",
+      "Louisiana Christian Wildcats",
+      "Loyola New Orleans Wolfpack",
+      "Lynchburg Hornets",
+      "Maine Augusta Moose",
+      "Maine Fort Kent Bengals",
+      "Manhattanville Valiants",
+      "Manor Blue Jays",
+      "Mansfield Mountaineers",
+      "Marian (WI) Sabres",
+      "Mary Baldwin Fighting Squirrels",
+      "Maryville (TN) Fighting Scots",
+      "Marywood Pacers",
+      "McMurry War Hawks",
+      "Medgar Evers Cougars",
+      "Menlo Oaks",
+      "Merchant Marine Mariners",
+      "Mercy Mavericks",
+      "Miami (OH) Hamilton Harriers",
+      "Michigan Tech Huskies",
+      "Mid America Christian Evangels",
+      "Mid Atlantic Christian Mustangs",
+      "Middle Georgia Knights",
+      "Midway Eagles",
+      "Milligan Buffaloes",
+      "Misericordia Cougars",
+      "Mississippi Christian Choctaws",
+      "Mississippi U for Women Owls",
+      "Missouri S&T Miners",
+      "Missouri Southern State Lions",
+      "Mitchell Mariners",
+      "Mobile Rams",
+      "Monmouth (IL) Fighting Scots",
+      "Montana Tech Orediggers",
+      "Montreat Cavaliers",
+      "Morehouse Maroon Tigers",
+      "Morris Hornets",
+      "Mount Aloysius Mounties",
+      "Mount Marty Lancers",
+      "Mount Olive Trojans",
+      "Mount St Mary Knights",
+      "Muskingum Fighting Muskies",
+      "Nazareth Golden Flyers",
+      "Nelson Lions",
+      "Neumann Knights",
+      "New College Mighty Banyans",
+      "New Mexico Highlands Cowboys",
+      "Newberry Wolves",
+      "Nobel Knights",
+      "North Carolina Wesleyan Battling Bishops",
+      "North Central (IL) Cardinals",
+      "North Central (MN) Rams",
+      "North Greenville Trailblazers",
+      "Northeastern State RiverHawks",
+      "Northern New Mexico Eagles",
+      "Northwest Indian RedHawks",
+      "Northwest University Eagles",
+      "Notre Dame (MD) Gators",
+      "Oakwood Ambassadors",
+      "Occidental Tigers",
+      "Oglethorpe Stormy Petrels",
+      "Ohio Christian Trailblazers",
+      "Ohio Wesleyan Battling Bishops",
+      "Ouachita Baptist Tigers",
+      "Our Lady of the Lake Saints",
+      "Ozark Christian Ambassadors",
+      "Pacific (OR) Boxers",
+      "Park University Gilbert Buccaneers",
+      "Paul Quinn Tigers",
+      "Penn State Altoona Nittany Lions",
+      "Penn State Fayette Nittany Lions",
+      "Penn State Schuylkill Nittany Lions",
+      "Penn State Scranton Nittany Lions",
+      "Penn State Shenango Nittany Lions",
+      "Penn State Wilkes-Barre Mountain Lions",
+      "Penn State York Nittany Lions",
+      "Pfeiffer Falcons",
+      "Piedmont Lions",
+      "Pittsburgh-Bradford Panthers",
+      "Plattsburgh Cardinals",
+      "Point Skyhawks",
+      "Pratt Institute Cannoneers",
+      "Puerto Rico-Bayamon Pirates",
+      "Puerto Rico-Mayaguez Bulldogs",
+      "Puerto Rico-Rio Piedras PR-RIO PIEDRAS",
+      "Purchase Panthers",
+      "Purdue Northwest Pride",
+      "Randall Saints",
+      "Randolph Macon Yellow Jackets",
+      "Randolph Wildcats",
+      "Regent Royals",
+      "Regis College Pride",
+      "Rhodes Lynx",
+      "Rivier Raiders",
+      "Rockford Regents",
+      "Rogers State Hillcats",
+      "Rosemont Ravens",
+      "Rust Bearcats",
+      "SUNY Canton Roos",
+      "SUNY Delhi Broncos",
+      "SUNY Fredonia Blue Devils",
+      "SUNY Maritime Privateers",
+      "SUNY Old Westbury Panthers",
+      "SUNY Oneonta Red Dragons",
+      "SUNY Polytechnic Wildcats",
+      "Saint Elizabeth Eagles",
+      "Saint Mary of the Woods Pomeroys",
+      "Saint Mary's (MN) Cardinals",
+      "San Francisco State Gators",
+      "Sarah Lawrence Gryphons",
+      "Schreiner Mountaineers",
+      "Seattle Pacific Falcons",
+      "Shawnee State Bears",
+      "Siena Heights Saints",
+      "South Dakota Mines Hardrockers",
+      "Southern New Orleans Knights",
+      "Southern Oregon Raiders",
+      "Southern Virginia Knights",
+      "Southern Wesleyan Warriors",
+      "Southwest Mustangs",
+      "Southwestern Adventist Knights",
+      "Southwestern Christian U Eagles",
+      "Southwestern U Pirates",
+      "Spartanburg Methodist Pioneers",
+      "Spring Hill Badgers",
+      "Springfield Pride",
+      "St. Ambrose Fighting Bees",
+      "St. Andrews Knights",
+      "St. Francis (IL) Fighting Saints",
+      "St. Joseph's Long Island Golden Eagles",
+      "St. Norbert Green Knights",
+      "St. Thomas (TX) Celts",
+      "Stanislaus State Warriors",
+      "Sul Ross State Lobos",
+      "Tabor TABOR",
+      "Taylor Trojans",
+      "Tennessee Wesleyan Bulldogs",
+      "Texas A&M-Kingsville Javelinas",
+      "Texas A&M-San Antonio Jaguars",
+      "Texas A&M-Texarkana Eagles",
+      "Texas College Steers",
+      "Texas Lutheran Bulldogs",
+      "Texas Wesleyan Rams",
+      "Thomas College Terriers",
+      "Toccoa Falls Eagles",
+      "Trinity (FL) Tigers",
+      "Trinity (TX) Tigers",
+      "Trinity Christian Trolls",
+      "Trinity College of Jacksonville Eagles",
+      "Truett McConnell Bears",
+      "Tusculum Pioneers",
+      "UMass Boston Beacons",
+      "UNT Dallas Trailblazers",
+      "UT Dallas Comets",
+      "UT Permian Basin Falcons",
+      "UVA Wise Cavaliers",
+      "Union (TN) Bulldogs",
+      "Valley Forge Patriots",
+      "Vermont State Johnson Badgers",
+      "Vermont State Lyndon Hornets",
+      "Vermont State Randolph Knights",
+      "Virginia Lynchburg Dragons",
+      "Virginia Wesleyan Blue Marlins",
+      "Voorhees Tigers",
+      "WPI Engineers",
+      "Waldorf Warriors",
+      "Walla Walla Wolves",
+      "Warner Royals",
+      "Washington Adventist Shock",
+      "Washington Maryland Shoremen",
+      "Wayland Baptist Pioneers",
+      "Webber International Warriors",
+      "West Virginia Wesleyan Bobcats",
+      "Westcliff Warriors",
+      "Western Colorado Mountaineers",
+      "Western New Mexico Mustangs",
+      "Western Oregon Wolves",
+      "Westminster (MO) Blue Jays",
+      "Westminster (PA) Titans",
+      "Westminster (UT) Griffins",
+      "Whittier Poets",
+      "Willamette Bearcats",
+      "William Carey Crusaders",
+      "William Peace Pacers",
+      "William Woods Owls",
+      "Wisconsin Stout Blue Devils",
+      "Xavier (LA) Gold Nuggets",
+      "York (NE) Panthers",
+      "York (NY) Cardinals"
+    ],
+    "per_date": [
+      {
+        "date": "20241104",
+        "events": 199,
+        "d1_vs_d1": 116
+      },
+      {
+        "date": "20241105",
+        "events": 11,
+        "d1_vs_d1": 8
+      },
+      {
+        "date": "20241106",
+        "events": 37,
+        "d1_vs_d1": 23
+      },
+      {
+        "date": "20241107",
+        "events": 42,
+        "d1_vs_d1": 23
+      },
+      {
+        "date": "20241108",
+        "events": 80,
+        "d1_vs_d1": 63
+      },
+      {
+        "date": "20241109",
+        "events": 64,
+        "d1_vs_d1": 53
+      },
+      {
+        "date": "20241110",
+        "events": 29,
+        "d1_vs_d1": 21
+      },
+      {
+        "date": "20241111",
+        "events": 42,
+        "d1_vs_d1": 30
+      },
+      {
+        "date": "20241112",
+        "events": 79,
+        "d1_vs_d1": 56
+      },
+      {
+        "date": "20241113",
+        "events": 55,
+        "d1_vs_d1": 42
+      },
+      {
+        "date": "20241114",
+        "events": 26,
+        "d1_vs_d1": 19
+      },
+      {
+        "date": "20241115",
+        "events": 50,
+        "d1_vs_d1": 47
+      },
+      {
+        "date": "20241116",
+        "events": 82,
+        "d1_vs_d1": 73
+      },
+      {
+        "date": "20241117",
+        "events": 36,
+        "d1_vs_d1": 34
+      },
+      {
+        "date": "20241118",
+        "events": 31,
+        "d1_vs_d1": 22
+      },
+      {
+        "date": "20241119",
+        "events": 54,
+        "d1_vs_d1": 46
+      },
+      {
+        "date": "20241120",
+        "events": 47,
+        "d1_vs_d1": 37
+      },
+      {
+        "date": "20241121",
+        "events": 44,
+        "d1_vs_d1": 38
+      },
+      {
+        "date": "20241122",
+        "events": 82,
+        "d1_vs_d1": 77
+      },
+      {
+        "date": "20241123",
+        "events": 56,
+        "d1_vs_d1": 51
+      },
+      {
+        "date": "20241124",
+        "events": 54,
+        "d1_vs_d1": 52
+      },
+      {
+        "date": "20241125",
+        "events": 57,
+        "d1_vs_d1": 48
+      },
+      {
+        "date": "20241126",
+        "events": 64,
+        "d1_vs_d1": 56
+      },
+      {
+        "date": "20241127",
+        "events": 70,
+        "d1_vs_d1": 63
+      },
+      {
+        "date": "20241128",
+        "events": 21,
+        "d1_vs_d1": 21
+      },
+      {
+        "date": "20241129",
+        "events": 56,
+        "d1_vs_d1": 53
+      },
+      {
+        "date": "20241130",
+        "events": 68,
+        "d1_vs_d1": 62
+      },
+      {
+        "date": "20241201",
+        "events": 34,
+        "d1_vs_d1": 30
+      },
+      {
+        "date": "20241202",
+        "events": 16,
+        "d1_vs_d1": 12
+      },
+      {
+        "date": "20241203",
+        "events": 56,
+        "d1_vs_d1": 46
+      },
+      {
+        "date": "20241204",
+        "events": 67,
+        "d1_vs_d1": 56
+      },
+      {
+        "date": "20241205",
+        "events": 26,
+        "d1_vs_d1": 23
+      },
+      {
+        "date": "20241206",
+        "events": 22,
+        "d1_vs_d1": 16
+      },
+      {
+        "date": "20241207",
+        "events": 108,
+        "d1_vs_d1": 99
+      },
+      {
+        "date": "20241208",
+        "events": 39,
+        "d1_vs_d1": 37
+      },
+      {
+        "date": "20241209",
+        "events": 8,
+        "d1_vs_d1": 5
+      },
+      {
+        "date": "20241210",
+        "events": 37,
+        "d1_vs_d1": 24
+      },
+      {
+        "date": "20241211",
+        "events": 28,
+        "d1_vs_d1": 21
+      },
+      {
+        "date": "20241212",
+        "events": 10,
+        "d1_vs_d1": 7
+      },
+      {
+        "date": "20241213",
+        "events": 10,
+        "d1_vs_d1": 9
+      },
+      {
+        "date": "20241214",
+        "events": 97,
+        "d1_vs_d1": 84
+      },
+      {
+        "date": "20241215",
+        "events": 40,
+        "d1_vs_d1": 29
+      },
+      {
+        "date": "20241216",
+        "events": 18,
+        "d1_vs_d1": 12
+      },
+      {
+        "date": "20241217",
+        "events": 48,
+        "d1_vs_d1": 41
+      },
+      {
+        "date": "20241218",
+        "events": 64,
+        "d1_vs_d1": 56
+      },
+      {
+        "date": "20241219",
+        "events": 26,
+        "d1_vs_d1": 18
+      },
+      {
+        "date": "20241220",
+        "events": 23,
+        "d1_vs_d1": 16
+      },
+      {
+        "date": "20241221",
+        "events": 114,
+        "d1_vs_d1": 105
+      },
+      {
+        "date": "20241222",
+        "events": 48,
+        "d1_vs_d1": 40
+      },
+      {
+        "date": "20241223",
+        "events": 9,
+        "d1_vs_d1": 7
+      },
+      {
+        "date": "20241224",
+        "events": 0,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20241225",
+        "events": 4,
+        "d1_vs_d1": 4
+      },
+      {
+        "date": "20241226",
+        "events": 0,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20241227",
+        "events": 2,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20241228",
+        "events": 53,
+        "d1_vs_d1": 32
+      },
+      {
+        "date": "20241229",
+        "events": 60,
+        "d1_vs_d1": 43
+      },
+      {
+        "date": "20241230",
+        "events": 43,
+        "d1_vs_d1": 26
+      },
+      {
+        "date": "20241231",
+        "events": 33,
+        "d1_vs_d1": 30
+      },
+      {
+        "date": "20250101",
+        "events": 21,
+        "d1_vs_d1": 20
+      },
+      {
+        "date": "20250102",
+        "events": 66,
+        "d1_vs_d1": 66
+      },
+      {
+        "date": "20250103",
+        "events": 16,
+        "d1_vs_d1": 16
+      },
+      {
+        "date": "20250104",
+        "events": 139,
+        "d1_vs_d1": 137
+      },
+      {
+        "date": "20250105",
+        "events": 27,
+        "d1_vs_d1": 24
+      },
+      {
+        "date": "20250106",
+        "events": 16,
+        "d1_vs_d1": 16
+      },
+      {
+        "date": "20250107",
+        "events": 34,
+        "d1_vs_d1": 34
+      },
+      {
+        "date": "20250108",
+        "events": 50,
+        "d1_vs_d1": 50
+      },
+      {
+        "date": "20250109",
+        "events": 55,
+        "d1_vs_d1": 55
+      },
+      {
+        "date": "20250110",
+        "events": 14,
+        "d1_vs_d1": 14
+      },
+      {
+        "date": "20250111",
+        "events": 144,
+        "d1_vs_d1": 144
+      },
+      {
+        "date": "20250112",
+        "events": 21,
+        "d1_vs_d1": 21
+      },
+      {
+        "date": "20250113",
+        "events": 22,
+        "d1_vs_d1": 22
+      },
+      {
+        "date": "20250114",
+        "events": 36,
+        "d1_vs_d1": 36
+      },
+      {
+        "date": "20250115",
+        "events": 48,
+        "d1_vs_d1": 47
+      },
+      {
+        "date": "20250116",
+        "events": 63,
+        "d1_vs_d1": 62
+      },
+      {
+        "date": "20250117",
+        "events": 10,
+        "d1_vs_d1": 10
+      },
+      {
+        "date": "20250118",
+        "events": 148,
+        "d1_vs_d1": 147
+      },
+      {
+        "date": "20250119",
+        "events": 11,
+        "d1_vs_d1": 11
+      },
+      {
+        "date": "20250120",
+        "events": 29,
+        "d1_vs_d1": 27
+      },
+      {
+        "date": "20250121",
+        "events": 35,
+        "d1_vs_d1": 35
+      },
+      {
+        "date": "20250122",
+        "events": 42,
+        "d1_vs_d1": 42
+      },
+      {
+        "date": "20250123",
+        "events": 61,
+        "d1_vs_d1": 61
+      },
+      {
+        "date": "20250124",
+        "events": 14,
+        "d1_vs_d1": 13
+      },
+      {
+        "date": "20250125",
+        "events": 149,
+        "d1_vs_d1": 149
+      },
+      {
+        "date": "20250126",
+        "events": 13,
+        "d1_vs_d1": 13
+      },
+      {
+        "date": "20250127",
+        "events": 22,
+        "d1_vs_d1": 22
+      },
+      {
+        "date": "20250128",
+        "events": 29,
+        "d1_vs_d1": 29
+      },
+      {
+        "date": "20250129",
+        "events": 52,
+        "d1_vs_d1": 52
+      },
+      {
+        "date": "20250130",
+        "events": 58,
+        "d1_vs_d1": 58
+      },
+      {
+        "date": "20250131",
+        "events": 14,
+        "d1_vs_d1": 14
+      },
+      {
+        "date": "20250201",
+        "events": 146,
+        "d1_vs_d1": 146
+      },
+      {
+        "date": "20250202",
+        "events": 19,
+        "d1_vs_d1": 19
+      },
+      {
+        "date": "20250203",
+        "events": 21,
+        "d1_vs_d1": 21
+      },
+      {
+        "date": "20250204",
+        "events": 34,
+        "d1_vs_d1": 34
+      },
+      {
+        "date": "20250205",
+        "events": 55,
+        "d1_vs_d1": 55
+      },
+      {
+        "date": "20250206",
+        "events": 59,
+        "d1_vs_d1": 59
+      },
+      {
+        "date": "20250207",
+        "events": 7,
+        "d1_vs_d1": 7
+      },
+      {
+        "date": "20250208",
+        "events": 155,
+        "d1_vs_d1": 154
+      },
+      {
+        "date": "20250209",
+        "events": 8,
+        "d1_vs_d1": 8
+      },
+      {
+        "date": "20250210",
+        "events": 19,
+        "d1_vs_d1": 19
+      },
+      {
+        "date": "20250211",
+        "events": 37,
+        "d1_vs_d1": 37
+      },
+      {
+        "date": "20250212",
+        "events": 44,
+        "d1_vs_d1": 44
+      },
+      {
+        "date": "20250213",
+        "events": 59,
+        "d1_vs_d1": 59
+      },
+      {
+        "date": "20250214",
+        "events": 16,
+        "d1_vs_d1": 16
+      },
+      {
+        "date": "20250215",
+        "events": 146,
+        "d1_vs_d1": 146
+      },
+      {
+        "date": "20250216",
+        "events": 25,
+        "d1_vs_d1": 25
+      },
+      {
+        "date": "20250217",
+        "events": 21,
+        "d1_vs_d1": 21
+      },
+      {
+        "date": "20250218",
+        "events": 32,
+        "d1_vs_d1": 32
+      },
+      {
+        "date": "20250219",
+        "events": 51,
+        "d1_vs_d1": 51
+      },
+      {
+        "date": "20250220",
+        "events": 52,
+        "d1_vs_d1": 52
+      },
+      {
+        "date": "20250221",
+        "events": 20,
+        "d1_vs_d1": 20
+      },
+      {
+        "date": "20250222",
+        "events": 131,
+        "d1_vs_d1": 131
+      },
+      {
+        "date": "20250223",
+        "events": 28,
+        "d1_vs_d1": 28
+      },
+      {
+        "date": "20250224",
+        "events": 27,
+        "d1_vs_d1": 27
+      },
+      {
+        "date": "20250225",
+        "events": 35,
+        "d1_vs_d1": 35
+      },
+      {
+        "date": "20250226",
+        "events": 54,
+        "d1_vs_d1": 54
+      },
+      {
+        "date": "20250227",
+        "events": 54,
+        "d1_vs_d1": 54
+      },
+      {
+        "date": "20250228",
+        "events": 23,
+        "d1_vs_d1": 23
+      },
+      {
+        "date": "20250301",
+        "events": 133,
+        "d1_vs_d1": 133
+      },
+      {
+        "date": "20250302",
+        "events": 23,
+        "d1_vs_d1": 23
+      },
+      {
+        "date": "20250303",
+        "events": 27,
+        "d1_vs_d1": 27
+      },
+      {
+        "date": "20250304",
+        "events": 44,
+        "d1_vs_d1": 44
+      },
+      {
+        "date": "20250305",
+        "events": 31,
+        "d1_vs_d1": 31
+      },
+      {
+        "date": "20250306",
+        "events": 53,
+        "d1_vs_d1": 53
+      },
+      {
+        "date": "20250307",
+        "events": 31,
+        "d1_vs_d1": 31
+      },
+      {
+        "date": "20250308",
+        "events": 100,
+        "d1_vs_d1": 100
+      },
+      {
+        "date": "20250309",
+        "events": 29,
+        "d1_vs_d1": 29
+      },
+      {
+        "date": "20250310",
+        "events": 12,
+        "d1_vs_d1": 12
+      },
+      {
+        "date": "20250311",
+        "events": 24,
+        "d1_vs_d1": 24
+      },
+      {
+        "date": "20250312",
+        "events": 40,
+        "d1_vs_d1": 40
+      },
+      {
+        "date": "20250313",
+        "events": 48,
+        "d1_vs_d1": 48
+      },
+      {
+        "date": "20250314",
+        "events": 38,
+        "d1_vs_d1": 38
+      },
+      {
+        "date": "20250315",
+        "events": 22,
+        "d1_vs_d1": 22
+      },
+      {
+        "date": "20250316",
+        "events": 5,
+        "d1_vs_d1": 5
+      },
+      {
+        "date": "20250317",
+        "events": 0,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20250318",
+        "events": 9,
+        "d1_vs_d1": 9
+      },
+      {
+        "date": "20250319",
+        "events": 11,
+        "d1_vs_d1": 11
+      },
+      {
+        "date": "20250320",
+        "events": 16,
+        "d1_vs_d1": 16
+      },
+      {
+        "date": "20250321",
+        "events": 16,
+        "d1_vs_d1": 16
+      },
+      {
+        "date": "20250322",
+        "events": 10,
+        "d1_vs_d1": 10
+      },
+      {
+        "date": "20250323",
+        "events": 18,
+        "d1_vs_d1": 18
+      },
+      {
+        "date": "20250324",
+        "events": 3,
+        "d1_vs_d1": 3
+      },
+      {
+        "date": "20250325",
+        "events": 4,
+        "d1_vs_d1": 4
+      },
+      {
+        "date": "20250326",
+        "events": 3,
+        "d1_vs_d1": 3
+      },
+      {
+        "date": "20250327",
+        "events": 4,
+        "d1_vs_d1": 4
+      },
+      {
+        "date": "20250328",
+        "events": 4,
+        "d1_vs_d1": 4
+      },
+      {
+        "date": "20250329",
+        "events": 2,
+        "d1_vs_d1": 2
+      },
+      {
+        "date": "20250330",
+        "events": 2,
+        "d1_vs_d1": 2
+      },
+      {
+        "date": "20250331",
+        "events": 4,
+        "d1_vs_d1": 4
+      },
+      {
+        "date": "20250401",
+        "events": 6,
+        "d1_vs_d1": 6
+      },
+      {
+        "date": "20250402",
+        "events": 2,
+        "d1_vs_d1": 2
+      },
+      {
+        "date": "20250403",
+        "events": 3,
+        "d1_vs_d1": 3
+      },
+      {
+        "date": "20250404",
+        "events": 0,
+        "d1_vs_d1": 0
+      },
+      {
+        "date": "20250405",
+        "events": 4,
+        "d1_vs_d1": 4
+      },
+      {
+        "date": "20250406",
+        "events": 1,
+        "d1_vs_d1": 1
+      },
+      {
+        "date": "20250407",
+        "events": 1,
+        "d1_vs_d1": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,1850 @@
+[
+  {
+    "date": "20261102",
+    "event_id": "401906769",
+    "home": "Florida Gators",
+    "away": "Miami Hurricanes",
+    "home_score": 77,
+    "away_score": 67,
+    "home_stats": {
+      "team_id": "57",
+      "abbr": "FLA",
+      "fga": 53,
+      "fta": 35,
+      "orb": 12,
+      "tov": 12
+    },
+    "away_stats": {
+      "team_id": "2390",
+      "abbr": "MIA",
+      "fga": 60,
+      "fta": 30,
+      "orb": 13,
+      "tov": 11
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401909562",
+    "home": "Duke Blue Devils",
+    "away": "Army Black Knights",
+    "home_score": 84,
+    "away_score": 50,
+    "home_stats": {
+      "team_id": "150",
+      "abbr": "DUKE",
+      "fga": 59,
+      "fta": 26,
+      "orb": 14,
+      "tov": 13
+    },
+    "away_stats": {
+      "team_id": "349",
+      "abbr": "ARMY",
+      "fga": 52,
+      "fta": 9,
+      "orb": 10,
+      "tov": 24
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401913525",
+    "home": "Illinois Fighting Illini",
+    "away": "Fairleigh Dickinson Knights",
+    "home_score": 120,
+    "away_score": 45,
+    "home_stats": {
+      "team_id": "356",
+      "abbr": "ILL",
+      "fga": 83,
+      "fta": 16,
+      "orb": 22,
+      "tov": 7
+    },
+    "away_stats": {
+      "team_id": "161",
+      "abbr": "FDU",
+      "fga": 61,
+      "fta": 11,
+      "orb": 3,
+      "tov": 12
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401911390",
+    "home": "UConn Huskies",
+    "away": "Gardner-Webb Runnin' Bulldogs",
+    "home_score": 86,
+    "away_score": 46,
+    "home_stats": {
+      "team_id": "41",
+      "abbr": "CONN",
+      "fga": 60,
+      "fta": 24,
+      "orb": 9,
+      "tov": 10
+    },
+    "away_stats": {
+      "team_id": "2241",
+      "abbr": "GWEB",
+      "fga": 47,
+      "fta": 26,
+      "orb": 4,
+      "tov": 17
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401909738",
+    "home": "UCLA Bruins",
+    "away": "Arizona Wildcats",
+    "home_score": 84,
+    "away_score": 75,
+    "home_stats": {
+      "team_id": "26",
+      "abbr": "UCLA",
+      "fga": 71,
+      "fta": 25,
+      "orb": 16,
+      "tov": 7
+    },
+    "away_stats": {
+      "team_id": "12",
+      "abbr": "ARIZ",
+      "fga": 60,
+      "fta": 30,
+      "orb": 12,
+      "tov": 11
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401924856",
+    "home": "Michigan State Spartans",
+    "away": "Quinnipiac Bobcats",
+    "home_score": 96,
+    "away_score": 59,
+    "home_stats": {
+      "team_id": "127",
+      "abbr": "MSU",
+      "fga": 62,
+      "fta": 26,
+      "orb": 14,
+      "tov": 12
+    },
+    "away_stats": {
+      "team_id": "2514",
+      "abbr": "QUIN",
+      "fga": 56,
+      "fta": 24,
+      "orb": 11,
+      "tov": 16
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401906863",
+    "home": "Texas Longhorns",
+    "away": "Chicago State Cougars",
+    "home_score": 109,
+    "away_score": 59,
+    "home_stats": {
+      "team_id": "251",
+      "abbr": "TEX",
+      "fga": 64,
+      "fta": 24,
+      "orb": 16,
+      "tov": 10
+    },
+    "away_stats": {
+      "team_id": "2130",
+      "abbr": "CHST",
+      "fga": 61,
+      "fta": 12,
+      "orb": 11,
+      "tov": 15
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401925811",
+    "home": "Houston Cougars",
+    "away": "La Salle Explorers",
+    "home_score": 94,
+    "away_score": 55,
+    "home_stats": {
+      "team_id": "248",
+      "abbr": "HOU",
+      "fga": 57,
+      "fta": 37,
+      "orb": 13,
+      "tov": 13
+    },
+    "away_stats": {
+      "team_id": "2325",
+      "abbr": "LAS",
+      "fga": 60,
+      "fta": 23,
+      "orb": 13,
+      "tov": 19
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401918947",
+    "home": "Louisville Cardinals",
+    "away": "Chattanooga Mocs",
+    "home_score": 84,
+    "away_score": 70,
+    "home_stats": {
+      "team_id": "97",
+      "abbr": "LOU",
+      "fga": 68,
+      "fta": 26,
+      "orb": 18,
+      "tov": 10
+    },
+    "away_stats": {
+      "team_id": "236",
+      "abbr": "UTC",
+      "fga": 57,
+      "fta": 14,
+      "orb": 11,
+      "tov": 18
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401920679",
+    "home": "St. John's Red Storm",
+    "away": "Monmouth Hawks",
+    "home_score": 78,
+    "away_score": 63,
+    "home_stats": {
+      "team_id": "2599",
+      "abbr": "SJU",
+      "fga": 62,
+      "fta": 25,
+      "orb": 12,
+      "tov": 13
+    },
+    "away_stats": {
+      "team_id": "2405",
+      "abbr": "MONM",
+      "fga": 56,
+      "fta": 14,
+      "orb": 5,
+      "tov": 18
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401921704",
+    "home": "Gonzaga Bulldogs",
+    "away": "Purdue Boilermakers",
+    "home_score": 78,
+    "away_score": 72,
+    "home_stats": {
+      "team_id": "2250",
+      "abbr": "GONZ",
+      "fga": 53,
+      "fta": 34,
+      "orb": 10,
+      "tov": 10
+    },
+    "away_stats": {
+      "team_id": "2509",
+      "abbr": "PUR",
+      "fga": 55,
+      "fta": 21,
+      "orb": 7,
+      "tov": 10
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401925733",
+    "home": "Michigan Wolverines",
+    "away": "Oakland Golden Grizzlies",
+    "home_score": 84,
+    "away_score": 68,
+    "home_stats": {
+      "team_id": "130",
+      "abbr": "MICH",
+      "fga": 71,
+      "fta": 20,
+      "orb": 16,
+      "tov": 9
+    },
+    "away_stats": {
+      "team_id": "2473",
+      "abbr": "OAK",
+      "fga": 63,
+      "fta": 30,
+      "orb": 21,
+      "tov": 15
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401909784",
+    "home": "Kansas Jayhawks",
+    "away": "Fordham Rams",
+    "home_score": 95,
+    "away_score": 65,
+    "home_stats": {
+      "team_id": "2305",
+      "abbr": "KU",
+      "fga": 60,
+      "fta": 30,
+      "orb": 15,
+      "tov": 17
+    },
+    "away_stats": {
+      "team_id": "2230",
+      "abbr": "FOR",
+      "fga": 69,
+      "fta": 13,
+      "orb": 15,
+      "tov": 16
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401909771",
+    "home": "Iowa State Cyclones",
+    "away": "Memphis Tigers",
+    "home_score": 76,
+    "away_score": 80,
+    "home_stats": {
+      "team_id": "66",
+      "abbr": "ISU",
+      "fga": 58,
+      "fta": 32,
+      "orb": 14,
+      "tov": 11
+    },
+    "away_stats": {
+      "team_id": "235",
+      "abbr": "MEM",
+      "fga": 55,
+      "fta": 33,
+      "orb": 12,
+      "tov": 13
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401921036",
+    "home": "Texas Tech Red Raiders",
+    "away": "Jackson State Tigers",
+    "home_score": 76,
+    "away_score": 42,
+    "home_stats": {
+      "team_id": "2641",
+      "abbr": "TTU",
+      "fga": 55,
+      "fta": 31,
+      "orb": 10,
+      "tov": 10
+    },
+    "away_stats": {
+      "team_id": "2296",
+      "abbr": "JKST",
+      "fga": 48,
+      "fta": 14,
+      "orb": 7,
+      "tov": 24
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401926771",
+    "home": "USC Trojans",
+    "away": "Milwaukee Panthers",
+    "home_score": 95,
+    "away_score": 63,
+    "home_stats": {
+      "team_id": "30",
+      "abbr": "USC",
+      "fga": 58,
+      "fta": 24,
+      "orb": 7,
+      "tov": 14
+    },
+    "away_stats": {
+      "team_id": "270",
+      "abbr": "MILW",
+      "fga": 62,
+      "fta": 15,
+      "orb": 12,
+      "tov": 17
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401921104",
+    "home": "Vanderbilt Commodores",
+    "away": "Bellarmine Knights",
+    "home_score": 93,
+    "away_score": 47,
+    "home_stats": {
+      "team_id": "238",
+      "abbr": "VAN",
+      "fga": 55,
+      "fta": 25,
+      "orb": 11,
+      "tov": 14
+    },
+    "away_stats": {
+      "team_id": "91",
+      "abbr": "BELL",
+      "fga": 46,
+      "fta": 13,
+      "orb": 6,
+      "tov": 23
+    }
+  },
+  {
+    "date": "20261102",
+    "event_id": "401916313",
+    "home": "BYU Cougars",
+    "away": "Ohio State Buckeyes",
+    "home_score": 94,
+    "away_score": 83,
+    "home_stats": {
+      "team_id": "252",
+      "abbr": "BYU",
+      "fga": 57,
+      "fta": 27,
+      "orb": 10,
+      "tov": 8
+    },
+    "away_stats": {
+      "team_id": "194",
+      "abbr": "OSU",
+      "fga": 57,
+      "fta": 19,
+      "orb": 10,
+      "tov": 11
+    }
+  },
+  {
+    "date": "20261103",
+    "event_id": "401906848",
+    "home": "Tennessee Volunteers",
+    "away": "Wofford Terriers",
+    "home_score": 90,
+    "away_score": 59,
+    "home_stats": {
+      "team_id": "2633",
+      "abbr": "TENN",
+      "fga": 65,
+      "fta": 16,
+      "orb": 11,
+      "tov": 10
+    },
+    "away_stats": {
+      "team_id": "2747",
+      "abbr": "WOF",
+      "fga": 62,
+      "fta": 23,
+      "orb": 13,
+      "tov": 12
+    }
+  },
+  {
+    "date": "20261103",
+    "event_id": "401920422",
+    "home": "Virginia Cavaliers",
+    "away": "Drexel Dragons",
+    "home_score": 89,
+    "away_score": 60,
+    "home_stats": {
+      "team_id": "258",
+      "abbr": "UVA",
+      "fga": 67,
+      "fta": 19,
+      "orb": 13,
+      "tov": 14
+    },
+    "away_stats": {
+      "team_id": "2182",
+      "abbr": "DREX",
+      "fga": 58,
+      "fta": 7,
+      "orb": 7,
+      "tov": 21
+    }
+  },
+  {
+    "date": "20261103",
+    "event_id": "401929372",
+    "home": "Arkansas Razorbacks",
+    "away": "Arkansas-Pine Bluff Golden Lions",
+    "home_score": 106,
+    "away_score": 61,
+    "home_stats": {
+      "team_id": "8",
+      "abbr": "ARK",
+      "fga": 64,
+      "fta": 42,
+      "orb": 17,
+      "tov": 11
+    },
+    "away_stats": {
+      "team_id": "2029",
+      "abbr": "UAPB",
+      "fga": 54,
+      "fta": 19,
+      "orb": 9,
+      "tov": 24
+    }
+  },
+  {
+    "date": "20261103",
+    "event_id": "401906757",
+    "home": "Alabama Crimson Tide",
+    "away": "Sam Houston Bearkats",
+    "home_score": 96,
+    "away_score": 74,
+    "home_stats": {
+      "team_id": "333",
+      "abbr": "ALA",
+      "fga": 75,
+      "fta": 19,
+      "orb": 13,
+      "tov": 10
+    },
+    "away_stats": {
+      "team_id": "2534",
+      "abbr": "SHSU",
+      "fga": 65,
+      "fta": 16,
+      "orb": 15,
+      "tov": 23
+    }
+  },
+  {
+    "date": "20261103",
+    "event_id": "401921801",
+    "home": "Kentucky Wildcats",
+    "away": "Manhattan Jaspers",
+    "home_score": 85,
+    "away_score": 57,
+    "home_stats": {
+      "team_id": "96",
+      "abbr": "UK",
+      "fga": 60,
+      "fta": 11,
+      "orb": 14,
+      "tov": 14
+    },
+    "away_stats": {
+      "team_id": "2363",
+      "abbr": "MAN",
+      "fga": 54,
+      "fta": 23,
+      "orb": 12,
+      "tov": 13
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401920232",
+    "home": "Dartmouth Big Green",
+    "away": "Framingham State Rams",
+    "home_score": 107,
+    "away_score": 50,
+    "home_stats": {
+      "team_id": "159",
+      "abbr": "DART",
+      "fga": 79,
+      "fta": 11,
+      "orb": 18,
+      "tov": 7
+    },
+    "away_stats": {
+      "team_id": "126956",
+      "abbr": "FRSU",
+      "fga": 56,
+      "fta": 19,
+      "orb": 7,
+      "tov": 19
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401929450",
+    "home": "Old Dominion Monarchs",
+    "away": "Regent Regent Royals",
+    "home_score": 91,
+    "away_score": 47,
+    "home_stats": {
+      "team_id": "295",
+      "abbr": "ODU",
+      "fga": 72,
+      "fta": 19,
+      "orb": 16,
+      "tov": 11
+    },
+    "away_stats": {
+      "team_id": "131784",
+      "abbr": "RGNT",
+      "fga": 55,
+      "fta": 17,
+      "orb": 10,
+      "tov": 23
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401928853",
+    "home": "Morgan State Bears",
+    "away": "Virginia Lynchburg Dragons",
+    "home_score": 95,
+    "away_score": 58,
+    "home_stats": {
+      "team_id": "2415",
+      "abbr": "MORG",
+      "fga": 74,
+      "fta": 21,
+      "orb": 14,
+      "tov": 16
+    },
+    "away_stats": {
+      "team_id": "3229",
+      "abbr": "VUL",
+      "fga": 69,
+      "fta": 19,
+      "orb": 11,
+      "tov": 17
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401926142",
+    "home": "SIU Edwardsville Cougars",
+    "away": "Concordia Chicago Cougars",
+    "home_score": 85,
+    "away_score": 61,
+    "home_stats": {
+      "team_id": "2565",
+      "abbr": "SIUE",
+      "fga": 62,
+      "fta": 17,
+      "orb": 12,
+      "tov": 12
+    },
+    "away_stats": {
+      "team_id": "2151",
+      "abbr": "CUC",
+      "fga": 53,
+      "fta": 12,
+      "orb": 6,
+      "tov": 17
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401922290",
+    "home": "UNC Asheville Bulldogs",
+    "away": "Erskine Flying Fleet",
+    "home_score": 101,
+    "away_score": 74,
+    "home_stats": {
+      "team_id": "2427",
+      "abbr": "UNCA",
+      "fga": 59,
+      "fta": 34,
+      "orb": 13,
+      "tov": 15
+    },
+    "away_stats": {
+      "team_id": "2215",
+      "abbr": "ERSK",
+      "fga": 61,
+      "fta": 22,
+      "orb": 12,
+      "tov": 16
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401920410",
+    "home": "High Point Panthers",
+    "away": "Maryland Eastern Shore Hawks",
+    "home_score": 63,
+    "away_score": 49,
+    "home_stats": {
+      "team_id": "2272",
+      "abbr": "HPU",
+      "fga": 45,
+      "fta": 30,
+      "orb": 8,
+      "tov": 16
+    },
+    "away_stats": {
+      "team_id": "2379",
+      "abbr": "UMES",
+      "fga": 53,
+      "fta": 20,
+      "orb": 9,
+      "tov": 15
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401920191",
+    "home": "Saint Joseph's Hawks",
+    "away": "Longwood Lancers",
+    "home_score": 82,
+    "away_score": 73,
+    "home_stats": {
+      "team_id": "2603",
+      "abbr": "JOES",
+      "fga": 63,
+      "fta": 31,
+      "orb": 11,
+      "tov": 9
+    },
+    "away_stats": {
+      "team_id": "2344",
+      "abbr": "LONG",
+      "fga": 70,
+      "fta": 21,
+      "orb": 14,
+      "tov": 12
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401902276",
+    "home": "Butler Bulldogs",
+    "away": "Fairleigh Dickinson Knights",
+    "home_score": 99,
+    "away_score": 65,
+    "home_stats": {
+      "team_id": "2086",
+      "abbr": "BTLR",
+      "fga": 67,
+      "fta": 16,
+      "orb": 15,
+      "tov": 11
+    },
+    "away_stats": {
+      "team_id": "161",
+      "abbr": "FDU",
+      "fga": 58,
+      "fta": 16,
+      "orb": 7,
+      "tov": 8
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401929438",
+    "home": "App State Mountaineers",
+    "away": "Christendom Crusaders",
+    "home_score": 108,
+    "away_score": 43,
+    "home_stats": {
+      "team_id": "2026",
+      "abbr": "APP",
+      "fga": 78,
+      "fta": 15,
+      "orb": 19,
+      "tov": 8
+    },
+    "away_stats": {
+      "team_id": "111180",
+      "abbr": "CTDM",
+      "fga": 58,
+      "fta": 6,
+      "orb": 3,
+      "tov": 17
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401927361",
+    "home": "Drake Bulldogs",
+    "away": "Central College Dutch",
+    "home_score": 101,
+    "away_score": 48,
+    "home_stats": {
+      "team_id": "2181",
+      "abbr": "DRKE",
+      "fga": 72,
+      "fta": 26,
+      "orb": 22,
+      "tov": 11
+    },
+    "away_stats": {
+      "team_id": "2964",
+      "abbr": "CNTC",
+      "fga": 50,
+      "fta": 14,
+      "orb": 9,
+      "tov": 24
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401926214",
+    "home": "Tennessee Tech Golden Eagles",
+    "away": "Blue Mountain Christian Toppers",
+    "home_score": 117,
+    "away_score": 70,
+    "home_stats": {
+      "team_id": "2635",
+      "abbr": "TNTC",
+      "fga": 95,
+      "fta": 18,
+      "orb": 30,
+      "tov": 11
+    },
+    "away_stats": {
+      "team_id": "494",
+      "abbr": "BMCU",
+      "fga": 62,
+      "fta": 23,
+      "orb": 8,
+      "tov": 26
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401926151",
+    "home": "Southeast Missouri State Redhawks",
+    "away": "Webster Gorloks",
+    "home_score": 90,
+    "away_score": 65,
+    "home_stats": {
+      "team_id": "2546",
+      "abbr": "SEMO",
+      "fga": 68,
+      "fta": 30,
+      "orb": 8,
+      "tov": 15
+    },
+    "away_stats": {
+      "team_id": "2693",
+      "abbr": "WEBS",
+      "fga": 62,
+      "fta": 28,
+      "orb": 6,
+      "tov": 19
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401926111",
+    "home": "Furman Paladins",
+    "away": "Bob Jones Bruins",
+    "home_score": 121,
+    "away_score": 52,
+    "home_stats": {
+      "team_id": "231",
+      "abbr": "FUR",
+      "fga": 81,
+      "fta": 21,
+      "orb": 17,
+      "tov": 3
+    },
+    "away_stats": {
+      "team_id": "3243",
+      "abbr": "BOBJ",
+      "fga": 66,
+      "fta": 11,
+      "orb": 11,
+      "tov": 16
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401919028",
+    "home": "Wichita State Shockers",
+    "away": "Cal State Northridge Matadors",
+    "home_score": 79,
+    "away_score": 67,
+    "home_stats": {
+      "team_id": "2724",
+      "abbr": "WICH",
+      "fga": 75,
+      "fta": 22,
+      "orb": 13,
+      "tov": 3
+    },
+    "away_stats": {
+      "team_id": "2463",
+      "abbr": "CSUN",
+      "fga": 66,
+      "fta": 23,
+      "orb": 12,
+      "tov": 11
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401917977",
+    "home": "UL Monroe Warhawks",
+    "away": "Champion Christian Tigers",
+    "home_score": 99,
+    "away_score": 55,
+    "home_stats": {
+      "team_id": "2433",
+      "abbr": "ULM",
+      "fga": 68,
+      "fta": 26,
+      "orb": 19,
+      "tov": 9
+    },
+    "away_stats": {
+      "team_id": "3134",
+      "abbr": "CHCC",
+      "fga": 56,
+      "fta": 11,
+      "orb": 6,
+      "tov": 15
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401928811",
+    "home": "South Dakota Coyotes",
+    "away": "Northern Kentucky Norse",
+    "home_score": 94,
+    "away_score": 102,
+    "home_stats": {
+      "team_id": "233",
+      "abbr": "SDAK",
+      "fga": 64,
+      "fta": 21,
+      "orb": 10,
+      "tov": 15
+    },
+    "away_stats": {
+      "team_id": "94",
+      "abbr": "NKU",
+      "fga": 56,
+      "fta": 32,
+      "orb": 8,
+      "tov": 14
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401925893",
+    "home": "Norfolk State Spartans",
+    "away": "Randolph Wildcats",
+    "home_score": 78,
+    "away_score": 71,
+    "home_stats": {
+      "team_id": "2450",
+      "abbr": "NORF",
+      "fga": 63,
+      "fta": 21,
+      "orb": 11,
+      "tov": 13
+    },
+    "away_stats": {
+      "team_id": "3153",
+      "abbr": "RDPH",
+      "fga": 66,
+      "fta": 27,
+      "orb": 18,
+      "tov": 15
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401923391",
+    "home": "Southern Indiana Screaming Eagles",
+    "away": "Saint Mary of the Woods Pomeroys",
+    "home_score": 112,
+    "away_score": 42,
+    "home_stats": {
+      "team_id": "88",
+      "abbr": "USI",
+      "fga": 86,
+      "fta": 15,
+      "orb": 19,
+      "tov": 4
+    },
+    "away_stats": {
+      "team_id": "126824",
+      "abbr": "SMWC",
+      "fga": 62,
+      "fta": 10,
+      "orb": 8,
+      "tov": 20
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401920798",
+    "home": "Auburn Tigers",
+    "away": "SE Louisiana Lions",
+    "home_score": 92,
+    "away_score": 59,
+    "home_stats": {
+      "team_id": "2",
+      "abbr": "AUB",
+      "fga": 63,
+      "fta": 27,
+      "orb": 17,
+      "tov": 14
+    },
+    "away_stats": {
+      "team_id": "2545",
+      "abbr": "SELA",
+      "fga": 67,
+      "fta": 19,
+      "orb": 18,
+      "tov": 14
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401929171",
+    "home": "Boise State Broncos",
+    "away": "West Coast Baptist Eagles",
+    "home_score": 132,
+    "away_score": 53,
+    "home_stats": {
+      "team_id": "68",
+      "abbr": "BOIS",
+      "fga": 88,
+      "fta": 29,
+      "orb": 24,
+      "tov": 10
+    },
+    "away_stats": {
+      "team_id": "110418",
+      "abbr": "WCBC",
+      "fga": 60,
+      "fta": 24,
+      "orb": 2,
+      "tov": 19
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401925939",
+    "home": "Utah Tech Trailblazers",
+    "away": "Grace University Lancers",
+    "home_score": 103,
+    "away_score": 52,
+    "home_stats": {
+      "team_id": "3101",
+      "abbr": "UTU",
+      "fga": 64,
+      "fta": 41,
+      "orb": 13,
+      "tov": 3
+    },
+    "away_stats": {
+      "team_id": "134743",
+      "abbr": "GRCU",
+      "fga": 64,
+      "fta": 6,
+      "orb": 11,
+      "tov": 19
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401922030",
+    "home": "Montana Grizzlies",
+    "away": "Salish Kootenai Bison",
+    "home_score": 105,
+    "away_score": 40,
+    "home_stats": {
+      "team_id": "149",
+      "abbr": "MONT",
+      "fga": 68,
+      "fta": 14,
+      "orb": 10,
+      "tov": 11
+    },
+    "away_stats": {
+      "team_id": "131858",
+      "abbr": "SKC",
+      "fga": 55,
+      "fta": 16,
+      "orb": 9,
+      "tov": 22
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401918052",
+    "home": "California Golden Bears",
+    "away": "Radford Highlanders",
+    "home_score": 84,
+    "away_score": 70,
+    "home_stats": {
+      "team_id": "25",
+      "abbr": "CAL",
+      "fga": 59,
+      "fta": 14,
+      "orb": 7,
+      "tov": 14
+    },
+    "away_stats": {
+      "team_id": "2515",
+      "abbr": "RAD",
+      "fga": 65,
+      "fta": 15,
+      "orb": 13,
+      "tov": 13
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401917514",
+    "home": "Loyola Marymount Lions",
+    "away": "Queens University Royals",
+    "home_score": 95,
+    "away_score": 96,
+    "home_stats": {
+      "team_id": "2351",
+      "abbr": "LMU",
+      "fga": 62,
+      "fta": 28,
+      "orb": 14,
+      "tov": 14
+    },
+    "away_stats": {
+      "team_id": "2511",
+      "abbr": "QUC",
+      "fga": 60,
+      "fta": 29,
+      "orb": 10,
+      "tov": 10
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401917513",
+    "home": "Santa Clara Broncos",
+    "away": "Milwaukee Panthers",
+    "home_score": 95,
+    "away_score": 72,
+    "home_stats": {
+      "team_id": "2541",
+      "abbr": "SCU",
+      "fga": 70,
+      "fta": 20,
+      "orb": 12,
+      "tov": 11
+    },
+    "away_stats": {
+      "team_id": "270",
+      "abbr": "MILW",
+      "fga": 64,
+      "fta": 23,
+      "orb": 14,
+      "tov": 18
+    }
+  },
+  {
+    "date": "20261104",
+    "event_id": "401917512",
+    "home": "Saint Mary's Gaels",
+    "away": "North Dakota State Bison",
+    "home_score": 105,
+    "away_score": 64,
+    "home_stats": {
+      "team_id": "2608",
+      "abbr": "SMC",
+      "fga": 58,
+      "fta": 10,
+      "orb": 3,
+      "tov": 8
+    },
+    "away_stats": {
+      "team_id": "2449",
+      "abbr": "NDSU",
+      "fga": 61,
+      "fta": 19,
+      "orb": 13,
+      "tov": 11
+    }
+  },
+  {
+    "date": "20261105",
+    "event_id": "401906770",
+    "home": "Florida Gators",
+    "away": "Jacksonville Dolphins",
+    "home_score": 88,
+    "away_score": 57,
+    "home_stats": {
+      "team_id": "57",
+      "abbr": "FLA",
+      "fga": 60,
+      "fta": 27,
+      "orb": 20,
+      "tov": 14
+    },
+    "away_stats": {
+      "team_id": "294",
+      "abbr": "JAX",
+      "fga": 57,
+      "fta": 15,
+      "orb": 8,
+      "tov": 9
+    }
+  },
+  {
+    "date": "20261105",
+    "event_id": "401909563",
+    "home": "Duke Blue Devils",
+    "away": "Coastal Carolina Chanticleers",
+    "home_score": 113,
+    "away_score": 52,
+    "home_stats": {
+      "team_id": "150",
+      "abbr": "DUKE",
+      "fga": 62,
+      "fta": 41,
+      "orb": 14,
+      "tov": 15
+    },
+    "away_stats": {
+      "team_id": "324",
+      "abbr": "CCU",
+      "fga": 63,
+      "fta": 17,
+      "orb": 11,
+      "tov": 17
+    }
+  },
+  {
+    "date": "20261105",
+    "event_id": "401913526",
+    "home": "Illinois Fighting Illini",
+    "away": "Pennsylvania Quakers",
+    "home_score": 112,
+    "away_score": 70,
+    "home_stats": {
+      "team_id": "356",
+      "abbr": "ILL",
+      "fga": 73,
+      "fta": 23,
+      "orb": 15,
+      "tov": 19
+    },
+    "away_stats": {
+      "team_id": "219",
+      "abbr": "PENN",
+      "fga": 86,
+      "fta": 15,
+      "orb": 16,
+      "tov": 9
+    }
+  },
+  {
+    "date": "20261105",
+    "event_id": "401909739",
+    "home": "Arizona Wildcats",
+    "away": "Cal Poly Mustangs",
+    "home_score": 104,
+    "away_score": 84,
+    "home_stats": {
+      "team_id": "12",
+      "abbr": "ARIZ",
+      "fga": 66,
+      "fta": 36,
+      "orb": 15,
+      "tov": 13
+    },
+    "away_stats": {
+      "team_id": "13",
+      "abbr": "CP",
+      "fga": 66,
+      "fta": 21,
+      "orb": 13,
+      "tov": 19
+    }
+  },
+  {
+    "date": "20261105",
+    "event_id": "401925754",
+    "home": "Michigan State Spartans",
+    "away": "Toledo Rockets",
+    "home_score": 91,
+    "away_score": 61,
+    "home_stats": {
+      "team_id": "127",
+      "abbr": "MSU",
+      "fga": 57,
+      "fta": 38,
+      "orb": 16,
+      "tov": 14
+    },
+    "away_stats": {
+      "team_id": "2649",
+      "abbr": "TOL",
+      "fga": 57,
+      "fta": 29,
+      "orb": 9,
+      "tov": 12
+    }
+  },
+  {
+    "date": "20261105",
+    "event_id": "401906864",
+    "home": "Texas Longhorns",
+    "away": "Gardner-Webb Runnin' Bulldogs",
+    "home_score": 98,
+    "away_score": 50,
+    "home_stats": {
+      "team_id": "251",
+      "abbr": "TEX",
+      "fga": 56,
+      "fta": 31,
+      "orb": 9,
+      "tov": 10
+    },
+    "away_stats": {
+      "team_id": "2241",
+      "abbr": "GWEB",
+      "fga": 45,
+      "fta": 23,
+      "orb": 7,
+      "tov": 23
+    }
+  },
+  {
+    "date": "20261105",
+    "event_id": "401921133",
+    "home": "Texas Tech Red Raiders",
+    "away": "Bethune-Cookman Wildcats",
+    "home_score": 76,
+    "away_score": 58,
+    "home_stats": {
+      "team_id": "2641",
+      "abbr": "TTU",
+      "fga": 57,
+      "fta": 31,
+      "orb": 14,
+      "tov": 11
+    },
+    "away_stats": {
+      "team_id": "2065",
+      "abbr": "BCU",
+      "fga": 44,
+      "fta": 32,
+      "orb": 7,
+      "tov": 18
+    }
+  },
+  {
+    "date": "20261105",
+    "event_id": "401909726",
+    "home": "Vanderbilt Commodores",
+    "away": "Wake Forest Demon Deacons",
+    "home_score": 74,
+    "away_score": 51,
+    "home_stats": {
+      "team_id": "238",
+      "abbr": "VAN",
+      "fga": 72,
+      "fta": 11,
+      "orb": 17,
+      "tov": 7
+    },
+    "away_stats": {
+      "team_id": "154",
+      "abbr": "WAKE",
+      "fga": 54,
+      "fta": 14,
+      "orb": 7,
+      "tov": 12
+    }
+  },
+  {
+    "date": "20261106",
+    "event_id": "401920685",
+    "home": "Michigan Wolverines",
+    "away": "UConn Huskies",
+    "home_score": 77,
+    "away_score": 85,
+    "home_stats": {
+      "team_id": "130",
+      "abbr": "MICH",
+      "fga": 63,
+      "fta": 23,
+      "orb": 13,
+      "tov": 14
+    },
+    "away_stats": {
+      "team_id": "41",
+      "abbr": "CONN",
+      "fga": 55,
+      "fta": 36,
+      "orb": 9,
+      "tov": 12
+    }
+  },
+  {
+    "date": "20261106",
+    "event_id": "401920423",
+    "home": "Virginia Cavaliers",
+    "away": "Northeastern Huskies",
+    "home_score": 97,
+    "away_score": 72,
+    "home_stats": {
+      "team_id": "258",
+      "abbr": "UVA",
+      "fga": 63,
+      "fta": 21,
+      "orb": 11,
+      "tov": 14
+    },
+    "away_stats": {
+      "team_id": "111",
+      "abbr": "NE",
+      "fga": 52,
+      "fta": 22,
+      "orb": 5,
+      "tov": 19
+    }
+  },
+  {
+    "date": "20261106",
+    "event_id": "401921719",
+    "home": "Miami Hurricanes",
+    "away": "Wagner Seahawks",
+    "home_score": 83,
+    "away_score": 57,
+    "home_stats": {
+      "team_id": "2390",
+      "abbr": "MIA",
+      "fga": 58,
+      "fta": 18,
+      "orb": 7,
+      "tov": 11
+    },
+    "away_stats": {
+      "team_id": "2681",
+      "abbr": "WAG",
+      "fga": 63,
+      "fta": 13,
+      "orb": 11,
+      "tov": 15
+    }
+  },
+  {
+    "date": "20261106",
+    "event_id": "401909785",
+    "home": "Kansas Jayhawks",
+    "away": "Middle Tennessee Blue Raiders",
+    "home_score": 89,
+    "away_score": 45,
+    "home_stats": {
+      "team_id": "2305",
+      "abbr": "KU",
+      "fga": 56,
+      "fta": 22,
+      "orb": 9,
+      "tov": 12
+    },
+    "away_stats": {
+      "team_id": "2393",
+      "abbr": "MTSU",
+      "fga": 68,
+      "fta": 9,
+      "orb": 18,
+      "tov": 16
+    }
+  },
+  {
+    "date": "20261106",
+    "event_id": "401909772",
+    "home": "Iowa State Cyclones",
+    "away": "Southern Miss Golden Eagles",
+    "home_score": 83,
+    "away_score": 57,
+    "home_stats": {
+      "team_id": "66",
+      "abbr": "ISU",
+      "fga": 51,
+      "fta": 36,
+      "orb": 12,
+      "tov": 15
+    },
+    "away_stats": {
+      "team_id": "2572",
+      "abbr": "USM",
+      "fga": 52,
+      "fta": 22,
+      "orb": 11,
+      "tov": 18
+    }
+  },
+  {
+    "date": "20261106",
+    "event_id": "401906758",
+    "home": "Alabama Crimson Tide",
+    "away": "Arkansas State Red Wolves",
+    "home_score": 101,
+    "away_score": 86,
+    "home_stats": {
+      "team_id": "333",
+      "abbr": "ALA",
+      "fga": 76,
+      "fta": 43,
+      "orb": 25,
+      "tov": 14
+    },
+    "away_stats": {
+      "team_id": "2032",
+      "abbr": "ARST",
+      "fga": 76,
+      "fta": 16,
+      "orb": 17,
+      "tov": 19
+    }
+  },
+  {
+    "date": "20261106",
+    "event_id": "401922219",
+    "home": "UCLA Bruins",
+    "away": "North Florida Ospreys",
+    "home_score": 114,
+    "away_score": 63,
+    "home_stats": {
+      "team_id": "26",
+      "abbr": "UCLA",
+      "fga": 70,
+      "fta": 34,
+      "orb": 14,
+      "tov": 8
+    },
+    "away_stats": {
+      "team_id": "2454",
+      "abbr": "UNF",
+      "fga": 63,
+      "fta": 20,
+      "orb": 9,
+      "tov": 17
+    }
+  },
+  {
+    "date": "20261106",
+    "event_id": "401921802",
+    "home": "Kentucky Wildcats",
+    "away": "James Madison Dukes",
+    "home_score": 89,
+    "away_score": 80,
+    "home_stats": {
+      "team_id": "96",
+      "abbr": "UK",
+      "fga": 63,
+      "fta": 19,
+      "orb": 11,
+      "tov": 7
+    },
+    "away_stats": {
+      "team_id": "256",
+      "abbr": "JMU",
+      "fga": 68,
+      "fta": 15,
+      "orb": 14,
+      "tov": 7
+    }
+  },
+  {
+    "date": "20261106",
+    "event_id": "401921739",
+    "home": "BYU Cougars",
+    "away": "Omaha Mavericks",
+    "home_score": 108,
+    "away_score": 67,
+    "home_stats": {
+      "team_id": "252",
+      "abbr": "BYU",
+      "fga": 70,
+      "fta": 18,
+      "orb": 15,
+      "tov": 8
+    },
+    "away_stats": {
+      "team_id": "2437",
+      "abbr": "OMA",
+      "fga": 61,
+      "fta": 13,
+      "orb": 8,
+      "tov": 12
+    }
+  },
+  {
+    "date": "20261107",
+    "event_id": "401918948",
+    "home": "Louisville Cardinals",
+    "away": "Morehead State Eagles",
+    "home_score": 107,
+    "away_score": 57,
+    "home_stats": {
+      "team_id": "97",
+      "abbr": "LOU",
+      "fga": 69,
+      "fta": 28,
+      "orb": 20,
+      "tov": 7
+    },
+    "away_stats": {
+      "team_id": "2413",
+      "abbr": "MORE",
+      "fga": 63,
+      "fta": 14,
+      "orb": 7,
+      "tov": 8
+    }
+  },
+  {
+    "date": "20261107",
+    "event_id": "401928788",
+    "home": "Gonzaga Bulldogs",
+    "away": "New Mexico State Aggies",
+    "home_score": 109,
+    "away_score": 68,
+    "home_stats": {
+      "team_id": "2250",
+      "abbr": "GONZ",
+      "fga": 62,
+      "fta": 29,
+      "orb": 11,
+      "tov": 6
+    },
+    "away_stats": {
+      "team_id": "166",
+      "abbr": "NMSU",
+      "fga": 48,
+      "fta": 24,
+      "orb": 9,
+      "tov": 19
+    }
+  },
+  {
+    "date": "20261108",
+    "event_id": "401920424",
+    "home": "Virginia Cavaliers",
+    "away": "Arkansas Razorbacks",
+    "home_score": 91,
+    "away_score": 72,
+    "home_stats": {
+      "team_id": "258",
+      "abbr": "UVA",
+      "fga": 69,
+      "fta": 20,
+      "orb": 19,
+      "tov": 9
+    },
+    "away_stats": {
+      "team_id": "8",
+      "abbr": "ARK",
+      "fga": 59,
+      "fta": 18,
+      "orb": 15,
+      "tov": 15
+    }
+  },
+  {
+    "date": "20261108",
+    "event_id": "401918053",
+    "home": "Houston Cougars",
+    "away": "California Golden Bears",
+    "home_score": 86,
+    "away_score": 68,
+    "home_stats": {
+      "team_id": "248",
+      "abbr": "HOU",
+      "fga": 67,
+      "fta": 11,
+      "orb": 11,
+      "tov": 9
+    },
+    "away_stats": {
+      "team_id": "25",
+      "abbr": "CAL",
+      "fga": 57,
+      "fta": 14,
+      "orb": 10,
+      "tov": 16
+    }
+  },
+  {
+    "date": "20261108",
+    "event_id": "401924646",
+    "home": "St. John's Red Storm",
+    "away": "Iona Gaels",
+    "home_score": 104,
+    "away_score": 65,
+    "home_stats": {
+      "team_id": "2599",
+      "abbr": "SJU",
+      "fga": 67,
+      "fta": 24,
+      "orb": 12,
+      "tov": 4
+    },
+    "away_stats": {
+      "team_id": "314",
+      "abbr": "IONA",
+      "fga": 54,
+      "fta": 13,
+      "orb": 8,
+      "tov": 19
+    }
+  },
+  {
+    "date": "20261108",
+    "event_id": "401919029",
+    "home": "USC Trojans",
+    "away": "Wichita State Shockers",
+    "home_score": 93,
+    "away_score": 86,
+    "home_stats": {
+      "team_id": "30",
+      "abbr": "USC",
+      "fga": 61,
+      "fta": 42,
+      "orb": 11,
+      "tov": 10
+    },
+    "away_stats": {
+      "team_id": "2724",
+      "abbr": "WICH",
+      "fga": 54,
+      "fta": 36,
+      "orb": 12,
+      "tov": 20
+    }
+  },
+  {
+    "date": "20261109",
+    "event_id": "401920686",
+    "home": "UConn Huskies",
+    "away": "Wagner Seahawks",
+    "home_score": 0,
+    "away_score": 0,
+    "home_stats": {
+      "team_id": "41",
+      "abbr": "CONN",
+      "fga": 0,
+      "fta": 0,
+      "orb": 0,
+      "tov": 0
+    },
+    "away_stats": {
+      "team_id": "2681",
+      "abbr": "WAG",
+      "fga": 0,
+      "fta": 0,
+      "orb": 0,
+      "tov": 0
+    }
+  },
+  {
+    "date": "20261109",
+    "event_id": "401906865",
+    "home": "Texas Longhorns",
+    "away": "Grambling Tigers",
+    "home_score": 0,
+    "away_score": 0,
+    "home_stats": {
+      "team_id": "251",
+      "abbr": "TEX",
+      "fga": 0,
+      "fta": 0,
+      "orb": 0,
+      "tov": 0
+    },
+    "away_stats": {
+      "team_id": "2755",
+      "abbr": "GRAM",
+      "fga": 0,
+      "fta": 0,
+      "orb": 0,
+      "tov": 0
+    }
+  },
+  {
+    "date": "20261109",
+    "event_id": "401906849",
+    "home": "Tennessee Volunteers",
+    "away": "Radford Highlanders",
+    "home_score": 0,
+    "away_score": 0,
+    "home_stats": {
+      "team_id": "2633",
+      "abbr": "TENN",
+      "fga": 0,
+      "fta": 0,
+      "orb": 0,
+      "tov": 0
+    },
+    "away_stats": {
+      "team_id": "2515",
+      "abbr": "RAD",
+      "fga": 0,
+      "fta": 0,
+      "orb": 0,
+      "tov": 0
+    }
+  },
+  {
+    "date": "20261109",
+    "event_id": "401921720",
+    "home": "Miami Hurricanes",
+    "away": "North Florida Ospreys",
+    "home_score": 0,
+    "away_score": 0,
+    "home_stats": {
+      "team_id": "2390",
+      "abbr": "MIA",
+      "fga": 0,
+      "fta": 0,
+      "orb": 0,
+      "tov": 0
+    },
+    "away_stats": {
+      "team_id": "2454",
+      "abbr": "UNF",
+      "fga": 0,
+      "fta": 0,
+      "orb": 0,
+      "tov": 0
+    }
+  },
+  {
+    "date": "20261109",
+    "event_id": "401906759",
+    "home": "Alabama Crimson Tide",
+    "away": "Oakland Golden Grizzlies",
+    "home_score": 0,
+    "away_score": 0,
+    "home_stats": {
+      "team_id": "333",
+      "abbr": "ALA",
+      "fga": 0,
+      "fta": 0,
+      "orb": 0,
+      "tov": 0
+    },
+    "away_stats": {
+      "team_id": "2473",
+      "abbr": "OAK",
+      "fga": 0,
+      "fta": 0,
+      "orb": 0,
+      "tov": 0
+    }
+  }
+]
