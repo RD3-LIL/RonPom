@@ -55,6 +55,7 @@ Usage:
 """
 
 import argparse
+import csv
 import json
 import sys
 from pathlib import Path
@@ -309,7 +310,73 @@ def write_players_json(season, profiles, games_included, out_path):
             "zero. DNP players are excluded."
         ),
     }
-    Path(out_path).write_text(json.dumps(payload, indent=2))
+    Path(out_path).write_text(json.dumps(payload, separators=(",", ":")))
+    return out_path
+
+
+def write_players_csv(season, profiles, out_path):
+    """Write one season of profiles to a compact CSV file.
+
+    CSV keeps totals plus per-game PTS/REB/AST and shooting
+    percentages, rounded to 2 decimals. Per-40 numbers and headshot
+    URLs are in the JSON only; per-40 can be recomputed from totals
+    and minutes, and the headshot URL is deterministic from the
+    ESPN athlete id. CSV exists because the full JSON is too large
+    for the GitHub snapshot push route (HTTP 413 above about 5 MB).
+    """
+    fields = ["athlete_id", "name", "team", "season", "jersey",
+              "position", "gp", "gs", "min", "pts", "fgm", "fga",
+              "fg3m", "fg3a", "ftm", "fta", "reb", "oreb", "dreb",
+              "ast", "to", "stl", "blk", "pf", "pts_pg", "reb_pg",
+              "ast_pg", "fg_pct", "fg3_pct", "ft_pct", "efg_pct",
+              "ts_pct"]
+    with open(out_path, "w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        for profile in profiles:
+            totals = profile["totals"]
+            per_game = profile["per_game"]
+            shooting = profile["shooting"]
+            row = {
+                "athlete_id": profile["athlete_id"],
+                "name": profile["name"],
+                "team": profile["team"],
+                "season": season,
+                "jersey": profile["jersey"],
+                "position": profile["position"],
+                "gp": totals["gp"],
+                "gs": totals["gs"],
+                "min": totals["min"],
+                "pts": totals["pts"],
+                "fgm": totals["fgm"],
+                "fga": totals["fga"],
+                "fg3m": totals["fg3m"],
+                "fg3a": totals["fg3a"],
+                "ftm": totals["ftm"],
+                "fta": totals["fta"],
+                "reb": totals["reb"],
+                "oreb": totals["oreb"],
+                "dreb": totals["dreb"],
+                "ast": totals["ast"],
+                "to": totals["to"],
+                "stl": totals["stl"],
+                "blk": totals["blk"],
+                "pf": totals["pf"],
+                "pts_pg": round(per_game["pts"], 2),
+                "reb_pg": round(per_game["reb"], 2),
+                "ast_pg": round(per_game["ast"], 2),
+                "fg_pct": (round(shooting["fg_pct"], 3)
+                           if shooting["fg_pct"] is not None else ""),
+                "fg3_pct": (round(shooting["fg3_pct"], 3)
+                            if shooting["fg3_pct"] is not None else ""),
+                "ft_pct": (round(shooting["ft_pct"], 3)
+                           if shooting["ft_pct"] is not None else ""),
+                "efg_pct": (round(shooting["efg_pct"], 3)
+                            if shooting["efg_pct"] is not None else ""),
+                "ts_pct": (round(shooting["ts_pct"], 3)
+                           if shooting["ts_pct"] is not None else ""),
+            }
+            writer.writerow(row)
     return out_path
 
 
@@ -383,6 +450,10 @@ def main(argv=None):
             write_players_json(season, profiles_by_season[season],
                                report["games_included"].get(season, 0),
                                out_path)
+            csv_path = Path(args.data_dir) / (
+                f"players_{season.replace('-', '_')}.csv")
+            write_players_csv(season, profiles_by_season[season],
+                              csv_path)
             print(f"Wrote {out_path}: "
                   f"{len(profiles_by_season[season])} players, "
                   f"{report['games_included'].get(season, 0)} games")

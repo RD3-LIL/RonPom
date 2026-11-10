@@ -100,7 +100,7 @@ per-season profiles. It reads only local files, no network calls.
 
 ```
 python3 player_profiles.py
-    # writes data/players_2026_27.json, data/players_2025_26.json
+    # writes data/players_2026_27.json and .csv, same for 2025-26
 python3 player_profiles.py --season 2026-27 --team "Illinois Fighting Illini"
 python3 player_profiles.py --season 2026-27 --player "Stojakovic"
 python3 player_profiles.py --season 2026-27 --top pts_per_game --min-games 2 --limit 10
@@ -114,11 +114,19 @@ denominator is zero. DNP players are excluded, so they do not count
 as a game played. A player id appearing for two teams in one season
 gets two profiles and is flagged in the run output.
 
-As of the first build (Nov 10, 2026, about 00:04 CST):
+The JSON file is the full local version (totals, per-game, per-40,
+shooting, headshot URL). The CSV is a compact version with totals
+plus per-game PTS/REB/AST and shooting, made for GitHub, because
+the full JSON is too large for the snapshot push route (HTTP 413
+above about 5 MB). Per-40 can be recomputed from totals and
+minutes, and the headshot URL is deterministic from the ESPN
+athlete id.
+
+As of the first build (Nov 10, 2026, about 00:04 CST, updated
+00:11 CST):
 2026-27 complete, 520 games, 6,631 players (6,591 with minutes).
-2025-26 partial, 284 games (Nov 3-6, 2025 only), 5,554 players
-(5,526 with minutes). Full 2025-26 is 6,318 events, so this is
-about 4.5% of that season. Re-run the same command once the pull
+2025-26 partial, 428 games and counting, 6,191 players. Full
+2025-26 is 6,318 events. Re-run the same command once the pull
 finishes and both files rebuild from the complete data:
 `python3 player_profiles.py`. Same for 2024-25 when its pull lands.
 Tests: `python3 test_player_profiles.py`.
