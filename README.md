@@ -93,6 +93,49 @@ live in `data/raw/summary/{event_id}.json`, parsed games in
 (365 teams). See `data/inventory.md` for per-season counts.
 Checkpointed per date, so a re-run resumes where it left off.
 
+## Player Profiles
+
+`player_profiles.py` aggregates the raw box scores into per-player,
+per-season profiles. It reads only local files, no network calls.
+
+```
+python3 player_profiles.py
+    # writes data/players_2026_27.json, data/players_2025_26.json
+python3 player_profiles.py --season 2026-27 --team "Illinois Fighting Illini"
+python3 player_profiles.py --season 2026-27 --player "Stojakovic"
+python3 player_profiles.py --season 2026-27 --top pts_per_game --min-games 2 --limit 10
+```
+
+Each profile has totals (GP, GS, MIN, PTS, FGM/FGA, 3PM/3PA, FTM/FTA,
+REB, OREB, DREB, AST, TO, STL, BLK, PF), per-game and per-40 numbers,
+and shooting: FG%, 3P%, FT%, eFG% = (FGM + 0.5*3PM)/FGA,
+TS% = PTS / (2*(FGA + 0.44*FTA)). Percentages are null when the
+denominator is zero. DNP players are excluded, so they do not count
+as a game played. A player id appearing for two teams in one season
+gets two profiles and is flagged in the run output.
+
+As of the first build (Nov 10, 2026, about 00:04 CST):
+2026-27 complete, 520 games, 6,631 players (6,591 with minutes).
+2025-26 partial, 284 games (Nov 3-6, 2025 only), 5,554 players
+(5,526 with minutes). Full 2025-26 is 6,318 events, so this is
+about 4.5% of that season. Re-run the same command once the pull
+finishes and both files rebuild from the complete data:
+`python3 player_profiles.py`. Same for 2024-25 when its pull lands.
+Tests: `python3 test_player_profiles.py`.
+
+Honest limits: no height, weight, or class year until rosters run
+(`fetch_rosters.py`, not started yet), so profiles have no bio fields.
+Early-season numbers are 1-2 game samples, so per-game leaders are
+noise (top 2026-27 scorer at min 2 games is Dior Johnson, UCF,
+34.5 PPG on 2 games). eFG% and TS% can read over 100% on tiny
+samples when a player scores almost only on threes; that is the
+standard formula, not a bug. One data quirk: athlete id 5325549
+(Jeremiah White) appears for two non-D1 teams in 2025-26 (Paine
+and Bluefield, 1 game each), likely an ESPN id reuse, not a
+mid-season transfer. Verification: in a 25-game sample of
+2026-27, summed player points matched the parsed team score in
+25 of 25 games, both teams.
+
 ## Benchmark rubric (later step, NOT an input)
 
 KenPom's published ratings are the target to get close to, not
