@@ -318,6 +318,35 @@ def test_prior_returning_share_helpers():
     assert la["X"]["prior_o"] == 104.0 and la["X"]["has_prior"] is False
 
 
+def test_prior_rosters_from_profiles():
+    from build_prior_2026 import build_rosters_from_profiles
+    last = [
+        {"athlete_id": 1, "name": "A", "team": "X",
+         "totals": {"min": 1200}},
+        {"athlete_id": 2, "name": "B", "team": "X",
+         "totals": {"min": 800}},
+        {"athlete_id": 3, "name": "C", "team": "Y",
+         "totals": {"min": 1000}},
+    ]
+    this = [
+        # A returns to X; B transferred to Y (same athlete id, new
+        # team) so he counts for neither team's returning minutes;
+        # C left entirely. A new freshman D has no last-season row.
+        {"athlete_id": 1, "name": "A", "team": "X",
+         "totals": {"min": 60}},
+        {"athlete_id": 2, "name": "B", "team": "Y",
+         "totals": {"min": 55}},
+        {"athlete_id": 4, "name": "D", "team": "X",
+         "totals": {"min": 40}},
+    ]
+    rosters = build_rosters_from_profiles(last, this)
+    assert rosters["X"][0]["returning"] is True
+    assert rosters["X"][1]["returning"] is False
+    assert rosters["Y"][0]["returning"] is False
+    assert compute_returning_share(rosters["X"]) == 1200 / 2000
+    assert compute_returning_share(rosters["Y"]) == 0.0
+
+
 def test_prior_plugs_into_solver():
     games = load_games()
     last = {"Illinois Fighting Illini": {"adj_o": 110.0, "adj_d": 100.0, "adj_t": 72.0}}
