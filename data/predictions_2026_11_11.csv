@@ -1,0 +1,126 @@
+date,tipoff,home,away,home_short,away_short,neutral_site,margin,spread,home_win_prob,market_spread,edge
+20261111,2026-11-11T18:00Z,UAlbany Great Danes,Dartmouth Big Green,UAlbany,Dartmouth,False,2.692459330918883,UAlbany -2.7,0.6337837915381727,-1.5,1.192459330918883
+20261111,2026-11-11T19:00Z,UC Davis Aggies,Incarnate Word Cardinals,UC Davis,Incarnate Word,False,12.60470836039326,UC Davis -12.6,0.882414569064127,-11.5,1.1047083603932606
+20261111,2026-11-11T20:00Z,South Florida Bulls,Saint Joseph's Hawks,South Florida,Saint Joseph's,True,6.264960999824318,South Florida -6.3,0.7459664399341029,-6.5,-0.23503900017568213
+20261111,2026-11-11T20:00Z,Air Force Falcons,Loyola Chicago Ramblers,Air Force,Loyola Chicago,False,-14.853660995721182,Loyola Chicago -14.9,0.11422003765391611,10.5,-4.353660995721182
+20261111,2026-11-11T21:00Z,East Carolina Pirates,North Carolina A&T Aggies,East Carolina,NC A&T,False,7.584664098861632,East Carolina -7.6,0.7811755835578437,-11.5,-3.915335901138368
+20261111,2026-11-11T22:00Z,San Diego State Aztecs,Bethune-Cookman Wildcats,San Diego St,Bethune,False,15.35235478037,San Diego St -15.4,0.9185007203596947,-18.5,-3.14764521963
+20261111,2026-11-11T22:30Z,Navy Midshipmen,Pennsylvania Quakers,Navy,Penn,False,-2.182404431911799,Penn -2.2,0.4568585755437,8.5,6.317595568088201
+20261111,2026-11-11T23:00Z,VMI Keydets,North Carolina Central Eagles,VMI,NC Central,False,2.0997616641993075,VMI -2.1,0.6131955747881738,-8.5,-6.400238335800692
+20261111,2026-11-11T23:30Z,Temple Owls,Charleston Cougars,Temple,Charleston,False,-0.2885324634862769,Charleston -0.3,0.5267985934621408,1.5,1.211467536513723
+20261111,2026-11-11T23:30Z,IU Indianapolis Jaguars,Southern Indiana Screaming Eagles,IU Indy,S Indiana,False,8.838621917235605,IU Indy -8.8,0.8112443594592103,-8.5,0.33862191723560464
+20261111,2026-11-12T00:00Z,St. John's Red Storm,Colgate Raiders,St John's,Colgate,False,18.87903782312684,St John's -18.9,0.9499837818948819,-29.5,-10.62096217687316
+20261111,2026-11-12T00:00Z,Michigan Wolverines,Marquette Golden Eagles,Michigan,Marquette,False,-1.9273075638399844,Marquette -1.9,0.4662410594667681,-3.5,-5.427307563839984
+20261111,2026-11-12T00:00Z,Indiana State Sycamores,Milwaukee Panthers,Indiana St,Milwaukee,False,9.17351816328376,Indiana St -9.2,0.8187172305695515,-4.5,4.6735181632837595
+20261111,2026-11-12T00:00Z,UNC Wilmington Seahawks,Kent State Golden Flashes,UNC Wilmington,Kent State,False,8.298522903783384,UNC Wilmington -8.3,0.7986987646541811,-7.5,0.7985229037833843
+20261111,2026-11-12T00:00Z,Norfolk State Spartans,Old Dominion Monarchs,Norfolk St,Old Dominion,False,-7.517178976612397,Old Dominion -7.5,0.2763694351977272,6.5,-1.0171789766123966
+20261111,2026-11-12T00:00Z,Notre Dame Fighting Irish,South Carolina State Bulldogs,Notre Dame,SC State,False,10.659084893294143,Notre Dame -10.7,0.8490980735644443,-26.5,-15.840915106705857
+20261111,2026-11-12T00:00Z,Princeton Tigers,Stony Brook Seawolves,Princeton,Stony Brook,False,0.8327337996647078,Princeton -0.8,0.5678892760516707,-4.5,-3.667266200335292
+20261111,2026-11-12T00:00Z,South Carolina Gamecocks,Saint Peter's Peacocks,South Carolina,Saint Peter's,False,18.36934618010209,South Carolina -18.4,0.9462754297221092,-22.5,-4.130653819897908
+20261111,2026-11-12T00:00Z,Holy Cross Crusaders,Furman Paladins,Holy Cross,Furman,False,-13.44425687052195,Furman -13.4,0.13708086032565217,11.5,-1.9442568705219507
+20261111,2026-11-12T00:00Z,Delaware Blue Hens,James Madison Dukes,Delaware,James Madison,False,3.542295841359332,Delaware -3.5,0.662456339022409,3.5,7.042295841359332
+20261111,2026-11-12T00:00Z,East Tennessee State Buccaneers,Campbell Fighting Camels,ETSU,Campbell,False,8.109866524673166,ETSU -8.1,0.7941721719213695,-5.5,2.6098665246731656
+20261111,2026-11-12T00:00Z,VCU Rams,NJIT Highlanders,VCU,NJIT,False,23.894102171626578,VCU -23.9,0.9755489486400193,-34.5,-10.605897828373422
+20261111,2026-11-12T00:00Z,Florida Atlantic Owls,William & Mary Tribe,FAU,William & Mary,False,-6.102941076872396,William & Mary -6.1,0.3201167586777082,-4.5,-10.602941076872396
+20261111,2026-11-12T00:00Z,West Georgia Wolves,UNC Asheville Bulldogs,West Georgia,UNC Asheville,False,1.9928391915477355,West Georgia -2.0,0.6094355499777111,-1.5,0.4928391915477355
+20261111,2026-11-12T00:00Z,Drexel Dragons,American University Eagles,Drexel,American,False,5.537910397241688,Drexel -5.5,0.7250419029754489,-1.5,4.037910397241688
+20261111,2026-11-12T00:00Z,St. Bonaventure Bonnies,Cornell Big Red,St Bonaventure,Cornell,False,8.294683191431847,St Bonaventure -8.3,0.7986073820411367,-8.5,-0.2053168085681527
+20261111,2026-11-12T00:00Z,Massachusetts Minutemen,UMass Lowell River Hawks,UMass,UMass Lowell,False,5.171138486948521,UMass -5.2,0.714089299147127,-9.5,-4.328861513051479
+20261111,2026-11-12T00:30Z,Sam Houston Bearkats,Pepperdine Waves,Sam Houston,Pepperdine,False,2.554527563270529,Sam Houston -2.6,0.6290328762484091,3.5,6.054527563270529
+20261111,2026-11-12T01:00Z,Houston Cougars,Jacksonville State Gamecocks,Houston,Jax State,False,17.99421064255335,Houston -18.0,0.943381938052583,-34.5,-16.50578935744665
+20261111,2026-11-12T01:00Z,Arkansas Razorbacks,Robert Morris Colonials,Arkansas,Robert Morris,False,16.596498411583568,Arkansas -16.6,0.9312647707710789,-30.5,-13.903501588416432
+20261111,2026-11-12T01:00Z,South Dakota State Jackrabbits,Valparaiso Beacons,S Dakota St,Valparaiso,False,-0.043350670008753076,Pick'em,0.535834481537485,1.5,1.4566493299912469
+20261111,2026-11-12T01:00Z,Tulsa Golden Hurricane,Oral Roberts Golden Eagles,Tulsa,Oral Roberts,False,16.490251742034033,Tulsa -16.5,0.9302513827694158,-18.5,-2.009748257965967
+20261111,2026-11-12T01:00Z,Southern Miss Golden Eagles,Jackson State Tigers,Southern Miss,Jackson St,False,9.894156044865541,Southern Miss -9.9,0.8340123876871995,-9.5,0.39415604486554123
+20261111,2026-11-12T01:00Z,Abilene Christian Wildcats,Stephen F. Austin Lumberjacks,Abilene Chrstn,SF Austin,False,-2.3838609324717717,SF Austin -2.4,0.44947022807749143,6.5,4.116139067528229
+20261111,2026-11-12T01:00Z,North Texas Mean Green,Santa Clara Broncos,North Texas,Santa Clara,False,-1.0508140943873938,Santa Clara -1.1,0.4986198820126773,1.5,0.4491859056126062
+20261111,2026-11-12T02:00Z,UCLA Bruins,Arkansas-Pine Bluff Golden Lions,UCLA,AR-Pine Bluff,False,35.204953041940854,UCLA -35.2,0.9953226397788795,-45.5,-10.295046958059146
+20261111,2026-11-12T02:00Z,Nebraska Cornhuskers,Lindenwood Lions,Nebraska,Lindenwood,False,23.305830729771177,Nebraska -23.3,0.9733839177870246,-34.5,-11.194169270228823
+20261111,2026-11-12T02:00Z,Boise State Broncos,Oakland Golden Grizzlies,Boise St,Oakland,False,21.06427519539667,Boise St -21.1,0.9632973340778772,-16.5,4.564275195396672
+20261111,2026-11-12T02:00Z,Colorado State Rams,Portland State Vikings,Colorado St,Portland St,False,13.036998851499822,Colorado St -13.0,0.8888922753466596,-16.5,-3.4630011485001777
+20261111,2026-11-12T02:00Z,UC Santa Barbara Gauchos,Nevada Wolf Pack,Santa Barbara,Nevada,False,-1.2411839137588496,Nevada -1.2,0.4915769921101705,1.5,0.2588160862411504
+20261111,2026-11-12T02:00Z,Grand Canyon Lopes,Cal Poly Mustangs,Grand Canyon,Cal Poly,False,16.767724000744305,Grand Canyon -16.8,0.9328692694547807,-18.5,-1.7322759992556946
+20261111,2026-11-12T03:00Z,Oregon Ducks,Mississippi Valley State Delta Devils,Oregon,Miss Valley St,False,21.110152920830846,Oregon -21.1,0.9635366413322856,-35.5,-14.389847079169154
+20261111,2026-11-12T03:00Z,California Baptist Lancers,Chicago State Cougars,CA Baptist,Chicago St,False,3.4003239905802864,CA Baptist -3.4,0.6577420072165198,-11.5,-8.099676009419714
+20261111,2026-11-12T03:00Z,Long Beach State Beach,Pacific Tigers,Long Beach St,Pacific,False,-2.238508475707048,Pacific -2.2,0.4547989297042449,5.5,3.261491524292952
+20261111,2026-11-12T03:00Z,Seattle U Redhawks,UTSA Roadrunners,Seattle U,UTSA,False,11.47716146557954,Seattle U -11.5,0.8639649816359166,-16.5,-5.02283853442046
+20261111,2026-11-12T04:00Z,California Golden Bears,USC Trojans,California,USC,False,0.7290338838665958,California -0.7,0.5641192613742535,8.5,9.229033883866595
+20261112,2026-11-12T20:00Z,George Mason Patriots,Kansas City Roos,George Mason,Kansas City,True,8.894364168026845,George Mason -8.9,0.8125043917374172,,
+20261112,2026-11-12T23:00Z,Coppin State Eagles,Bradley Braves,Coppin St,Bradley,True,-6.486793890329133,Bradley -6.5,0.3078808009104143,,
+20261112,2026-11-12T23:00Z,UMBC Retrievers,Morgan State Bears,UMBC,Morgan St,False,-1.3719743634442625,Morgan St -1.4,0.48674005845584817,,
+20261112,2026-11-12T23:30Z,Penn State Nittany Lions,Mercyhurst Lakers,Penn State,Mercyhurst,False,18.113504702862066,Penn State -18.1,0.9443176138989172,,
+20261112,2026-11-12T23:30Z,Indiana Hoosiers,Tennessee Tech Golden Eagles,Indiana,Tennessee Tech,False,15.579273501434107,Indiana -15.6,0.9209796465053787,,
+20261112,2026-11-13T00:00Z,Purdue Fort Wayne Mastodons,Western Michigan Broncos,Purdue FW,W Michigan,False,0.9048674315901981,Purdue FW -0.9,0.5705070940862362,,
+20261112,2026-11-13T00:00Z,Sacred Heart Pioneers,Central Connecticut Blue Devils,Sacred Heart,C Connecticut,False,11.87478478147353,Sacred Heart -11.9,0.8707344401366489,,
+20261112,2026-11-13T00:00Z,Quinnipiac Bobcats,Monmouth Hawks,Quinnipiac,Monmouth,False,2.7275752315849333,Quinnipiac -2.7,0.6349892198370303,,
+20261112,2026-11-13T00:00Z,Howard Bison,Stetson Hatters,Howard,Stetson,False,10.329719781355662,Howard -10.3,0.8427453708174952,,
+20261112,2026-11-13T00:00Z,West Virginia Mountaineers,Mercer Bears,West Virginia,Mercer,False,20.513312973534283,West Virginia -20.5,0.9603028886292012,,
+20261112,2026-11-13T00:00Z,Towson Tigers,Loyola Maryland Greyhounds,Towson,Loyola MD,False,10.798926845049909,Towson -10.8,0.8517308251382857,,
+20261112,2026-11-13T00:00Z,High Point Panthers,Southern Utah Thunderbirds,High Point,Southern Utah,False,8.098526707721808,High Point -8.1,0.793897698130048,,
+20261112,2026-11-13T00:00Z,Western Illinois Leathernecks,Cal State Bakersfield Roadrunners,W Illinois,Bakersfield,False,-4.072061434564308,Bakersfield -4.1,0.3887273036338332,,
+20261112,2026-11-13T00:00Z,Rhode Island Rams,Maryland Eastern Shore Hawks,Rhode Island,MD Eastern,False,20.12987610705696,Rhode Island -20.1,0.9580821455226322,,
+20261112,2026-11-13T00:00Z,Brown Bears,Canisius Golden Griffins,Brown,Canisius,False,16.174116882147292,Brown -16.2,0.9271538138128799,,
+20261112,2026-11-13T00:00Z,Bowling Green Falcons,Niagara Purple Eagles,Bowling Green,Niagara,False,13.884960972310946,Bowling Green -13.9,0.9006953093503871,,
+20261112,2026-11-13T01:00Z,Alabama A&M Bulldogs,West Florida Argonauts,Alabama A&M,West Florida,False,-2.7300081263404223,West Florida -2.7,0.4368290726156379,,
+20261112,2026-11-13T01:00Z,Texas A&M Aggies,Oklahoma State Cowboys,Texas A&M,Oklahoma St,False,6.047969514383642,Texas A&M -6.0,0.7398327566263847,,
+20261112,2026-11-13T01:00Z,South Alabama Jaguars,Loyola Marymount Lions,South Alabama,LMU,True,-1.1839839944121537,LMU -1.2,0.4936929267588996,,
+20261112,2026-11-13T01:00Z,Minnesota Golden Gophers,Southern Jaguars,Minnesota,Southern,False,26.662560587027976,Minnesota -26.7,0.9836341787262779,,
+20261112,2026-11-13T01:00Z,Southern Illinois Salukis,Richmond Spiders,S Illinois,Richmond,False,-6.799137952676928,Richmond -6.8,0.2981187324473851,,
+20261112,2026-11-13T02:00Z,BYU Cougars,Montana State Bobcats,BYU,Montana St,False,13.53368622873628,BYU -13.5,0.8959474369613941,,
+20261112,2026-11-13T02:00Z,UTEP Miners,New Mexico State Aggies,UTEP,New Mexico St,False,8.841367669847957,UTEP -8.8,0.8113065779993784,,
+20261112,2026-11-13T03:00Z,San José State Spartans,UC Riverside Highlanders,San José St,UC Riverside,False,5.135413777170134,San José St -5.1,0.7130086014574394,,
+20261113,2026-11-13T20:00Z,Cleveland State Vikings,West Florida Argonauts,Cleveland St,West Florida,True,-7.992736440065268,West Florida -8.0,0.26251742633693914,,
+20261113,2026-11-13T22:00Z,Miami Hurricanes,North Alabama Lions,Miami,North Alabama,False,15.637370439725684,Miami -15.6,0.9216031402571704,,
+20261113,2026-11-13T22:00Z,Florida State Seminoles,Texas A&M-Corpus Christi Islanders,Florida St,Texas A&M-CC,False,16.609317622060747,Florida St -16.6,0.9313861153062497,,
+20261113,2026-11-13T23:00Z,Rutgers Scarlet Knights,Bryant Bulldogs,Rutgers,Bryant,False,17.630007042501838,Rutgers -17.6,0.9404331324418034,,
+20261113,2026-11-13T23:00Z,Clemson Tigers,Georgetown Hoyas,Clemson,Georgetown,False,1.3039403242511651,Clemson -1.3,0.5849149876164663,,
+20261113,2026-11-13T23:30Z,Butler Bulldogs,Pittsburgh Panthers,Butler,Pitt,False,0.14710396443591076,Butler -0.1,0.5428375701070726,,
+20261113,2026-11-14T00:00Z,Florida Gators,Merrimack Warriors,Florida,Merrimack,False,24.45515859234115,Florida -24.5,0.9774533367965292,,
+20261113,2026-11-14T00:00Z,Illinois Fighting Illini,Sam Houston Bearkats,Illinois,Sam Houston,False,25.141049687486248,Illinois -25.1,0.9795853252872581,,
+20261113,2026-11-14T00:00Z,Michigan State Spartans,Northern Iowa Panthers,Michigan St,Northern Iowa,False,20.512314269371313,Michigan St -20.5,0.9602972536117592,,
+20261113,2026-11-14T00:00Z,Tennessee Volunteers,Tennessee State Tigers,Tennessee,Tennessee St,False,19.062890532984966,Tennessee -19.1,0.9512609470064001,,
+20261113,2026-11-14T00:00Z,Vanderbilt Commodores,Prairie View A&M Panthers,Vanderbilt,Prairie View,False,27.523090636117853,Vanderbilt -27.5,0.9855629817632685,,
+20261113,2026-11-14T00:00Z,Kentucky Wildcats,Northern Arizona Lumberjacks,Kentucky,N Arizona,False,17.70189982257939,Kentucky -17.7,0.9410263925318921,,
+20261113,2026-11-14T00:00Z,Purdue Boilermakers,Ohio Bobcats,Purdue,Ohio,False,9.108601595591402,Purdue -9.1,0.8172869004775009,,
+20261113,2026-11-14T00:00Z,Charlotte 49ers,App State Mountaineers,Charlotte,App State,False,6.53766077747675,Charlotte -6.5,0.7535384030711487,,
+20261113,2026-11-14T00:00Z,Lehigh Mountain Hawks,Marist Red Foxes,Lehigh,Marist,False,2.4759081032999304,Lehigh -2.5,0.6263136323357259,,
+20261113,2026-11-14T00:00Z,Bucknell Bison,Columbia Lions,Bucknell,Columbia,False,-7.906544554362747,Columbia -7.9,0.264994561758148,,
+20261113,2026-11-14T00:00Z,Florida Gulf Coast Eagles,Florida International Panthers,FGCU,FIU,False,1.8566739987155487,FGCU -1.9,0.6046283472936738,,
+20261113,2026-11-14T00:00Z,Hofstra Pride,Iona Gaels,Hofstra,Iona,False,1.499076617411238,Hofstra -1.5,0.5919091500706485,,
+20261113,2026-11-14T00:00Z,Elon Phoenix,Chattanooga Mocs,Elon,Chattanooga,False,4.489582419364548,Elon -4.5,0.6930587047591512,,
+20261113,2026-11-14T00:00Z,Northeastern Huskies,Yale Bulldogs,Northeastern,Yale,False,-0.004389752386862312,Pick'em,0.5372683307855185,,
+20261113,2026-11-14T00:00Z,Virginia Tech Hokies,Mount St. Mary's Mountaineers,Virginia Tech,Mount St Marys,False,21.32177469849567,Virginia Tech -21.3,0.9646211979745868,,
+20261113,2026-11-14T00:00Z,NC State Wolfpack,Troy Trojans,NC State,Troy,False,16.493622675580497,NC State -16.5,0.9302837462045009,,
+20261113,2026-11-14T00:00Z,George Washington Revolutionaries,Harvard Crimson,G Washington,Harvard,False,17.83780264217393,G Washington -17.8,0.9421327607390674,,
+20261113,2026-11-14T00:00Z,Fordham Rams,Long Island University Sharks,Fordham,Long Island,False,12.140084550046392,Fordham -12.1,0.8750899183662615,,
+20261113,2026-11-14T00:00Z,North Carolina Tar Heels,Georgia Bulldogs,North Carolina,Georgia,False,5.570434318936187,North Carolina -5.6,0.7260004716019692,,
+20261113,2026-11-14T00:30Z,UConn Huskies,Ohio State Buckeyes,UConn,Ohio State,False,11.825577705307229,UConn -11.8,0.8699125191781903,,
+20261113,2026-11-14T00:30Z,Drake Bulldogs,South Dakota Coyotes,Drake,South Dakota,False,6.756749019396985,Drake -6.8,0.7595107077865153,,
+20261113,2026-11-14T00:30Z,Liberty Flames,North Carolina Central Eagles,Liberty,NC Central,False,7.967564966553908,Liberty -8.0,0.7907082109124125,,
+20261113,2026-11-14T00:30Z,Middle Tennessee Blue Raiders,Southeast Missouri State Redhawks,MTSU,SE Missouri,False,-2.872029481826616,SE Missouri -2.9,0.4316652075082475,,
+20261113,2026-11-14T01:00Z,Duke Blue Devils,SIU Edwardsville Cougars,Duke,SIUE,False,27.36566257779134,Duke -27.4,0.9852276866832977,,
+20261113,2026-11-14T01:00Z,Maryland Terrapins,Virginia Cavaliers,Maryland,Virginia,False,-8.160900829788487,Virginia -8.2,0.2577275532619565,,
+20261113,2026-11-14T01:00Z,Arkansas Razorbacks,Central Arkansas Bears,Arkansas,C Arkansas,False,7.478887714217174,Arkansas -7.5,0.7784877532141606,,
+20261113,2026-11-14T01:00Z,Texas State Bobcats,Southern Miss Golden Eagles,Texas St,Southern Miss,False,8.510151763149208,Texas St -8.5,0.8036874568037566,,
+20261113,2026-11-14T01:00Z,Murray State Racers,Texas Southern Tigers,Murray St,Texas Southern,False,22.327259909938615,Murray St -22.3,0.9693631110948479,,
+20261113,2026-11-14T01:00Z,North Dakota State Bison,Illinois State Redbirds,N Dakota St,Illinois St,False,-5.2948017565016245,Illinois St -5.3,0.3466877531119658,,
+20261113,2026-11-14T01:00Z,Samford Bulldogs,Wright State Raiders,Samford,Wright St,False,-6.1098420441685555,Wright St -6.1,0.319894512340785,,
+20261113,2026-11-14T01:00Z,Tarleton State Texans,Alcorn State Braves,Tarleton St,Alcorn St,False,12.523993629054033,Tarleton St -12.5,0.8811694123210464,,
+20261113,2026-11-14T01:00Z,UCF Knights,Georgia Southern Eagles,UCF,GA Southern,False,8.065549508379943,UCF -8.1,0.7930979644104945,,
+20261113,2026-11-14T01:00Z,TCU Horned Frogs,Milwaukee Panthers,TCU,Milwaukee,False,25.207536709604234,TCU -25.2,0.9797811805117158,,
+20261113,2026-11-14T01:00Z,Oklahoma Sooners,Fairleigh Dickinson Knights,Oklahoma,FDU,False,28.939718629597845,Oklahoma -28.9,0.9882615586560866,,
+20261113,2026-11-14T01:45Z,Omaha Mavericks,Lindenwood Lions,Omaha,Lindenwood,False,0.32957483903542256,Omaha -0.3,0.5495312849886554,,
+20261113,2026-11-14T02:00Z,Auburn Tigers,Arizona Wildcats,Auburn,Arizona,False,3.967291735946052,Auburn -4.0,0.6763743343558066,,
+20261113,2026-11-14T02:00Z,Alabama Crimson Tide,Seton Hall Pirates,Alabama,Seton Hall,False,9.066532153228259,Alabama -9.1,0.816355299163368,,
+20261113,2026-11-14T02:00Z,UNLV Rebels,Stanford Cardinal,UNLV,Stanford,False,1.3107844069366843,UNLV -1.3,0.5851608937577674,,
+20261113,2026-11-14T02:00Z,Idaho Vandals,Cal Poly Mustangs,Idaho,Cal Poly,False,5.628773943661297,Idaho -5.6,0.727714676525124,,
+20261113,2026-11-14T02:00Z,Arizona State Sun Devils,UL Monroe Warhawks,Arizona St,UL Monroe,False,16.03753021714892,Arizona St -16.0,0.9257766675898014,,
+20261113,2026-11-14T02:00Z,SMU Mustangs,Ball State Cardinals,SMU,Ball State,False,15.074649431101069,SMU -15.1,0.9153706642341938,,
+20261113,2026-11-14T02:00Z,Northwestern Wildcats,DePaul Blue Demons,Northwestern,DePaul,False,2.458857964288683,Northwestern -2.5,0.625722850711306,,
+20261113,2026-11-14T02:00Z,Mississippi State Bulldogs,Xavier Musketeers,Mississippi St,Xavier,True,-1.283474753223346,Xavier -1.3,0.4900127626835626,,
+20261113,2026-11-14T02:30Z,Oregon State Beavers,Mississippi Valley State Delta Devils,Oregon St,Miss Valley St,False,20.27273635593797,Oregon St -20.3,0.9589231006462591,,
+20261113,2026-11-14T02:30Z,San Diego Toreros,Chicago State Cougars,San Diego,Chicago St,False,11.872817405354285,San Diego -11.9,0.8707016634880383,,
+20261113,2026-11-14T03:00Z,Utah State Aggies,UC San Diego Tritons,Utah State,UC San Diego,False,11.64748030106264,Utah State -11.6,0.866900482315673,,
+20261113,2026-11-14T03:00Z,Portland Pilots,East Texas A&M Lions,Portland,East Texas A&M,False,-0.30554167332105714,East Texas A&M -0.3,0.526171018573408,,
+20261113,2026-11-14T03:00Z,Saint Mary's Gaels,UIC Flames,Saint Mary's,UIC,False,7.973461282208064,Saint Mary's -8.0,0.7908525888024722,,
+20261113,2026-11-14T03:30Z,California Baptist Lancers,Arkansas-Pine Bluff Golden Lions,CA Baptist,AR-Pine Bluff,False,11.943715315317899,CA Baptist -11.9,0.8718783681612607,,

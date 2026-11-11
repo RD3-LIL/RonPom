@@ -506,7 +506,7 @@ def fmt_tipoff(tipoff, date_str):
 def predictions_section():
     """Upcoming-game spreads from predict.py, if the file exists.
 
-    Reads data/predictions_2026_11_11.csv (71 games, Nov 11-13).
+    Reads data/predictions_2026_11_11.csv.
     If no predictions file has been generated yet, the section
     is a short note instead, so the nav link still lands.
     """
