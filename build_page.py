@@ -12,11 +12,13 @@ AdjO / AdjD / Net / AdjT, with click-to-sort columns, a team
 filter, and conference filter tabs. A sticky top nav links to
 each season, the player leaders, the top players, and the
 predictions. Clicking a team row expands that team's game log
-and roster for the season. A separate top-players section lists
-the top 150 players of 2026-27 by RPR, sortable and filterable.
-The look is our own (plain typography, no KenPom branding, colors,
-logos, or text); only the table shape and column set are in
-that spirit.
+and roster for the season; clicking a team name opens that
+team's own page (teams/<slug>.html) with its ratings, game
+logs, rosters, and upcoming games for every season it played
+in. A separate top-players section lists the top 150 players
+of 2026-27 by RPR, sortable and filterable. The look is our own
+(plain typography, no KenPom branding, colors, logos, or text);
+only the table shape and column set are in that spirit.
 
 Where the columns come from:
 - Conf: ESPN conference short names, read from the raw summary
@@ -37,6 +39,8 @@ import csv
 import glob
 import html
 import json
+import re
+import unicodedata
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -110,6 +114,22 @@ def slug_label(slug):
     label = " ".join(parts)
     return (label.replace(" Usa", " USA").replace(" Acc", " ACC")
             .replace(" Sec", " SEC"))
+
+
+def team_slug(name):
+    """Team name -> stable URL slug for teams/<slug>.html.
+
+    Lowercase, accents stripped (Jose, not Jos), apostrophes
+    dropped, every other non-alphanumeric run becomes one
+    hyphen. All 366 rated teams map to unique slugs; the
+    builder fails loudly on a collision rather than letting
+    one team's page overwrite another's.
+    """
+    norm = unicodedata.normalize("NFKD", name)
+    ascii_name = norm.encode("ascii", "ignore").decode("ascii")
+    s = ascii_name.lower().replace("'", "")
+    s = re.sub(r"[^a-z0-9]+", "-", s)
+    return s.strip("-")
 
 
 def conf_map(needed_ids):
@@ -284,7 +304,7 @@ def top_players_section():
            "and 40% of team minutes, same as the leader tables. "
            "Click a column header to sort; the filter box searches "
            "player names. Click a team name to open that team's "
-           "game log and roster.</p>",
+           "own page.</p>",
            "<input class=\"filter\" type=\"search\" "
            "placeholder=\"Filter players...\" data-table=\"top-players\">",
            "<table class=\"ratings\" id=\"top-players\">"
@@ -308,8 +328,7 @@ def top_players_section():
             f"<td data-v=\"{html.escape(p['name'].lower())}\">"
             f"{html.escape(p['name'])}</td>"
             f"<td data-v=\"{html.escape(p['team'].lower())}\">"
-            f"<a class=\"team-link\" href=\"#season-2026_27\" "
-            f"data-team=\"{html.escape(p['team'])}\">"
+            f"<a href=\"teams/{team_slug(p['team'])}.html\">"
             f"{html.escape(p['team'])}</a></td>"
             f"<td data-v=\"{html.escape(pos.lower())}\">"
             f"{html.escape(pos) if pos else '&mdash;'}</td>"
@@ -364,7 +383,9 @@ def team_table(season, rows, records, conf_names, log_idx):
             f"data-season=\"{season}\" data-tidx=\"{log_idx.get(r['team'], '')}\">"
             f"<td data-v=\"{r['rank']}\">{r['rank']}</td>"
             f"<td data-v=\"{html.escape(r['team'].lower())}\">"
-            f"{html.escape(r['team'])}</td>"
+            f"<a class=\"team-page-link\" "
+            f"href=\"teams/{team_slug(r['team'])}.html\">"
+            f"{html.escape(r['team'])}</a></td>"
             f"<td data-v=\"{html.escape(conf.lower())}\">"
             f"{html.escape(conf)}</td>"
             f"<td data-v=\"{w * 100 - l}\">{w}-{l}</td>"
@@ -429,6 +450,13 @@ def season_section(season, conf_by_id):
     ROSTERS[season] = season_rosters(
         season, {r["team"] for r in ratings})
     log_idx = {name: i for i, name in enumerate(log_names)}
+    LOG_IDX[season] = log_idx
+    for r in ratings:
+        TEAM_SEASONS.setdefault(r["team"], {})[season] = {
+            "row": r,
+            "record": records.get(r["team"], [0, 0]),
+            "conf": conf_names.get(r["team"], ""),
+        }
     tid = season.replace("-", "_")
     warn = ""
     if season == "2026-27":
@@ -446,13 +474,24 @@ def season_section(season, conf_by_id):
         leaders = f"<div id=\"players\">{leaders}</div>"
     return (f"<section id=\"season-{tid}\"><h2>{season}</h2>{warn}"
             f"<p>{len(ratings)} teams rated, {len(players)} players. "
-            f"Click a column header to sort. Click a team row to see "
-            f"its game log and roster.</p>"
+            f"Click a column header to sort. Click a team name for "
+            f"that team's own page, or a team row to see its game "
+            f"log and roster here.</p>"
             f"<h3>Team ratings</h3>"
             f"{team_table(season, ratings, records, conf_names, log_idx)}"
             f"<h3>Player leaders</h3>"
             f"{leaders}"
             f"</section>")
+
+
+def fmt_tipoff(tipoff, date_str):
+    """'Wed 06:00 PM' in Chicago time, or the date if unparsable."""
+    try:
+        dt = datetime.fromisoformat(tipoff.replace("Z", "+00:00"))
+        return dt.astimezone(ZoneInfo("America/Chicago")).strftime(
+            "%a %I:%M %p")
+    except (ValueError, TypeError):
+        return date_str
 
 
 def predictions_section():
@@ -483,13 +522,7 @@ def predictions_section():
            "<th>Home win%</th><th>Market</th><th>Edge</th>"
            "</tr></thead><tbody>"]
     for r in rows:
-        try:
-            dt = datetime.fromisoformat(
-                r["tipoff"].replace("Z", "+00:00"))
-            tip = dt.astimezone(ZoneInfo("America/Chicago")).strftime(
-                "%a %I:%M %p")
-        except (ValueError, TypeError):
-            tip = r["date"]
+        tip = fmt_tipoff(r["tipoff"], r["date"])
         matchup = f"{r['away_short']} @ {r['home_short']}"
         if r["neutral_site"] == "True":
             matchup += " (N)"
@@ -506,6 +539,190 @@ def predictions_section():
                "implied home margin: positive means the model likes "
                "the home team more than the market does.</p></section>")
     return "\n".join(out)
+
+
+def team_page_html(team, slug_by_team, upcoming):
+    """One team's full page, as an HTML string.
+
+    slug_by_team maps every rated team name to its slug, so
+    game-log opponents link to their own pages too. upcoming
+    is the list of predictions rows for this team (possibly
+    empty). Uses the same CSS as the index page, so the team
+    pages look like part of the same site.
+    """
+    seasons_data = TEAM_SEASONS[team]
+    conf = ""
+    for s in DISPLAY_SEASONS:
+        if s in seasons_data and seasons_data[s]["conf"]:
+            conf = seasons_data[s]["conf"]
+            break
+    parts = [f"<h1>{html.escape(team)}</h1>",
+             f"<p class=\"subtitle\">"
+             f"{html.escape(conf) if conf else 'College basketball'}"
+             f" &middot; <a href=\"../index.html\">&larr; College "
+             f"Ratings</a></p>"]
+    for season in DISPLAY_SEASONS:
+        if season not in seasons_data:
+            continue
+        d = seasons_data[season]
+        r = d["row"]
+        w, l = d["record"]
+        parts.append(f"<section><h2>{season}</h2>")
+        parts.append(
+            f"<p>Net rank #{r['rank']} &middot; AdjO {r['adj_o']} "
+            f"&middot; AdjD {r['adj_d']} &middot; Net {r['net']} "
+            f"&middot; AdjT {r['adj_t']} &middot; {w}-{l} "
+            f"(D1 games)</p>")
+        entry = LOGS.get(season)
+        tidx = LOG_IDX.get(season, {}).get(team)
+        if entry is not None and tidx is not None:
+            games = entry["logs"].get(tidx, [])
+            names = entry["teams"]
+            parts.append("<h3>Game log</h3>"
+                         '<table class="gamelog"><thead><tr><th>Date</th>'
+                         "<th>Opponent</th><th>Venue</th><th>Result</th>"
+                         "<th>Score</th></tr></thead><tbody>")
+            for g in games:
+                opp = names[g[1]]
+                opp_html = html.escape(opp)
+                if opp in slug_by_team:
+                    opp_html = (f"<a href=\"{slug_by_team[opp]}.html\">"
+                                f"{opp_html}</a>")
+                f_pts, a_pts = g[3], g[4]
+                parts.append(
+                    f"<tr><td>{g[0][4:6]}/{g[0][6:8]}</td>"
+                    f"<td>{opp_html}</td><td>{g[2]}</td>"
+                    f"<td>{'W' if f_pts > a_pts else 'L'}</td>"
+                    f"<td>{f_pts}-{a_pts}</td></tr>")
+            parts.append("</tbody></table>")
+        else:
+            parts.append("<p>No game log for this season.</p>")
+        roster = (ROSTERS.get(season) or {}).get(team)
+        parts.append("<h3>Roster</h3>")
+        if roster:
+            parts.append('<table class="roster"><thead><tr><th>Player</th>'
+                         "<th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th>"
+                         "<th>%Poss</th><th>%Min</th><th>RPR</th>"
+                         "</tr></thead><tbody>")
+            for p in roster:
+                pos = (p[1] if p[1] not in ("", "NA", None)
+                       else "&mdash;")
+                cells = [html.escape(p[0]), pos, str(p[2])]
+                for v in p[3:]:
+                    cells.append("\u2014" if v is None else f"{v:.1f}")
+                parts.append("<tr>" + "".join(
+                    f"<td>{c}</td>" for c in cells) + "</tr>")
+            parts.append("</tbody></table>")
+            parts.append('<p class="note">Sorted by minutes. ORtg is '
+                         "approximate (no assist credit); RPR is our own "
+                         "rating, not KenPom\u2019s kPOY."
+                         + ("" if season == "2026-27"
+                            else " Rotation players only (%Min \u2265 20); "
+                            "full profiles in the players CSV.")
+                         + "</p>")
+        else:
+            parts.append("<p>No roster data for this season.</p>")
+        parts.append("</section>")
+    if upcoming:
+        parts.append("<section><h2>Upcoming games</h2>"
+                     "<p>Predicted spreads for this team from the "
+                     "predictions file (Nov 11-13). Lines move, and "
+                     "some of these games may already have tipped. "
+                     "The win/loss picks behind these spreads are "
+                     "backtested; the spread magnitudes are not.</p>"
+                     '<table class="preds"><thead><tr><th>Tip-off</th>'
+                     "<th>Opponent</th><th>Venue</th>"
+                     "<th>Predicted spread</th><th>Team win%</th>"
+                     "<th>Market</th><th>Edge</th>"
+                     "</tr></thead><tbody>")
+        for r in sorted(upcoming,
+                        key=lambda x: (x["date"], x["tipoff"] or "")):
+            is_home = r["home"] == team
+            opp = r["away_short"] if is_home else r["home_short"]
+            opp_full = r["away"] if is_home else r["home"]
+            if r["neutral_site"] == "True":
+                venue = "N"
+            else:
+                venue = "H" if is_home else "A"
+            win_prob = float(r["home_win_prob"])
+            team_win = win_prob if is_home else 1 - win_prob
+            edge = float(r["edge"]) if r["edge"] else None
+            edge_team = (edge if is_home else
+                         (-edge if edge is not None else None))
+            market = (f"{float(r['market_spread']):+.1f}"
+                      if r["market_spread"] else "-")
+            opp_html = html.escape(opp)
+            if opp_full in slug_by_team:
+                opp_html = (f"<a href=\"{slug_by_team[opp_full]}.html\">"
+                            f"{opp_html}</a>")
+            parts.append(
+                f"<tr><td>{fmt_tipoff(r['tipoff'], r['date'])}</td>"
+                f"<td>{opp_html}</td><td>{venue}</td>"
+                f"<td>{html.escape(r['spread'])}</td>"
+                f"<td>{team_win * 100:.1f}%</td>"
+                f"<td>{market}</td>"
+                f"<td>{f'{edge_team:+.1f}' if edge_team is not None else '-'}</td></tr>")
+        parts.append("</tbody></table>"
+                     '<p class="note">Market is the home team\u2019s line. '
+                     "Edge is from this team\u2019s perspective: positive "
+                     "means the model likes this team more than the "
+                     "market does.</p></section>")
+    body = "\n".join(parts)
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{html.escape(team)} | College Ratings</title>
+<style>{CSS}</style>
+</head>
+<body>
+{body}
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="{REPO}">RD3-LIL/RonPom on GitHub</a>. Built {BUILT}.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>
+"""
+
+
+def build_team_pages():
+    """Write teams/<slug>.html for every rated team.
+
+    Returns (page count, total bytes). Fails loudly on a slug
+    collision. Deletes stale teams/*.html files not written
+    this run, so a renamed team cannot leave a dead page.
+    """
+    teams_dir = HERE / "teams"
+    teams_dir.mkdir(exist_ok=True)
+    upcoming = {}
+    if PREDICTIONS_CSV.exists():
+        for r in read_csv(PREDICTIONS_CSV):
+            for key in (r["home"], r["away"]):
+                upcoming.setdefault(key, []).append(r)
+    seen = {}
+    for team in TEAM_SEASONS:
+        s = team_slug(team)
+        if s in seen:
+            raise SystemExit(f"slug collision: {team!r} and "
+                             f"{seen[s]!r} both map to {s!r}")
+        seen[s] = team
+    slug_by_team = {team: s for s, team in seen.items()}
+    written = set()
+    total = 0
+    for team in sorted(TEAM_SEASONS):
+        text = team_page_html(team, slug_by_team,
+                              upcoming.get(team, []))
+        path = teams_dir / f"{slug_by_team[team]}.html"
+        path.write_text(text)
+        written.add(path.name)
+        total += len(text.encode("utf-8"))
+    for stale in teams_dir.glob("*.html"):
+        if stale.name not in written:
+            stale.unlink()
+    return len(written), total
 
 
 CSS = """
@@ -548,8 +765,8 @@ table.gamelog td:nth-child(n+3) { text-align: right; }
 table.roster { font-size: 13px; width: auto; margin: 0; }
 table.roster th, table.roster td { padding: 2px 10px; }
 table.roster td:nth-child(n+3) { text-align: right; }
-a.team-link { color: #0969da; text-decoration: none; }
-a.team-link:hover { text-decoration: underline; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
 .conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
 button.conf-tab { padding: 3px 9px; font-size: 12px;
   border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
@@ -682,7 +899,10 @@ document.querySelectorAll("table.ratings").forEach(function (table) {
     });
   });
   table.querySelectorAll("tbody tr.team").forEach(function (row) {
-    row.addEventListener("click", function () {
+    row.addEventListener("click", function (e) {
+      // The team name is a link to the team page; let it go
+      // there instead of toggling the detail panel.
+      if (e.target.closest("a")) return;
       openDetail(table, row);
     });
   });
@@ -709,33 +929,11 @@ document.querySelectorAll(".conftabs").forEach(function (bar) {
     applyFilter(table);
   });
 });
-// Top-players team links: open that team's detail panel in the
-// 2026-27 ratings table (game log and roster). Non-D1 teams
-// have no ratings row, so those links just follow the anchor.
-document.querySelectorAll("a.team-link").forEach(function (a) {
-  a.addEventListener("click", function (e) {
-    var table = document.getElementById("teams-2026_27");
-    var row = null;
-    table.querySelectorAll("tbody tr.team").forEach(function (r) {
-      if (r.cells[1].textContent === a.dataset.team) row = r;
-    });
-    if (!row) return;
-    e.preventDefault();
-    var input = document.querySelector(
-      'input.filter[data-table="teams-2026_27"]');
-    if (input) input.value = "";
-    table._q = "";
-    table._conf = "";
-    document.querySelectorAll(
-      '.conftabs[data-table="teams-2026_27"] button').forEach(
-      function (b) {
-        b.classList.toggle("active", b.dataset.conf === "");
-      });
-    applyFilter(table);
-    row.scrollIntoView({block: "center"});
-    openDetail(table, row);
-  });
-});
+// Team names in the ratings tables and the top-players table
+// are plain links to teams/<slug>.html, so they need no
+// handler here. Clicking a team row anywhere else still opens
+// the inline detail panel (see the guard in the row handler
+// above, which lets link clicks through).
 """
 
 # Conference ids needed across all three seasons, mapped once
@@ -753,10 +951,15 @@ if CONF_UNMAPPED:
 print(f"Conference map: {len(CONF_BY_ID)} ids "
       f"({', '.join(sorted(CONF_BY_ID.values()))})")
 
-# Game logs and rosters, filled in by season_section as each
-# section is built.
+# Game logs, rosters, and per-season team data, filled in by
+# season_section as each section is built. TEAM_SEASONS maps a
+# team name to {season: {"row": ratings CSV row, "record":
+# (wins, losses), "conf": conference label}}; LOG_IDX maps a
+# season to {team name: index into that season's log teams}.
 LOGS = {}
 ROSTERS = {}
+LOG_IDX = {}
+TEAM_SEASONS = {}
 
 SECTIONS = "\n".join(season_section(s, CONF_BY_ID)
                      for s in DISPLAY_SEASONS)
@@ -801,8 +1004,11 @@ last season's ratings faded by returning minutes.</p>
 <p><strong>Getting around</strong>: the bar at the top jumps to any
 season, the player leaders, the top 150 players, or the
 predictions. Conference tabs above each table filter to one
-conference; the filter box searches team names. Click any team
-row to see that team's game log and roster for the season.</p>
+conference; the filter box searches team names. Click a team
+name anywhere to open that team's own page, with its ratings,
+game log, roster, and upcoming games for every season it
+played in. Click a team row to see its game log and roster
+for the season right here.</p>
 <p><strong>AdjO / AdjD</strong>: points scored and allowed per 100
 possessions, adjusted for opponent. <strong>Net</strong> is AdjO minus
 AdjD, the same idea as KenPom's AdjEM. <strong>AdjT</strong> is
@@ -836,3 +1042,7 @@ Not affiliated with KenPom.</p>
 out = HERE / "index.html"
 out.write_text(PAGE)
 print(f"Wrote {out}: {len(PAGE)} bytes")
+
+N_TEAM_PAGES, TEAM_PAGES_BYTES = build_team_pages()
+print(f"Wrote {N_TEAM_PAGES} team pages in teams/: "
+      f"{TEAM_PAGES_BYTES} bytes")
