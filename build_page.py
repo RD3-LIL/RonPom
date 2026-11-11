@@ -8,10 +8,13 @@ regenerating the CSVs.
 
 Format: a KenPom-style dense ratings table is the centerpiece of
 each season section, all teams, rank / team / conference / W-L /
-AdjO / AdjD / Net / AdjT, with click-to-sort columns and a team
-filter. The look is our own (plain typography, no KenPom branding,
-colors, logos, or text); only the table shape and column set are
-in that spirit.
+AdjO / AdjD / Net / AdjT, with click-to-sort columns, a team
+filter, and conference filter tabs. A sticky top nav links to
+each season, the player leaders, and the predictions. Clicking
+a team row expands that team's game log for the season. The
+look is our own (plain typography, no KenPom branding, colors,
+logos, or text); only the table shape and column set are in
+that spirit.
 
 Where the columns come from:
 - Conf: ESPN conference short names, read from the raw summary
@@ -40,6 +43,9 @@ HERE = Path(__file__).parent
 DATA = HERE / "data"
 RAW_SUMMARY = DATA / "raw" / "summary"
 SEASONS = ["2024-25", "2025-26", "2026-27"]
+# Display order: current season first, then the full seasons.
+DISPLAY_SEASONS = ["2026-27", "2025-26", "2024-25"]
+PREDICTIONS_CSV = DATA / "predictions_2026_11_11.csv"
 REPO = "https://github.com/RD3-LIL/RonPom"
 
 # Fallback for the prototype games file, copied from solver.py.
@@ -187,9 +193,49 @@ def season_records(season):
     return records, team_conf
 
 
-def team_table(season, rows, records, conf_names):
+def season_game_logs(season):
+    """(team_names, logs) for the expandable game-log panels.
+
+    Same game set as the ratings (played, D1 vs D1, boxscore
+    present). team_names is the sorted list of team names in
+    that set; logs maps a team's index in that list to a list
+    of [date, opponent index, venue, points for, points
+    against], in date order. Venue is H, A, or N (neutral).
+    Opponents are indices, not names, to keep the embedded
+    JSON compact: all three seasons together add about 650 KB.
+    """
+    games = [g for g in season_games(season)
+             if not (g["home_score"] == 0 and g["away_score"] == 0)
+             and is_d1_game(g) and not g.get("stats_missing")]
+    names = sorted({g["home"] for g in games}
+                   | {g["away"] for g in games})
+    idx = {name: i for i, name in enumerate(names)}
+    logs = {i: [] for i in range(len(names))}
+    for g in sorted(games, key=lambda x: (x["date"], x["event_id"])):
+        for side, (team, opp, pts, opp_pts) in enumerate((
+                (g["home"], g["away"], g["home_score"], g["away_score"]),
+                (g["away"], g["home"], g["away_score"], g["home_score"]))):
+            if g.get("neutral_site"):
+                venue = "N"
+            else:
+                venue = "H" if side == 0 else "A"
+            logs[idx[team]].append(
+                [g["date"], idx[opp], venue, pts, opp_pts])
+    return names, logs
+
+
+def team_table(season, rows, records, conf_names, log_idx):
     tid = season.replace("-", "_")
-    out = [f"<input class=\"filter\" type=\"search\" "
+    confs = sorted({conf_names.get(r["team"], "") for r in rows} - {""})
+    tabs = [f"<div class=\"conftabs\" data-table=\"teams-{tid}\">"
+            "<button class=\"conf-tab active\" data-conf=\"\">All</button>"]
+    for c in confs:
+        tabs.append(f"<button class=\"conf-tab\" "
+                    f"data-conf=\"{html.escape(c.lower())}\">"
+                    f"{html.escape(c)}</button>")
+    tabs.append("</div>")
+    out = ["\n".join(tabs),
+           f"<input class=\"filter\" type=\"search\" "
            f"placeholder=\"Filter teams...\" data-table=\"teams-{tid}\">"]
     out.append(f"<table class=\"ratings\" id=\"teams-{tid}\">"
                "<thead><tr>"
@@ -205,10 +251,11 @@ def team_table(season, rows, records, conf_names):
     for r in rows:
         w, l = records.get(r["team"], [0, 0])
         conf = conf_names.get(r["team"], "")
-        cls = (" class=\"ill\""
-               if r["team"] == "Illinois Fighting Illini" else "")
+        cls = ("team ill" if r["team"] == "Illinois Fighting Illini"
+               else "team")
         out.append(
-            f"<tr{cls}>"
+            f"<tr class=\"{cls}\" data-conf=\"{html.escape(conf.lower())}\" "
+            f"data-season=\"{season}\" data-tidx=\"{log_idx.get(r['team'], '')}\">"
             f"<td data-v=\"{r['rank']}\">{r['rank']}</td>"
             f"<td data-v=\"{html.escape(r['team'].lower())}\">"
             f"{html.escape(r['team'])}</td>"
@@ -271,6 +318,10 @@ def season_section(season, conf_by_id):
     records, team_conf = season_records(season)
     conf_names = {team: conf_by_id.get(cid, "")
                   for team, cid in team_conf.items()}
+    log_names, log_entries = season_game_logs(season)
+    LOGS[season] = {"teams": log_names, "logs": log_entries}
+    log_idx = {name: i for i, name in enumerate(log_names)}
+    tid = season.replace("-", "_")
     warn = ""
     if season == "2026-27":
         warn = ("<p class=\"warn\">Early season: 2-3 games per team. "
@@ -280,14 +331,73 @@ def season_section(season, conf_by_id):
     # 2026-27 has at most 2-3 games per player, so the usual
     # 20-game floor would leave the leaders tables empty.
     min_games = 2 if season == "2026-27" else 20
-    return (f"<section><h2>{season}</h2>{warn}"
+    leaders = player_leaders(season, players, min_games)
+    if season == "2026-27":
+        # The nav's Players link lands on the current season's
+        # leaders; older seasons keep their own leaders inline.
+        leaders = f"<div id=\"players\">{leaders}</div>"
+    return (f"<section id=\"season-{tid}\"><h2>{season}</h2>{warn}"
             f"<p>{len(ratings)} teams rated, {len(players)} players. "
-            f"Click a column header to sort.</p>"
+            f"Click a column header to sort. Click a team row to see "
+            f"its game log.</p>"
             f"<h3>Team ratings</h3>"
-            f"{team_table(season, ratings, records, conf_names)}"
+            f"{team_table(season, ratings, records, conf_names, log_idx)}"
             f"<h3>Player leaders</h3>"
-            f"{player_leaders(season, players, min_games)}"
+            f"{leaders}"
             f"</section>")
+
+
+def predictions_section():
+    """Upcoming-game spreads from predict.py, if the file exists.
+
+    Reads data/predictions_2026_11_11.csv (71 games, Nov 11-13).
+    If no predictions file has been generated yet, the section
+    is a short note instead, so the nav link still lands.
+    """
+    if not PREDICTIONS_CSV.exists():
+        return ("<section id=\"predictions\"><h2>Predictions</h2>"
+                "<p>Upcoming-game spreads come from predict.py, which "
+                "recomputes them from the current ratings. No "
+                "predictions file has been generated yet.</p></section>")
+    rows = read_csv(PREDICTIONS_CSV)
+    rows.sort(key=lambda r: (r["date"], r["tipoff"] or ""))
+    out = ["<section id=\"predictions\"><h2>Predictions</h2>",
+           "<p>Predicted spreads for the next three days, generated "
+           "Nov 11 by predict.py from the 2026-27 ratings: "
+           "model-consistent margin plus 4.69 home court (none on "
+           "neutral floors), win probability from the cross-fitted "
+           "logistic. The market line is ESPN's when one is out yet; "
+           "lines move, and some of these games may already have "
+           "tipped. The win/loss picks behind these spreads are "
+           "backtested; the spread magnitudes are not.</p>",
+           "<table class=\"preds\"><thead><tr><th>Tip-off</th>"
+           "<th>Matchup</th><th>Predicted spread</th>"
+           "<th>Home win%</th><th>Market</th><th>Edge</th>"
+           "</tr></thead><tbody>"]
+    for r in rows:
+        try:
+            dt = datetime.fromisoformat(
+                r["tipoff"].replace("Z", "+00:00"))
+            tip = dt.astimezone(ZoneInfo("America/Chicago")).strftime(
+                "%a %I:%M %p")
+        except (ValueError, TypeError):
+            tip = r["date"]
+        matchup = f"{r['away_short']} @ {r['home_short']}"
+        if r["neutral_site"] == "True":
+            matchup += " (N)"
+        market = (f"{float(r['market_spread']):+.1f}"
+                  if r["market_spread"] else "-")
+        edge = (f"{float(r['edge']):+.1f}" if r["edge"] else "-")
+        out.append(f"<tr><td>{tip}</td><td>{html.escape(matchup)}</td>"
+                   f"<td>{html.escape(r['spread'])}</td>"
+                   f"<td>{float(r['home_win_prob']) * 100:.1f}%</td>"
+                   f"<td>{market}</td><td>{edge}</td></tr>")
+    out.append("</tbody></table>")
+    out.append(f"<p class=\"note\">{len(rows)} games, Nov 11-13. "
+               "Edge is the model home margin minus the market's "
+               "implied home margin: positive means the model likes "
+               "the home team more than the market does.</p></section>")
+    return "\n".join(out)
 
 
 CSS = """
@@ -301,18 +411,40 @@ h3 { margin-top: 28px; }
 table { border-collapse: collapse; width: 100%; margin: 12px 0; }
 th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
 th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
 table.ratings { font-size: 13px; }
 table.ratings th, table.ratings td { padding: 3px 8px; }
-table.ratings thead th { position: sticky; top: 0; cursor: pointer;
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
   user-select: none; }
 table.ratings thead th:hover { background: #eaeef2; }
 table.ratings thead th.sorted-asc::after { content: " \\25B2"; }
 table.ratings thead th.sorted-desc::after { content: " \\25BC"; }
 table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
-table.ratings tbody tr:hover td { background: #eef4ff; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
 table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
 table.ratings td.net { font-weight: 700; }
 tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
 input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
   border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
 .leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -327,20 +459,77 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 """
 
 JS = """
-// Click-to-sort on the ratings tables, and a team filter box.
-// Plain script, no network, no dependencies. Numeric columns
-// sort on the data-v value; team and conference sort as text;
-// W-L sorts on wins first (data-v is wins*100 - losses).
+// Ratings tables: click-to-sort, text filter, conference tabs,
+// and click a team row to expand its game log (GAME_LOGS is
+// embedded in the page by the builder). Plain script, no
+// network, no dependencies. Numeric columns sort on the
+// data-v value; team and conference sort as text; W-L sorts on
+// wins first (data-v is wins*100 - losses).
+function esc(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+function closeDetails(table) {
+  table.querySelectorAll("tbody tr.detail").forEach(function (d) {
+    d.remove();
+  });
+}
+function applyFilter(table) {
+  var q = table._q || "";
+  var conf = table._conf || "";
+  table.querySelectorAll("tbody tr.team").forEach(function (r) {
+    var team = r.cells[1].textContent.toLowerCase();
+    var ok = (q === "" || team.indexOf(q) !== -1)
+      && (conf === "" || r.dataset.conf === conf);
+    r.style.display = ok ? "" : "none";
+  });
+}
+function openDetail(table, row) {
+  var next = row.nextElementSibling;
+  if (next && next.classList.contains("detail")) {
+    next.remove();
+    return;
+  }
+  closeDetails(table);
+  var entry = GAME_LOGS[row.dataset.season];
+  if (!entry || row.dataset.tidx === "") return;
+  var games = entry.logs[row.dataset.tidx] || [];
+  var teams = entry.teams;
+  var c = row.cells;
+  var html = '<div class="detail-box"><strong>' + esc(c[1].textContent)
+    + '</strong> &mdash; AdjO ' + c[4].textContent + ' &middot; AdjD '
+    + c[5].textContent + ' &middot; Net ' + c[6].textContent
+    + ' &middot; AdjT ' + c[7].textContent + ' &middot; '
+    + c[3].textContent + ' (D1 games)</div>'
+    + '<table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th>'
+    + '<th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>';
+  games.forEach(function (g) {
+    var f = g[3], a = g[4];
+    html += "<tr><td>" + g[0].slice(4, 6) + "/" + g[0].slice(6, 8)
+      + "</td><td>" + esc(teams[g[1]]) + "</td><td>" + g[2]
+      + "</td><td>" + (f > a ? "W" : "L") + "</td><td>"
+      + f + "-" + a + "</td></tr>";
+  });
+  html += "</tbody></table>";
+  var tr = document.createElement("tr");
+  tr.className = "detail";
+  var td = document.createElement("td");
+  td.colSpan = 8;
+  td.innerHTML = html;
+  tr.appendChild(td);
+  row.after(tr);
+}
 document.querySelectorAll("table.ratings").forEach(function (table) {
   var headers = table.querySelectorAll("thead th");
   headers.forEach(function (th, i) {
     th.addEventListener("click", function () {
+      closeDetails(table);
       var asc = !th.classList.contains("sorted-asc");
       headers.forEach(function (h) {
         h.classList.remove("sorted-asc", "sorted-desc");
       });
       th.classList.add(asc ? "sorted-asc" : "sorted-desc");
-      var rows = Array.from(table.querySelectorAll("tbody tr"));
+      var rows = Array.from(table.querySelectorAll("tbody tr.team"));
       var numeric = th.dataset.t === "num" || th.dataset.t === "wl";
       rows.sort(function (a, b) {
         var va = a.cells[i].dataset.v, vb = b.cells[i].dataset.v;
@@ -352,16 +541,32 @@ document.querySelectorAll("table.ratings").forEach(function (table) {
       rows.forEach(function (r) { body.appendChild(r); });
     });
   });
+  table.querySelectorAll("tbody tr.team").forEach(function (row) {
+    row.addEventListener("click", function () {
+      openDetail(table, row);
+    });
+  });
 });
 document.querySelectorAll("input.filter").forEach(function (input) {
   input.addEventListener("input", function () {
-    var q = input.value.trim().toLowerCase();
-    var rows = document.getElementById(input.dataset.table)
-      .querySelectorAll("tbody tr");
-    rows.forEach(function (r) {
-      var team = r.cells[1].textContent.toLowerCase();
-      r.style.display = team.indexOf(q) === -1 ? "none" : "";
+    var table = document.getElementById(input.dataset.table);
+    closeDetails(table);
+    table._q = input.value.trim().toLowerCase();
+    applyFilter(table);
+  });
+});
+document.querySelectorAll(".conftabs").forEach(function (bar) {
+  bar.addEventListener("click", function (e) {
+    var btn = e.target.closest("button.conf-tab");
+    if (!btn) return;
+    bar.querySelectorAll("button").forEach(function (b) {
+      b.classList.remove("active");
     });
+    btn.classList.add("active");
+    var table = document.getElementById(bar.dataset.table);
+    closeDetails(table);
+    table._conf = btn.dataset.conf;
+    applyFilter(table);
   });
 });
 """
@@ -381,7 +586,13 @@ if CONF_UNMAPPED:
 print(f"Conference map: {len(CONF_BY_ID)} ids "
       f"({', '.join(sorted(CONF_BY_ID.values()))})")
 
-SECTIONS = "\n".join(season_section(s, CONF_BY_ID) for s in SEASONS)
+# Game logs, filled in by season_section as each section is built.
+LOGS = {}
+
+SECTIONS = "\n".join(season_section(s, CONF_BY_ID)
+                     for s in DISPLAY_SEASONS)
+LOGS_JSON = json.dumps(LOGS, separators=(",", ":"))
+PREDICTIONS = predictions_section()
 BUILT = datetime.now(ZoneInfo("America/Chicago")).strftime("%B %-d, %Y")
 
 PAGE = f"""<!DOCTYPE html>
@@ -399,9 +610,25 @@ built from free ESPN data. Adjusted offense and defense per 100
 possessions, solved properly (damped Gauss-Seidel), starting from
 last season's ratings faded by returning minutes.</p>
 
+<nav class="topnav">
+<a href="#season-2026_27">2026-27</a>
+<a href="#season-2025_26">2025-26</a>
+<a href="#season-2024_25">2024-25</a>
+<a href="#players">Players</a>
+<a href="#predictions">Predictions</a>
+<a href="#how-to-read">How to read this</a>
+</nav>
+
 {SECTIONS}
 
-<section><h2>How to read this</h2>
+{PREDICTIONS}
+
+<section id="how-to-read"><h2>How to read this</h2>
+<p><strong>Getting around</strong>: the bar at the top jumps to any
+season, the player leaders, or the predictions. Conference tabs
+above each table filter to one conference; the filter box searches
+team names. Click any team row to see that team's game log for
+the season.</p>
 <p><strong>AdjO / AdjD</strong>: points scored and allowed per 100
 possessions, adjusted for opponent. <strong>Net</strong> is AdjO minus
 AdjD, the same idea as KenPom's AdjEM. <strong>AdjT</strong> is
@@ -425,6 +652,7 @@ published rankings are only a benchmark to compare against.</p></section>
 <a href="{REPO}">RD3-LIL/RonPom on GitHub</a>. Built {BUILT}.
 Not affiliated with KenPom.</p>
 </footer>
+<script>var GAME_LOGS = {LOGS_JSON};</script>
 <script>{JS}</script>
 </body>
 </html>
