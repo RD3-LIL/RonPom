@@ -58,6 +58,21 @@ from last season would pull it down. Run `python3 test_solver.py`
 for the full check, including a synthetic 8-team season where
 the solver recovers the true ordering (Spearman 0.9 or better).
 
+## Team ratings (full seasons)
+
+`python3 write_ratings.py` runs solver v2 on each consolidated
+season and writes `data/ratings_<season>.csv` (rank, team, GP,
+AdjO, AdjD, Net, AdjT). Those CSVs are in the repo; the games
+JSONs are not, they are about 15 MB per full season.
+
+- 2024-25: 5,759 D1 games used, 364 teams. 1 Duke Net +37.7,
+  2 Houston +34.3, 3 Auburn +32.8. Illinois rank 14, Net +23.3.
+- 2025-26: 5,752 D1 games used, 365 teams. 1 Michigan +37.3,
+  2 Duke +36.2, 3 Arizona +33.9. Illinois rank 5, Net +31.1.
+- 2026-27: 360 D1 games used, 358 teams, 2 games per team at
+  most. Illinois rank 1 is noise from two blowouts plus a
+  league-average prior, not a real claim.
+
 ## Honest limits (read this before trusting the ranking)
 
 1. 1-2 games per team, no preseason prior. KenPom leans on

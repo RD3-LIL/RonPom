@@ -1,0 +1,366 @@
+rank,team,gp,adj_o,adj_d,net,adj_t
+1,Michigan Wolverines,40,127.9,90.6,37.3,71.3
+2,Duke Blue Devils,38,127.4,91.2,36.2,66.1
+3,Arizona Wildcats,39,125.7,91.8,33.9,70.4
+4,Florida Gators,35,125.2,93.6,31.6,70.2
+5,Illinois Fighting Illini,37,129.3,98.1,31.1,66.7
+6,Houston Cougars,37,123.0,92.0,31.0,63.9
+7,Iowa State Cyclones,37,124.1,93.4,30.7,67.7
+8,Purdue Boilermakers,39,129.5,100.9,28.6,65.1
+9,Gonzaga Bulldogs,35,121.3,93.1,28.2,69.4
+10,UConn Huskies,40,121.7,94.7,27.1,65.4
+11,Michigan State Spartans,35,121.7,95.7,26.0,67.0
+12,Louisville Cardinals,35,123.5,98.3,25.2,69.9
+13,St. John's Red Storm,37,120.2,95.1,25.1,69.8
+14,Vanderbilt Commodores,36,125.3,100.5,24.9,69.2
+15,Tennessee Volunteers,37,120.5,95.9,24.7,66.4
+16,Alabama Crimson Tide,35,127.5,103.0,24.5,73.1
+17,Nebraska Cornhuskers,35,118.4,94.1,24.3,67.4
+18,Virginia Cavaliers,36,122.5,98.2,24.3,67.1
+19,Arkansas Razorbacks,37,126.6,102.9,23.7,72.2
+20,Texas Tech Red Raiders,34,123.2,100.4,22.8,66.9
+21,Saint Louis Billikens,34,121.9,100.0,22.0,71.1
+22,BYU Cougars,35,124.0,102.1,21.9,70.2
+23,Kansas Jayhawks,35,117.0,95.2,21.8,68.5
+24,Iowa Hawkeyes,37,122.9,101.1,21.8,63.2
+25,Saint Mary's Gaels,32,119.0,98.1,20.8,65.4
+26,Kentucky Wildcats,36,120.5,99.8,20.8,68.6
+27,North Carolina Tar Heels,33,120.5,99.7,20.8,68.4
+28,Utah State Aggies,35,122.5,102.1,20.4,67.8
+29,Wisconsin Badgers,35,123.4,103.1,20.3,69.8
+30,Miami Hurricanes,35,120.8,100.6,20.2,68.1
+31,Georgia Bulldogs,33,122.7,102.8,20.0,73.1
+32,Ohio State Buckeyes,34,123.1,103.2,19.9,67.1
+33,NC State Wolfpack,34,122.9,103.7,19.2,69.7
+34,UCLA Bruins,36,120.8,102.2,18.6,66.0
+35,Clemson Tigers,35,117.0,98.5,18.5,65.0
+36,Texas Longhorns,35,123.2,105.3,17.9,67.2
+37,Santa Clara Broncos,34,122.1,104.3,17.8,69.6
+38,Auburn Tigers,38,124.1,106.3,17.7,68.2
+39,Indiana Hoosiers,32,120.3,102.9,17.3,67.4
+40,SMU Mustangs,34,122.2,104.9,17.3,69.3
+41,Villanova Wildcats,33,119.2,102.0,17.3,66.3
+42,VCU Rams,36,119.4,102.5,17.0,69.0
+43,Texas A&M Aggies,34,119.7,102.9,16.8,72.1
+44,New Mexico Lobos,36,117.1,100.6,16.5,70.0
+45,TCU Horned Frogs,35,115.4,99.2,16.2,68.6
+46,South Florida Bulls,33,118.5,102.3,16.2,72.6
+47,Cincinnati Bearcats,33,110.9,95.0,15.9,68.3
+48,Oklahoma Sooners,37,122.6,106.8,15.8,67.6
+49,Baylor Bears,33,121.6,106.7,14.9,68.1
+50,Tulsa Golden Hurricane,36,121.1,106.5,14.6,69.1
+51,San Diego State Aztecs,32,113.0,98.5,14.5,70.1
+52,West Virginia Mountaineers,35,112.7,98.3,14.4,64.5
+53,Seton Hall Pirates,33,110.8,96.6,14.3,65.5
+54,Virginia Tech Hokies,32,117.0,103.2,13.8,69.2
+55,Washington Huskies,33,116.0,102.6,13.3,68.2
+56,UCF Knights,33,119.0,105.8,13.1,70.0
+57,Missouri Tigers,33,118.2,105.2,13.0,67.1
+58,Akron Zips,33,119.4,106.8,12.7,70.3
+59,Boise State Broncos,30,117.0,104.4,12.6,67.7
+60,Wake Forest Demon Deacons,35,117.3,104.8,12.5,69.2
+61,LSU Tigers,32,119.3,107.0,12.3,68.6
+62,Grand Canyon Lopes,32,111.4,99.2,12.2,68.5
+63,High Point Panthers,33,118.3,106.1,12.2,70.4
+64,Stanford Cardinal,33,116.6,104.6,12.1,67.5
+65,California Golden Bears,33,115.0,103.0,12.0,68.8
+66,Wichita State Shockers,35,113.8,101.9,11.9,68.3
+67,Dayton Flyers,37,112.1,100.3,11.8,67.6
+68,Northwestern Wildcats,34,116.3,104.5,11.8,65.7
+69,Belmont Bruins,31,118.8,107.2,11.6,69.6
+70,Florida State Seminoles,33,116.6,105.1,11.4,70.7
+71,McNeese Cowboys,32,114.6,103.2,11.4,67.2
+72,Nevada Wolf Pack,37,115.6,104.3,11.3,67.1
+73,George Washington Revolutionaries,34,117.8,106.8,11.1,69.6
+74,Northern Iowa Panthers,35,110.0,99.1,10.9,63.2
+75,Ole Miss Rebels,35,113.7,103.2,10.5,67.7
+76,Providence Friars,33,120.3,109.8,10.4,73.0
+77,Yale Bulldogs,29,119.5,109.2,10.3,66.0
+78,Syracuse Orange,32,114.5,104.5,10.1,68.9
+79,Oklahoma State Cowboys,35,117.5,107.5,10.1,73.1
+80,Butler Bulldogs,32,116.0,106.3,9.7,70.0
+81,Colorado Buffaloes,33,117.4,107.7,9.7,69.8
+82,Creighton Bluejays,34,115.0,105.7,9.3,68.2
+83,Arizona State Sun Devils,33,114.4,105.2,9.2,69.4
+84,Miami (OH) RedHawks,31,117.4,108.3,9.1,70.9
+85,Minnesota Golden Gophers,33,112.5,103.5,9.0,63.9
+86,USC Trojans,31,112.7,103.8,8.8,72.0
+87,George Mason Patriots,32,113.6,104.9,8.7,64.2
+88,Colorado State Rams,33,118.2,109.5,8.7,63.6
+89,Illinois State Redbirds,35,111.2,102.5,8.7,66.9
+90,Georgetown Hoyas,34,113.9,105.3,8.5,67.2
+91,Marquette Golden Eagles,32,111.1,103.1,8.0,70.2
+92,Notre Dame Fighting Irish,31,115.1,107.2,7.9,67.4
+93,Wyoming Cowboys,32,114.8,107.1,7.7,66.7
+94,Hofstra Pride,33,113.5,105.8,7.6,65.6
+95,Utah Valley Wolverines,31,112.2,104.8,7.5,69.3
+96,Pittsburgh Panthers,33,113.5,106.3,7.1,64.6
+97,Kansas State Wildcats,32,113.4,106.2,7.1,72.6
+98,Stephen F. Austin Lumberjacks,32,112.1,105.0,7.1,66.6
+99,Xavier Musketeers,33,115.4,108.7,6.7,70.9
+100,South Carolina Gamecocks,32,112.7,106.1,6.6,67.3
+101,DePaul Blue Demons,32,108.0,101.5,6.5,66.7
+102,Oregon Ducks,32,112.1,105.8,6.3,66.5
+103,Hawai'i Rainbow Warriors,31,108.2,101.9,6.3,70.4
+104,UNC Wilmington Seahawks,32,112.1,106.3,5.7,65.4
+105,Mississippi State Bulldogs,32,112.3,106.9,5.4,70.5
+106,Davidson Wildcats,32,110.7,105.4,5.3,65.0
+107,St. Thomas Tommies,31,113.2,108.2,5.0,68.7
+108,UAB Blazers,31,110.7,105.7,5.0,70.1
+109,UC Irvine Anteaters,33,105.0,100.1,4.9,69.4
+110,UNLV Rebels,34,114.2,109.3,4.9,70.5
+111,Seattle U Redhawks,33,103.9,99.0,4.9,68.5
+112,Murray State Racers,33,116.1,111.3,4.8,71.6
+113,UIC Flames,33,110.2,105.4,4.8,67.6
+114,Liberty Flames,31,116.6,111.9,4.7,65.0
+115,Bradley Braves,33,112.3,107.7,4.6,69.6
+116,Florida Atlantic Owls,31,110.8,106.3,4.5,70.5
+117,North Dakota State Bison,32,111.5,107.1,4.5,68.1
+118,California Baptist Lancers,34,107.5,103.2,4.3,66.9
+119,Duquesne Dukes,31,111.6,107.3,4.3,70.0
+120,Sam Houston Bearkats,31,113.5,109.3,4.2,70.0
+121,Southern Illinois Salukis,31,105.5,101.3,4.2,69.9
+122,Saint Joseph's Hawks,34,107.9,103.8,4.1,68.7
+123,Rhode Island Rams,32,107.5,103.5,4.0,66.6
+124,Pacific Tigers,31,110.2,106.3,3.8,65.2
+125,San Francisco Dons,32,113.0,109.2,3.8,66.7
+126,St. Bonaventure Bonnies,33,114.3,110.7,3.6,68.0
+127,Memphis Tigers,32,108.5,104.9,3.6,70.4
+128,Richmond Spiders,31,112.4,108.9,3.5,68.1
+129,Utah Utes,32,114.1,110.8,3.3,67.1
+130,Navy Midshipmen,32,108.8,105.5,3.2,66.2
+131,UC San Diego Tritons,32,107.6,104.4,3.2,67.6
+132,East Tennessee State Buccaneers,32,110.9,107.8,3.1,66.8
+133,Toledo Rockets,32,114.1,111.4,2.8,68.2
+134,Bowling Green Falcons,29,108.2,105.4,2.7,68.8
+135,North Texas Mean Green,31,104.5,101.9,2.7,66.7
+136,Wright State Raiders,33,112.4,109.9,2.6,67.6
+137,UT Rio Grande Valley Vaqueros,31,110.1,107.6,2.5,67.6
+138,Fresno State Bulldogs,31,107.3,104.8,2.5,68.7
+139,Rutgers Scarlet Knights,34,110.1,107.8,2.2,67.9
+140,Washington State Cougars,31,113.3,111.2,2.1,68.2
+141,Boston College Eagles,31,104.6,102.7,1.9,67.3
+142,Temple Owls,31,112.5,110.6,1.9,65.4
+143,UC Santa Barbara Gauchos,30,113.2,111.4,1.9,65.9
+144,Winthrop Eagles,31,112.5,110.6,1.8,70.0
+145,Georgia Tech Yellow Jackets,31,107.8,106.0,1.8,71.1
+146,William & Mary Tribe,30,110.8,109.1,1.7,72.6
+147,Western Kentucky Hilltoppers,30,109.7,108.1,1.7,70.3
+148,Fordham Rams,29,105.9,104.2,1.7,65.1
+149,Penn State Nittany Lions,32,113.6,112.1,1.6,67.8
+150,Kennesaw State Owls,32,111.4,109.9,1.5,71.3
+151,Montana State Bobcats,29,110.2,108.8,1.5,66.9
+152,Arkansas State Red Wolves,30,110.7,109.4,1.4,72.6
+153,Maryland Terrapins,33,110.1,108.9,1.3,66.9
+154,Troy Trojans,32,110.8,109.6,1.1,68.1
+155,Kent State Golden Flashes,32,111.2,110.4,0.9,71.8
+156,Robert Morris Colonials,31,110.8,110.0,0.8,66.5
+157,Loyola Marymount Lions,31,106.7,105.9,0.8,68.3
+158,Harvard Crimson,28,107.1,106.4,0.7,64.5
+159,Towson Tigers,32,105.8,105.1,0.7,64.2
+160,Middle Tennessee Blue Raiders,29,109.7,109.2,0.6,67.7
+161,Pennsylvania Quakers,29,108.3,107.7,0.6,69.6
+162,Central Arkansas Bears,32,109.4,108.8,0.5,69.4
+163,Portland State Vikings,28,104.9,104.4,0.5,68.6
+164,Northern Colorado Bears,29,111.7,111.2,0.5,70.0
+165,Charleston Cougars,31,109.0,108.6,0.4,68.5
+166,Siena Saints,35,108.3,107.9,0.3,65.3
+167,Cornell Big Red,26,118.4,118.2,0.2,71.9
+168,Valparaiso Beacons,32,108.0,107.9,0.1,66.7
+169,Charlotte 49ers,33,113.2,113.1,0.1,64.9
+170,Marist Red Foxes,30,102.3,102.2,0.0,66.8
+171,Idaho Vandals,33,108.3,108.3,-0.1,68.1
+172,Furman Paladins,32,108.9,109.1,-0.2,66.9
+173,Austin Peay Governors,29,108.4,108.6,-0.2,69.3
+174,New Mexico State Aggies,29,109.5,109.9,-0.4,67.6
+175,UMBC Retrievers,31,109.3,109.8,-0.5,67.0
+176,Monmouth Hawks,33,106.8,107.4,-0.6,68.0
+177,Columbia Lions,26,109.6,110.2,-0.6,67.7
+178,Massachusetts Minutemen,32,109.6,110.3,-0.7,71.6
+179,Northern Kentucky Norse,31,109.7,110.4,-0.7,70.6
+180,Mercer Bears,29,112.3,113.1,-0.8,69.1
+181,Oakland Golden Grizzlies,31,114.3,115.1,-0.9,70.3
+182,Marshall Thundering Herd,31,112.5,113.4,-0.9,69.4
+183,Oregon State Beavers,33,109.3,110.2,-1.0,66.6
+184,Drake Bulldogs,32,110.9,112.0,-1.1,67.7
+185,Howard Bison,31,106.3,107.5,-1.2,69.4
+186,Merrimack Warriors,34,106.7,108.0,-1.3,64.7
+187,Florida International Panthers,29,108.6,109.8,-1.3,72.2
+188,UC Davis Aggies,31,107.3,108.7,-1.4,69.6
+189,UT Arlington Mavericks,30,102.6,104.1,-1.5,65.9
+190,App State Mountaineers,30,106.4,108.1,-1.7,63.8
+191,Tennessee State Tigers,30,109.3,111.0,-1.7,70.8
+192,Buffalo Bulls,30,112.6,114.4,-1.8,67.4
+193,Missouri State Bears,31,109.6,111.8,-2.2,66.5
+194,Cal State Northridge Matadors,32,108.1,110.3,-2.2,73.6
+195,Louisiana Tech Bulldogs,31,103.8,106.1,-2.3,65.1
+196,Queens University Royals,34,115.4,117.8,-2.4,70.0
+197,South Alabama Jaguars,31,107.5,109.9,-2.4,66.4
+198,Cal State Fullerton Titans,32,107.9,110.4,-2.4,72.9
+199,Lipscomb Bisons,30,107.0,109.5,-2.4,70.1
+200,Texas A&M-Corpus Christi Islanders,29,103.9,106.5,-2.6,66.6
+201,Jacksonville State Gamecocks,29,106.0,108.7,-2.7,65.8
+202,Campbell Fighting Camels,32,110.5,113.1,-2.7,69.9
+203,Eastern Washington Eagles,32,111.9,114.6,-2.7,68.5
+204,South Dakota State Jackrabbits,29,108.7,111.4,-2.7,67.6
+205,Quinnipiac Bobcats,31,105.6,108.4,-2.8,70.7
+206,UT Martin Skyhawks,30,102.1,105.0,-2.9,65.1
+207,Montana Grizzlies,30,106.6,109.5,-2.9,69.7
+208,Tulane Green Wave,32,108.3,111.3,-2.9,67.5
+209,Indiana State Sycamores,30,105.9,108.9,-3.0,69.7
+210,Weber State Wildcats,30,110.7,113.7,-3.0,69.6
+211,Long Island University Sharks,35,106.2,109.6,-3.4,68.3
+212,Samford Bulldogs,30,109.3,112.7,-3.4,68.4
+213,James Madison Dukes,32,109.7,113.2,-3.4,66.8
+214,Youngstown State Penguins,29,106.3,109.7,-3.4,67.9
+215,Drexel Dragons,32,103.8,107.3,-3.5,64.9
+216,Vermont Catamounts,32,108.1,111.8,-3.7,65.8
+217,Utah Tech Trailblazers,31,109.1,113.1,-4.0,68.6
+218,Ohio Bobcats,30,108.9,113.0,-4.1,69.7
+219,Southern Miss Golden Eagles,33,105.5,109.9,-4.4,69.3
+220,Southeast Missouri State Redhawks,30,104.1,108.6,-4.6,69.4
+221,Colgate Raiders,31,108.7,113.3,-4.6,68.6
+222,Portland Pilots,32,105.8,110.4,-4.6,69.3
+223,Stony Brook Seawolves,30,106.0,110.6,-4.6,67.4
+224,Green Bay Phoenix,31,111.4,116.1,-4.7,64.1
+225,UNC Asheville Bulldogs,29,105.9,110.7,-4.7,65.8
+226,LSU New Orleans Privateers,33,108.2,113.1,-4.9,70.2
+227,Elon Phoenix,30,110.8,115.7,-4.9,68.4
+228,Iona Gaels,32,104.9,109.8,-5.0,70.5
+229,Western Carolina Catamounts,29,109.1,114.1,-5.0,68.7
+230,Charleston Southern Buccaneers,29,106.4,111.5,-5.1,73.2
+231,Cal Poly Mustangs,31,108.5,113.6,-5.1,74.3
+232,Saint Peter's Peacocks,28,104.7,109.9,-5.2,66.4
+233,Detroit Mercy Titans,30,107.9,113.2,-5.4,69.0
+234,American University Eagles,30,106.8,112.2,-5.4,66.8
+235,Georgia Southern Eagles,35,110.2,115.6,-5.4,70.7
+236,San José State Spartans,32,111.2,116.8,-5.5,65.6
+237,Rice Owls,29,108.0,113.6,-5.6,67.0
+238,Tarleton State Texans,28,104.5,110.1,-5.6,70.3
+239,Fairfield Stags,33,107.0,112.6,-5.6,67.7
+240,Florida Gulf Coast Eagles,32,107.2,112.8,-5.7,68.7
+241,Radford Highlanders,29,107.2,112.9,-5.7,71.8
+242,La Salle Explorers,31,105.5,111.2,-5.7,66.3
+243,San Diego Toreros,31,107.6,113.4,-5.8,69.2
+244,Wofford Terriers,30,109.7,115.7,-6.0,68.3
+245,Eastern Michigan Eagles,30,102.7,108.7,-6.1,67.5
+246,Lamar Cardinals,29,104.1,110.2,-6.1,66.2
+247,Texas State Bobcats,30,104.5,110.8,-6.2,67.2
+248,SIU Edwardsville Cougars,29,100.8,107.3,-6.4,65.6
+249,East Carolina Pirates,30,104.2,110.7,-6.4,69.5
+250,Coastal Carolina Chanticleers,31,102.1,108.7,-6.6,69.0
+251,Denver Pioneers,29,114.5,121.1,-6.6,68.3
+252,Old Dominion Monarchs,32,106.3,113.0,-6.7,69.6
+253,Boston University Terriers,33,111.7,118.4,-6.7,65.3
+254,Longwood Lancers,29,104.9,111.6,-6.7,70.4
+255,Princeton Tigers,28,105.0,111.9,-6.9,64.9
+256,Idaho State Bengals,30,109.3,116.3,-7.0,66.0
+257,Long Beach State Beach,30,104.7,111.9,-7.2,69.6
+258,Lindenwood Lions,30,101.7,109.1,-7.4,72.3
+259,Presbyterian Blue Hose,30,104.1,111.8,-7.7,65.3
+260,UTEP Miners,28,102.4,110.2,-7.7,66.1
+261,Purdue Fort Wayne Mastodons,29,105.8,113.5,-7.8,68.2
+262,Dartmouth Big Green,25,105.6,113.5,-7.9,69.8
+263,Nicholls Colonels,32,105.1,113.0,-8.0,68.5
+264,Milwaukee Panthers,31,106.9,114.9,-8.1,68.0
+265,Omaha Mavericks,29,105.9,114.0,-8.2,67.7
+266,Incarnate Word Cardinals,28,108.6,116.9,-8.3,65.9
+267,Abilene Christian Wildcats,30,101.0,109.4,-8.4,67.7
+268,Loyola Chicago Ramblers,33,104.8,113.4,-8.6,66.4
+269,Hampton Pirates,30,103.3,112.0,-8.7,66.3
+270,Western Michigan Broncos,29,107.3,116.1,-8.8,68.3
+271,Pepperdine Waves,30,104.2,113.2,-8.9,69.3
+272,Mercyhurst Lakers,32,102.2,111.2,-9.0,66.1
+273,Northeastern Huskies,31,107.7,116.8,-9.1,69.9
+274,Lehigh Mountain Hawks,33,103.0,112.1,-9.1,68.9
+275,Central Michigan Chippewas,29,105.6,114.8,-9.2,67.3
+276,Mount St. Mary's Mountaineers,31,100.4,109.7,-9.3,68.2
+277,Bethune-Cookman Wildcats,31,103.2,112.4,-9.3,70.1
+278,Bellarmine Knights,30,115.0,124.3,-9.3,65.6
+279,Brown Bears,25,99.3,108.6,-9.4,68.1
+280,South Dakota Coyotes,29,105.7,115.2,-9.5,71.2
+281,North Carolina A&T Aggies,28,105.8,115.3,-9.5,68.9
+282,Sacramento State Hornets,28,105.5,115.1,-9.6,71.8
+283,UC Riverside Highlanders,30,103.2,112.8,-9.6,68.7
+284,South Carolina Upstate Spartans,29,101.1,110.9,-9.9,68.9
+285,Le Moyne Dolphins,31,103.1,113.1,-10.0,69.4
+286,Delaware Blue Hens,30,104.9,115.0,-10.1,65.0
+287,Ball State Cardinals,29,100.1,110.2,-10.2,64.9
+288,Morehead State Eagles,30,106.5,116.7,-10.2,66.4
+289,North Dakota Fighting Hawks,32,105.7,116.0,-10.3,68.1
+290,Sacred Heart Pioneers,32,107.2,117.5,-10.3,69.0
+291,Eastern Kentucky Colonels,30,108.9,119.2,-10.3,68.6
+292,Central Connecticut Blue Devils,28,105.6,116.0,-10.3,65.7
+293,Chattanooga Mocs,29,106.3,116.8,-10.5,67.3
+294,Southern Utah Thunderbirds,29,104.7,115.8,-11.1,70.6
+295,UNC Greensboro Spartans,32,107.7,118.8,-11.1,68.7
+296,Wagner Seahawks,28,103.9,115.1,-11.2,67.0
+297,SE Louisiana Lions,30,100.1,111.3,-11.2,66.1
+298,West Georgia Wolves,30,102.8,114.0,-11.2,69.9
+299,Southern Jaguars,31,104.3,115.6,-11.3,70.8
+300,Northwestern State Demons,30,102.7,114.0,-11.3,65.6
+301,Jacksonville Dolphins,30,103.8,115.3,-11.5,64.6
+302,Houston Christian Huskies,30,102.9,114.4,-11.5,65.0
+303,Oral Roberts Golden Eagles,30,102.8,114.7,-11.9,68.4
+304,Grambling Tigers,31,97.9,110.0,-12.1,67.9
+305,Evansville Purple Aces,30,101.7,113.8,-12.1,67.7
+306,Georgia State Panthers,30,99.8,111.9,-12.1,68.4
+307,Tennessee Tech Golden Eagles,28,103.2,115.7,-12.4,67.5
+308,Alabama A&M Bulldogs,30,103.5,116.3,-12.8,65.8
+309,Little Rock Trojans,30,102.5,115.3,-12.8,66.9
+310,East Texas A&M Lions,30,100.1,112.9,-12.9,68.7
+311,Loyola Maryland Greyhounds,30,104.6,117.6,-13.0,69.3
+312,Prairie View A&M Panthers,33,101.3,114.4,-13.1,70.7
+313,Norfolk State Spartans,28,102.3,115.5,-13.2,68.4
+314,IU Indianapolis Jaguars,30,105.6,118.8,-13.2,73.9
+315,Lafayette Leopards,31,102.1,115.4,-13.3,67.2
+316,Louisiana Ragin' Cajuns,33,100.0,113.4,-13.4,63.8
+317,UAlbany Great Danes,29,103.7,117.4,-13.6,65.7
+318,UMass Lowell River Hawks,30,103.2,116.9,-13.6,69.3
+319,Stetson Hatters,31,104.0,117.9,-13.9,67.4
+320,Northern Arizona Lumberjacks,29,104.2,118.1,-13.9,64.5
+321,Eastern Illinois Panthers,30,98.1,112.1,-14.0,66.9
+322,Holy Cross Crusaders,31,101.9,116.3,-14.4,65.7
+323,Florida A&M Rattlers,29,97.9,112.2,-14.4,68.6
+324,New Haven Chargers,28,97.3,111.7,-14.5,64.2
+325,Texas Southern Tigers,28,101.7,116.4,-14.7,70.1
+326,Cleveland State Vikings,30,108.5,123.2,-14.7,69.8
+327,Stonehill Skyhawks,31,94.4,109.2,-14.7,67.9
+328,Manhattan Jaspers,31,104.8,119.8,-15.0,68.9
+329,Alabama State Hornets,31,99.6,115.1,-15.4,69.6
+330,Bucknell Bison,33,99.1,114.5,-15.4,67.9
+331,Cal State Bakersfield Roadrunners,30,101.8,117.2,-15.5,70.1
+332,Army Black Knights,30,101.9,117.7,-15.9,68.6
+333,Arkansas-Pine Bluff Golden Lions,30,102.4,118.3,-15.9,69.7
+334,NJIT Highlanders,32,97.6,113.7,-16.0,68.2
+335,Fairleigh Dickinson Knights,29,101.2,117.5,-16.3,64.8
+336,Southern Indiana Screaming Eagles,28,97.0,113.5,-16.5,68.5
+337,North Florida Ospreys,30,106.6,123.3,-16.7,71.0
+338,Niagara Purple Eagles,29,100.2,117.0,-16.8,63.3
+339,Northern Illinois Huskies,28,97.8,114.8,-17.0,67.8
+340,Maine Black Bears,31,93.9,111.3,-17.4,65.1
+341,New Hampshire Wildcats,28,97.2,114.9,-17.7,69.2
+342,Canisius Golden Griffins,30,97.1,114.8,-17.7,64.9
+343,UTSA Roadrunners,28,100.2,117.9,-17.7,68.6
+344,North Alabama Lions,28,100.6,118.5,-17.8,65.8
+345,The Citadel Bulldogs,30,101.6,120.0,-18.4,66.0
+346,Chicago State Cougars,31,100.0,118.8,-18.7,66.4
+347,Maryland Eastern Shore Hawks,30,94.7,113.9,-19.2,65.2
+348,Bryant Bulldogs,29,97.7,117.1,-19.4,65.5
+349,Air Force Falcons,32,96.3,115.8,-19.5,66.7
+350,North Carolina Central Eagles,28,101.0,120.6,-19.6,66.4
+351,Morgan State Bears,27,100.2,120.2,-20.0,70.6
+352,UL Monroe Warhawks,30,101.3,121.8,-20.5,70.7
+353,Saint Francis Red Wolves,29,100.2,120.9,-20.7,70.2
+354,Rider Broncs,28,97.5,119.0,-21.5,66.1
+355,Binghamton Bearcats,28,99.2,121.1,-21.8,67.1
+356,Jackson State Tigers,33,98.5,120.6,-22.2,70.2
+357,Alcorn State Braves,32,96.1,118.9,-22.8,68.3
+358,VMI Keydets,29,99.7,123.0,-23.3,67.1
+359,Kansas City Roos,28,94.2,117.6,-23.4,70.2
+360,South Carolina State Bulldogs,30,95.7,119.3,-23.6,68.9
+361,Delaware State Hornets,27,89.3,113.7,-24.4,66.6
+362,Gardner-Webb Runnin' Bulldogs,30,96.1,121.7,-25.7,69.6
+363,Western Illinois Leathernecks,28,94.8,120.8,-26.0,67.1
+364,Coppin State Eagles,30,93.2,121.2,-28.0,68.9
+365,Mississippi Valley State Delta Devils,32,90.0,123.2,-33.2,68.0
