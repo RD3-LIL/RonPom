@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tennessee Volunteers | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+.note { color: #656d76; font-size: 14px; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+</style>
+</head>
+<body>
+<h1>Tennessee Volunteers</h1>
+<p class="subtitle">SEC &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<section><h2>2026-27</h2>
+<p>Net rank #57 &middot; AdjO 106.7 &middot; AdjD 92.3 &middot; Net 14.4 &middot; AdjT 69.6 &middot; 2-0 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/03</td><td><a href="wofford-terriers.html">Wofford Terriers</a></td><td>H</td><td>W</td><td>90-59</td></tr>
+<tr><td>11/09</td><td><a href="radford-highlanders.html">Radford Highlanders</a></td><td>H</td><td>W</td><td>70-47</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>DeWayne Brown II</td><td>F</td><td>2</td><td>10.5</td><td>94.6</td><td>19.1</td><td>72.5</td><td>4.5</td></tr>
+<tr><td>Terrence Hill Jr.</td><td>G</td><td>2</td><td>17.5</td><td>116.8</td><td>29.9</td><td>62.5</td><td>5.6</td></tr>
+<tr><td>Juke Harris</td><td>G</td><td>2</td><td>6.5</td><td>78.1</td><td>16.6</td><td>62.5</td><td>0.1</td></tr>
+<tr><td>Miles Rubin</td><td>C</td><td>2</td><td>8.0</td><td>139.9</td><td>11.9</td><td>60.0</td><td>7.4</td></tr>
+<tr><td>Tyler Lundblade</td><td>G</td><td>2</td><td>7.5</td><td>75.0</td><td>23.8</td><td>52.5</td><td>-1.9</td></tr>
+<tr><td>Dai Dai Ames</td><td>G</td><td>2</td><td>9.5</td><td>108.4</td><td>23.0</td><td>47.5</td><td>1.7</td></tr>
+<tr><td>Jalen Haralson</td><td>G</td><td>2</td><td>8.5</td><td>95.7</td><td>25.3</td><td>43.8</td><td>3.4</td></tr>
+<tr><td>Braedan Lue</td><td>F</td><td>2</td><td>2.5</td><td>63.5</td><td>13.1</td><td>37.5</td><td>-0.1</td></tr>
+<tr><td>Troy Henderson</td><td>G</td><td>2</td><td>6.0</td><td>110.3</td><td>18.7</td><td>36.2</td><td>2.6</td></tr>
+<tr><td>Christian Fermin</td><td>F</td><td>2</td><td>1.0</td><td>100.0</td><td>14.3</td><td>8.8</td><td>0.6</td></tr>
+<tr><td>Manny Green</td><td>G</td><td>2</td><td>2.0</td><td>200.0</td><td>20.0</td><td>6.2</td><td>1.5</td></tr>
+<tr><td>Marquis Clark</td><td>G</td><td>1</td><td>1.0</td><td>113.6</td><td>11.0</td><td>5.0</td><td>1.4</td></tr>
+<tr><td>Chris Washington Jr.</td><td>F</td><td>2</td><td>0.0</td><td>0.0</td><td>16.7</td><td>3.8</td><td>0.4</td></tr>
+<tr><td>Campbell Duncan</td><td>G</td><td>1</td><td>0.0</td><td>—</td><td>—</td><td>1.2</td><td>—</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
+</section>
+<section><h2>2025-26</h2>
+<p>Net rank #15 &middot; AdjO 120.5 &middot; AdjD 95.9 &middot; Net 24.7 &middot; AdjT 66.4 &middot; 25-12 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/03</td><td><a href="mercer-bears.html">Mercer Bears</a></td><td>H</td><td>W</td><td>76-61</td></tr>
+<tr><td>11/08</td><td><a href="northern-kentucky-norse.html">Northern Kentucky Norse</a></td><td>H</td><td>W</td><td>95-56</td></tr>
+<tr><td>11/12</td><td><a href="north-florida-ospreys.html">North Florida Ospreys</a></td><td>H</td><td>W</td><td>99-66</td></tr>
+<tr><td>11/17</td><td><a href="rice-owls.html">Rice Owls</a></td><td>H</td><td>W</td><td>91-66</td></tr>
+<tr><td>11/20</td><td><a href="tennessee-state-tigers.html">Tennessee State Tigers</a></td><td>H</td><td>W</td><td>89-60</td></tr>
+<tr><td>11/24</td><td><a href="rutgers-scarlet-knights.html">Rutgers Scarlet Knights</a></td><td>N</td><td>W</td><td>85-60</td></tr>
+<tr><td>11/25</td><td><a href="houston-cougars.html">Houston Cougars</a></td><td>N</td><td>W</td><td>76-73</td></tr>
+<tr><td>11/26</td><td><a href="kansas-jayhawks.html">Kansas Jayhawks</a></td><td>N</td><td>L</td><td>76-81</td></tr>
+<tr><td>12/02</td><td><a href="syracuse-orange.html">Syracuse Orange</a></td><td>A</td><td>L</td><td>60-62</td></tr>
+<tr><td>12/06</td><td><a href="illinois-fighting-illini.html">Illinois Fighting Illini</a></td><td>N</td><td>L</td><td>62-75</td></tr>
+<tr><td>12/16</td><td><a href="louisville-cardinals.html">Louisville Cardinals</a></td><td>H</td><td>W</td><td>83-62</td></tr>
+<tr><td>12/21</td><td><a href="gardner-webb-runnin-bulldogs.html">Gardner-Webb Runnin&#x27; Bulldogs</a></td><td>H</td><td>W</td><td>94-52</td></tr>
+<tr><td>12/30</td><td><a href="south-carolina-state-bulldogs.html">South Carolina State Bulldogs</a></td><td>H</td><td>W</td><td>105-54</td></tr>
+<tr><td>01/03</td><td><a href="arkansas-razorbacks.html">Arkansas Razorbacks</a></td><td>A</td><td>L</td><td>75-86</td></tr>
+<tr><td>01/06</td><td><a href="texas-longhorns.html">Texas Longhorns</a></td><td>H</td><td>W</td><td>85-71</td></tr>
+<tr><td>01/10</td><td><a href="florida-gators.html">Florida Gators</a></td><td>A</td><td>L</td><td>67-91</td></tr>
+<tr><td>01/13</td><td><a href="texas-a-m-aggies.html">Texas A&amp;M Aggies</a></td><td>H</td><td>W</td><td>87-82</td></tr>
+<tr><td>01/17</td><td><a href="kentucky-wildcats.html">Kentucky Wildcats</a></td><td>H</td><td>L</td><td>78-80</td></tr>
+<tr><td>01/24</td><td><a href="alabama-crimson-tide.html">Alabama Crimson Tide</a></td><td>A</td><td>W</td><td>79-73</td></tr>
+<tr><td>01/28</td><td><a href="georgia-bulldogs.html">Georgia Bulldogs</a></td><td>A</td><td>W</td><td>86-85</td></tr>
+<tr><td>01/31</td><td><a href="auburn-tigers.html">Auburn Tigers</a></td><td>H</td><td>W</td><td>77-69</td></tr>
+<tr><td>02/03</td><td><a href="ole-miss-rebels.html">Ole Miss Rebels</a></td><td>H</td><td>W</td><td>84-66</td></tr>
+<tr><td>02/07</td><td><a href="kentucky-wildcats.html">Kentucky Wildcats</a></td><td>A</td><td>L</td><td>71-74</td></tr>
+<tr><td>02/11</td><td><a href="mississippi-state-bulldogs.html">Mississippi State Bulldogs</a></td><td>A</td><td>W</td><td>73-64</td></tr>
+<tr><td>02/14</td><td><a href="lsu-tigers.html">LSU Tigers</a></td><td>H</td><td>W</td><td>73-63</td></tr>
+<tr><td>02/18</td><td><a href="oklahoma-sooners.html">Oklahoma Sooners</a></td><td>H</td><td>W</td><td>89-66</td></tr>
+<tr><td>02/21</td><td><a href="vanderbilt-commodores.html">Vanderbilt Commodores</a></td><td>A</td><td>W</td><td>69-65</td></tr>
+<tr><td>02/24</td><td><a href="missouri-tigers.html">Missouri Tigers</a></td><td>A</td><td>L</td><td>69-73</td></tr>
+<tr><td>02/28</td><td><a href="alabama-crimson-tide.html">Alabama Crimson Tide</a></td><td>H</td><td>L</td><td>69-71</td></tr>
+<tr><td>03/03</td><td><a href="south-carolina-gamecocks.html">South Carolina Gamecocks</a></td><td>A</td><td>W</td><td>78-59</td></tr>
+<tr><td>03/07</td><td><a href="vanderbilt-commodores.html">Vanderbilt Commodores</a></td><td>H</td><td>L</td><td>82-86</td></tr>
+<tr><td>03/12</td><td><a href="auburn-tigers.html">Auburn Tigers</a></td><td>N</td><td>W</td><td>72-62</td></tr>
+<tr><td>03/13</td><td><a href="vanderbilt-commodores.html">Vanderbilt Commodores</a></td><td>N</td><td>L</td><td>68-75</td></tr>
+<tr><td>03/20</td><td><a href="miami-oh-redhawks.html">Miami (OH) RedHawks</a></td><td>N</td><td>W</td><td>78-56</td></tr>
+<tr><td>03/22</td><td><a href="virginia-cavaliers.html">Virginia Cavaliers</a></td><td>N</td><td>W</td><td>79-72</td></tr>
+<tr><td>03/27</td><td><a href="iowa-state-cyclones.html">Iowa State Cyclones</a></td><td>N</td><td>W</td><td>76-62</td></tr>
+<tr><td>03/29</td><td><a href="michigan-wolverines.html">Michigan Wolverines</a></td><td>N</td><td>L</td><td>62-95</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Ja&#x27;Kobi Gillespie</td><td>G</td><td>37</td><td>18.4</td><td>95.6</td><td>26.9</td><td>86.9</td><td>3.8</td></tr>
+<tr><td>Nate Ament</td><td>F</td><td>35</td><td>16.7</td><td>94.6</td><td>28.9</td><td>70.1</td><td>2.3</td></tr>
+<tr><td>Felix Okpara</td><td>F</td><td>35</td><td>8.0</td><td>107.5</td><td>13.4</td><td>63.7</td><td>3.8</td></tr>
+<tr><td>Bishop Boswell</td><td>G</td><td>34</td><td>6.2</td><td>87.7</td><td>13.1</td><td>60.8</td><td>2.3</td></tr>
+<tr><td>Jaylen Carey</td><td>F</td><td>37</td><td>7.4</td><td>88.8</td><td>22.0</td><td>46.1</td><td>1.1</td></tr>
+<tr><td>J.P. Estrella</td><td>F</td><td>33</td><td>10.0</td><td>111.1</td><td>23.8</td><td>40.9</td><td>2.9</td></tr>
+<tr><td>DeWayne Brown II</td><td>F</td><td>35</td><td>4.8</td><td>100.2</td><td>15.9</td><td>34.5</td><td>1.6</td></tr>
+<tr><td>Amari Evans</td><td>G</td><td>35</td><td>4.1</td><td>84.7</td><td>16.1</td><td>34.1</td><td>1.4</td></tr>
+<tr><td>Ethan Burg</td><td>G</td><td>31</td><td>2.5</td><td>88.8</td><td>12.8</td><td>22.5</td><td>0.4</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>2024-25</h2>
+<p>Net rank #5 &middot; AdjO 119.2 &middot; AdjD 91.2 &middot; Net 28.0 &middot; AdjT 64.0 &middot; 30-8 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/04</td><td><a href="gardner-webb-runnin-bulldogs.html">Gardner-Webb Runnin&#x27; Bulldogs</a></td><td>H</td><td>W</td><td>80-64</td></tr>
+<tr><td>11/09</td><td><a href="louisville-cardinals.html">Louisville Cardinals</a></td><td>A</td><td>W</td><td>77-55</td></tr>
+<tr><td>11/13</td><td><a href="montana-grizzlies.html">Montana Grizzlies</a></td><td>H</td><td>W</td><td>92-57</td></tr>
+<tr><td>11/17</td><td><a href="austin-peay-governors.html">Austin Peay Governors</a></td><td>H</td><td>W</td><td>103-68</td></tr>
+<tr><td>11/21</td><td><a href="virginia-cavaliers.html">Virginia Cavaliers</a></td><td>N</td><td>W</td><td>64-42</td></tr>
+<tr><td>11/22</td><td><a href="baylor-bears.html">Baylor Bears</a></td><td>N</td><td>W</td><td>77-62</td></tr>
+<tr><td>11/27</td><td><a href="ut-martin-skyhawks.html">UT Martin Skyhawks</a></td><td>H</td><td>W</td><td>78-35</td></tr>
+<tr><td>12/03</td><td><a href="syracuse-orange.html">Syracuse Orange</a></td><td>H</td><td>W</td><td>96-70</td></tr>
+<tr><td>12/10</td><td><a href="miami-hurricanes.html">Miami Hurricanes</a></td><td>N</td><td>W</td><td>75-62</td></tr>
+<tr><td>12/14</td><td><a href="illinois-fighting-illini.html">Illinois Fighting Illini</a></td><td>A</td><td>W</td><td>66-64</td></tr>
+<tr><td>12/17</td><td><a href="western-carolina-catamounts.html">Western Carolina Catamounts</a></td><td>H</td><td>W</td><td>84-36</td></tr>
+<tr><td>12/23</td><td><a href="middle-tennessee-blue-raiders.html">Middle Tennessee Blue Raiders</a></td><td>H</td><td>W</td><td>82-64</td></tr>
+<tr><td>12/31</td><td><a href="norfolk-state-spartans.html">Norfolk State Spartans</a></td><td>H</td><td>W</td><td>67-52</td></tr>
+<tr><td>01/04</td><td><a href="arkansas-razorbacks.html">Arkansas Razorbacks</a></td><td>H</td><td>W</td><td>76-52</td></tr>
+<tr><td>01/07</td><td><a href="florida-gators.html">Florida Gators</a></td><td>A</td><td>L</td><td>43-73</td></tr>
+<tr><td>01/11</td><td><a href="texas-longhorns.html">Texas Longhorns</a></td><td>A</td><td>W</td><td>74-70</td></tr>
+<tr><td>01/15</td><td><a href="georgia-bulldogs.html">Georgia Bulldogs</a></td><td>H</td><td>W</td><td>74-56</td></tr>
+<tr><td>01/18</td><td><a href="vanderbilt-commodores.html">Vanderbilt Commodores</a></td><td>A</td><td>L</td><td>75-76</td></tr>
+<tr><td>01/21</td><td><a href="mississippi-state-bulldogs.html">Mississippi State Bulldogs</a></td><td>H</td><td>W</td><td>68-56</td></tr>
+<tr><td>01/25</td><td><a href="auburn-tigers.html">Auburn Tigers</a></td><td>A</td><td>L</td><td>51-53</td></tr>
+<tr><td>01/28</td><td><a href="kentucky-wildcats.html">Kentucky Wildcats</a></td><td>H</td><td>L</td><td>73-78</td></tr>
+<tr><td>02/01</td><td><a href="florida-gators.html">Florida Gators</a></td><td>H</td><td>W</td><td>64-44</td></tr>
+<tr><td>02/05</td><td><a href="missouri-tigers.html">Missouri Tigers</a></td><td>H</td><td>W</td><td>85-81</td></tr>
+<tr><td>02/08</td><td><a href="oklahoma-sooners.html">Oklahoma Sooners</a></td><td>A</td><td>W</td><td>70-52</td></tr>
+<tr><td>02/11</td><td><a href="kentucky-wildcats.html">Kentucky Wildcats</a></td><td>A</td><td>L</td><td>64-75</td></tr>
+<tr><td>02/15</td><td><a href="vanderbilt-commodores.html">Vanderbilt Commodores</a></td><td>H</td><td>W</td><td>81-76</td></tr>
+<tr><td>02/22</td><td><a href="texas-a-m-aggies.html">Texas A&amp;M Aggies</a></td><td>A</td><td>W</td><td>77-69</td></tr>
+<tr><td>02/25</td><td><a href="lsu-tigers.html">LSU Tigers</a></td><td>A</td><td>W</td><td>65-59</td></tr>
+<tr><td>03/01</td><td><a href="alabama-crimson-tide.html">Alabama Crimson Tide</a></td><td>H</td><td>W</td><td>79-76</td></tr>
+<tr><td>03/05</td><td><a href="ole-miss-rebels.html">Ole Miss Rebels</a></td><td>A</td><td>L</td><td>76-78</td></tr>
+<tr><td>03/08</td><td><a href="south-carolina-gamecocks.html">South Carolina Gamecocks</a></td><td>H</td><td>W</td><td>75-65</td></tr>
+<tr><td>03/14</td><td><a href="texas-longhorns.html">Texas Longhorns</a></td><td>N</td><td>W</td><td>83-72</td></tr>
+<tr><td>03/15</td><td><a href="auburn-tigers.html">Auburn Tigers</a></td><td>N</td><td>W</td><td>70-65</td></tr>
+<tr><td>03/16</td><td><a href="florida-gators.html">Florida Gators</a></td><td>N</td><td>L</td><td>77-86</td></tr>
+<tr><td>03/20</td><td><a href="wofford-terriers.html">Wofford Terriers</a></td><td>N</td><td>W</td><td>77-62</td></tr>
+<tr><td>03/22</td><td><a href="ucla-bruins.html">UCLA Bruins</a></td><td>N</td><td>W</td><td>67-58</td></tr>
+<tr><td>03/28</td><td><a href="kentucky-wildcats.html">Kentucky Wildcats</a></td><td>N</td><td>W</td><td>78-65</td></tr>
+<tr><td>03/30</td><td><a href="houston-cougars.html">Houston Cougars</a></td><td>N</td><td>L</td><td>50-69</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Zakai Zeigler</td><td>G</td><td>37</td><td>13.6</td><td>90.8</td><td>23.2</td><td>83.5</td><td>3.7</td></tr>
+<tr><td>Chaz Lanier</td><td>G</td><td>38</td><td>18.0</td><td>105.3</td><td>28.8</td><td>78.6</td><td>2.9</td></tr>
+<tr><td>Jahmai Mashack</td><td>G</td><td>38</td><td>6.0</td><td>97.2</td><td>11.6</td><td>70.4</td><td>3.4</td></tr>
+<tr><td>Jordan Gainey</td><td>G</td><td>38</td><td>11.6</td><td>100.8</td><td>21.8</td><td>69.6</td><td>2.8</td></tr>
+<tr><td>Felix Okpara</td><td>F</td><td>38</td><td>7.1</td><td>104.6</td><td>14.0</td><td>64.5</td><td>3.5</td></tr>
+<tr><td>Igor Milicic Jr.</td><td>F</td><td>37</td><td>9.4</td><td>97.9</td><td>20.0</td><td>62.0</td><td>3.1</td></tr>
+<tr><td>Cade Phillips</td><td>F</td><td>38</td><td>4.6</td><td>111.7</td><td>14.7</td><td>37.2</td><td>2.5</td></tr>
+<tr><td>Darlinstone Dubar</td><td>G</td><td>33</td><td>3.4</td><td>87.6</td><td>20.8</td><td>21.2</td><td>0.5</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 11, 2026.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>

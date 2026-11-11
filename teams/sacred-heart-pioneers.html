@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sacred Heart Pioneers | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+.note { color: #656d76; font-size: 14px; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+</style>
+</head>
+<body>
+<h1>Sacred Heart Pioneers</h1>
+<p class="subtitle">Metro &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<section><h2>2026-27</h2>
+<p>Net rank #194 &middot; AdjO 105.5 &middot; AdjD 108.6 &middot; Net -3.0 &middot; AdjT 74.3 &middot; 1-1 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/05</td><td><a href="maine-black-bears.html">Maine Black Bears</a></td><td>H</td><td>L</td><td>72-74</td></tr>
+<tr><td>11/08</td><td><a href="new-hampshire-wildcats.html">New Hampshire Wildcats</a></td><td>A</td><td>W</td><td>81-76</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Jaylen Robinson</td><td>F</td><td>3</td><td>17.3</td><td>122.1</td><td>22.3</td><td>72.5</td><td>5.2</td></tr>
+<tr><td>Jaden Slaughter</td><td>G</td><td>3</td><td>9.7</td><td>103.3</td><td>15.8</td><td>67.5</td><td>5.1</td></tr>
+<tr><td>Griffin Barrouk</td><td>G</td><td>3</td><td>9.7</td><td>94.3</td><td>17.3</td><td>67.5</td><td>2.0</td></tr>
+<tr><td>Kedrick Curtis</td><td>F</td><td>3</td><td>8.7</td><td>118.4</td><td>12.5</td><td>66.7</td><td>5.7</td></tr>
+<tr><td>Jojo Wallace</td><td>G</td><td>3</td><td>13.7</td><td>85.5</td><td>31.7</td><td>57.5</td><td>-0.1</td></tr>
+<tr><td>Jo Van Buggenhout</td><td>G</td><td>3</td><td>2.7</td><td>32.7</td><td>18.0</td><td>51.7</td><td>-2.8</td></tr>
+<tr><td>Samson Reilly</td><td>G</td><td>3</td><td>12.0</td><td>137.0</td><td>20.0</td><td>50.0</td><td>4.4</td></tr>
+<tr><td>DJ Brown</td><td>G</td><td>3</td><td>3.3</td><td>48.7</td><td>25.3</td><td>30.8</td><td>0.8</td></tr>
+<tr><td>Abdou Yadd</td><td>F</td><td>2</td><td>8.0</td><td>115.3</td><td>22.6</td><td>23.3</td><td>1.9</td></tr>
+<tr><td>Mooda Gittens</td><td>G</td><td>1</td><td>7.0</td><td>119.0</td><td>17.9</td><td>12.5</td><td>4.4</td></tr>
+<tr><td>Kevin Pikiell</td><td>G</td><td>1</td><td>7.0</td><td>175.0</td><td>18.2</td><td>8.3</td><td>3.5</td></tr>
+<tr><td>Malik Sheppard</td><td>G</td><td>1</td><td>1.0</td><td>25.8</td><td>22.1</td><td>6.7</td><td>-1.9</td></tr>
+<tr><td>Jeremiah Jacobs</td><td>G</td><td>1</td><td>2.0</td><td>100.0</td><td>13.0</td><td>5.8</td><td>0.0</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
+</section>
+<section><h2>2025-26</h2>
+<p>Net rank #290 &middot; AdjO 107.2 &middot; AdjD 117.5 &middot; Net -10.3 &middot; AdjT 69.0 &middot; 13-19 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/07</td><td><a href="duquesne-dukes.html">Duquesne Dukes</a></td><td>A</td><td>L</td><td>80-92</td></tr>
+<tr><td>11/11</td><td><a href="villanova-wildcats.html">Villanova Wildcats</a></td><td>A</td><td>L</td><td>60-94</td></tr>
+<tr><td>11/15</td><td><a href="queens-university-royals.html">Queens University Royals</a></td><td>A</td><td>L</td><td>64-81</td></tr>
+<tr><td>11/21</td><td><a href="holy-cross-crusaders.html">Holy Cross Crusaders</a></td><td>H</td><td>W</td><td>79-66</td></tr>
+<tr><td>11/24</td><td><a href="central-connecticut-blue-devils.html">Central Connecticut Blue Devils</a></td><td>A</td><td>L</td><td>106-108</td></tr>
+<tr><td>11/29</td><td><a href="penn-state-nittany-lions.html">Penn State Nittany Lions</a></td><td>A</td><td>L</td><td>59-90</td></tr>
+<tr><td>12/03</td><td><a href="mount-st-marys-mountaineers.html">Mount St. Mary&#x27;s Mountaineers</a></td><td>A</td><td>W</td><td>87-80</td></tr>
+<tr><td>12/07</td><td><a href="iona-gaels.html">Iona Gaels</a></td><td>H</td><td>L</td><td>69-81</td></tr>
+<tr><td>12/13</td><td><a href="njit-highlanders.html">NJIT Highlanders</a></td><td>A</td><td>W</td><td>65-49</td></tr>
+<tr><td>12/16</td><td><a href="umass-lowell-river-hawks.html">UMass Lowell River Hawks</a></td><td>A</td><td>L</td><td>82-87</td></tr>
+<tr><td>12/19</td><td><a href="dartmouth-big-green.html">Dartmouth Big Green</a></td><td>H</td><td>W</td><td>85-63</td></tr>
+<tr><td>12/22</td><td><a href="towson-tigers.html">Towson Tigers</a></td><td>A</td><td>L</td><td>47-72</td></tr>
+<tr><td>12/29</td><td><a href="merrimack-warriors.html">Merrimack Warriors</a></td><td>H</td><td>L</td><td>72-80</td></tr>
+<tr><td>01/02</td><td><a href="niagara-purple-eagles.html">Niagara Purple Eagles</a></td><td>A</td><td>L</td><td>61-64</td></tr>
+<tr><td>01/04</td><td><a href="canisius-golden-griffins.html">Canisius Golden Griffins</a></td><td>A</td><td>L</td><td>78-82</td></tr>
+<tr><td>01/09</td><td><a href="marist-red-foxes.html">Marist Red Foxes</a></td><td>H</td><td>L</td><td>72-76</td></tr>
+<tr><td>01/11</td><td><a href="quinnipiac-bobcats.html">Quinnipiac Bobcats</a></td><td>H</td><td>L</td><td>60-70</td></tr>
+<tr><td>01/14</td><td><a href="siena-saints.html">Siena Saints</a></td><td>A</td><td>W</td><td>86-80</td></tr>
+<tr><td>01/19</td><td><a href="rider-broncs.html">Rider Broncs</a></td><td>A</td><td>W</td><td>105-85</td></tr>
+<tr><td>01/22</td><td><a href="canisius-golden-griffins.html">Canisius Golden Griffins</a></td><td>H</td><td>W</td><td>69-66</td></tr>
+<tr><td>01/24</td><td><a href="niagara-purple-eagles.html">Niagara Purple Eagles</a></td><td>H</td><td>W</td><td>71-70</td></tr>
+<tr><td>01/30</td><td><a href="quinnipiac-bobcats.html">Quinnipiac Bobcats</a></td><td>A</td><td>W</td><td>98-91</td></tr>
+<tr><td>02/01</td><td><a href="merrimack-warriors.html">Merrimack Warriors</a></td><td>A</td><td>L</td><td>58-75</td></tr>
+<tr><td>02/05</td><td><a href="fairfield-stags.html">Fairfield Stags</a></td><td>H</td><td>L</td><td>87-92</td></tr>
+<tr><td>02/07</td><td><a href="manhattan-jaspers.html">Manhattan Jaspers</a></td><td>A</td><td>L</td><td>68-80</td></tr>
+<tr><td>02/13</td><td><a href="saint-peters-peacocks.html">Saint Peter&#x27;s Peacocks</a></td><td>H</td><td>W</td><td>78-71</td></tr>
+<tr><td>02/15</td><td><a href="rider-broncs.html">Rider Broncs</a></td><td>H</td><td>W</td><td>86-75</td></tr>
+<tr><td>02/20</td><td><a href="fairfield-stags.html">Fairfield Stags</a></td><td>A</td><td>L</td><td>68-78</td></tr>
+<tr><td>02/22</td><td><a href="marist-red-foxes.html">Marist Red Foxes</a></td><td>A</td><td>L</td><td>63-65</td></tr>
+<tr><td>02/27</td><td><a href="mount-st-marys-mountaineers.html">Mount St. Mary&#x27;s Mountaineers</a></td><td>H</td><td>W</td><td>77-69</td></tr>
+<tr><td>03/05</td><td><a href="iona-gaels.html">Iona Gaels</a></td><td>N</td><td>W</td><td>91-80</td></tr>
+<tr><td>03/06</td><td><a href="merrimack-warriors.html">Merrimack Warriors</a></td><td>N</td><td>L</td><td>48-70</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Dashon Gittens</td><td>G</td><td>32</td><td>13.5</td><td>107.3</td><td>18.9</td><td>82.5</td><td>5.2</td></tr>
+<tr><td>Yann Farell</td><td>F</td><td>32</td><td>11.8</td><td>111.9</td><td>17.6</td><td>74.5</td><td>3.7</td></tr>
+<tr><td>Nyle Ralph-Beyer</td><td>G</td><td>31</td><td>14.2</td><td>113.1</td><td>21.0</td><td>71.7</td><td>3.1</td></tr>
+<tr><td>Mekhi Conner</td><td>G</td><td>31</td><td>7.6</td><td>69.8</td><td>18.8</td><td>69.6</td><td>0.6</td></tr>
+<tr><td>Anquan Hill</td><td>F</td><td>27</td><td>17.6</td><td>101.9</td><td>27.2</td><td>66.4</td><td>3.2</td></tr>
+<tr><td>Jaden Slaughter</td><td>G</td><td>32</td><td>5.3</td><td>92.8</td><td>14.2</td><td>50.2</td><td>1.2</td></tr>
+<tr><td>Abdou Yadd</td><td>F</td><td>26</td><td>6.2</td><td>80.1</td><td>26.3</td><td>29.4</td><td>-0.8</td></tr>
+<tr><td>Fallou Gueye</td><td>G</td><td>28</td><td>3.2</td><td>74.7</td><td>17.3</td><td>27.0</td><td>0.2</td></tr>
+<tr><td>Taj Bryant</td><td>G</td><td>20</td><td>3.2</td><td>69.8</td><td>16.7</td><td>21.3</td><td>-0.0</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>2024-25</h2>
+<p>Net rank #253 &middot; AdjO 105.3 &middot; AdjD 111.8 &middot; Net -6.5 &middot; AdjT 70.4 &middot; 14-18 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/04</td><td><a href="temple-owls.html">Temple Owls</a></td><td>A</td><td>L</td><td>70-81</td></tr>
+<tr><td>11/06</td><td><a href="uconn-huskies.html">UConn Huskies</a></td><td>A</td><td>L</td><td>56-92</td></tr>
+<tr><td>11/09</td><td><a href="dartmouth-big-green.html">Dartmouth Big Green</a></td><td>A</td><td>L</td><td>76-81</td></tr>
+<tr><td>11/15</td><td><a href="holy-cross-crusaders.html">Holy Cross Crusaders</a></td><td>N</td><td>L</td><td>75-82</td></tr>
+<tr><td>11/16</td><td><a href="new-hampshire-wildcats.html">New Hampshire Wildcats</a></td><td>N</td><td>W</td><td>80-63</td></tr>
+<tr><td>11/17</td><td><a href="brown-bears.html">Brown Bears</a></td><td>A</td><td>L</td><td>70-89</td></tr>
+<tr><td>11/21</td><td><a href="central-connecticut-blue-devils.html">Central Connecticut Blue Devils</a></td><td>H</td><td>W</td><td>67-54</td></tr>
+<tr><td>12/01</td><td><a href="boston-university-terriers.html">Boston University Terriers</a></td><td>A</td><td>W</td><td>73-65</td></tr>
+<tr><td>12/06</td><td><a href="iona-gaels.html">Iona Gaels</a></td><td>H</td><td>W</td><td>83-59</td></tr>
+<tr><td>12/08</td><td><a href="quinnipiac-bobcats.html">Quinnipiac Bobcats</a></td><td>A</td><td>L</td><td>73-83</td></tr>
+<tr><td>12/18</td><td><a href="ualbany-great-danes.html">UAlbany Great Danes</a></td><td>H</td><td>L</td><td>66-74</td></tr>
+<tr><td>12/22</td><td><a href="miami-oh-redhawks.html">Miami (OH) RedHawks</a></td><td>A</td><td>L</td><td>76-94</td></tr>
+<tr><td>01/05</td><td><a href="canisius-golden-griffins.html">Canisius Golden Griffins</a></td><td>H</td><td>W</td><td>99-82</td></tr>
+<tr><td>01/10</td><td><a href="merrimack-warriors.html">Merrimack Warriors</a></td><td>H</td><td>L</td><td>65-66</td></tr>
+<tr><td>01/12</td><td><a href="mount-st-marys-mountaineers.html">Mount St. Mary&#x27;s Mountaineers</a></td><td>A</td><td>L</td><td>71-73</td></tr>
+<tr><td>01/16</td><td><a href="siena-saints.html">Siena Saints</a></td><td>A</td><td>L</td><td>75-93</td></tr>
+<tr><td>01/18</td><td><a href="saint-peters-peacocks.html">Saint Peter&#x27;s Peacocks</a></td><td>H</td><td>L</td><td>61-66</td></tr>
+<tr><td>01/23</td><td><a href="canisius-golden-griffins.html">Canisius Golden Griffins</a></td><td>A</td><td>W</td><td>93-84</td></tr>
+<tr><td>01/25</td><td><a href="niagara-purple-eagles.html">Niagara Purple Eagles</a></td><td>A</td><td>W</td><td>86-77</td></tr>
+<tr><td>02/02</td><td><a href="manhattan-jaspers.html">Manhattan Jaspers</a></td><td>H</td><td>W</td><td>74-72</td></tr>
+<tr><td>02/06</td><td><a href="rider-broncs.html">Rider Broncs</a></td><td>H</td><td>W</td><td>89-77</td></tr>
+<tr><td>02/08</td><td><a href="fairfield-stags.html">Fairfield Stags</a></td><td>A</td><td>W</td><td>77-71</td></tr>
+<tr><td>02/14</td><td><a href="quinnipiac-bobcats.html">Quinnipiac Bobcats</a></td><td>H</td><td>L</td><td>90-99</td></tr>
+<tr><td>02/16</td><td><a href="siena-saints.html">Siena Saints</a></td><td>H</td><td>L</td><td>73-80</td></tr>
+<tr><td>02/21</td><td><a href="merrimack-warriors.html">Merrimack Warriors</a></td><td>A</td><td>W</td><td>60-59</td></tr>
+<tr><td>02/23</td><td><a href="saint-peters-peacocks.html">Saint Peter&#x27;s Peacocks</a></td><td>A</td><td>L</td><td>79-85</td></tr>
+<tr><td>02/28</td><td><a href="marist-red-foxes.html">Marist Red Foxes</a></td><td>H</td><td>W</td><td>67-54</td></tr>
+<tr><td>03/02</td><td><a href="fairfield-stags.html">Fairfield Stags</a></td><td>H</td><td>W</td><td>83-62</td></tr>
+<tr><td>03/06</td><td><a href="manhattan-jaspers.html">Manhattan Jaspers</a></td><td>A</td><td>L</td><td>74-90</td></tr>
+<tr><td>03/08</td><td><a href="iona-gaels.html">Iona Gaels</a></td><td>A</td><td>L</td><td>88-90</td></tr>
+<tr><td>03/11</td><td><a href="fairfield-stags.html">Fairfield Stags</a></td><td>N</td><td>W</td><td>71-58</td></tr>
+<tr><td>03/12</td><td><a href="merrimack-warriors.html">Merrimack Warriors</a></td><td>N</td><td>L</td><td>62-66</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Mekhi Conner</td><td>G</td><td>33</td><td>8.1</td><td>66.8</td><td>19.2</td><td>78.3</td><td>0.6</td></tr>
+<tr><td>Amiri Stewart</td><td>G</td><td>32</td><td>12.5</td><td>93.8</td><td>24.0</td><td>66.1</td><td>3.4</td></tr>
+<tr><td>Tanner Thomas</td><td>G</td><td>28</td><td>14.5</td><td>95.2</td><td>24.8</td><td>64.2</td><td>1.9</td></tr>
+<tr><td>Griffin Barrouk</td><td>G</td><td>33</td><td>7.1</td><td>98.5</td><td>15.4</td><td>57.8</td><td>1.2</td></tr>
+<tr><td>Bryce Johnson</td><td>&mdash;</td><td>32</td><td>9.7</td><td>101.5</td><td>20.0</td><td>56.8</td><td>2.7</td></tr>
+<tr><td>Anquan Hill</td><td>F</td><td>26</td><td>12.8</td><td>119.7</td><td>19.4</td><td>53.9</td><td>5.1</td></tr>
+<tr><td>Nyle Ralph-Beyer</td><td>G</td><td>32</td><td>9.5</td><td>113.5</td><td>19.7</td><td>50.6</td><td>2.0</td></tr>
+<tr><td>Fallou Gueye</td><td>G</td><td>29</td><td>2.2</td><td>63.7</td><td>14.3</td><td>25.9</td><td>-0.1</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file (Nov 11-13). Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not.</p><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th></tr></thead><tbody>
+<tr><td>Thu 06:00 PM</td><td><a href="central-connecticut-blue-devils.html">C Connecticut</a></td><td>H</td><td>Sacred Heart -12.8</td><td>88.5%</td><td>-</td><td>-</td></tr>
+</tbody></table><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 11, 2026.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>

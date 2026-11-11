@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VMI Keydets | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+.note { color: #656d76; font-size: 14px; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+</style>
+</head>
+<body>
+<h1>VMI Keydets</h1>
+<p class="subtitle">SoCon &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<section><h2>2026-27</h2>
+<p>Net rank #294 &middot; AdjO 98.8 &middot; AdjD 111.4 &middot; Net -12.5 &middot; AdjT 71.8 &middot; 0-2 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/05</td><td><a href="smu-mustangs.html">SMU Mustangs</a></td><td>A</td><td>L</td><td>70-95</td></tr>
+<tr><td>11/07</td><td><a href="utsa-roadrunners.html">UTSA Roadrunners</a></td><td>A</td><td>L</td><td>68-70</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Rickey Bradley Jr.</td><td>G</td><td>3</td><td>13.0</td><td>75.9</td><td>27.8</td><td>63.3</td><td>-1.4</td></tr>
+<tr><td>TJ Johnson</td><td>F</td><td>3</td><td>17.7</td><td>113.4</td><td>26.0</td><td>61.7</td><td>4.7</td></tr>
+<tr><td>Alexander Daushvili</td><td>F</td><td>3</td><td>8.0</td><td>83.8</td><td>16.8</td><td>58.3</td><td>0.3</td></tr>
+<tr><td>Trap Johnson</td><td>G</td><td>3</td><td>7.7</td><td>73.0</td><td>19.9</td><td>54.2</td><td>0.6</td></tr>
+<tr><td>Paulius Narvilas</td><td>F</td><td>3</td><td>2.7</td><td>48.1</td><td>11.4</td><td>50.0</td><td>-1.3</td></tr>
+<tr><td>Rokas Zilys</td><td>G</td><td>3</td><td>11.0</td><td>112.2</td><td>20.8</td><td>48.3</td><td>2.9</td></tr>
+<tr><td>Joao Panzo</td><td>F</td><td>3</td><td>4.0</td><td>57.8</td><td>19.0</td><td>37.5</td><td>-1.5</td></tr>
+<tr><td>Zion Vaamonde</td><td>F</td><td>3</td><td>5.7</td><td>84.2</td><td>19.3</td><td>35.8</td><td>-0.7</td></tr>
+<tr><td>Cal Liston</td><td>F</td><td>3</td><td>2.7</td><td>72.7</td><td>12.9</td><td>29.2</td><td>-0.3</td></tr>
+<tr><td>AJ Clark</td><td>G</td><td>2</td><td>10.5</td><td>142.3</td><td>20.9</td><td>24.2</td><td>8.4</td></tr>
+<tr><td>Dionysis Exarchopoulos</td><td>F</td><td>2</td><td>2.5</td><td>63.5</td><td>20.2</td><td>13.3</td><td>-0.4</td></tr>
+<tr><td>Rodrigas Jucevicius</td><td>G</td><td>2</td><td>1.0</td><td>66.7</td><td>8.2</td><td>12.5</td><td>0.8</td></tr>
+<tr><td>Walker Andrews</td><td>G</td><td>1</td><td>6.0</td><td>120.0</td><td>34.3</td><td>5.0</td><td>2.5</td></tr>
+<tr><td>Cazell Henderson-Bradley</td><td>G</td><td>1</td><td>0.0</td><td>0.0</td><td>6.9</td><td>5.0</td><td>0.0</td></tr>
+<tr><td>Mason Lawson</td><td>G</td><td>1</td><td>2.0</td><td>100.0</td><td>41.1</td><td>1.7</td><td>0.5</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
+</section>
+<section><h2>2025-26</h2>
+<p>Net rank #358 &middot; AdjO 99.7 &middot; AdjD 123.0 &middot; Net -23.3 &middot; AdjT 67.1 &middot; 3-26 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/07</td><td><a href="southern-indiana-screaming-eagles.html">Southern Indiana Screaming Eagles</a></td><td>A</td><td>W</td><td>78-74</td></tr>
+<tr><td>11/09</td><td><a href="missouri-tigers.html">Missouri Tigers</a></td><td>A</td><td>L</td><td>68-106</td></tr>
+<tr><td>11/15</td><td><a href="jacksonville-dolphins.html">Jacksonville Dolphins</a></td><td>H</td><td>L</td><td>67-69</td></tr>
+<tr><td>11/19</td><td><a href="richmond-spiders.html">Richmond Spiders</a></td><td>A</td><td>L</td><td>54-87</td></tr>
+<tr><td>11/22</td><td><a href="stetson-hatters.html">Stetson Hatters</a></td><td>A</td><td>L</td><td>80-99</td></tr>
+<tr><td>11/24</td><td><a href="buffalo-bulls.html">Buffalo Bulls</a></td><td>N</td><td>L</td><td>70-78</td></tr>
+<tr><td>11/26</td><td><a href="bowling-green-falcons.html">Bowling Green Falcons</a></td><td>N</td><td>L</td><td>48-81</td></tr>
+<tr><td>11/29</td><td><a href="ucf-knights.html">UCF Knights</a></td><td>A</td><td>L</td><td>57-82</td></tr>
+<tr><td>12/09</td><td><a href="loyola-maryland-greyhounds.html">Loyola Maryland Greyhounds</a></td><td>H</td><td>W</td><td>86-70</td></tr>
+<tr><td>12/21</td><td><a href="radford-highlanders.html">Radford Highlanders</a></td><td>A</td><td>L</td><td>90-97</td></tr>
+<tr><td>01/01</td><td><a href="samford-bulldogs.html">Samford Bulldogs</a></td><td>H</td><td>L</td><td>58-78</td></tr>
+<tr><td>01/03</td><td><a href="chattanooga-mocs.html">Chattanooga Mocs</a></td><td>H</td><td>W</td><td>79-71</td></tr>
+<tr><td>01/07</td><td><a href="east-tennessee-state-buccaneers.html">East Tennessee State Buccaneers</a></td><td>A</td><td>L</td><td>67-81</td></tr>
+<tr><td>01/10</td><td><a href="furman-paladins.html">Furman Paladins</a></td><td>A</td><td>L</td><td>48-69</td></tr>
+<tr><td>01/15</td><td><a href="mercer-bears.html">Mercer Bears</a></td><td>H</td><td>L</td><td>67-77</td></tr>
+<tr><td>01/17</td><td><a href="the-citadel-bulldogs.html">The Citadel Bulldogs</a></td><td>H</td><td>L</td><td>68-82</td></tr>
+<tr><td>01/21</td><td><a href="unc-greensboro-spartans.html">UNC Greensboro Spartans</a></td><td>H</td><td>L</td><td>78-85</td></tr>
+<tr><td>01/24</td><td><a href="western-carolina-catamounts.html">Western Carolina Catamounts</a></td><td>A</td><td>L</td><td>58-88</td></tr>
+<tr><td>01/29</td><td><a href="the-citadel-bulldogs.html">The Citadel Bulldogs</a></td><td>A</td><td>L</td><td>56-80</td></tr>
+<tr><td>01/31</td><td><a href="mercer-bears.html">Mercer Bears</a></td><td>A</td><td>L</td><td>81-95</td></tr>
+<tr><td>02/04</td><td><a href="wofford-terriers.html">Wofford Terriers</a></td><td>H</td><td>L</td><td>67-81</td></tr>
+<tr><td>02/07</td><td><a href="east-tennessee-state-buccaneers.html">East Tennessee State Buccaneers</a></td><td>H</td><td>L</td><td>70-87</td></tr>
+<tr><td>02/11</td><td><a href="unc-greensboro-spartans.html">UNC Greensboro Spartans</a></td><td>A</td><td>L</td><td>71-92</td></tr>
+<tr><td>02/14</td><td><a href="furman-paladins.html">Furman Paladins</a></td><td>H</td><td>L</td><td>72-90</td></tr>
+<tr><td>02/18</td><td><a href="wofford-terriers.html">Wofford Terriers</a></td><td>A</td><td>L</td><td>76-82</td></tr>
+<tr><td>02/21</td><td><a href="western-carolina-catamounts.html">Western Carolina Catamounts</a></td><td>H</td><td>L</td><td>62-81</td></tr>
+<tr><td>02/26</td><td><a href="samford-bulldogs.html">Samford Bulldogs</a></td><td>A</td><td>L</td><td>61-80</td></tr>
+<tr><td>02/28</td><td><a href="chattanooga-mocs.html">Chattanooga Mocs</a></td><td>A</td><td>L</td><td>79-86</td></tr>
+<tr><td>03/06</td><td><a href="unc-greensboro-spartans.html">UNC Greensboro Spartans</a></td><td>N</td><td>L</td><td>70-84</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>TJ Johnson</td><td>F</td><td>31</td><td>18.3</td><td>105.1</td><td>25.0</td><td>86.2</td><td>4.2</td></tr>
+<tr><td>Tan Yildizoglu</td><td>G</td><td>31</td><td>10.2</td><td>79.0</td><td>21.2</td><td>75.4</td><td>0.9</td></tr>
+<tr><td>Linus Holmstrom</td><td>G</td><td>31</td><td>11.3</td><td>104.0</td><td>20.5</td><td>65.9</td><td>2.4</td></tr>
+<tr><td>Mario Tatum Jr.</td><td>G</td><td>31</td><td>8.4</td><td>91.7</td><td>18.2</td><td>62.8</td><td>0.9</td></tr>
+<tr><td>Cal Liston</td><td>F</td><td>32</td><td>5.3</td><td>91.9</td><td>12.9</td><td>57.5</td><td>1.2</td></tr>
+<tr><td>AJ Clark</td><td>G</td><td>22</td><td>6.6</td><td>91.2</td><td>14.1</td><td>45.5</td><td>3.2</td></tr>
+<tr><td>Kaden Stuckey</td><td>F</td><td>28</td><td>4.4</td><td>69.4</td><td>17.3</td><td>40.9</td><td>0.2</td></tr>
+<tr><td>Walker Andrews</td><td>G</td><td>29</td><td>5.9</td><td>101.1</td><td>22.1</td><td>30.5</td><td>0.9</td></tr>
+<tr><td>Jaylen Pazon</td><td>G</td><td>20</td><td>6.7</td><td>84.3</td><td>30.0</td><td>21.0</td><td>-0.3</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>2024-25</h2>
+<p>Net rank #307 &middot; AdjO 100.3 &middot; AdjD 112.1 &middot; Net -11.8 &middot; AdjT 68.3 &middot; 11-19 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/09</td><td><a href="bellarmine-knights.html">Bellarmine Knights</a></td><td>A</td><td>W</td><td>76-71</td></tr>
+<tr><td>11/15</td><td><a href="tennessee-tech-golden-eagles.html">Tennessee Tech Golden Eagles</a></td><td>N</td><td>L</td><td>71-72</td></tr>
+<tr><td>11/16</td><td><a href="charleston-southern-buccaneers.html">Charleston Southern Buccaneers</a></td><td>N</td><td>W</td><td>80-69</td></tr>
+<tr><td>11/18</td><td><a href="pittsburgh-panthers.html">Pittsburgh Panthers</a></td><td>A</td><td>L</td><td>48-93</td></tr>
+<tr><td>11/22</td><td><a href="davidson-wildcats.html">Davidson Wildcats</a></td><td>A</td><td>L</td><td>66-93</td></tr>
+<tr><td>11/26</td><td><a href="loyola-maryland-greyhounds.html">Loyola Maryland Greyhounds</a></td><td>A</td><td>L</td><td>67-70</td></tr>
+<tr><td>11/29</td><td><a href="george-washington-revolutionaries.html">George Washington Revolutionaries</a></td><td>A</td><td>L</td><td>64-77</td></tr>
+<tr><td>12/07</td><td><a href="queens-university-royals.html">Queens University Royals</a></td><td>H</td><td>L</td><td>78-81</td></tr>
+<tr><td>12/21</td><td><a href="richmond-spiders.html">Richmond Spiders</a></td><td>A</td><td>L</td><td>71-78</td></tr>
+<tr><td>01/01</td><td><a href="east-tennessee-state-buccaneers.html">East Tennessee State Buccaneers</a></td><td>A</td><td>L</td><td>69-84</td></tr>
+<tr><td>01/04</td><td><a href="mercer-bears.html">Mercer Bears</a></td><td>H</td><td>L</td><td>67-70</td></tr>
+<tr><td>01/09</td><td><a href="samford-bulldogs.html">Samford Bulldogs</a></td><td>A</td><td>L</td><td>68-81</td></tr>
+<tr><td>01/12</td><td><a href="chattanooga-mocs.html">Chattanooga Mocs</a></td><td>A</td><td>L</td><td>66-91</td></tr>
+<tr><td>01/15</td><td><a href="western-carolina-catamounts.html">Western Carolina Catamounts</a></td><td>H</td><td>W</td><td>66-50</td></tr>
+<tr><td>01/18</td><td><a href="the-citadel-bulldogs.html">The Citadel Bulldogs</a></td><td>A</td><td>W</td><td>75-70</td></tr>
+<tr><td>01/22</td><td><a href="furman-paladins.html">Furman Paladins</a></td><td>H</td><td>W</td><td>91-82</td></tr>
+<tr><td>01/25</td><td><a href="unc-greensboro-spartans.html">UNC Greensboro Spartans</a></td><td>H</td><td>L</td><td>57-60</td></tr>
+<tr><td>01/29</td><td><a href="wofford-terriers.html">Wofford Terriers</a></td><td>A</td><td>W</td><td>74-67</td></tr>
+<tr><td>02/01</td><td><a href="western-carolina-catamounts.html">Western Carolina Catamounts</a></td><td>A</td><td>W</td><td>80-76</td></tr>
+<tr><td>02/05</td><td><a href="east-tennessee-state-buccaneers.html">East Tennessee State Buccaneers</a></td><td>H</td><td>L</td><td>55-62</td></tr>
+<tr><td>02/08</td><td><a href="the-citadel-bulldogs.html">The Citadel Bulldogs</a></td><td>H</td><td>W</td><td>82-70</td></tr>
+<tr><td>02/12</td><td><a href="unc-greensboro-spartans.html">UNC Greensboro Spartans</a></td><td>A</td><td>L</td><td>54-80</td></tr>
+<tr><td>02/15</td><td><a href="mercer-bears.html">Mercer Bears</a></td><td>A</td><td>W</td><td>80-71</td></tr>
+<tr><td>02/19</td><td><a href="wofford-terriers.html">Wofford Terriers</a></td><td>H</td><td>L</td><td>43-82</td></tr>
+<tr><td>02/22</td><td><a href="furman-paladins.html">Furman Paladins</a></td><td>A</td><td>L</td><td>71-75</td></tr>
+<tr><td>02/27</td><td><a href="samford-bulldogs.html">Samford Bulldogs</a></td><td>H</td><td>L</td><td>83-95</td></tr>
+<tr><td>03/01</td><td><a href="chattanooga-mocs.html">Chattanooga Mocs</a></td><td>H</td><td>L</td><td>70-91</td></tr>
+<tr><td>03/07</td><td><a href="the-citadel-bulldogs.html">The Citadel Bulldogs</a></td><td>N</td><td>W</td><td>73-62</td></tr>
+<tr><td>03/08</td><td><a href="unc-greensboro-spartans.html">UNC Greensboro Spartans</a></td><td>N</td><td>W</td><td>64-57</td></tr>
+<tr><td>03/09</td><td><a href="wofford-terriers.html">Wofford Terriers</a></td><td>N</td><td>L</td><td>65-85</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Rickey Bradley Jr.</td><td>G</td><td>34</td><td>16.3</td><td>101.8</td><td>24.3</td><td>84.3</td><td>3.3</td></tr>
+<tr><td>TJ Johnson</td><td>F</td><td>33</td><td>12.3</td><td>104.5</td><td>18.5</td><td>79.1</td><td>3.3</td></tr>
+<tr><td>Tan Yildizoglu</td><td>G</td><td>32</td><td>8.3</td><td>75.9</td><td>19.2</td><td>68.8</td><td>0.0</td></tr>
+<tr><td>Augustinas Kiudulas</td><td>F</td><td>31</td><td>15.2</td><td>97.4</td><td>27.2</td><td>66.9</td><td>2.3</td></tr>
+<tr><td>Linus Holmstrom</td><td>G</td><td>33</td><td>6.8</td><td>95.6</td><td>17.3</td><td>51.4</td><td>0.8</td></tr>
+<tr><td>AJ Clark</td><td>G</td><td>32</td><td>4.9</td><td>100.7</td><td>11.6</td><td>50.4</td><td>4.2</td></tr>
+<tr><td>Kaden Stuckey</td><td>F</td><td>33</td><td>3.5</td><td>90.4</td><td>15.3</td><td>31.0</td><td>0.8</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file (Nov 11-13). Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not.</p><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th></tr></thead><tbody>
+<tr><td>Wed 05:00 PM</td><td><a href="north-carolina-central-eagles.html">NC Central</a></td><td>H</td><td>NC Central -0.4</td><td>52.2%</td><td>-7.5</td><td>-7.9</td></tr>
+</tbody></table><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 11, 2026.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>

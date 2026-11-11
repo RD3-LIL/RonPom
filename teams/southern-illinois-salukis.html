@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Southern Illinois Salukis | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+.note { color: #656d76; font-size: 14px; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+</style>
+</head>
+<body>
+<h1>Southern Illinois Salukis</h1>
+<p class="subtitle">MVC &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<section><h2>2026-27</h2>
+<p>Net rank #236 &middot; AdjO 111.7 &middot; AdjD 117.5 &middot; Net -5.8 &middot; AdjT 71.0 &middot; 0-1 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/06</td><td><a href="kansas-city-roos.html">Kansas City Roos</a></td><td>A</td><td>L</td><td>93-100</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Jalen Haynes</td><td>G</td><td>2</td><td>26.0</td><td>117.4</td><td>37.3</td><td>72.5</td><td>5.5</td></tr>
+<tr><td>Jeremiah Jackson</td><td>G</td><td>2</td><td>14.0</td><td>112.0</td><td>21.4</td><td>71.2</td><td>3.9</td></tr>
+<tr><td>Max Pikaar</td><td>F</td><td>2</td><td>7.0</td><td>116.7</td><td>12.0</td><td>61.2</td><td>6.8</td></tr>
+<tr><td>Luke Walsh</td><td>G</td><td>2</td><td>7.0</td><td>123.7</td><td>14.2</td><td>48.8</td><td>3.0</td></tr>
+<tr><td>Jaheem Webber</td><td>C</td><td>2</td><td>8.0</td><td>98.0</td><td>22.8</td><td>43.8</td><td>0.8</td></tr>
+<tr><td>Luke Susko</td><td>G</td><td>2</td><td>8.5</td><td>95.7</td><td>25.5</td><td>42.5</td><td>1.0</td></tr>
+<tr><td>Jaxson Fugate</td><td>G</td><td>2</td><td>5.5</td><td>83.3</td><td>19.0</td><td>42.5</td><td>2.4</td></tr>
+<tr><td>Damien Mayo Jr.</td><td>G</td><td>1</td><td>14.0</td><td>127.3</td><td>17.3</td><td>38.8</td><td>4.8</td></tr>
+<tr><td>Caden Hawkins</td><td>G</td><td>2</td><td>2.0</td><td>68.0</td><td>12.5</td><td>28.8</td><td>1.3</td></tr>
+<tr><td>Pietro Ranieri</td><td>F</td><td>1</td><td>0.0</td><td>0.0</td><td>6.1</td><td>20.0</td><td>0.2</td></tr>
+<tr><td>Brock McClure</td><td>G</td><td>1</td><td>2.0</td><td>106.4</td><td>9.2</td><td>12.5</td><td>0.1</td></tr>
+<tr><td>Daniel Pauliukonis</td><td>F</td><td>1</td><td>3.0</td><td>150.0</td><td>14.0</td><td>8.8</td><td>0.5</td></tr>
+<tr><td>Ty Laur</td><td>F</td><td>1</td><td>0.0</td><td>0.0</td><td>7.0</td><td>8.8</td><td>0.2</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
+</section>
+<section><h2>2025-26</h2>
+<p>Net rank #121 &middot; AdjO 105.5 &middot; AdjD 101.3 &middot; Net 4.2 &middot; AdjT 69.9 &middot; 15-16 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/07</td><td><a href="kansas-city-roos.html">Kansas City Roos</a></td><td>H</td><td>W</td><td>101-78</td></tr>
+<tr><td>11/12</td><td><a href="nevada-wolf-pack.html">Nevada Wolf Pack</a></td><td>A</td><td>L</td><td>81-86</td></tr>
+<tr><td>11/17</td><td><a href="north-dakota-state-bison.html">North Dakota State Bison</a></td><td>A</td><td>L</td><td>85-92</td></tr>
+<tr><td>11/23</td><td><a href="delaware-blue-hens.html">Delaware Blue Hens</a></td><td>N</td><td>W</td><td>79-59</td></tr>
+<tr><td>11/24</td><td><a href="uab-blazers.html">UAB Blazers</a></td><td>N</td><td>L</td><td>73-81</td></tr>
+<tr><td>11/26</td><td><a href="memphis-tigers.html">Memphis Tigers</a></td><td>A</td><td>L</td><td>58-74</td></tr>
+<tr><td>11/29</td><td><a href="little-rock-trojans.html">Little Rock Trojans</a></td><td>H</td><td>W</td><td>74-65</td></tr>
+<tr><td>12/03</td><td><a href="high-point-panthers.html">High Point Panthers</a></td><td>A</td><td>W</td><td>86-84</td></tr>
+<tr><td>12/10</td><td><a href="ut-martin-skyhawks.html">UT Martin Skyhawks</a></td><td>H</td><td>W</td><td>83-54</td></tr>
+<tr><td>12/13</td><td><a href="richmond-spiders.html">Richmond Spiders</a></td><td>A</td><td>L</td><td>84-93</td></tr>
+<tr><td>12/18</td><td><a href="illinois-state-redbirds.html">Illinois State Redbirds</a></td><td>H</td><td>L</td><td>68-75</td></tr>
+<tr><td>12/21</td><td><a href="bradley-braves.html">Bradley Braves</a></td><td>A</td><td>L</td><td>69-73</td></tr>
+<tr><td>12/29</td><td><a href="murray-state-racers.html">Murray State Racers</a></td><td>A</td><td>L</td><td>81-84</td></tr>
+<tr><td>01/01</td><td><a href="valparaiso-beacons.html">Valparaiso Beacons</a></td><td>H</td><td>W</td><td>75-70</td></tr>
+<tr><td>01/04</td><td><a href="belmont-bruins.html">Belmont Bruins</a></td><td>A</td><td>W</td><td>68-67</td></tr>
+<tr><td>01/07</td><td><a href="uic-flames.html">UIC Flames</a></td><td>A</td><td>L</td><td>57-70</td></tr>
+<tr><td>01/14</td><td><a href="drake-bulldogs.html">Drake Bulldogs</a></td><td>H</td><td>L</td><td>73-76</td></tr>
+<tr><td>01/17</td><td><a href="belmont-bruins.html">Belmont Bruins</a></td><td>H</td><td>L</td><td>68-73</td></tr>
+<tr><td>01/21</td><td><a href="valparaiso-beacons.html">Valparaiso Beacons</a></td><td>A</td><td>L</td><td>63-69</td></tr>
+<tr><td>01/28</td><td><a href="northern-iowa-panthers.html">Northern Iowa Panthers</a></td><td>H</td><td>W</td><td>65-50</td></tr>
+<tr><td>01/31</td><td><a href="uic-flames.html">UIC Flames</a></td><td>H</td><td>L</td><td>66-68</td></tr>
+<tr><td>02/03</td><td><a href="illinois-state-redbirds.html">Illinois State Redbirds</a></td><td>A</td><td>W</td><td>54-50</td></tr>
+<tr><td>02/06</td><td><a href="murray-state-racers.html">Murray State Racers</a></td><td>H</td><td>L</td><td>81-91</td></tr>
+<tr><td>02/09</td><td><a href="indiana-state-sycamores.html">Indiana State Sycamores</a></td><td>A</td><td>W</td><td>80-65</td></tr>
+<tr><td>02/12</td><td><a href="evansville-purple-aces.html">Evansville Purple Aces</a></td><td>H</td><td>W</td><td>86-60</td></tr>
+<tr><td>02/15</td><td><a href="bradley-braves.html">Bradley Braves</a></td><td>H</td><td>L</td><td>60-70</td></tr>
+<tr><td>02/18</td><td><a href="drake-bulldogs.html">Drake Bulldogs</a></td><td>A</td><td>W</td><td>66-61</td></tr>
+<tr><td>02/21</td><td><a href="northern-iowa-panthers.html">Northern Iowa Panthers</a></td><td>A</td><td>W</td><td>59-57</td></tr>
+<tr><td>02/25</td><td><a href="indiana-state-sycamores.html">Indiana State Sycamores</a></td><td>H</td><td>W</td><td>66-55</td></tr>
+<tr><td>03/01</td><td><a href="evansville-purple-aces.html">Evansville Purple Aces</a></td><td>A</td><td>W</td><td>81-67</td></tr>
+<tr><td>03/05</td><td><a href="drake-bulldogs.html">Drake Bulldogs</a></td><td>N</td><td>L</td><td>63-67</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Drew Steffe</td><td>G</td><td>32</td><td>9.9</td><td>88.6</td><td>18.0</td><td>74.7</td><td>1.3</td></tr>
+<tr><td>Quel&#x27;Ron House</td><td>G</td><td>30</td><td>15.2</td><td>89.9</td><td>27.9</td><td>68.4</td><td>1.4</td></tr>
+<tr><td>Damien Mayo Jr.</td><td>G</td><td>31</td><td>9.1</td><td>98.1</td><td>18.2</td><td>59.5</td><td>2.8</td></tr>
+<tr><td>Rolyns Aligbe</td><td>F</td><td>32</td><td>9.5</td><td>96.2</td><td>20.1</td><td>59.2</td><td>2.8</td></tr>
+<tr><td>Jalen Haynes</td><td>G</td><td>32</td><td>7.9</td><td>89.7</td><td>21.2</td><td>50.4</td><td>1.2</td></tr>
+<tr><td>Prince Aligbe</td><td>F</td><td>30</td><td>7.2</td><td>79.4</td><td>20.4</td><td>50.3</td><td>-0.3</td></tr>
+<tr><td>Davion Sykes</td><td>G</td><td>32</td><td>7.1</td><td>96.3</td><td>19.3</td><td>46.1</td><td>1.9</td></tr>
+<tr><td>Isaiah Stafford</td><td>G</td><td>16</td><td>7.3</td><td>86.3</td><td>22.1</td><td>23.1</td><td>0.2</td></tr>
+<tr><td>Max Pikaar</td><td>F</td><td>27</td><td>1.9</td><td>73.6</td><td>11.6</td><td>22.1</td><td>0.8</td></tr>
+<tr><td>Jorge Moreno</td><td>F</td><td>25</td><td>2.8</td><td>91.4</td><td>14.3</td><td>20.5</td><td>0.9</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>2024-25</h2>
+<p>Net rank #187 &middot; AdjO 106.4 &middot; AdjD 108.8 &middot; Net -2.3 &middot; AdjT 68.3 &middot; 12-19 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/04</td><td><a href="charleston-cougars.html">Charleston Cougars</a></td><td>N</td><td>L</td><td>80-90</td></tr>
+<tr><td>11/14</td><td><a href="oklahoma-state-cowboys.html">Oklahoma State Cowboys</a></td><td>A</td><td>L</td><td>78-85</td></tr>
+<tr><td>11/18</td><td><a href="north-dakota-state-bison.html">North Dakota State Bison</a></td><td>H</td><td>W</td><td>69-44</td></tr>
+<tr><td>11/22</td><td><a href="florida-gators.html">Florida Gators</a></td><td>A</td><td>L</td><td>68-93</td></tr>
+<tr><td>11/25</td><td><a href="louisiana-tech-bulldogs.html">Louisiana Tech Bulldogs</a></td><td>N</td><td>L</td><td>79-85</td></tr>
+<tr><td>11/26</td><td><a href="eastern-kentucky-colonels.html">Eastern Kentucky Colonels</a></td><td>N</td><td>L</td><td>72-77</td></tr>
+<tr><td>12/03</td><td><a href="bradley-braves.html">Bradley Braves</a></td><td>H</td><td>L</td><td>60-83</td></tr>
+<tr><td>12/07</td><td><a href="southern-indiana-screaming-eagles.html">Southern Indiana Screaming Eagles</a></td><td>H</td><td>W</td><td>73-70</td></tr>
+<tr><td>12/14</td><td><a href="austin-peay-governors.html">Austin Peay Governors</a></td><td>A</td><td>W</td><td>65-60</td></tr>
+<tr><td>12/21</td><td><a href="high-point-panthers.html">High Point Panthers</a></td><td>H</td><td>L</td><td>81-94</td></tr>
+<tr><td>12/29</td><td><a href="northern-iowa-panthers.html">Northern Iowa Panthers</a></td><td>A</td><td>L</td><td>67-78</td></tr>
+<tr><td>01/01</td><td><a href="evansville-purple-aces.html">Evansville Purple Aces</a></td><td>H</td><td>L</td><td>53-68</td></tr>
+<tr><td>01/05</td><td><a href="illinois-state-redbirds.html">Illinois State Redbirds</a></td><td>A</td><td>L</td><td>54-85</td></tr>
+<tr><td>01/08</td><td><a href="belmont-bruins.html">Belmont Bruins</a></td><td>A</td><td>L</td><td>86-90</td></tr>
+<tr><td>01/11</td><td><a href="missouri-state-bears.html">Missouri State Bears</a></td><td>H</td><td>W</td><td>88-78</td></tr>
+<tr><td>01/15</td><td><a href="missouri-state-bears.html">Missouri State Bears</a></td><td>A</td><td>W</td><td>73-51</td></tr>
+<tr><td>01/18</td><td><a href="northern-iowa-panthers.html">Northern Iowa Panthers</a></td><td>H</td><td>W</td><td>73-49</td></tr>
+<tr><td>01/22</td><td><a href="murray-state-racers.html">Murray State Racers</a></td><td>H</td><td>L</td><td>64-74</td></tr>
+<tr><td>01/25</td><td><a href="uic-flames.html">UIC Flames</a></td><td>A</td><td>W</td><td>89-85</td></tr>
+<tr><td>01/28</td><td><a href="valparaiso-beacons.html">Valparaiso Beacons</a></td><td>A</td><td>W</td><td>79-75</td></tr>
+<tr><td>02/01</td><td><a href="drake-bulldogs.html">Drake Bulldogs</a></td><td>H</td><td>L</td><td>65-75</td></tr>
+<tr><td>02/05</td><td><a href="evansville-purple-aces.html">Evansville Purple Aces</a></td><td>A</td><td>W</td><td>68-59</td></tr>
+<tr><td>02/08</td><td><a href="uic-flames.html">UIC Flames</a></td><td>H</td><td>W</td><td>79-67</td></tr>
+<tr><td>02/12</td><td><a href="bradley-braves.html">Bradley Braves</a></td><td>A</td><td>L</td><td>64-78</td></tr>
+<tr><td>02/15</td><td><a href="belmont-bruins.html">Belmont Bruins</a></td><td>H</td><td>L</td><td>68-73</td></tr>
+<tr><td>02/19</td><td><a href="murray-state-racers.html">Murray State Racers</a></td><td>A</td><td>L</td><td>60-62</td></tr>
+<tr><td>02/22</td><td><a href="valparaiso-beacons.html">Valparaiso Beacons</a></td><td>H</td><td>L</td><td>79-83</td></tr>
+<tr><td>02/25</td><td><a href="illinois-state-redbirds.html">Illinois State Redbirds</a></td><td>H</td><td>W</td><td>88-79</td></tr>
+<tr><td>03/02</td><td><a href="indiana-state-sycamores.html">Indiana State Sycamores</a></td><td>A</td><td>L</td><td>77-95</td></tr>
+<tr><td>03/06</td><td><a href="indiana-state-sycamores.html">Indiana State Sycamores</a></td><td>N</td><td>W</td><td>86-85</td></tr>
+<tr><td>03/07</td><td><a href="drake-bulldogs.html">Drake Bulldogs</a></td><td>N</td><td>L</td><td>53-70</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Ali Dibba</td><td>G</td><td>33</td><td>17.2</td><td>98.9</td><td>26.3</td><td>84.9</td><td>2.7</td></tr>
+<tr><td>Kennard Davis Jr.</td><td>G</td><td>32</td><td>16.3</td><td>100.1</td><td>24.5</td><td>82.6</td><td>2.9</td></tr>
+<tr><td>Drew Steffe</td><td>G</td><td>33</td><td>6.8</td><td>94.5</td><td>14.0</td><td>65.8</td><td>2.1</td></tr>
+<tr><td>Jarrett Hensley</td><td>F</td><td>33</td><td>10.4</td><td>94.5</td><td>22.4</td><td>63.1</td><td>1.9</td></tr>
+<tr><td>Damien Mayo Jr.</td><td>G</td><td>31</td><td>5.0</td><td>77.7</td><td>13.7</td><td>56.1</td><td>0.6</td></tr>
+<tr><td>Davion Sykes</td><td>G</td><td>31</td><td>4.8</td><td>89.3</td><td>15.9</td><td>40.6</td><td>1.1</td></tr>
+<tr><td>Sheridan Sharp</td><td>G</td><td>26</td><td>4.5</td><td>81.1</td><td>16.0</td><td>34.8</td><td>0.5</td></tr>
+<tr><td>Rolyns Aligbe</td><td>F</td><td>31</td><td>3.3</td><td>72.4</td><td>18.9</td><td>28.7</td><td>0.1</td></tr>
+<tr><td>Antwaun Massey</td><td>F</td><td>19</td><td>4.2</td><td>87.8</td><td>16.4</td><td>21.4</td><td>0.9</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file (Nov 11-13). Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not.</p><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th></tr></thead><tbody>
+<tr><td>Thu 07:00 PM</td><td><a href="richmond-spiders.html">Richmond</a></td><td>H</td><td>Richmond -11.5</td><td>17.5%</td><td>-</td><td>-</td></tr>
+</tbody></table><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 11, 2026.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>

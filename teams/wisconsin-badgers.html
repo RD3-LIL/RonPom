@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wisconsin Badgers | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+.note { color: #656d76; font-size: 14px; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+</style>
+</head>
+<body>
+<h1>Wisconsin Badgers</h1>
+<p class="subtitle">Big Ten &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<section><h2>2026-27</h2>
+<p>Net rank #39 &middot; AdjO 113.1 &middot; AdjD 95.6 &middot; Net 17.5 &middot; AdjT 70.5 &middot; 3-0 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/02</td><td><a href="denver-pioneers.html">Denver Pioneers</a></td><td>H</td><td>W</td><td>75-68</td></tr>
+<tr><td>11/06</td><td><a href="delaware-blue-hens.html">Delaware Blue Hens</a></td><td>H</td><td>W</td><td>73-64</td></tr>
+<tr><td>11/10</td><td><a href="fairfield-stags.html">Fairfield Stags</a></td><td>H</td><td>W</td><td>89-42</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Owen Foxwell</td><td>G</td><td>3</td><td>14.7</td><td>104.2</td><td>24.1</td><td>70.8</td><td>3.4</td></tr>
+<tr><td>Braeden Carrington</td><td>G</td><td>3</td><td>15.0</td><td>144.2</td><td>18.5</td><td>68.3</td><td>7.9</td></tr>
+<tr><td>Nolan Winter</td><td>F</td><td>3</td><td>6.3</td><td>60.3</td><td>20.4</td><td>62.5</td><td>-0.0</td></tr>
+<tr><td>Eian Elmer</td><td>G</td><td>3</td><td>13.7</td><td>113.0</td><td>24.1</td><td>60.8</td><td>4.2</td></tr>
+<tr><td>Austin Rapp</td><td>F</td><td>3</td><td>8.0</td><td>104.3</td><td>17.2</td><td>54.2</td><td>3.0</td></tr>
+<tr><td>Jack Janicki</td><td>G</td><td>3</td><td>4.3</td><td>105.5</td><td>12.5</td><td>40.0</td><td>3.5</td></tr>
+<tr><td>Victory Onuetu</td><td>F</td><td>3</td><td>5.7</td><td>72.9</td><td>25.1</td><td>37.5</td><td>0.3</td></tr>
+<tr><td>Jackson Ball</td><td>G</td><td>3</td><td>3.0</td><td>72.3</td><td>16.3</td><td>30.8</td><td>-0.3</td></tr>
+<tr><td>Zach Kinziger</td><td>G</td><td>3</td><td>2.7</td><td>75.2</td><td>14.3</td><td>30.0</td><td>0.2</td></tr>
+<tr><td>Will Garlock</td><td>F</td><td>2</td><td>4.0</td><td>114.3</td><td>13.6</td><td>20.8</td><td>0.5</td></tr>
+<tr><td>Trey Autry</td><td>G</td><td>3</td><td>1.0</td><td>42.9</td><td>17.9</td><td>15.8</td><td>-0.9</td></tr>
+<tr><td>Hayden Jones</td><td>G</td><td>3</td><td>2.0</td><td>68.5</td><td>42.5</td><td>8.3</td><td>-0.8</td></tr>
+<tr><td>Isaac Riddle</td><td>F</td><td>1</td><td>0.0</td><td>—</td><td>—</td><td>0.8</td><td>—</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
+</section>
+<section><h2>2025-26</h2>
+<p>Net rank #29 &middot; AdjO 123.4 &middot; AdjD 103.1 &middot; Net 20.3 &middot; AdjT 69.8 &middot; 24-11 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/03</td><td><a href="campbell-fighting-camels.html">Campbell Fighting Camels</a></td><td>H</td><td>W</td><td>96-64</td></tr>
+<tr><td>11/07</td><td><a href="northern-illinois-huskies.html">Northern Illinois Huskies</a></td><td>H</td><td>W</td><td>97-72</td></tr>
+<tr><td>11/11</td><td><a href="ball-state-cardinals.html">Ball State Cardinals</a></td><td>H</td><td>W</td><td>86-55</td></tr>
+<tr><td>11/17</td><td><a href="siu-edwardsville-cougars.html">SIU Edwardsville Cougars</a></td><td>H</td><td>W</td><td>94-69</td></tr>
+<tr><td>11/21</td><td><a href="byu-cougars.html">BYU Cougars</a></td><td>A</td><td>L</td><td>70-98</td></tr>
+<tr><td>11/27</td><td><a href="providence-friars.html">Providence Friars</a></td><td>N</td><td>W</td><td>104-83</td></tr>
+<tr><td>11/28</td><td><a href="tcu-horned-frogs.html">TCU Horned Frogs</a></td><td>N</td><td>L</td><td>63-74</td></tr>
+<tr><td>12/03</td><td><a href="northwestern-wildcats.html">Northwestern Wildcats</a></td><td>H</td><td>W</td><td>85-73</td></tr>
+<tr><td>12/06</td><td><a href="marquette-golden-eagles.html">Marquette Golden Eagles</a></td><td>H</td><td>W</td><td>96-76</td></tr>
+<tr><td>12/10</td><td><a href="nebraska-cornhuskers.html">Nebraska Cornhuskers</a></td><td>A</td><td>L</td><td>60-90</td></tr>
+<tr><td>12/19</td><td><a href="villanova-wildcats.html">Villanova Wildcats</a></td><td>N</td><td>L</td><td>66-76</td></tr>
+<tr><td>12/22</td><td><a href="central-michigan-chippewas.html">Central Michigan Chippewas</a></td><td>H</td><td>W</td><td>88-61</td></tr>
+<tr><td>12/30</td><td><a href="milwaukee-panthers.html">Milwaukee Panthers</a></td><td>H</td><td>W</td><td>80-60</td></tr>
+<tr><td>01/03</td><td><a href="purdue-boilermakers.html">Purdue Boilermakers</a></td><td>H</td><td>L</td><td>73-89</td></tr>
+<tr><td>01/06</td><td><a href="ucla-bruins.html">UCLA Bruins</a></td><td>H</td><td>W</td><td>80-72</td></tr>
+<tr><td>01/10</td><td><a href="michigan-wolverines.html">Michigan Wolverines</a></td><td>A</td><td>W</td><td>91-88</td></tr>
+<tr><td>01/13</td><td><a href="minnesota-golden-gophers.html">Minnesota Golden Gophers</a></td><td>A</td><td>W</td><td>78-75</td></tr>
+<tr><td>01/17</td><td><a href="rutgers-scarlet-knights.html">Rutgers Scarlet Knights</a></td><td>H</td><td>W</td><td>96-87</td></tr>
+<tr><td>01/22</td><td><a href="penn-state-nittany-lions.html">Penn State Nittany Lions</a></td><td>A</td><td>W</td><td>98-71</td></tr>
+<tr><td>01/25</td><td><a href="usc-trojans.html">USC Trojans</a></td><td>H</td><td>L</td><td>71-73</td></tr>
+<tr><td>01/28</td><td><a href="minnesota-golden-gophers.html">Minnesota Golden Gophers</a></td><td>H</td><td>W</td><td>67-63</td></tr>
+<tr><td>01/31</td><td><a href="ohio-state-buckeyes.html">Ohio State Buckeyes</a></td><td>H</td><td>W</td><td>92-82</td></tr>
+<tr><td>02/07</td><td><a href="indiana-hoosiers.html">Indiana Hoosiers</a></td><td>A</td><td>L</td><td>77-78</td></tr>
+<tr><td>02/10</td><td><a href="illinois-fighting-illini.html">Illinois Fighting Illini</a></td><td>A</td><td>W</td><td>92-90</td></tr>
+<tr><td>02/13</td><td><a href="michigan-state-spartans.html">Michigan State Spartans</a></td><td>H</td><td>W</td><td>92-71</td></tr>
+<tr><td>02/17</td><td><a href="ohio-state-buckeyes.html">Ohio State Buckeyes</a></td><td>A</td><td>L</td><td>69-86</td></tr>
+<tr><td>02/22</td><td><a href="iowa-hawkeyes.html">Iowa Hawkeyes</a></td><td>H</td><td>W</td><td>84-71</td></tr>
+<tr><td>02/25</td><td><a href="oregon-ducks.html">Oregon Ducks</a></td><td>A</td><td>L</td><td>71-85</td></tr>
+<tr><td>02/28</td><td><a href="washington-huskies.html">Washington Huskies</a></td><td>A</td><td>W</td><td>90-73</td></tr>
+<tr><td>03/04</td><td><a href="maryland-terrapins.html">Maryland Terrapins</a></td><td>H</td><td>W</td><td>78-45</td></tr>
+<tr><td>03/07</td><td><a href="purdue-boilermakers.html">Purdue Boilermakers</a></td><td>A</td><td>W</td><td>97-93</td></tr>
+<tr><td>03/12</td><td><a href="washington-huskies.html">Washington Huskies</a></td><td>N</td><td>W</td><td>85-82</td></tr>
+<tr><td>03/13</td><td><a href="illinois-fighting-illini.html">Illinois Fighting Illini</a></td><td>N</td><td>W</td><td>91-88</td></tr>
+<tr><td>03/14</td><td><a href="michigan-wolverines.html">Michigan Wolverines</a></td><td>N</td><td>L</td><td>65-68</td></tr>
+<tr><td>03/19</td><td><a href="high-point-panthers.html">High Point Panthers</a></td><td>N</td><td>L</td><td>82-83</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>John Blackwell</td><td>G</td><td>34</td><td>19.1</td><td>108.5</td><td>26.6</td><td>82.1</td><td>4.3</td></tr>
+<tr><td>Nick Boyd</td><td>G</td><td>35</td><td>20.7</td><td>108.5</td><td>30.5</td><td>79.9</td><td>4.9</td></tr>
+<tr><td>Nolan Winter</td><td>F</td><td>31</td><td>13.1</td><td>121.2</td><td>17.9</td><td>68.1</td><td>6.5</td></tr>
+<tr><td>Andrew Rohde</td><td>G</td><td>34</td><td>5.7</td><td>84.5</td><td>13.0</td><td>64.4</td><td>1.8</td></tr>
+<tr><td>Aleksas Bieliauskas</td><td>F</td><td>35</td><td>4.9</td><td>92.3</td><td>13.4</td><td>50.3</td><td>1.5</td></tr>
+<tr><td>Austin Rapp</td><td>F</td><td>30</td><td>9.7</td><td>105.8</td><td>20.2</td><td>49.6</td><td>2.9</td></tr>
+<tr><td>Braeden Carrington</td><td>G</td><td>34</td><td>8.3</td><td>112.8</td><td>20.7</td><td>43.7</td><td>2.5</td></tr>
+<tr><td>Jack Janicki</td><td>G</td><td>26</td><td>2.2</td><td>70.6</td><td>9.8</td><td>30.6</td><td>0.7</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>2024-25</h2>
+<p>Net rank #16 &middot; AdjO 121.1 &middot; AdjD 98.0 &middot; Net 23.1 &middot; AdjT 67.9 &middot; 27-10 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/04</td><td><a href="holy-cross-crusaders.html">Holy Cross Crusaders</a></td><td>H</td><td>W</td><td>85-61</td></tr>
+<tr><td>11/07</td><td><a href="montana-state-bobcats.html">Montana State Bobcats</a></td><td>H</td><td>W</td><td>79-67</td></tr>
+<tr><td>11/10</td><td><a href="app-state-mountaineers.html">App State Mountaineers</a></td><td>H</td><td>W</td><td>87-56</td></tr>
+<tr><td>11/15</td><td><a href="arizona-wildcats.html">Arizona Wildcats</a></td><td>H</td><td>W</td><td>103-88</td></tr>
+<tr><td>11/18</td><td><a href="ut-rio-grande-valley-vaqueros.html">UT Rio Grande Valley Vaqueros</a></td><td>H</td><td>W</td><td>87-84</td></tr>
+<tr><td>11/22</td><td><a href="ucf-knights.html">UCF Knights</a></td><td>N</td><td>W</td><td>86-70</td></tr>
+<tr><td>11/24</td><td><a href="pittsburgh-panthers.html">Pittsburgh Panthers</a></td><td>N</td><td>W</td><td>81-75</td></tr>
+<tr><td>11/30</td><td><a href="chicago-state-cougars.html">Chicago State Cougars</a></td><td>H</td><td>W</td><td>74-53</td></tr>
+<tr><td>12/03</td><td><a href="michigan-wolverines.html">Michigan Wolverines</a></td><td>H</td><td>L</td><td>64-67</td></tr>
+<tr><td>12/07</td><td><a href="marquette-golden-eagles.html">Marquette Golden Eagles</a></td><td>A</td><td>L</td><td>74-88</td></tr>
+<tr><td>12/10</td><td><a href="illinois-fighting-illini.html">Illinois Fighting Illini</a></td><td>A</td><td>L</td><td>80-86</td></tr>
+<tr><td>12/14</td><td><a href="butler-bulldogs.html">Butler Bulldogs</a></td><td>N</td><td>W</td><td>83-74</td></tr>
+<tr><td>12/22</td><td><a href="detroit-mercy-titans.html">Detroit Mercy Titans</a></td><td>H</td><td>W</td><td>76-53</td></tr>
+<tr><td>01/03</td><td><a href="iowa-hawkeyes.html">Iowa Hawkeyes</a></td><td>H</td><td>W</td><td>116-85</td></tr>
+<tr><td>01/06</td><td><a href="rutgers-scarlet-knights.html">Rutgers Scarlet Knights</a></td><td>A</td><td>W</td><td>75-63</td></tr>
+<tr><td>01/10</td><td><a href="minnesota-golden-gophers.html">Minnesota Golden Gophers</a></td><td>H</td><td>W</td><td>80-59</td></tr>
+<tr><td>01/14</td><td><a href="ohio-state-buckeyes.html">Ohio State Buckeyes</a></td><td>H</td><td>W</td><td>70-68</td></tr>
+<tr><td>01/18</td><td><a href="usc-trojans.html">USC Trojans</a></td><td>A</td><td>W</td><td>84-69</td></tr>
+<tr><td>01/21</td><td><a href="ucla-bruins.html">UCLA Bruins</a></td><td>A</td><td>L</td><td>83-85</td></tr>
+<tr><td>01/26</td><td><a href="nebraska-cornhuskers.html">Nebraska Cornhuskers</a></td><td>H</td><td>W</td><td>83-55</td></tr>
+<tr><td>01/29</td><td><a href="maryland-terrapins.html">Maryland Terrapins</a></td><td>A</td><td>L</td><td>68-76</td></tr>
+<tr><td>02/01</td><td><a href="northwestern-wildcats.html">Northwestern Wildcats</a></td><td>A</td><td>W</td><td>75-69</td></tr>
+<tr><td>02/04</td><td><a href="indiana-hoosiers.html">Indiana Hoosiers</a></td><td>H</td><td>W</td><td>76-64</td></tr>
+<tr><td>02/08</td><td><a href="iowa-hawkeyes.html">Iowa Hawkeyes</a></td><td>A</td><td>W</td><td>74-63</td></tr>
+<tr><td>02/15</td><td><a href="purdue-boilermakers.html">Purdue Boilermakers</a></td><td>A</td><td>W</td><td>94-84</td></tr>
+<tr><td>02/18</td><td><a href="illinois-fighting-illini.html">Illinois Fighting Illini</a></td><td>H</td><td>W</td><td>95-74</td></tr>
+<tr><td>02/22</td><td><a href="oregon-ducks.html">Oregon Ducks</a></td><td>H</td><td>L</td><td>73-77</td></tr>
+<tr><td>02/25</td><td><a href="washington-huskies.html">Washington Huskies</a></td><td>H</td><td>W</td><td>88-62</td></tr>
+<tr><td>03/02</td><td><a href="michigan-state-spartans.html">Michigan State Spartans</a></td><td>A</td><td>L</td><td>62-71</td></tr>
+<tr><td>03/05</td><td><a href="minnesota-golden-gophers.html">Minnesota Golden Gophers</a></td><td>A</td><td>W</td><td>74-67</td></tr>
+<tr><td>03/08</td><td><a href="penn-state-nittany-lions.html">Penn State Nittany Lions</a></td><td>H</td><td>L</td><td>75-86</td></tr>
+<tr><td>03/13</td><td><a href="northwestern-wildcats.html">Northwestern Wildcats</a></td><td>N</td><td>W</td><td>70-63</td></tr>
+<tr><td>03/14</td><td><a href="ucla-bruins.html">UCLA Bruins</a></td><td>N</td><td>W</td><td>86-70</td></tr>
+<tr><td>03/15</td><td><a href="michigan-state-spartans.html">Michigan State Spartans</a></td><td>N</td><td>W</td><td>77-74</td></tr>
+<tr><td>03/16</td><td><a href="michigan-wolverines.html">Michigan Wolverines</a></td><td>N</td><td>L</td><td>53-59</td></tr>
+<tr><td>03/20</td><td><a href="montana-grizzlies.html">Montana Grizzlies</a></td><td>N</td><td>W</td><td>85-66</td></tr>
+<tr><td>03/22</td><td><a href="byu-cougars.html">BYU Cougars</a></td><td>N</td><td>L</td><td>89-91</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>John Blackwell</td><td>G</td><td>37</td><td>15.8</td><td>98.6</td><td>26.5</td><td>78.0</td><td>2.0</td></tr>
+<tr><td>John Tonje</td><td>G</td><td>37</td><td>19.6</td><td>117.0</td><td>27.8</td><td>77.8</td><td>5.1</td></tr>
+<tr><td>Steven Crowl</td><td>F</td><td>37</td><td>9.9</td><td>107.5</td><td>18.6</td><td>63.9</td><td>3.5</td></tr>
+<tr><td>Max Klesmit</td><td>G</td><td>33</td><td>9.2</td><td>89.6</td><td>19.2</td><td>61.6</td><td>1.2</td></tr>
+<tr><td>Kamari McGee</td><td>G</td><td>37</td><td>6.5</td><td>105.7</td><td>14.5</td><td>54.9</td><td>2.5</td></tr>
+<tr><td>Nolan Winter</td><td>F</td><td>37</td><td>9.4</td><td>121.1</td><td>19.1</td><td>52.6</td><td>4.1</td></tr>
+<tr><td>Carter Gilmore</td><td>F</td><td>37</td><td>4.0</td><td>103.7</td><td>10.4</td><td>47.5</td><td>2.0</td></tr>
+<tr><td>Jack Janicki</td><td>G</td><td>37</td><td>1.9</td><td>86.5</td><td>10.0</td><td>28.4</td><td>1.0</td></tr>
+<tr><td>Xavier Amos</td><td>F</td><td>37</td><td>3.5</td><td>84.6</td><td>22.3</td><td>24.3</td><td>0.3</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 11, 2026.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>

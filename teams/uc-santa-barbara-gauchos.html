@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UC Santa Barbara Gauchos | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+.note { color: #656d76; font-size: 14px; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+</style>
+</head>
+<body>
+<h1>UC Santa Barbara Gauchos</h1>
+<p class="subtitle">Big West &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<section><h2>2026-27</h2>
+<p>Net rank #116 &middot; AdjO 115.1 &middot; AdjD 110.2 &middot; Net 4.9 &middot; AdjT 66.8 &middot; 1-0 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/07</td><td><a href="oakland-golden-grizzlies.html">Oakland Golden Grizzlies</a></td><td>H</td><td>W</td><td>90-67</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Aidan Mahaney</td><td>G</td><td>2</td><td>11.5</td><td>136.3</td><td>18.2</td><td>60.0</td><td>3.9</td></tr>
+<tr><td>CJ Shaw</td><td>G</td><td>2</td><td>8.0</td><td>109.3</td><td>16.8</td><td>56.2</td><td>2.6</td></tr>
+<tr><td>Miro Little</td><td>G</td><td>2</td><td>7.0</td><td>92.8</td><td>19.0</td><td>51.2</td><td>2.6</td></tr>
+<tr><td>Eric Dibami</td><td>C</td><td>2</td><td>10.5</td><td>120.7</td><td>24.3</td><td>46.2</td><td>4.5</td></tr>
+<tr><td>RJ Smith</td><td>G</td><td>2</td><td>7.0</td><td>127.3</td><td>15.4</td><td>46.2</td><td>5.0</td></tr>
+<tr><td>Viljami Vartiainen</td><td>G</td><td>2</td><td>14.0</td><td>125.4</td><td>32.0</td><td>45.0</td><td>4.2</td></tr>
+<tr><td>Marvin McGhee IV</td><td>G</td><td>2</td><td>7.0</td><td>141.7</td><td>15.9</td><td>40.0</td><td>6.7</td></tr>
+<tr><td>Antonio Chol</td><td>F</td><td>2</td><td>10.0</td><td>133.7</td><td>30.9</td><td>31.2</td><td>4.1</td></tr>
+<tr><td>Declan Duru Jr.</td><td>F</td><td>2</td><td>1.0</td><td>69.4</td><td>6.5</td><td>28.8</td><td>1.9</td></tr>
+<tr><td>Michael Simcoe</td><td>F</td><td>2</td><td>2.5</td><td>83.3</td><td>15.5</td><td>25.0</td><td>0.6</td></tr>
+<tr><td>Luke Zuffelato</td><td>G</td><td>2</td><td>1.0</td><td>41.0</td><td>14.8</td><td>21.2</td><td>-0.9</td></tr>
+<tr><td>Koat Keat Tong</td><td>F</td><td>2</td><td>1.0</td><td>66.7</td><td>12.9</td><td>15.0</td><td>0.1</td></tr>
+<tr><td>Jordan Charles</td><td>G</td><td>2</td><td>4.5</td><td>80.4</td><td>52.6</td><td>13.8</td><td>0.1</td></tr>
+<tr><td>Marco John Wuol</td><td>C</td><td>2</td><td>1.0</td><td>200.0</td><td>6.5</td><td>10.0</td><td>1.2</td></tr>
+<tr><td>Bryce Bedgood</td><td>F</td><td>2</td><td>1.5</td><td>79.8</td><td>38.8</td><td>6.2</td><td>0.1</td></tr>
+<tr><td>John Simcoe</td><td>F</td><td>1</td><td>0.0</td><td>—</td><td>—</td><td>3.8</td><td>—</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
+</section>
+<section><h2>2025-26</h2>
+<p>Net rank #143 &middot; AdjO 113.2 &middot; AdjD 111.4 &middot; Net 1.9 &middot; AdjT 65.9 &middot; 16-14 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/08</td><td><a href="san-jose-state-spartans.html">San José State Spartans</a></td><td>H</td><td>W</td><td>85-74</td></tr>
+<tr><td>11/11</td><td><a href="sacramento-state-hornets.html">Sacramento State Hornets</a></td><td>A</td><td>W</td><td>92-87</td></tr>
+<tr><td>11/17</td><td><a href="loyola-marymount-lions.html">Loyola Marymount Lions</a></td><td>H</td><td>L</td><td>74-78</td></tr>
+<tr><td>11/22</td><td><a href="nevada-wolf-pack.html">Nevada Wolf Pack</a></td><td>A</td><td>L</td><td>64-77</td></tr>
+<tr><td>11/28</td><td><a href="lehigh-mountain-hawks.html">Lehigh Mountain Hawks</a></td><td>N</td><td>W</td><td>72-70</td></tr>
+<tr><td>11/29</td><td><a href="seattle-u-redhawks.html">Seattle U Redhawks</a></td><td>N</td><td>W</td><td>74-71</td></tr>
+<tr><td>12/04</td><td><a href="long-beach-state-beach.html">Long Beach State Beach</a></td><td>H</td><td>W</td><td>84-77</td></tr>
+<tr><td>12/06</td><td><a href="cal-state-bakersfield-roadrunners.html">Cal State Bakersfield Roadrunners</a></td><td>H</td><td>W</td><td>109-84</td></tr>
+<tr><td>12/13</td><td><a href="utah-valley-wolverines.html">Utah Valley Wolverines</a></td><td>N</td><td>L</td><td>53-68</td></tr>
+<tr><td>12/17</td><td><a href="green-bay-phoenix.html">Green Bay Phoenix</a></td><td>A</td><td>L</td><td>64-67</td></tr>
+<tr><td>12/22</td><td><a href="portland-pilots.html">Portland Pilots</a></td><td>H</td><td>W</td><td>79-61</td></tr>
+<tr><td>01/01</td><td><a href="cal-state-fullerton-titans.html">Cal State Fullerton Titans</a></td><td>A</td><td>L</td><td>84-95</td></tr>
+<tr><td>01/03</td><td><a href="cal-state-northridge-matadors.html">Cal State Northridge Matadors</a></td><td>A</td><td>L</td><td>65-74</td></tr>
+<tr><td>01/08</td><td><a href="uc-davis-aggies.html">UC Davis Aggies</a></td><td>H</td><td>L</td><td>86-93</td></tr>
+<tr><td>01/15</td><td><a href="cal-state-bakersfield-roadrunners.html">Cal State Bakersfield Roadrunners</a></td><td>A</td><td>W</td><td>75-69</td></tr>
+<tr><td>01/17</td><td><a href="hawaii-rainbow-warriors.html">Hawai&#x27;i Rainbow Warriors</a></td><td>H</td><td>W</td><td>77-62</td></tr>
+<tr><td>01/22</td><td><a href="cal-poly-mustangs.html">Cal Poly Mustangs</a></td><td>H</td><td>W</td><td>107-67</td></tr>
+<tr><td>01/24</td><td><a href="long-beach-state-beach.html">Long Beach State Beach</a></td><td>A</td><td>W</td><td>74-71</td></tr>
+<tr><td>01/29</td><td><a href="uc-san-diego-tritons.html">UC San Diego Tritons</a></td><td>A</td><td>W</td><td>62-48</td></tr>
+<tr><td>01/31</td><td><a href="cal-state-fullerton-titans.html">Cal State Fullerton Titans</a></td><td>H</td><td>W</td><td>83-69</td></tr>
+<tr><td>02/05</td><td><a href="uc-davis-aggies.html">UC Davis Aggies</a></td><td>A</td><td>L</td><td>75-85</td></tr>
+<tr><td>02/07</td><td><a href="uc-irvine-anteaters.html">UC Irvine Anteaters</a></td><td>H</td><td>W</td><td>84-79</td></tr>
+<tr><td>02/12</td><td><a href="uc-riverside-highlanders.html">UC Riverside Highlanders</a></td><td>A</td><td>W</td><td>76-68</td></tr>
+<tr><td>02/14</td><td><a href="cal-poly-mustangs.html">Cal Poly Mustangs</a></td><td>A</td><td>L</td><td>79-89</td></tr>
+<tr><td>02/19</td><td><a href="cal-state-northridge-matadors.html">Cal State Northridge Matadors</a></td><td>H</td><td>L</td><td>83-85</td></tr>
+<tr><td>02/21</td><td><a href="hawaii-rainbow-warriors.html">Hawai&#x27;i Rainbow Warriors</a></td><td>A</td><td>L</td><td>75-78</td></tr>
+<tr><td>02/26</td><td><a href="uc-riverside-highlanders.html">UC Riverside Highlanders</a></td><td>H</td><td>W</td><td>70-59</td></tr>
+<tr><td>02/28</td><td><a href="uc-irvine-anteaters.html">UC Irvine Anteaters</a></td><td>A</td><td>L</td><td>60-64</td></tr>
+<tr><td>03/07</td><td><a href="uc-san-diego-tritons.html">UC San Diego Tritons</a></td><td>H</td><td>L</td><td>63-64</td></tr>
+<tr><td>03/11</td><td><a href="uc-davis-aggies.html">UC Davis Aggies</a></td><td>N</td><td>L</td><td>73-79</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Aidan Mahaney</td><td>G</td><td>32</td><td>14.9</td><td>103.1</td><td>22.4</td><td>84.0</td><td>2.4</td></tr>
+<tr><td>CJ Shaw</td><td>G</td><td>32</td><td>12.2</td><td>110.7</td><td>19.8</td><td>72.6</td><td>3.1</td></tr>
+<tr><td>Colin Smith</td><td>F</td><td>31</td><td>11.9</td><td>104.8</td><td>20.1</td><td>71.1</td><td>2.2</td></tr>
+<tr><td>Zion Sensley</td><td>G</td><td>32</td><td>10.9</td><td>102.8</td><td>21.9</td><td>63.0</td><td>2.6</td></tr>
+<tr><td>Hosana Kitenge</td><td>F</td><td>32</td><td>7.5</td><td>87.4</td><td>21.6</td><td>51.9</td><td>1.2</td></tr>
+<tr><td>Marvin McGhee IV</td><td>G</td><td>28</td><td>6.2</td><td>104.9</td><td>15.0</td><td>45.2</td><td>2.7</td></tr>
+<tr><td>Miro Little</td><td>G</td><td>18</td><td>11.9</td><td>101.9</td><td>21.2</td><td>40.4</td><td>4.5</td></tr>
+<tr><td>Michael Simcoe</td><td>F</td><td>31</td><td>2.2</td><td>83.2</td><td>14.9</td><td>22.0</td><td>0.6</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>2024-25</h2>
+<p>Net rank #145 &middot; AdjO 109.2 &middot; AdjD 107.7 &middot; Net 1.5 &middot; AdjT 65.6 &middot; 19-13 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/09</td><td><a href="portland-pilots.html">Portland Pilots</a></td><td>A</td><td>W</td><td>94-53</td></tr>
+<tr><td>11/13</td><td><a href="fresno-state-bulldogs.html">Fresno State Bulldogs</a></td><td>H</td><td>W</td><td>91-86</td></tr>
+<tr><td>11/17</td><td><a href="san-jose-state-spartans.html">San José State Spartans</a></td><td>A</td><td>W</td><td>64-59</td></tr>
+<tr><td>11/20</td><td><a href="utep-miners.html">UTEP Miners</a></td><td>H</td><td>L</td><td>76-79</td></tr>
+<tr><td>11/26</td><td><a href="eastern-washington-eagles.html">Eastern Washington Eagles</a></td><td>H</td><td>W</td><td>67-51</td></tr>
+<tr><td>11/29</td><td><a href="mississippi-valley-state-delta-devils.html">Mississippi Valley State Delta Devils</a></td><td>H</td><td>W</td><td>81-48</td></tr>
+<tr><td>12/05</td><td><a href="uc-san-diego-tritons.html">UC San Diego Tritons</a></td><td>H</td><td>L</td><td>76-84</td></tr>
+<tr><td>12/07</td><td><a href="uc-davis-aggies.html">UC Davis Aggies</a></td><td>A</td><td>L</td><td>60-71</td></tr>
+<tr><td>12/14</td><td><a href="green-bay-phoenix.html">Green Bay Phoenix</a></td><td>H</td><td>W</td><td>83-66</td></tr>
+<tr><td>12/18</td><td><a href="loyola-marymount-lions.html">Loyola Marymount Lions</a></td><td>A</td><td>L</td><td>58-60</td></tr>
+<tr><td>12/22</td><td><a href="missouri-state-bears.html">Missouri State Bears</a></td><td>A</td><td>L</td><td>56-68</td></tr>
+<tr><td>01/02</td><td><a href="hawaii-rainbow-warriors.html">Hawai&#x27;i Rainbow Warriors</a></td><td>A</td><td>W</td><td>64-61</td></tr>
+<tr><td>01/09</td><td><a href="cal-state-bakersfield-roadrunners.html">Cal State Bakersfield Roadrunners</a></td><td>H</td><td>W</td><td>78-66</td></tr>
+<tr><td>01/11</td><td><a href="cal-poly-mustangs.html">Cal Poly Mustangs</a></td><td>A</td><td>W</td><td>75-72</td></tr>
+<tr><td>01/16</td><td><a href="uc-riverside-highlanders.html">UC Riverside Highlanders</a></td><td>H</td><td>W</td><td>66-63</td></tr>
+<tr><td>01/18</td><td><a href="uc-davis-aggies.html">UC Davis Aggies</a></td><td>H</td><td>L</td><td>60-64</td></tr>
+<tr><td>01/23</td><td><a href="uc-san-diego-tritons.html">UC San Diego Tritons</a></td><td>A</td><td>L</td><td>63-77</td></tr>
+<tr><td>01/25</td><td><a href="cal-state-fullerton-titans.html">Cal State Fullerton Titans</a></td><td>A</td><td>W</td><td>83-75</td></tr>
+<tr><td>01/30</td><td><a href="cal-state-northridge-matadors.html">Cal State Northridge Matadors</a></td><td>H</td><td>L</td><td>71-78</td></tr>
+<tr><td>02/01</td><td><a href="long-beach-state-beach.html">Long Beach State Beach</a></td><td>H</td><td>W</td><td>85-54</td></tr>
+<tr><td>02/06</td><td><a href="cal-state-bakersfield-roadrunners.html">Cal State Bakersfield Roadrunners</a></td><td>A</td><td>W</td><td>81-75</td></tr>
+<tr><td>02/08</td><td><a href="hawaii-rainbow-warriors.html">Hawai&#x27;i Rainbow Warriors</a></td><td>H</td><td>W</td><td>76-72</td></tr>
+<tr><td>02/13</td><td><a href="uc-irvine-anteaters.html">UC Irvine Anteaters</a></td><td>A</td><td>L</td><td>60-62</td></tr>
+<tr><td>02/15</td><td><a href="uc-riverside-highlanders.html">UC Riverside Highlanders</a></td><td>A</td><td>L</td><td>69-81</td></tr>
+<tr><td>02/20</td><td><a href="cal-state-fullerton-titans.html">Cal State Fullerton Titans</a></td><td>H</td><td>W</td><td>86-56</td></tr>
+<tr><td>02/22</td><td><a href="long-beach-state-beach.html">Long Beach State Beach</a></td><td>A</td><td>W</td><td>58-56</td></tr>
+<tr><td>02/27</td><td><a href="cal-poly-mustangs.html">Cal Poly Mustangs</a></td><td>H</td><td>W</td><td>96-77</td></tr>
+<tr><td>03/01</td><td><a href="cal-state-northridge-matadors.html">Cal State Northridge Matadors</a></td><td>A</td><td>L</td><td>77-103</td></tr>
+<tr><td>03/08</td><td><a href="uc-irvine-anteaters.html">UC Irvine Anteaters</a></td><td>H</td><td>L</td><td>88-97</td></tr>
+<tr><td>03/12</td><td><a href="cal-state-bakersfield-roadrunners.html">Cal State Bakersfield Roadrunners</a></td><td>N</td><td>W</td><td>71-66</td></tr>
+<tr><td>03/13</td><td><a href="cal-state-northridge-matadors.html">Cal State Northridge Matadors</a></td><td>N</td><td>W</td><td>78-72</td></tr>
+<tr><td>03/14</td><td><a href="uc-san-diego-tritons.html">UC San Diego Tritons</a></td><td>N</td><td>L</td><td>51-69</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Jason Fontenet II</td><td>G</td><td>34</td><td>9.9</td><td>91.8</td><td>19.4</td><td>73.9</td><td>2.3</td></tr>
+<tr><td>Stephan Swenson</td><td>G</td><td>33</td><td>13.4</td><td>100.0</td><td>23.9</td><td>72.0</td><td>4.0</td></tr>
+<tr><td>Cole Anderson</td><td>G</td><td>34</td><td>8.9</td><td>121.3</td><td>13.7</td><td>71.2</td><td>3.0</td></tr>
+<tr><td>Kenny Pohto</td><td>F</td><td>34</td><td>11.8</td><td>106.5</td><td>22.9</td><td>64.1</td><td>3.0</td></tr>
+<tr><td>Deuce Turner</td><td>G</td><td>34</td><td>9.6</td><td>94.0</td><td>27.9</td><td>48.7</td><td>0.5</td></tr>
+<tr><td>Max Murrell</td><td>F</td><td>31</td><td>5.5</td><td>93.1</td><td>16.6</td><td>43.2</td><td>1.4</td></tr>
+<tr><td>Ben Shtolzberg</td><td>G</td><td>33</td><td>3.9</td><td>103.7</td><td>14.6</td><td>32.7</td><td>1.5</td></tr>
+<tr><td>Colin Smith</td><td>F</td><td>20</td><td>8.7</td><td>102.1</td><td>22.3</td><td>29.9</td><td>1.5</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file (Nov 11-13). Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not.</p><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th></tr></thead><tbody>
+<tr><td>Wed 08:00 PM</td><td><a href="nevada-wolf-pack.html">Nevada</a></td><td>H</td><td>Nevada -3.4</td><td>41.2%</td><td>+1.5</td><td>-1.9</td></tr>
+</tbody></table><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 11, 2026.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>

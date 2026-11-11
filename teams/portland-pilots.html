@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portland Pilots | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+.note { color: #656d76; font-size: 14px; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+</style>
+</head>
+<body>
+<h1>Portland Pilots</h1>
+<p class="subtitle">WCC &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<section><h2>2026-27</h2>
+<p>Net rank #151 &middot; AdjO 110.8 &middot; AdjD 110.0 &middot; Net 0.8 &middot; AdjT 70.2 &middot; 1-1 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/06</td><td><a href="ut-arlington-mavericks.html">UT Arlington Mavericks</a></td><td>N</td><td>L</td><td>85-89</td></tr>
+<tr><td>11/09</td><td><a href="hawaii-rainbow-warriors.html">Hawai&#x27;i Rainbow Warriors</a></td><td>A</td><td>W</td><td>73-66</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Hunter Adam</td><td>G</td><td>4</td><td>10.8</td><td>119.6</td><td>13.7</td><td>71.2</td><td>3.1</td></tr>
+<tr><td>James O&#x27;Donnell</td><td>F</td><td>4</td><td>19.2</td><td>135.1</td><td>23.0</td><td>67.5</td><td>8.6</td></tr>
+<tr><td>Jaxon Olvera</td><td>G</td><td>4</td><td>10.0</td><td>92.7</td><td>20.6</td><td>56.9</td><td>2.3</td></tr>
+<tr><td>Riley Parker</td><td>G</td><td>4</td><td>11.8</td><td>105.6</td><td>22.3</td><td>54.4</td><td>2.0</td></tr>
+<tr><td>Timo George</td><td>F</td><td>4</td><td>11.2</td><td>128.0</td><td>21.2</td><td>45.0</td><td>5.4</td></tr>
+<tr><td>RJ Nance Jr.</td><td>G</td><td>4</td><td>13.5</td><td>111.4</td><td>29.7</td><td>44.4</td><td>3.1</td></tr>
+<tr><td>Dante Censori-Hercules</td><td>G</td><td>4</td><td>3.8</td><td>96.6</td><td>9.6</td><td>43.8</td><td>1.3</td></tr>
+<tr><td>Kaia Isaac</td><td>G</td><td>4</td><td>4.2</td><td>77.8</td><td>15.3</td><td>38.8</td><td>1.0</td></tr>
+<tr><td>Vito Perkovic</td><td>F</td><td>3</td><td>6.3</td><td>112.6</td><td>19.8</td><td>23.1</td><td>1.5</td></tr>
+<tr><td>Carlin Briggs</td><td>G</td><td>2</td><td>8.5</td><td>126.5</td><td>23.4</td><td>15.6</td><td>3.0</td></tr>
+<tr><td>Henry Sewell</td><td>F</td><td>2</td><td>13.5</td><td>170.5</td><td>32.8</td><td>13.1</td><td>8.1</td></tr>
+<tr><td>Austin Foxwell</td><td>G</td><td>2</td><td>2.5</td><td>72.7</td><td>15.7</td><td>11.9</td><td>1.2</td></tr>
+<tr><td>Dylan Moran</td><td>G</td><td>2</td><td>6.0</td><td>130.4</td><td>25.0</td><td>10.0</td><td>1.6</td></tr>
+<tr><td>Marchelo Moreira</td><td>G</td><td>2</td><td>1.5</td><td>100.0</td><td>18.6</td><td>4.4</td><td>-0.1</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
+</section>
+<section><h2>2025-26</h2>
+<p>Net rank #222 &middot; AdjO 105.8 &middot; AdjD 110.4 &middot; Net -4.6 &middot; AdjT 69.3 &middot; 13-19 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/06</td><td><a href="arkansas-pine-bluff-golden-lions.html">Arkansas-Pine Bluff Golden Lions</a></td><td>H</td><td>W</td><td>83-74</td></tr>
+<tr><td>11/09</td><td><a href="uc-davis-aggies.html">UC Davis Aggies</a></td><td>H</td><td>W</td><td>67-63</td></tr>
+<tr><td>11/15</td><td><a href="wyoming-cowboys.html">Wyoming Cowboys</a></td><td>A</td><td>L</td><td>56-93</td></tr>
+<tr><td>11/21</td><td><a href="cal-state-fullerton-titans.html">Cal State Fullerton Titans</a></td><td>H</td><td>W</td><td>103-85</td></tr>
+<tr><td>11/22</td><td><a href="northern-colorado-bears.html">Northern Colorado Bears</a></td><td>H</td><td>L</td><td>80-86</td></tr>
+<tr><td>11/23</td><td><a href="st-thomas-tommies.html">St. Thomas Tommies</a></td><td>H</td><td>L</td><td>66-76</td></tr>
+<tr><td>11/26</td><td><a href="long-beach-state-beach.html">Long Beach State Beach</a></td><td>H</td><td>W</td><td>93-73</td></tr>
+<tr><td>12/01</td><td><a href="stanford-cardinal.html">Stanford Cardinal</a></td><td>A</td><td>L</td><td>72-94</td></tr>
+<tr><td>12/14</td><td><a href="kent-state-golden-flashes.html">Kent State Golden Flashes</a></td><td>H</td><td>W</td><td>88-78</td></tr>
+<tr><td>12/17</td><td><a href="oregon-ducks.html">Oregon Ducks</a></td><td>A</td><td>L</td><td>69-94</td></tr>
+<tr><td>12/22</td><td><a href="uc-santa-barbara-gauchos.html">UC Santa Barbara Gauchos</a></td><td>A</td><td>L</td><td>61-79</td></tr>
+<tr><td>12/28</td><td><a href="washington-state-cougars.html">Washington State Cougars</a></td><td>H</td><td>L</td><td>62-67</td></tr>
+<tr><td>12/30</td><td><a href="santa-clara-broncos.html">Santa Clara Broncos</a></td><td>H</td><td>L</td><td>85-92</td></tr>
+<tr><td>01/02</td><td><a href="saint-marys-gaels.html">Saint Mary&#x27;s Gaels</a></td><td>A</td><td>L</td><td>57-78</td></tr>
+<tr><td>01/04</td><td><a href="san-francisco-dons.html">San Francisco Dons</a></td><td>A</td><td>L</td><td>68-73</td></tr>
+<tr><td>01/08</td><td><a href="pacific-tigers.html">Pacific Tigers</a></td><td>H</td><td>W</td><td>90-89</td></tr>
+<tr><td>01/10</td><td><a href="oregon-state-beavers.html">Oregon State Beavers</a></td><td>H</td><td>W</td><td>82-76</td></tr>
+<tr><td>01/14</td><td><a href="pepperdine-waves.html">Pepperdine Waves</a></td><td>A</td><td>L</td><td>63-67</td></tr>
+<tr><td>01/17</td><td><a href="loyola-marymount-lions.html">Loyola Marymount Lions</a></td><td>A</td><td>W</td><td>71-58</td></tr>
+<tr><td>01/24</td><td><a href="saint-marys-gaels.html">Saint Mary&#x27;s Gaels</a></td><td>H</td><td>L</td><td>69-75</td></tr>
+<tr><td>01/28</td><td><a href="pacific-tigers.html">Pacific Tigers</a></td><td>A</td><td>L</td><td>51-74</td></tr>
+<tr><td>01/31</td><td><a href="washington-state-cougars.html">Washington State Cougars</a></td><td>A</td><td>L</td><td>74-104</td></tr>
+<tr><td>02/04</td><td><a href="gonzaga-bulldogs.html">Gonzaga Bulldogs</a></td><td>H</td><td>W</td><td>87-80</td></tr>
+<tr><td>02/07</td><td><a href="seattle-u-redhawks.html">Seattle U Redhawks</a></td><td>H</td><td>W</td><td>54-53</td></tr>
+<tr><td>02/11</td><td><a href="san-diego-toreros.html">San Diego Toreros</a></td><td>A</td><td>L</td><td>58-71</td></tr>
+<tr><td>02/18</td><td><a href="pepperdine-waves.html">Pepperdine Waves</a></td><td>H</td><td>L</td><td>87-95</td></tr>
+<tr><td>02/21</td><td><a href="seattle-u-redhawks.html">Seattle U Redhawks</a></td><td>A</td><td>L</td><td>59-71</td></tr>
+<tr><td>02/25</td><td><a href="gonzaga-bulldogs.html">Gonzaga Bulldogs</a></td><td>A</td><td>L</td><td>48-89</td></tr>
+<tr><td>02/28</td><td><a href="san-diego-toreros.html">San Diego Toreros</a></td><td>H</td><td>W</td><td>87-74</td></tr>
+<tr><td>03/05</td><td><a href="pepperdine-waves.html">Pepperdine Waves</a></td><td>N</td><td>W</td><td>77-68</td></tr>
+<tr><td>03/06</td><td><a href="washington-state-cougars.html">Washington State Cougars</a></td><td>N</td><td>W</td><td>74-68</td></tr>
+<tr><td>03/07</td><td><a href="san-francisco-dons.html">San Francisco Dons</a></td><td>N</td><td>L</td><td>65-82</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Joel Foxwell</td><td>G</td><td>34</td><td>15.6</td><td>85.0</td><td>25.9</td><td>89.2</td><td>1.6</td></tr>
+<tr><td>Garrett Nuckolls</td><td>G</td><td>34</td><td>6.7</td><td>70.6</td><td>18.6</td><td>64.7</td><td>-0.1</td></tr>
+<tr><td>James O&#x27;Donnell</td><td>F</td><td>34</td><td>10.0</td><td>105.8</td><td>21.2</td><td>56.2</td><td>2.3</td></tr>
+<tr><td>Cameron Williams</td><td>F</td><td>31</td><td>10.7</td><td>103.1</td><td>21.8</td><td>54.5</td><td>2.0</td></tr>
+<tr><td>Mikah Ballew</td><td>G</td><td>31</td><td>8.7</td><td>90.6</td><td>20.6</td><td>53.8</td><td>0.1</td></tr>
+<tr><td>Dante Censori-Hercules</td><td>G</td><td>33</td><td>3.2</td><td>91.3</td><td>8.6</td><td>49.8</td><td>2.0</td></tr>
+<tr><td>Jermaine Ballisager Webb</td><td>C</td><td>34</td><td>8.9</td><td>105.6</td><td>21.4</td><td>49.6</td><td>2.5</td></tr>
+<tr><td>Matus Hronsky</td><td>F</td><td>31</td><td>5.6</td><td>89.5</td><td>17.2</td><td>41.7</td><td>0.6</td></tr>
+<tr><td>Timo George</td><td>F</td><td>15</td><td>12.5</td><td>120.8</td><td>26.2</td><td>22.0</td><td>4.6</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>2024-25</h2>
+<p>Net rank #286 &middot; AdjO 104.4 &middot; AdjD 114.2 &middot; Net -9.8 &middot; AdjT 69.6 &middot; 10-20 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/09</td><td><a href="uc-santa-barbara-gauchos.html">UC Santa Barbara Gauchos</a></td><td>H</td><td>L</td><td>53-94</td></tr>
+<tr><td>11/12</td><td><a href="oregon-ducks.html">Oregon Ducks</a></td><td>A</td><td>L</td><td>70-80</td></tr>
+<tr><td>11/16</td><td><a href="long-beach-state-beach.html">Long Beach State Beach</a></td><td>A</td><td>W</td><td>63-61</td></tr>
+<tr><td>11/21</td><td><a href="south-florida-bulls.html">South Florida Bulls</a></td><td>N</td><td>L</td><td>68-74</td></tr>
+<tr><td>11/22</td><td><a href="ohio-bobcats.html">Ohio Bobcats</a></td><td>N</td><td>L</td><td>73-85</td></tr>
+<tr><td>11/24</td><td><a href="princeton-tigers.html">Princeton Tigers</a></td><td>N</td><td>L</td><td>67-94</td></tr>
+<tr><td>12/01</td><td><a href="denver-pioneers.html">Denver Pioneers</a></td><td>H</td><td>W</td><td>101-90</td></tr>
+<tr><td>12/06</td><td><a href="kent-state-golden-flashes.html">Kent State Golden Flashes</a></td><td>A</td><td>L</td><td>57-76</td></tr>
+<tr><td>12/10</td><td><a href="kansas-city-roos.html">Kansas City Roos</a></td><td>H</td><td>L</td><td>64-69</td></tr>
+<tr><td>12/18</td><td><a href="cal-state-bakersfield-roadrunners.html">Cal State Bakersfield Roadrunners</a></td><td>H</td><td>L</td><td>64-81</td></tr>
+<tr><td>12/21</td><td><a href="lafayette-leopards.html">Lafayette Leopards</a></td><td>H</td><td>W</td><td>74-64</td></tr>
+<tr><td>12/28</td><td><a href="washington-state-cougars.html">Washington State Cougars</a></td><td>H</td><td>L</td><td>73-89</td></tr>
+<tr><td>12/30</td><td><a href="oregon-state-beavers.html">Oregon State Beavers</a></td><td>A</td><td>L</td><td>79-89</td></tr>
+<tr><td>01/02</td><td><a href="gonzaga-bulldogs.html">Gonzaga Bulldogs</a></td><td>A</td><td>L</td><td>50-81</td></tr>
+<tr><td>01/04</td><td><a href="saint-marys-gaels.html">Saint Mary&#x27;s Gaels</a></td><td>H</td><td>L</td><td>58-81</td></tr>
+<tr><td>01/09</td><td><a href="san-francisco-dons.html">San Francisco Dons</a></td><td>A</td><td>L</td><td>72-81</td></tr>
+<tr><td>01/16</td><td><a href="pacific-tigers.html">Pacific Tigers</a></td><td>H</td><td>W</td><td>84-81</td></tr>
+<tr><td>01/18</td><td><a href="washington-state-cougars.html">Washington State Cougars</a></td><td>A</td><td>L</td><td>70-92</td></tr>
+<tr><td>01/23</td><td><a href="san-diego-toreros.html">San Diego Toreros</a></td><td>H</td><td>W</td><td>92-82</td></tr>
+<tr><td>01/25</td><td><a href="gonzaga-bulldogs.html">Gonzaga Bulldogs</a></td><td>H</td><td>L</td><td>62-105</td></tr>
+<tr><td>01/30</td><td><a href="loyola-marymount-lions.html">Loyola Marymount Lions</a></td><td>A</td><td>L</td><td>63-88</td></tr>
+<tr><td>02/01</td><td><a href="pepperdine-waves.html">Pepperdine Waves</a></td><td>A</td><td>W</td><td>84-64</td></tr>
+<tr><td>02/06</td><td><a href="santa-clara-broncos.html">Santa Clara Broncos</a></td><td>H</td><td>L</td><td>50-97</td></tr>
+<tr><td>02/13</td><td><a href="oregon-state-beavers.html">Oregon State Beavers</a></td><td>H</td><td>W</td><td>84-72</td></tr>
+<tr><td>02/15</td><td><a href="loyola-marymount-lions.html">Loyola Marymount Lions</a></td><td>H</td><td>W</td><td>89-78</td></tr>
+<tr><td>02/19</td><td><a href="saint-marys-gaels.html">Saint Mary&#x27;s Gaels</a></td><td>A</td><td>L</td><td>66-79</td></tr>
+<tr><td>02/22</td><td><a href="pacific-tigers.html">Pacific Tigers</a></td><td>A</td><td>W</td><td>81-73</td></tr>
+<tr><td>02/27</td><td><a href="pepperdine-waves.html">Pepperdine Waves</a></td><td>H</td><td>W</td><td>87-67</td></tr>
+<tr><td>03/01</td><td><a href="san-diego-toreros.html">San Diego Toreros</a></td><td>A</td><td>L</td><td>80-82</td></tr>
+<tr><td>03/07</td><td><a href="pepperdine-waves.html">Pepperdine Waves</a></td><td>N</td><td>L</td><td>73-86</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Austin Rapp</td><td>F</td><td>31</td><td>13.8</td><td>92.5</td><td>23.4</td><td>79.9</td><td>2.4</td></tr>
+<tr><td>Max Mackinnon</td><td>G</td><td>32</td><td>14.5</td><td>99.7</td><td>26.8</td><td>70.2</td><td>2.6</td></tr>
+<tr><td>Chris Austin</td><td>G</td><td>31</td><td>10.0</td><td>99.3</td><td>18.0</td><td>70.1</td><td>1.6</td></tr>
+<tr><td>Vukasin Masic</td><td>G</td><td>27</td><td>10.5</td><td>96.7</td><td>20.3</td><td>58.8</td><td>1.9</td></tr>
+<tr><td>Vincent Delano</td><td>G</td><td>32</td><td>5.2</td><td>68.2</td><td>17.3</td><td>57.7</td><td>-0.6</td></tr>
+<tr><td>Bol Dengdit</td><td>C</td><td>30</td><td>7.4</td><td>102.8</td><td>15.6</td><td>56.2</td><td>1.8</td></tr>
+<tr><td>Mikah Ballew</td><td>G</td><td>31</td><td>4.9</td><td>85.2</td><td>18.6</td><td>38.8</td><td>-0.1</td></tr>
+<tr><td>Jermaine Ballisager Webb</td><td>C</td><td>29</td><td>4.3</td><td>120.7</td><td>17.8</td><td>23.5</td><td>1.6</td></tr>
+<tr><td>Todd Jones Jr.</td><td>F</td><td>24</td><td>2.8</td><td>79.0</td><td>16.9</td><td>20.3</td><td>0.7</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 11, 2026.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>

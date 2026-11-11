@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nicholls Colonels | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+.note { color: #656d76; font-size: 14px; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+</style>
+</head>
+<body>
+<h1>Nicholls Colonels</h1>
+<p class="subtitle">Southland &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<section><h2>2026-27</h2>
+<p>Net rank #277 &middot; AdjO 96.8 &middot; AdjD 106.8 &middot; Net -10.0 &middot; AdjT 66.5 &middot; 0-2 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/06</td><td><a href="uab-blazers.html">UAB Blazers</a></td><td>A</td><td>L</td><td>63-70</td></tr>
+<tr><td>11/10</td><td><a href="tulane-green-wave.html">Tulane Green Wave</a></td><td>A</td><td>L</td><td>63-77</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>AJ Dent</td><td>F</td><td>3</td><td>13.7</td><td>102.6</td><td>21.8</td><td>73.3</td><td>3.3</td></tr>
+<tr><td>Sheridan Sharp</td><td>G</td><td>3</td><td>11.0</td><td>114.0</td><td>19.6</td><td>59.2</td><td>7.4</td></tr>
+<tr><td>Christian Winborne</td><td>G</td><td>3</td><td>9.0</td><td>90.7</td><td>21.3</td><td>55.8</td><td>0.5</td></tr>
+<tr><td>Doyel Cockrill III</td><td>G</td><td>3</td><td>10.3</td><td>110.4</td><td>20.8</td><td>54.2</td><td>3.6</td></tr>
+<tr><td>Hunter Carter</td><td>G</td><td>2</td><td>8.5</td><td>81.9</td><td>24.9</td><td>33.3</td><td>3.5</td></tr>
+<tr><td>Junior Sileu</td><td>F</td><td>3</td><td>2.0</td><td>85.7</td><td>8.6</td><td>32.5</td><td>1.5</td></tr>
+<tr><td>Jared Taylor</td><td>F</td><td>3</td><td>6.7</td><td>84.6</td><td>30.7</td><td>30.8</td><td>0.5</td></tr>
+<tr><td>Jah-Mel Bruce</td><td>G</td><td>3</td><td>2.0</td><td>80.6</td><td>9.7</td><td>30.8</td><td>0.3</td></tr>
+<tr><td>AJ McPeters</td><td>G</td><td>3</td><td>1.3</td><td>33.7</td><td>15.9</td><td>30.0</td><td>-2.3</td></tr>
+<tr><td>Arop Arop</td><td>F</td><td>2</td><td>8.0</td><td>134.7</td><td>17.3</td><td>27.5</td><td>3.7</td></tr>
+<tr><td>Jordan Matthews</td><td>G</td><td>3</td><td>4.0</td><td>100.0</td><td>17.5</td><td>27.5</td><td>1.2</td></tr>
+<tr><td>Cameron Simpson</td><td>G</td><td>3</td><td>4.3</td><td>71.0</td><td>32.6</td><td>22.5</td><td>-1.4</td></tr>
+<tr><td>Cheikh Biteye</td><td>G</td><td>2</td><td>3.0</td><td>100.0</td><td>13.7</td><td>17.5</td><td>2.1</td></tr>
+<tr><td>Mor Mboup</td><td>F</td><td>2</td><td>2.0</td><td>133.3</td><td>24.0</td><td>5.0</td><td>1.2</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
+</section>
+<section><h2>2025-26</h2>
+<p>Net rank #263 &middot; AdjO 105.1 &middot; AdjD 113.0 &middot; Net -8.0 &middot; AdjT 68.5 &middot; 13-19 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/04</td><td><a href="kentucky-wildcats.html">Kentucky Wildcats</a></td><td>A</td><td>L</td><td>51-77</td></tr>
+<tr><td>11/07</td><td><a href="eastern-illinois-panthers.html">Eastern Illinois Panthers</a></td><td>A</td><td>L</td><td>57-65</td></tr>
+<tr><td>11/12</td><td><a href="valparaiso-beacons.html">Valparaiso Beacons</a></td><td>A</td><td>L</td><td>63-68</td></tr>
+<tr><td>11/15</td><td><a href="murray-state-racers.html">Murray State Racers</a></td><td>A</td><td>L</td><td>79-99</td></tr>
+<tr><td>11/22</td><td><a href="oklahoma-state-cowboys.html">Oklahoma State Cowboys</a></td><td>A</td><td>L</td><td>81-95</td></tr>
+<tr><td>11/28</td><td><a href="tulane-green-wave.html">Tulane Green Wave</a></td><td>A</td><td>L</td><td>72-82</td></tr>
+<tr><td>12/02</td><td><a href="creighton-bluejays.html">Creighton Bluejays</a></td><td>A</td><td>L</td><td>76-96</td></tr>
+<tr><td>12/06</td><td><a href="incarnate-word-cardinals.html">Incarnate Word Cardinals</a></td><td>H</td><td>W</td><td>74-67</td></tr>
+<tr><td>12/17</td><td><a href="houston-christian-huskies.html">Houston Christian Huskies</a></td><td>H</td><td>W</td><td>79-64</td></tr>
+<tr><td>12/21</td><td><a href="pacific-tigers.html">Pacific Tigers</a></td><td>A</td><td>L</td><td>82-95</td></tr>
+<tr><td>12/29</td><td><a href="texas-a-m-corpus-christi-islanders.html">Texas A&amp;M-Corpus Christi Islanders</a></td><td>A</td><td>W</td><td>76-71</td></tr>
+<tr><td>12/31</td><td><a href="ut-rio-grande-valley-vaqueros.html">UT Rio Grande Valley Vaqueros</a></td><td>A</td><td>W</td><td>71-69</td></tr>
+<tr><td>01/03</td><td><a href="east-texas-a-m-lions.html">East Texas A&amp;M Lions</a></td><td>H</td><td>W</td><td>80-58</td></tr>
+<tr><td>01/05</td><td><a href="northwestern-state-demons.html">Northwestern State Demons</a></td><td>H</td><td>W</td><td>74-72</td></tr>
+<tr><td>01/10</td><td><a href="lsu-new-orleans-privateers.html">LSU New Orleans Privateers</a></td><td>A</td><td>W</td><td>90-77</td></tr>
+<tr><td>01/12</td><td><a href="mcneese-cowboys.html">McNeese Cowboys</a></td><td>A</td><td>L</td><td>68-94</td></tr>
+<tr><td>01/17</td><td><a href="lamar-cardinals.html">Lamar Cardinals</a></td><td>H</td><td>L</td><td>80-90</td></tr>
+<tr><td>01/19</td><td><a href="stephen-f-austin-lumberjacks.html">Stephen F. Austin Lumberjacks</a></td><td>H</td><td>L</td><td>62-79</td></tr>
+<tr><td>01/24</td><td><a href="se-louisiana-lions.html">SE Louisiana Lions</a></td><td>A</td><td>L</td><td>61-67</td></tr>
+<tr><td>01/27</td><td><a href="lsu-new-orleans-privateers.html">LSU New Orleans Privateers</a></td><td>H</td><td>L</td><td>62-80</td></tr>
+<tr><td>01/31</td><td><a href="east-texas-a-m-lions.html">East Texas A&amp;M Lions</a></td><td>A</td><td>W</td><td>72-68</td></tr>
+<tr><td>02/02</td><td><a href="northwestern-state-demons.html">Northwestern State Demons</a></td><td>A</td><td>W</td><td>61-58</td></tr>
+<tr><td>02/07</td><td><a href="texas-a-m-corpus-christi-islanders.html">Texas A&amp;M-Corpus Christi Islanders</a></td><td>H</td><td>L</td><td>76-83</td></tr>
+<tr><td>02/09</td><td><a href="ut-rio-grande-valley-vaqueros.html">UT Rio Grande Valley Vaqueros</a></td><td>H</td><td>L</td><td>72-92</td></tr>
+<tr><td>02/14</td><td><a href="incarnate-word-cardinals.html">Incarnate Word Cardinals</a></td><td>A</td><td>W</td><td>91-83</td></tr>
+<tr><td>02/16</td><td><a href="houston-christian-huskies.html">Houston Christian Huskies</a></td><td>A</td><td>L</td><td>68-72</td></tr>
+<tr><td>02/21</td><td><a href="stephen-f-austin-lumberjacks.html">Stephen F. Austin Lumberjacks</a></td><td>A</td><td>L</td><td>78-81</td></tr>
+<tr><td>02/23</td><td><a href="lamar-cardinals.html">Lamar Cardinals</a></td><td>A</td><td>W</td><td>53-52</td></tr>
+<tr><td>02/28</td><td><a href="se-louisiana-lions.html">SE Louisiana Lions</a></td><td>H</td><td>W</td><td>68-60</td></tr>
+<tr><td>03/02</td><td><a href="mcneese-cowboys.html">McNeese Cowboys</a></td><td>H</td><td>L</td><td>65-75</td></tr>
+<tr><td>03/08</td><td><a href="northwestern-state-demons.html">Northwestern State Demons</a></td><td>N</td><td>W</td><td>61-47</td></tr>
+<tr><td>03/09</td><td><a href="ut-rio-grande-valley-vaqueros.html">UT Rio Grande Valley Vaqueros</a></td><td>N</td><td>L</td><td>68-86</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Sincere Malone</td><td>F</td><td>32</td><td>11.4</td><td>96.0</td><td>18.5</td><td>79.3</td><td>3.0</td></tr>
+<tr><td>Trae English</td><td>G</td><td>30</td><td>11.5</td><td>87.0</td><td>21.9</td><td>69.9</td><td>1.5</td></tr>
+<tr><td>Jalik Dunkley</td><td>F</td><td>30</td><td>12.4</td><td>102.5</td><td>21.7</td><td>64.8</td><td>3.4</td></tr>
+<tr><td>Jaylen Searles</td><td>G</td><td>32</td><td>11.8</td><td>93.7</td><td>25.1</td><td>62.0</td><td>1.8</td></tr>
+<tr><td>Christian Winborne</td><td>G</td><td>29</td><td>7.9</td><td>93.5</td><td>18.9</td><td>49.8</td><td>1.3</td></tr>
+<tr><td>Zee Hamoda</td><td>G</td><td>29</td><td>9.2</td><td>99.3</td><td>22.7</td><td>45.9</td><td>1.8</td></tr>
+<tr><td>Jalin Rice</td><td>G</td><td>31</td><td>5.2</td><td>81.2</td><td>19.0</td><td>39.9</td><td>0.0</td></tr>
+<tr><td>Grant Sanders</td><td>F</td><td>32</td><td>3.2</td><td>84.2</td><td>12.5</td><td>37.8</td><td>1.3</td></tr>
+<tr><td>Nick Krass</td><td>G</td><td>29</td><td>1.7</td><td>84.5</td><td>9.0</td><td>25.3</td><td>0.3</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>2024-25</h2>
+<p>Net rank #173 &middot; AdjO 106.1 &middot; AdjD 107.3 &middot; Net -1.2 &middot; AdjT 68.7 &middot; 17-13 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/04</td><td><a href="new-mexico-lobos.html">New Mexico Lobos</a></td><td>A</td><td>L</td><td>84-91</td></tr>
+<tr><td>11/08</td><td><a href="south-alabama-jaguars.html">South Alabama Jaguars</a></td><td>H</td><td>L</td><td>64-70</td></tr>
+<tr><td>11/14</td><td><a href="northern-kentucky-norse.html">Northern Kentucky Norse</a></td><td>A</td><td>W</td><td>61-59</td></tr>
+<tr><td>11/15</td><td><a href="cincinnati-bearcats.html">Cincinnati Bearcats</a></td><td>A</td><td>L</td><td>49-86</td></tr>
+<tr><td>11/20</td><td><a href="towson-tigers.html">Towson Tigers</a></td><td>H</td><td>L</td><td>64-70</td></tr>
+<tr><td>11/30</td><td><a href="louisiana-ragin-cajuns.html">Louisiana Ragin&#x27; Cajuns</a></td><td>A</td><td>W</td><td>76-75</td></tr>
+<tr><td>12/05</td><td><a href="se-louisiana-lions.html">SE Louisiana Lions</a></td><td>H</td><td>W</td><td>67-64</td></tr>
+<tr><td>12/07</td><td><a href="lsu-new-orleans-privateers.html">LSU New Orleans Privateers</a></td><td>H</td><td>W</td><td>73-70</td></tr>
+<tr><td>12/18</td><td><a href="gonzaga-bulldogs.html">Gonzaga Bulldogs</a></td><td>A</td><td>L</td><td>72-102</td></tr>
+<tr><td>12/30</td><td><a href="seattle-u-redhawks.html">Seattle U Redhawks</a></td><td>A</td><td>W</td><td>71-69</td></tr>
+<tr><td>01/04</td><td><a href="northwestern-state-demons.html">Northwestern State Demons</a></td><td>A</td><td>L</td><td>66-68</td></tr>
+<tr><td>01/06</td><td><a href="east-texas-a-m-lions.html">East Texas A&amp;M Lions</a></td><td>A</td><td>W</td><td>83-61</td></tr>
+<tr><td>01/11</td><td><a href="mcneese-cowboys.html">McNeese Cowboys</a></td><td>A</td><td>L</td><td>71-80</td></tr>
+<tr><td>01/13</td><td><a href="incarnate-word-cardinals.html">Incarnate Word Cardinals</a></td><td>A</td><td>W</td><td>88-82</td></tr>
+<tr><td>01/18</td><td><a href="stephen-f-austin-lumberjacks.html">Stephen F. Austin Lumberjacks</a></td><td>H</td><td>W</td><td>73-61</td></tr>
+<tr><td>01/20</td><td><a href="lamar-cardinals.html">Lamar Cardinals</a></td><td>H</td><td>L</td><td>74-78</td></tr>
+<tr><td>01/25</td><td><a href="texas-a-m-corpus-christi-islanders.html">Texas A&amp;M-Corpus Christi Islanders</a></td><td>A</td><td>L</td><td>57-61</td></tr>
+<tr><td>01/27</td><td><a href="ut-rio-grande-valley-vaqueros.html">UT Rio Grande Valley Vaqueros</a></td><td>A</td><td>W</td><td>82-75</td></tr>
+<tr><td>02/01</td><td><a href="mcneese-cowboys.html">McNeese Cowboys</a></td><td>H</td><td>W</td><td>71-63</td></tr>
+<tr><td>02/03</td><td><a href="houston-christian-huskies.html">Houston Christian Huskies</a></td><td>H</td><td>W</td><td>75-67</td></tr>
+<tr><td>02/08</td><td><a href="east-texas-a-m-lions.html">East Texas A&amp;M Lions</a></td><td>H</td><td>W</td><td>81-65</td></tr>
+<tr><td>02/10</td><td><a href="northwestern-state-demons.html">Northwestern State Demons</a></td><td>H</td><td>L</td><td>60-72</td></tr>
+<tr><td>02/15</td><td><a href="se-louisiana-lions.html">SE Louisiana Lions</a></td><td>A</td><td>L</td><td>81-84</td></tr>
+<tr><td>02/17</td><td><a href="lsu-new-orleans-privateers.html">LSU New Orleans Privateers</a></td><td>A</td><td>W</td><td>78-62</td></tr>
+<tr><td>02/22</td><td><a href="ut-rio-grande-valley-vaqueros.html">UT Rio Grande Valley Vaqueros</a></td><td>H</td><td>W</td><td>93-84</td></tr>
+<tr><td>02/24</td><td><a href="texas-a-m-corpus-christi-islanders.html">Texas A&amp;M-Corpus Christi Islanders</a></td><td>H</td><td>W</td><td>71-69</td></tr>
+<tr><td>03/01</td><td><a href="stephen-f-austin-lumberjacks.html">Stephen F. Austin Lumberjacks</a></td><td>A</td><td>W</td><td>94-70</td></tr>
+<tr><td>03/03</td><td><a href="lamar-cardinals.html">Lamar Cardinals</a></td><td>A</td><td>L</td><td>53-65</td></tr>
+<tr><td>03/10</td><td><a href="incarnate-word-cardinals.html">Incarnate Word Cardinals</a></td><td>N</td><td>W</td><td>74-70</td></tr>
+<tr><td>03/11</td><td><a href="lamar-cardinals.html">Lamar Cardinals</a></td><td>N</td><td>L</td><td>55-58</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Rob Brown III</td><td>G</td><td>33</td><td>13.0</td><td>100.0</td><td>21.7</td><td>74.8</td><td>1.6</td></tr>
+<tr><td>Jamal West Jr.</td><td>F</td><td>32</td><td>12.3</td><td>104.9</td><td>22.2</td><td>63.8</td><td>4.5</td></tr>
+<tr><td>Byron Ireland</td><td>G</td><td>29</td><td>11.1</td><td>83.3</td><td>24.9</td><td>58.6</td><td>-0.0</td></tr>
+<tr><td>Trae English</td><td>G</td><td>33</td><td>6.1</td><td>79.5</td><td>18.3</td><td>52.5</td><td>0.6</td></tr>
+<tr><td>Michael Gray Jr.</td><td>G</td><td>29</td><td>11.1</td><td>109.4</td><td>21.9</td><td>50.7</td><td>2.5</td></tr>
+<tr><td>Jaylen Searles</td><td>G</td><td>30</td><td>6.5</td><td>74.2</td><td>20.4</td><td>48.6</td><td>0.4</td></tr>
+<tr><td>Sincere Malone</td><td>F</td><td>32</td><td>5.6</td><td>93.0</td><td>15.1</td><td>48.4</td><td>2.3</td></tr>
+<tr><td>Mekhi Collins</td><td>F</td><td>33</td><td>4.0</td><td>105.8</td><td>11.4</td><td>41.1</td><td>2.2</td></tr>
+<tr><td>Emarion Ellis</td><td>G</td><td>24</td><td>4.0</td><td>81.0</td><td>14.8</td><td>30.5</td><td>0.9</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 11, 2026.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>
