@@ -117,10 +117,11 @@ def main():
     lines.append(f"# KenPom comparison, {KENPOM_DATE}")
     lines.append("")
     lines.append(f"Source: {KENPOM_SOURCE}. Our ratings: solver v2 on "
-                 f"2026-27 through Nov 9, 2026 (360 D1 games, 2-3 per "
-                 f"team, real preseason prior: 2025-26 final ratings "
-                 f"faded by returning minutes). His table is through "
-                 f"about Nov 10, so the game sets differ by a day.")
+                 f"2026-27 through Nov 11, 2026 (590 D1 games, 2-3 per "
+                 f"team, transfer-aware preseason prior: 2025-26 final "
+                 f"ratings faded by returning plus transfer minutes). "
+                 f"His table is the Nov 10 top 25, so the game sets "
+                 f"differ by a day and his list has moved since.")
     lines.append("")
     lines.append("## Metrics (rank-based only, per rubric.md)")
     lines.append("")
@@ -149,23 +150,25 @@ def main():
     # if this script is re-run on a later date.
     reasons = {
         "Arizona": "1-1: lost 75-84 at UCLA, then beat Cal Poly 104-84. "
-                   "Their prior is weak (returning share 0.27, weight "
-                   "136), so one early loss still drops them to 74th in "
-                   "ours; his prior keeps them 13th.",
+                   "Their prior is middling (returning 0.30, transfer "
+                   "0.36, prior Net +8.9, weight 223), so one early "
+                   "loss still drops them to 50th in ours; his prior "
+                   "keeps them 13th.",
         "Iowa St.": "1-1: lost 76-80 at home to Memphis, then beat "
-                    "Southern Miss 83-57. Same shape as Arizona: a home "
-                    "loss in week one, a middling prior (share 0.40), "
-                    "ours 63rd, his 14th.",
+                    "Southern Miss 83-57. Their prior is strong now "
+                    "(returning 0.48, transfer 0.50, prior Net +15.0, "
+                    "weight 296), but the home loss still puts them "
+                    "34th in ours, 14th in his.",
         "Miami FL": "2-1: lost 67-77 at Florida, then beat Wagner and "
                     "North Florida. The loss plus a thin 2-game sample "
-                    "puts them 58th in ours, 22nd in his.",
-        "Tennessee": "Returning share 0.09, so their prior is almost "
-                     "nothing (prior Net +2.0, weight 96). With 2 games "
-                     "played there is little to anchor them: ours 56th, "
-                     "his 23rd.",
-        "Texas Tech": "Returning share 0.21, prior Net +4.2, weight "
-                      "123. A weak prior plus 2 games of data: ours 43rd, "
-                      "his 17th.",
+                    "puts them 40th in ours, 22nd in his.",
+        "Tennessee": "Returning 0.22, transfer 0.75, so their prior "
+                     "is strong now (prior Net +9.5, weight 293), but "
+                     "their 2 games still leave them 46th in ours, "
+                     "23rd in his.",
+        "Texas Tech": "Returning 0.26, transfer 0.59, prior Net +8.6, "
+                      "weight 266. A middling prior plus 2-3 games of "
+                      "data: ours 33rd, his 17th.",
     }
     for name, h, o in disagreements:
         lines.append(f"- **{name}**: his {h}, ours {o}. "
@@ -176,19 +179,20 @@ def main():
     lines.append("")
     if rho < 0.7:
         lines.append("Below the 0.7 rho target, as the rubric expects in "
-                     "week one, but the real prior moved it a lot: with "
-                     "the league-average prior rho was 0.342, overlap at "
+                     "week one. The prior keeps moving it: with the "
+                     "league-average prior rho was 0.342, overlap at "
                      "25 was 12 of 25, and mean rank difference was 21.9. "
-                     "With the real prior those are 0.542, 15 of 25, and "
-                     "14.8. The remaining gap is mostly teams whose prior "
-                     "is weak because they returned almost nobody "
-                     "(Tennessee 0.09, Arizona 0.27, Texas Tech 0.21), "
-                     "plus one blowout artifact: LSU is our No. 1 on two "
-                     "big wins with a zero returning share, so nothing "
-                     "anchors them, and they are not in his top 25 at "
-                     "all. The gap should keep closing as games "
-                     "accumulate. If it has not closed by mid-season on a "
-                     "full game log, the solver or the prior is wrong.")
+                     "With the returning-only prior those are 0.542, 15 "
+                     "of 25, and 14.8. With the transfer-aware prior "
+                     "(returning plus transfer minutes) they are 0.592, "
+                     "15 of 25, and 11.7. LSU is the clearest win: "
+                     "our No. 1 at Net +34.7 on three blowouts with a "
+                     "zero returning share, now No. 5 at Net +26.5, "
+                     "still above his ~27th but no longer the artifact. "
+                     "The remaining gap is mostly 2-3 games of data per "
+                     "team: the gap should keep closing as games "
+                     "accumulate. If it has not closed by mid-season on "
+                     "a full game log, the solver or the prior is wrong.")
     else:
         lines.append("Above the 0.7 rho target.")
     text = "\n".join(lines) + "\n"
