@@ -206,7 +206,8 @@ def win_prob(margin, a, b):
     return 1.0 / (1.0 + math.exp(-z))
 
 
-def cross_fitted_margins(fit_games, margin_fn, solver_home_court, hc):
+def cross_fitted_margins(fit_games, margin_fn, solver_home_court, hc,
+                         prior_weight=300.0):
     """(margin, outcome) pairs with no in-sample leakage.
 
     Split the fit season chronologically in half. Ratings fit
@@ -224,6 +225,7 @@ def cross_fitted_margins(fit_games, margin_fn, solver_home_court, hc):
     out = []
     for train, test in ((first, second), (second, first)):
         r, lo, lt, _ = solve(train, home_court=solver_home_court,
+                             prior_weight=prior_weight,
                              return_info=True)
         for g in test:
             out.append((margin_fn(r, lo, lt, g, hc),
@@ -255,11 +257,13 @@ def score(probs, outcomes):
             "logloss": logloss, "calibration": calib}
 
 
-def run(solver_home_court=0.0, calibration="crossfit"):
+def run(solver_home_court=0.0, calibration="crossfit",
+        prior_weight=300.0):
     fit_games = played_d1(load_games(FIT_SEASON))
     test_games = played_d1(load_games(TEST_SEASON))
     ratings, league_o, league_t, info = solve(
-        load_games(FIT_SEASON), return_info=True)
+        load_games(FIT_SEASON), prior_weight=prior_weight,
+        return_info=True)
     print(f"Fit: {FIT_SEASON}, {info['n_games']} games, "
           f"{info['n_teams']} teams, league OffEff {league_o:.1f}, "
           f"tempo {league_t:.1f}")
@@ -287,7 +291,7 @@ def run(solver_home_court=0.0, calibration="crossfit"):
     if solver_home_court:
         ratings, league_o, league_t, info = solve(
             load_games(FIT_SEASON), home_court=solver_home_court,
-            return_info=True)
+            prior_weight=prior_weight, return_info=True)
         print(f"Fit ratings re-solved with solver home court "
               f"{solver_home_court} pts/100 poss")
     def predictor_logistic(margin_fn):
@@ -303,7 +307,8 @@ def run(solver_home_court=0.0, calibration="crossfit"):
         """
         if calibration == "crossfit":
             pairs = cross_fitted_margins(
-                fit_games, margin_fn, solver_home_court, hc)
+                fit_games, margin_fn, solver_home_court, hc,
+                prior_weight=prior_weight)
             return fit_logistic([m for m, _ in pairs],
                                 [y for _, y in pairs])
         margins = [margin_fn(ratings, league_o, league_t, g, hc)
@@ -345,6 +350,7 @@ def run(solver_home_court=0.0, calibration="crossfit"):
 
     return {"home_court": hc, "logistic": (a, b),
             "solver_home_court": solver_home_court,
+            "prior_weight": prior_weight,
             "calibration": calibration,
             "home_rate_fit": home_rate_fit,
             "home_rate_test": home_rate_test,
@@ -360,7 +366,9 @@ def report(res):
     lines.append("")
     lines.append(f"Fit on {res['n_fit']} {FIT_SEASON} games "
                  f"(league-average prior, no 2023-24 data exists for "
-                 f"a real prior). Solver home court "
+                 f"a real prior; prior weight "
+                 f"{res['prior_weight']:.0f} possessions). Solver "
+                 f"home court "
                  f"{res['solver_home_court']:.2f} pts/100 poss inside "
                  f"the fit. Prediction home court "
                  f"{res['home_court']:.2f} pts/100 poss, estimated "
@@ -501,9 +509,15 @@ def main():
                              "crossfit (default, out-of-sample "
                              "margins) or insample (the old "
                              "baseline, overconfident)")
+    parser.add_argument("--prior-weight", type=float, default=300.0,
+                        help="prior strength in possessions "
+                             "(default 300.0, the published "
+                             "baseline; lower lets ratings spread "
+                             "out more)")
     args = parser.parse_args()
     res = run(solver_home_court=args.solver_home_court,
-              calibration=args.calibration)
+              calibration=args.calibration,
+              prior_weight=args.prior_weight)
     text = report(res)
     print(text)
     out = HERE / args.out
