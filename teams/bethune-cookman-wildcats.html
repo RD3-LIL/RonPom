@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bethune-Cookman Wildcats | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+.note { color: #656d76; font-size: 14px; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+</style>
+</head>
+<body>
+<h1>Bethune-Cookman Wildcats</h1>
+<p class="subtitle">SWAC &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<section><h2>2026-27</h2>
+<p>Net rank #233 &middot; AdjO 104.3 &middot; AdjD 110.0 &middot; Net -5.7 &middot; AdjT 71.1 &middot; 0-3 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/02</td><td><a href="furman-paladins.html">Furman Paladins</a></td><td>N</td><td>L</td><td>70-79</td></tr>
+<tr><td>11/05</td><td><a href="texas-tech-red-raiders.html">Texas Tech Red Raiders</a></td><td>A</td><td>L</td><td>58-76</td></tr>
+<tr><td>11/07</td><td><a href="grand-canyon-lopes.html">Grand Canyon Lopes</a></td><td>A</td><td>L</td><td>81-99</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Vuk Boskovic</td><td>F</td><td>3</td><td>7.0</td><td>78.8</td><td>17.2</td><td>65.0</td><td>-0.4</td></tr>
+<tr><td>Kevin Patton Jr.</td><td>G</td><td>3</td><td>5.7</td><td>81.4</td><td>15.7</td><td>55.8</td><td>1.4</td></tr>
+<tr><td>Jaylen Jones</td><td>G</td><td>3</td><td>7.7</td><td>86.3</td><td>20.6</td><td>54.2</td><td>0.1</td></tr>
+<tr><td>Jameel Morris</td><td>G</td><td>3</td><td>8.3</td><td>104.9</td><td>19.1</td><td>52.5</td><td>2.1</td></tr>
+<tr><td>Daniel Johnson</td><td>F</td><td>3</td><td>5.3</td><td>64.0</td><td>20.0</td><td>52.5</td><td>-2.1</td></tr>
+<tr><td>Mari Jordan</td><td>G</td><td>3</td><td>9.3</td><td>104.3</td><td>21.8</td><td>51.7</td><td>1.8</td></tr>
+<tr><td>Quentin Heady</td><td>F</td><td>3</td><td>8.3</td><td>91.0</td><td>23.5</td><td>49.2</td><td>0.2</td></tr>
+<tr><td>Connor Teasley</td><td>G</td><td>3</td><td>8.7</td><td>87.5</td><td>27.2</td><td>45.8</td><td>-0.5</td></tr>
+<tr><td>Daniel Perez-Rouzan</td><td>F</td><td>2</td><td>9.0</td><td>141.1</td><td>17.4</td><td>30.8</td><td>3.1</td></tr>
+<tr><td>IJ Ezuma</td><td>F</td><td>3</td><td>3.0</td><td>93.4</td><td>18.0</td><td>22.5</td><td>-0.3</td></tr>
+<tr><td>Melian Martinez</td><td>C</td><td>3</td><td>0.3</td><td>21.0</td><td>10.0</td><td>20.0</td><td>-0.4</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
+</section>
+<section><h2>2025-26</h2>
+<p>Net rank #277 &middot; AdjO 103.2 &middot; AdjD 112.4 &middot; Net -9.3 &middot; AdjT 70.1 &middot; 16-15 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/03</td><td><a href="auburn-tigers.html">Auburn Tigers</a></td><td>A</td><td>L</td><td>90-95</td></tr>
+<tr><td>11/06</td><td><a href="miami-hurricanes.html">Miami Hurricanes</a></td><td>A</td><td>L</td><td>61-101</td></tr>
+<tr><td>11/15</td><td><a href="dayton-flyers.html">Dayton Flyers</a></td><td>A</td><td>L</td><td>82-91</td></tr>
+<tr><td>11/19</td><td><a href="ohio-bobcats.html">Ohio Bobcats</a></td><td>A</td><td>W</td><td>76-73</td></tr>
+<tr><td>11/24</td><td><a href="jacksonville-dolphins.html">Jacksonville Dolphins</a></td><td>N</td><td>L</td><td>64-69</td></tr>
+<tr><td>11/25</td><td><a href="stony-brook-seawolves.html">Stony Brook Seawolves</a></td><td>N</td><td>L</td><td>54-61</td></tr>
+<tr><td>11/29</td><td><a href="indiana-hoosiers.html">Indiana Hoosiers</a></td><td>A</td><td>L</td><td>56-100</td></tr>
+<tr><td>12/05</td><td><a href="south-carolina-state-bulldogs.html">South Carolina State Bulldogs</a></td><td>H</td><td>W</td><td>80-59</td></tr>
+<tr><td>12/14</td><td><a href="missouri-tigers.html">Missouri Tigers</a></td><td>A</td><td>L</td><td>60-82</td></tr>
+<tr><td>12/17</td><td><a href="saint-louis-billikens.html">Saint Louis Billikens</a></td><td>A</td><td>L</td><td>53-112</td></tr>
+<tr><td>12/22</td><td><a href="arizona-wildcats.html">Arizona Wildcats</a></td><td>A</td><td>L</td><td>71-107</td></tr>
+<tr><td>12/29</td><td><a href="oklahoma-state-cowboys.html">Oklahoma State Cowboys</a></td><td>A</td><td>L</td><td>77-103</td></tr>
+<tr><td>01/03</td><td><a href="florida-a-m-rattlers.html">Florida A&amp;M Rattlers</a></td><td>H</td><td>W</td><td>87-83</td></tr>
+<tr><td>01/10</td><td><a href="grambling-tigers.html">Grambling Tigers</a></td><td>H</td><td>W</td><td>74-65</td></tr>
+<tr><td>01/12</td><td><a href="southern-jaguars.html">Southern Jaguars</a></td><td>H</td><td>L</td><td>73-77</td></tr>
+<tr><td>01/17</td><td><a href="mississippi-valley-state-delta-devils.html">Mississippi Valley State Delta Devils</a></td><td>A</td><td>W</td><td>79-63</td></tr>
+<tr><td>01/19</td><td><a href="arkansas-pine-bluff-golden-lions.html">Arkansas-Pine Bluff Golden Lions</a></td><td>A</td><td>W</td><td>87-82</td></tr>
+<tr><td>01/24</td><td><a href="jackson-state-tigers.html">Jackson State Tigers</a></td><td>H</td><td>W</td><td>85-48</td></tr>
+<tr><td>01/26</td><td><a href="alcorn-state-braves.html">Alcorn State Braves</a></td><td>H</td><td>W</td><td>82-73</td></tr>
+<tr><td>01/31</td><td><a href="alabama-state-hornets.html">Alabama State Hornets</a></td><td>A</td><td>W</td><td>69-54</td></tr>
+<tr><td>02/02</td><td><a href="alabama-a-m-bulldogs.html">Alabama A&amp;M Bulldogs</a></td><td>A</td><td>W</td><td>80-62</td></tr>
+<tr><td>02/07</td><td><a href="prairie-view-a-m-panthers.html">Prairie View A&amp;M Panthers</a></td><td>H</td><td>W</td><td>82-76</td></tr>
+<tr><td>02/09</td><td><a href="texas-southern-tigers.html">Texas Southern Tigers</a></td><td>H</td><td>W</td><td>79-69</td></tr>
+<tr><td>02/14</td><td><a href="alcorn-state-braves.html">Alcorn State Braves</a></td><td>A</td><td>L</td><td>55-57</td></tr>
+<tr><td>02/16</td><td><a href="jackson-state-tigers.html">Jackson State Tigers</a></td><td>A</td><td>L</td><td>86-91</td></tr>
+<tr><td>02/19</td><td><a href="alabama-state-hornets.html">Alabama State Hornets</a></td><td>H</td><td>W</td><td>82-71</td></tr>
+<tr><td>02/21</td><td><a href="alabama-a-m-bulldogs.html">Alabama A&amp;M Bulldogs</a></td><td>H</td><td>W</td><td>85-76</td></tr>
+<tr><td>02/26</td><td><a href="grambling-tigers.html">Grambling Tigers</a></td><td>A</td><td>W</td><td>76-71</td></tr>
+<tr><td>02/28</td><td><a href="southern-jaguars.html">Southern Jaguars</a></td><td>A</td><td>W</td><td>82-79</td></tr>
+<tr><td>03/05</td><td><a href="florida-a-m-rattlers.html">Florida A&amp;M Rattlers</a></td><td>A</td><td>L</td><td>77-81</td></tr>
+<tr><td>03/11</td><td><a href="prairie-view-a-m-panthers.html">Prairie View A&amp;M Panthers</a></td><td>N</td><td>L</td><td>67-71</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Jakobi Heady</td><td>G</td><td>31</td><td>18.2</td><td>116.0</td><td>21.8</td><td>86.6</td><td>5.4</td></tr>
+<tr><td>Arterio Morris</td><td>G</td><td>30</td><td>11.5</td><td>75.2</td><td>27.3</td><td>64.9</td><td>-0.6</td></tr>
+<tr><td>Quentin Heady</td><td>F</td><td>32</td><td>10.3</td><td>99.2</td><td>20.2</td><td>64.1</td><td>2.3</td></tr>
+<tr><td>Daniel Perez-Rouzan</td><td>F</td><td>32</td><td>11.8</td><td>97.0</td><td>25.5</td><td>58.9</td><td>1.6</td></tr>
+<tr><td>Seneca Willoughby</td><td>G</td><td>29</td><td>4.1</td><td>74.5</td><td>10.8</td><td>57.8</td><td>1.2</td></tr>
+<tr><td>Ariel Bland</td><td>F</td><td>32</td><td>4.8</td><td>95.9</td><td>12.5</td><td>49.9</td><td>3.5</td></tr>
+<tr><td>Tyler Andrews</td><td>G</td><td>25</td><td>6.9</td><td>102.0</td><td>16.0</td><td>40.8</td><td>1.8</td></tr>
+<tr><td>Jordan Johnson</td><td>G</td><td>32</td><td>4.9</td><td>86.8</td><td>17.6</td><td>40.1</td><td>-0.1</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>2024-25</h2>
+<p>Net rank #298 &middot; AdjO 98.1 &middot; AdjD 108.9 &middot; Net -10.8 &middot; AdjT 68.9 &middot; 17-16 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/05</td><td><a href="texas-tech-red-raiders.html">Texas Tech Red Raiders</a></td><td>A</td><td>L</td><td>61-94</td></tr>
+<tr><td>11/09</td><td><a href="nebraska-cornhuskers.html">Nebraska Cornhuskers</a></td><td>A</td><td>L</td><td>58-63</td></tr>
+<tr><td>11/12</td><td><a href="purdue-fort-wayne-mastodons.html">Purdue Fort Wayne Mastodons</a></td><td>A</td><td>L</td><td>69-91</td></tr>
+<tr><td>11/16</td><td><a href="south-carolina-state-bulldogs.html">South Carolina State Bulldogs</a></td><td>H</td><td>W</td><td>75-62</td></tr>
+<tr><td>11/19</td><td><a href="tulane-green-wave.html">Tulane Green Wave</a></td><td>A</td><td>L</td><td>57-72</td></tr>
+<tr><td>11/26</td><td><a href="north-dakota-fighting-hawks.html">North Dakota Fighting Hawks</a></td><td>N</td><td>W</td><td>79-67</td></tr>
+<tr><td>11/27</td><td><a href="gardner-webb-runnin-bulldogs.html">Gardner-Webb Runnin&#x27; Bulldogs</a></td><td>N</td><td>L</td><td>64-79</td></tr>
+<tr><td>12/01</td><td><a href="minnesota-golden-gophers.html">Minnesota Golden Gophers</a></td><td>A</td><td>L</td><td>62-79</td></tr>
+<tr><td>12/12</td><td><a href="virginia-cavaliers.html">Virginia Cavaliers</a></td><td>A</td><td>L</td><td>41-59</td></tr>
+<tr><td>12/14</td><td><a href="west-virginia-mountaineers.html">West Virginia Mountaineers</a></td><td>A</td><td>L</td><td>61-84</td></tr>
+<tr><td>12/18</td><td><a href="south-florida-bulls.html">South Florida Bulls</a></td><td>A</td><td>W</td><td>77-69</td></tr>
+<tr><td>12/21</td><td><a href="davidson-wildcats.html">Davidson Wildcats</a></td><td>A</td><td>L</td><td>63-76</td></tr>
+<tr><td>12/30</td><td><a href="mississippi-state-bulldogs.html">Mississippi State Bulldogs</a></td><td>A</td><td>L</td><td>73-87</td></tr>
+<tr><td>01/04</td><td><a href="florida-a-m-rattlers.html">Florida A&amp;M Rattlers</a></td><td>A</td><td>W</td><td>62-55</td></tr>
+<tr><td>01/11</td><td><a href="grambling-tigers.html">Grambling Tigers</a></td><td>A</td><td>W</td><td>65-59</td></tr>
+<tr><td>01/13</td><td><a href="southern-jaguars.html">Southern Jaguars</a></td><td>A</td><td>L</td><td>53-69</td></tr>
+<tr><td>01/18</td><td><a href="mississippi-valley-state-delta-devils.html">Mississippi Valley State Delta Devils</a></td><td>H</td><td>W</td><td>83-58</td></tr>
+<tr><td>01/20</td><td><a href="arkansas-pine-bluff-golden-lions.html">Arkansas-Pine Bluff Golden Lions</a></td><td>H</td><td>W</td><td>73-64</td></tr>
+<tr><td>01/25</td><td><a href="jackson-state-tigers.html">Jackson State Tigers</a></td><td>A</td><td>L</td><td>81-86</td></tr>
+<tr><td>01/27</td><td><a href="alcorn-state-braves.html">Alcorn State Braves</a></td><td>A</td><td>L</td><td>61-70</td></tr>
+<tr><td>02/01</td><td><a href="alabama-state-hornets.html">Alabama State Hornets</a></td><td>H</td><td>W</td><td>67-64</td></tr>
+<tr><td>02/03</td><td><a href="alabama-a-m-bulldogs.html">Alabama A&amp;M Bulldogs</a></td><td>H</td><td>W</td><td>89-75</td></tr>
+<tr><td>02/08</td><td><a href="prairie-view-a-m-panthers.html">Prairie View A&amp;M Panthers</a></td><td>A</td><td>W</td><td>85-82</td></tr>
+<tr><td>02/10</td><td><a href="texas-southern-tigers.html">Texas Southern Tigers</a></td><td>A</td><td>W</td><td>80-77</td></tr>
+<tr><td>02/15</td><td><a href="alcorn-state-braves.html">Alcorn State Braves</a></td><td>H</td><td>L</td><td>74-78</td></tr>
+<tr><td>02/17</td><td><a href="jackson-state-tigers.html">Jackson State Tigers</a></td><td>H</td><td>L</td><td>71-84</td></tr>
+<tr><td>02/22</td><td><a href="alabama-a-m-bulldogs.html">Alabama A&amp;M Bulldogs</a></td><td>A</td><td>W</td><td>68-64</td></tr>
+<tr><td>02/24</td><td><a href="alabama-state-hornets.html">Alabama State Hornets</a></td><td>A</td><td>W</td><td>70-68</td></tr>
+<tr><td>03/01</td><td><a href="southern-jaguars.html">Southern Jaguars</a></td><td>H</td><td>W</td><td>70-69</td></tr>
+<tr><td>03/03</td><td><a href="grambling-tigers.html">Grambling Tigers</a></td><td>H</td><td>W</td><td>78-71</td></tr>
+<tr><td>03/08</td><td><a href="florida-a-m-rattlers.html">Florida A&amp;M Rattlers</a></td><td>H</td><td>W</td><td>76-75</td></tr>
+<tr><td>03/13</td><td><a href="alcorn-state-braves.html">Alcorn State Braves</a></td><td>N</td><td>W</td><td>69-60</td></tr>
+<tr><td>03/14</td><td><a href="jackson-state-tigers.html">Jackson State Tigers</a></td><td>N</td><td>L</td><td>50-71</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Trey Thomas</td><td>G</td><td>33</td><td>16.2</td><td>87.1</td><td>29.1</td><td>80.8</td><td>-0.3</td></tr>
+<tr><td>Jesus Carralero Martin</td><td>F</td><td>33</td><td>5.6</td><td>73.9</td><td>13.2</td><td>72.5</td><td>2.7</td></tr>
+<tr><td>Daniel Perez-Rouzan</td><td>F</td><td>33</td><td>11.8</td><td>100.4</td><td>21.8</td><td>67.8</td><td>1.8</td></tr>
+<tr><td>Seneca Willoughby</td><td>G</td><td>32</td><td>4.9</td><td>83.8</td><td>11.2</td><td>63.8</td><td>2.0</td></tr>
+<tr><td>Kalil Camara</td><td>F</td><td>32</td><td>7.7</td><td>99.8</td><td>16.2</td><td>57.9</td><td>2.5</td></tr>
+<tr><td>Reggie Ward Jr.</td><td>F</td><td>24</td><td>8.8</td><td>76.5</td><td>20.3</td><td>51.8</td><td>-0.4</td></tr>
+<tr><td>Brayon Freeman</td><td>G</td><td>19</td><td>16.2</td><td>89.3</td><td>31.1</td><td>42.4</td><td>0.1</td></tr>
+<tr><td>David Onanina</td><td>C</td><td>31</td><td>4.5</td><td>94.5</td><td>19.4</td><td>28.9</td><td>0.7</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file (Nov 11-13). Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not.</p><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th></tr></thead><tbody>
+<tr><td>Wed 04:00 PM</td><td><a href="san-diego-state-aztecs.html">San Diego St</a></td><td>A</td><td>San Diego St -19.7</td><td>4.5%</td><td>-18.5</td><td>-1.2</td></tr>
+</tbody></table><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 11, 2026.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>

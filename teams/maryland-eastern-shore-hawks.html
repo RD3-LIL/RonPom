@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maryland Eastern Shore Hawks | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+.note { color: #656d76; font-size: 14px; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+</style>
+</head>
+<body>
+<h1>Maryland Eastern Shore Hawks</h1>
+<p class="subtitle">MEAC &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<section><h2>2026-27</h2>
+<p>Net rank #326 &middot; AdjO 94.2 &middot; AdjD 110.3 &middot; Net -16.1 &middot; AdjT 69.3 &middot; 0-3 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/02</td><td><a href="wake-forest-demon-deacons.html">Wake Forest Demon Deacons</a></td><td>A</td><td>L</td><td>62-83</td></tr>
+<tr><td>11/04</td><td><a href="high-point-panthers.html">High Point Panthers</a></td><td>A</td><td>L</td><td>49-63</td></tr>
+<tr><td>11/10</td><td><a href="boston-college-eagles.html">Boston College Eagles</a></td><td>A</td><td>L</td><td>54-82</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Bobby Gardner</td><td>G</td><td>4</td><td>19.2</td><td>88.1</td><td>34.3</td><td>80.6</td><td>1.1</td></tr>
+<tr><td>Saadiq Moore</td><td>G</td><td>4</td><td>7.8</td><td>74.2</td><td>17.8</td><td>74.4</td><td>-1.2</td></tr>
+<tr><td>Isaiah Griffin</td><td>G</td><td>4</td><td>16.8</td><td>112.1</td><td>27.3</td><td>69.4</td><td>3.7</td></tr>
+<tr><td>Lucius Gibson-Savadel</td><td>F</td><td>4</td><td>4.2</td><td>61.3</td><td>15.3</td><td>57.5</td><td>-0.6</td></tr>
+<tr><td>Levi Beckwith</td><td>SF</td><td>4</td><td>1.8</td><td>29.5</td><td>14.5</td><td>51.9</td><td>-2.2</td></tr>
+<tr><td>Alvin Cole</td><td>F</td><td>4</td><td>7.0</td><td>87.0</td><td>22.3</td><td>45.6</td><td>-0.4</td></tr>
+<tr><td>Gerlouis Tokody</td><td>F</td><td>4</td><td>0.0</td><td>0.0</td><td>3.7</td><td>33.1</td><td>0.7</td></tr>
+<tr><td>Souleymane Sylla</td><td>F</td><td>4</td><td>1.0</td><td>42.4</td><td>10.0</td><td>30.0</td><td>-0.4</td></tr>
+<tr><td>Victor Ezeh</td><td>G</td><td>4</td><td>1.8</td><td>61.8</td><td>12.5</td><td>28.8</td><td>0.0</td></tr>
+<tr><td>Ebenezer Ogoh</td><td>C</td><td>3</td><td>2.7</td><td>100.0</td><td>20.3</td><td>12.5</td><td>0.2</td></tr>
+<tr><td>Roman Cummings</td><td>F</td><td>4</td><td>0.0</td><td>0.0</td><td>10.5</td><td>10.0</td><td>-0.2</td></tr>
+<tr><td>Israel Hall</td><td>G</td><td>2</td><td>0.0</td><td>0.0</td><td>12.7</td><td>2.5</td><td>-0.1</td></tr>
+<tr><td>Emmanuel Johnson III</td><td>G</td><td>3</td><td>0.0</td><td>0.0</td><td>25.3</td><td>1.2</td><td>-0.4</td></tr>
+<tr><td>Elson Berhanu</td><td>F</td><td>2</td><td>0.0</td><td>0.0</td><td>50.6</td><td>1.2</td><td>-0.9</td></tr>
+<tr><td>Da&#x27;Shawn Hall-Johnson</td><td>F</td><td>2</td><td>0.0</td><td>—</td><td>—</td><td>0.6</td><td>—</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
+</section>
+<section><h2>2025-26</h2>
+<p>Net rank #347 &middot; AdjO 94.7 &middot; AdjD 113.9 &middot; Net -19.2 &middot; AdjT 65.2 &middot; 7-23 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/03</td><td><a href="georgia-tech-yellow-jackets.html">Georgia Tech Yellow Jackets</a></td><td>A</td><td>L</td><td>52-56</td></tr>
+<tr><td>11/05</td><td><a href="georgia-bulldogs.html">Georgia Bulldogs</a></td><td>A</td><td>L</td><td>29-94</td></tr>
+<tr><td>11/11</td><td><a href="nebraska-cornhuskers.html">Nebraska Cornhuskers</a></td><td>A</td><td>L</td><td>50-69</td></tr>
+<tr><td>11/14</td><td><a href="creighton-bluejays.html">Creighton Bluejays</a></td><td>A</td><td>L</td><td>45-84</td></tr>
+<tr><td>11/18</td><td><a href="longwood-lancers.html">Longwood Lancers</a></td><td>A</td><td>W</td><td>83-82</td></tr>
+<tr><td>11/21</td><td><a href="canisius-golden-griffins.html">Canisius Golden Griffins</a></td><td>A</td><td>L</td><td>57-60</td></tr>
+<tr><td>11/22</td><td><a href="binghamton-bearcats.html">Binghamton Bearcats</a></td><td>N</td><td>W</td><td>63-52</td></tr>
+<tr><td>11/25</td><td><a href="hampton-pirates.html">Hampton Pirates</a></td><td>H</td><td>L</td><td>68-74</td></tr>
+<tr><td>12/02</td><td><a href="east-carolina-pirates.html">East Carolina Pirates</a></td><td>A</td><td>L</td><td>56-68</td></tr>
+<tr><td>12/06</td><td><a href="american-university-eagles.html">American University Eagles</a></td><td>A</td><td>L</td><td>60-78</td></tr>
+<tr><td>12/09</td><td><a href="virginia-cavaliers.html">Virginia Cavaliers</a></td><td>A</td><td>L</td><td>60-84</td></tr>
+<tr><td>12/12</td><td><a href="north-carolina-a-t-aggies.html">North Carolina A&amp;T Aggies</a></td><td>A</td><td>L</td><td>79-82</td></tr>
+<tr><td>12/14</td><td><a href="virginia-tech-hokies.html">Virginia Tech Hokies</a></td><td>A</td><td>L</td><td>53-82</td></tr>
+<tr><td>12/17</td><td><a href="wagner-seahawks.html">Wagner Seahawks</a></td><td>A</td><td>L</td><td>64-78</td></tr>
+<tr><td>12/22</td><td><a href="texas-longhorns.html">Texas Longhorns</a></td><td>A</td><td>L</td><td>71-94</td></tr>
+<tr><td>01/03</td><td><a href="morgan-state-bears.html">Morgan State Bears</a></td><td>H</td><td>W</td><td>66-49</td></tr>
+<tr><td>01/10</td><td><a href="howard-bison.html">Howard Bison</a></td><td>H</td><td>W</td><td>69-57</td></tr>
+<tr><td>01/12</td><td><a href="norfolk-state-spartans.html">Norfolk State Spartans</a></td><td>A</td><td>W</td><td>74-70</td></tr>
+<tr><td>01/17</td><td><a href="coppin-state-eagles.html">Coppin State Eagles</a></td><td>H</td><td>W</td><td>70-67</td></tr>
+<tr><td>01/31</td><td><a href="delaware-state-hornets.html">Delaware State Hornets</a></td><td>A</td><td>L</td><td>57-65</td></tr>
+<tr><td>02/02</td><td><a href="north-carolina-central-eagles.html">North Carolina Central Eagles</a></td><td>A</td><td>L</td><td>63-65</td></tr>
+<tr><td>02/04</td><td><a href="south-carolina-state-bulldogs.html">South Carolina State Bulldogs</a></td><td>A</td><td>L</td><td>54-63</td></tr>
+<tr><td>02/07</td><td><a href="morgan-state-bears.html">Morgan State Bears</a></td><td>A</td><td>L</td><td>71-79</td></tr>
+<tr><td>02/14</td><td><a href="howard-bison.html">Howard Bison</a></td><td>A</td><td>L</td><td>53-79</td></tr>
+<tr><td>02/16</td><td><a href="norfolk-state-spartans.html">Norfolk State Spartans</a></td><td>H</td><td>L</td><td>66-70</td></tr>
+<tr><td>02/21</td><td><a href="coppin-state-eagles.html">Coppin State Eagles</a></td><td>A</td><td>L</td><td>65-71</td></tr>
+<tr><td>02/28</td><td><a href="south-carolina-state-bulldogs.html">South Carolina State Bulldogs</a></td><td>H</td><td>W</td><td>69-57</td></tr>
+<tr><td>03/02</td><td><a href="north-carolina-central-eagles.html">North Carolina Central Eagles</a></td><td>H</td><td>L</td><td>73-77</td></tr>
+<tr><td>03/05</td><td><a href="delaware-state-hornets.html">Delaware State Hornets</a></td><td>H</td><td>L</td><td>56-57</td></tr>
+<tr><td>03/12</td><td><a href="north-carolina-central-eagles.html">North Carolina Central Eagles</a></td><td>N</td><td>L</td><td>76-83</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Michael Teal</td><td>G</td><td>32</td><td>5.8</td><td>73.8</td><td>16.1</td><td>65.4</td><td>0.1</td></tr>
+<tr><td>Jaden Cooper</td><td>G</td><td>32</td><td>8.0</td><td>92.1</td><td>17.7</td><td>65.1</td><td>1.6</td></tr>
+<tr><td>Dorion Staples</td><td>F</td><td>32</td><td>9.3</td><td>97.4</td><td>21.0</td><td>60.8</td><td>1.4</td></tr>
+<tr><td>Zion Obanla</td><td>G</td><td>32</td><td>10.8</td><td>108.0</td><td>24.1</td><td>55.2</td><td>3.0</td></tr>
+<tr><td>Justin Monden</td><td>G</td><td>32</td><td>6.0</td><td>77.8</td><td>19.8</td><td>52.0</td><td>-0.7</td></tr>
+<tr><td>Joseph Locandro</td><td>F</td><td>32</td><td>9.3</td><td>98.0</td><td>26.4</td><td>48.2</td><td>0.8</td></tr>
+<tr><td>Levi Beckwith</td><td>SF</td><td>26</td><td>2.0</td><td>49.6</td><td>12.2</td><td>35.1</td><td>-0.4</td></tr>
+<tr><td>Christopher Flippin</td><td>PF</td><td>30</td><td>5.0</td><td>80.5</td><td>25.3</td><td>30.9</td><td>0.0</td></tr>
+<tr><td>Trey Brown</td><td>G</td><td>27</td><td>3.3</td><td>63.3</td><td>20.2</td><td>29.1</td><td>-0.8</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>2024-25</h2>
+<p>Net rank #360 &middot; AdjO 95.0 &middot; AdjD 118.5 &middot; Net -23.5 &middot; AdjT 66.2 &middot; 2-25 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/04</td><td><a href="vanderbilt-commodores.html">Vanderbilt Commodores</a></td><td>A</td><td>L</td><td>63-102</td></tr>
+<tr><td>11/07</td><td><a href="pennsylvania-quakers.html">Pennsylvania Quakers</a></td><td>A</td><td>L</td><td>84-85</td></tr>
+<tr><td>11/12</td><td><a href="miami-oh-redhawks.html">Miami (OH) RedHawks</a></td><td>A</td><td>L</td><td>70-88</td></tr>
+<tr><td>11/15</td><td><a href="old-dominion-monarchs.html">Old Dominion Monarchs</a></td><td>A</td><td>L</td><td>71-73</td></tr>
+<tr><td>11/20</td><td><a href="murray-state-racers.html">Murray State Racers</a></td><td>A</td><td>L</td><td>61-79</td></tr>
+<tr><td>11/23</td><td><a href="illinois-fighting-illini.html">Illinois Fighting Illini</a></td><td>A</td><td>L</td><td>40-87</td></tr>
+<tr><td>11/25</td><td><a href="arkansas-razorbacks.html">Arkansas Razorbacks</a></td><td>A</td><td>L</td><td>35-109</td></tr>
+<tr><td>11/27</td><td><a href="little-rock-trojans.html">Little Rock Trojans</a></td><td>A</td><td>L</td><td>59-78</td></tr>
+<tr><td>11/30</td><td><a href="uconn-huskies.html">UConn Huskies</a></td><td>A</td><td>L</td><td>45-99</td></tr>
+<tr><td>12/05</td><td><a href="longwood-lancers.html">Longwood Lancers</a></td><td>A</td><td>L</td><td>76-80</td></tr>
+<tr><td>12/08</td><td><a href="wagner-seahawks.html">Wagner Seahawks</a></td><td>H</td><td>L</td><td>61-63</td></tr>
+<tr><td>12/28</td><td><a href="maryland-terrapins.html">Maryland Terrapins</a></td><td>A</td><td>L</td><td>66-81</td></tr>
+<tr><td>01/04</td><td><a href="norfolk-state-spartans.html">Norfolk State Spartans</a></td><td>A</td><td>L</td><td>59-81</td></tr>
+<tr><td>01/11</td><td><a href="north-carolina-central-eagles.html">North Carolina Central Eagles</a></td><td>A</td><td>L</td><td>69-88</td></tr>
+<tr><td>01/13</td><td><a href="south-carolina-state-bulldogs.html">South Carolina State Bulldogs</a></td><td>A</td><td>L</td><td>64-78</td></tr>
+<tr><td>01/25</td><td><a href="delaware-state-hornets.html">Delaware State Hornets</a></td><td>H</td><td>L</td><td>66-73</td></tr>
+<tr><td>02/01</td><td><a href="morgan-state-bears.html">Morgan State Bears</a></td><td>A</td><td>L</td><td>63-76</td></tr>
+<tr><td>02/03</td><td><a href="coppin-state-eagles.html">Coppin State Eagles</a></td><td>H</td><td>L</td><td>57-62</td></tr>
+<tr><td>02/10</td><td><a href="howard-bison.html">Howard Bison</a></td><td>H</td><td>L</td><td>57-77</td></tr>
+<tr><td>02/15</td><td><a href="norfolk-state-spartans.html">Norfolk State Spartans</a></td><td>H</td><td>L</td><td>63-75</td></tr>
+<tr><td>02/17</td><td><a href="howard-bison.html">Howard Bison</a></td><td>A</td><td>L</td><td>62-86</td></tr>
+<tr><td>02/24</td><td><a href="south-carolina-state-bulldogs.html">South Carolina State Bulldogs</a></td><td>H</td><td>L</td><td>68-81</td></tr>
+<tr><td>02/26</td><td><a href="north-carolina-central-eagles.html">North Carolina Central Eagles</a></td><td>H</td><td>W</td><td>68-59</td></tr>
+<tr><td>03/01</td><td><a href="morgan-state-bears.html">Morgan State Bears</a></td><td>H</td><td>L</td><td>72-75</td></tr>
+<tr><td>03/03</td><td><a href="coppin-state-eagles.html">Coppin State Eagles</a></td><td>A</td><td>W</td><td>72-59</td></tr>
+<tr><td>03/06</td><td><a href="delaware-state-hornets.html">Delaware State Hornets</a></td><td>A</td><td>L</td><td>68-75</td></tr>
+<tr><td>03/12</td><td><a href="norfolk-state-spartans.html">Norfolk State Spartans</a></td><td>N</td><td>L</td><td>70-77</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>KC Shaw</td><td>G</td><td>29</td><td>18.0</td><td>89.2</td><td>29.5</td><td>82.1</td><td>0.6</td></tr>
+<tr><td>Christopher Flippin</td><td>PF</td><td>31</td><td>9.9</td><td>98.9</td><td>19.5</td><td>65.6</td><td>1.7</td></tr>
+<tr><td>Evan Johnson</td><td>G</td><td>25</td><td>14.0</td><td>102.4</td><td>22.6</td><td>62.7</td><td>2.0</td></tr>
+<tr><td>Cardell Bailey</td><td>G</td><td>28</td><td>8.4</td><td>92.3</td><td>21.4</td><td>49.4</td><td>1.3</td></tr>
+<tr><td>Kyrell Shaw</td><td>G</td><td>30</td><td>6.7</td><td>88.5</td><td>20.1</td><td>46.6</td><td>0.6</td></tr>
+<tr><td>Hassan Perkins</td><td>G</td><td>27</td><td>5.0</td><td>83.0</td><td>15.7</td><td>42.7</td><td>-0.0</td></tr>
+<tr><td>Jalen Ware</td><td>F</td><td>27</td><td>3.3</td><td>63.0</td><td>15.5</td><td>38.0</td><td>0.1</td></tr>
+<tr><td>Maurice Vassel</td><td>F</td><td>29</td><td>2.8</td><td>79.3</td><td>12.0</td><td>35.2</td><td>0.3</td></tr>
+<tr><td>Jose Cuello</td><td>G</td><td>29</td><td>2.9</td><td>67.6</td><td>15.8</td><td>32.9</td><td>-0.7</td></tr>
+<tr><td>Ralph Martino Jr.</td><td>G</td><td>27</td><td>1.7</td><td>59.1</td><td>11.7</td><td>27.6</td><td>-0.1</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file (Nov 11-13). Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not.</p><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th></tr></thead><tbody>
+<tr><td>Thu 06:00 PM</td><td><a href="rhode-island-rams.html">Rhode Island</a></td><td>A</td><td>Rhode Island -23.5</td><td>2.6%</td><td>-</td><td>-</td></tr>
+</tbody></table><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 11, 2026.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>

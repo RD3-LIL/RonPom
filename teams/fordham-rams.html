@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fordham Rams | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+.note { color: #656d76; font-size: 14px; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+</style>
+</head>
+<body>
+<h1>Fordham Rams</h1>
+<p class="subtitle">A-10 &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<section><h2>2026-27</h2>
+<p>Net rank #155 &middot; AdjO 108.8 &middot; AdjD 108.2 &middot; Net 0.5 &middot; AdjT 70.3 &middot; 2-1 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/02</td><td><a href="kansas-jayhawks.html">Kansas Jayhawks</a></td><td>A</td><td>L</td><td>65-95</td></tr>
+<tr><td>11/05</td><td><a href="stonehill-skyhawks.html">Stonehill Skyhawks</a></td><td>H</td><td>W</td><td>83-63</td></tr>
+<tr><td>11/10</td><td><a href="iona-gaels.html">Iona Gaels</a></td><td>H</td><td>W</td><td>78-72</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Amir Lindsey</td><td>G</td><td>3</td><td>12.0</td><td>92.7</td><td>20.6</td><td>75.8</td><td>3.9</td></tr>
+<tr><td>Lateef Patrick Jr.</td><td>G</td><td>3</td><td>16.0</td><td>96.7</td><td>30.3</td><td>65.8</td><td>0.4</td></tr>
+<tr><td>Akira Jacobs</td><td>F</td><td>3</td><td>11.3</td><td>154.0</td><td>13.7</td><td>65.0</td><td>6.4</td></tr>
+<tr><td>Rikus Schulte</td><td>F</td><td>3</td><td>6.7</td><td>84.2</td><td>15.5</td><td>61.7</td><td>4.8</td></tr>
+<tr><td>Abass Bodija</td><td>F</td><td>3</td><td>7.0</td><td>85.2</td><td>21.6</td><td>45.8</td><td>0.2</td></tr>
+<tr><td>Kelvin Odih</td><td>G</td><td>3</td><td>4.3</td><td>77.0</td><td>15.1</td><td>45.0</td><td>1.6</td></tr>
+<tr><td>Hassan Koureissi</td><td>G</td><td>3</td><td>5.3</td><td>53.5</td><td>27.7</td><td>43.3</td><td>-2.9</td></tr>
+<tr><td>Roor Akhuar</td><td>F</td><td>3</td><td>3.7</td><td>89.3</td><td>12.4</td><td>40.0</td><td>0.6</td></tr>
+<tr><td>Jack Whitbourn</td><td>C</td><td>3</td><td>6.7</td><td>132.6</td><td>16.9</td><td>35.8</td><td>3.0</td></tr>
+<tr><td>Desmond Bellot Jr.</td><td>G</td><td>3</td><td>1.3</td><td>58.1</td><td>20.7</td><td>13.3</td><td>-1.0</td></tr>
+<tr><td>Frank Siaca Bey</td><td>F</td><td>2</td><td>1.0</td><td>200.0</td><td>16.1</td><td>2.5</td><td>0.5</td></tr>
+<tr><td>JJ Laboy</td><td>G</td><td>2</td><td>0.5</td><td>113.6</td><td>14.2</td><td>2.5</td><td>0.6</td></tr>
+<tr><td>Omar Essam</td><td>C</td><td>2</td><td>0.0</td><td>0.0</td><td>39.2</td><td>2.5</td><td>-1.1</td></tr>
+<tr><td>Max Miller</td><td>G</td><td>1</td><td>0.0</td><td>—</td><td>—</td><td>0.0</td><td>—</td></tr>
+<tr><td>Aidan Crotty</td><td>G</td><td>1</td><td>0.0</td><td>—</td><td>—</td><td>0.0</td><td>—</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
+</section>
+<section><h2>2025-26</h2>
+<p>Net rank #148 &middot; AdjO 105.9 &middot; AdjD 104.2 &middot; Net 1.7 &middot; AdjT 65.1 &middot; 14-15 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/04</td><td><a href="njit-highlanders.html">NJIT Highlanders</a></td><td>H</td><td>L</td><td>61-72</td></tr>
+<tr><td>11/11</td><td><a href="wagner-seahawks.html">Wagner Seahawks</a></td><td>H</td><td>W</td><td>63-61</td></tr>
+<tr><td>11/14</td><td><a href="iona-gaels.html">Iona Gaels</a></td><td>A</td><td>L</td><td>71-76</td></tr>
+<tr><td>11/20</td><td><a href="long-island-university-sharks.html">Long Island University Sharks</a></td><td>H</td><td>W</td><td>69-53</td></tr>
+<tr><td>11/29</td><td><a href="ualbany-great-danes.html">UAlbany Great Danes</a></td><td>N</td><td>W</td><td>88-68</td></tr>
+<tr><td>11/30</td><td><a href="colgate-raiders.html">Colgate Raiders</a></td><td>N</td><td>L</td><td>62-72</td></tr>
+<tr><td>12/06</td><td><a href="holy-cross-crusaders.html">Holy Cross Crusaders</a></td><td>H</td><td>L</td><td>69-70</td></tr>
+<tr><td>12/10</td><td><a href="fairleigh-dickinson-knights.html">Fairleigh Dickinson Knights</a></td><td>H</td><td>W</td><td>75-54</td></tr>
+<tr><td>12/13</td><td><a href="manhattan-jaspers.html">Manhattan Jaspers</a></td><td>H</td><td>W</td><td>82-53</td></tr>
+<tr><td>12/22</td><td><a href="new-haven-chargers.html">New Haven Chargers</a></td><td>H</td><td>W</td><td>65-47</td></tr>
+<tr><td>12/31</td><td><a href="dayton-flyers.html">Dayton Flyers</a></td><td>A</td><td>L</td><td>56-63</td></tr>
+<tr><td>01/04</td><td><a href="richmond-spiders.html">Richmond Spiders</a></td><td>H</td><td>L</td><td>75-83</td></tr>
+<tr><td>01/07</td><td><a href="george-mason-patriots.html">George Mason Patriots</a></td><td>H</td><td>L</td><td>58-67</td></tr>
+<tr><td>01/10</td><td><a href="st-bonaventure-bonnies.html">St. Bonaventure Bonnies</a></td><td>A</td><td>W</td><td>81-77</td></tr>
+<tr><td>01/14</td><td><a href="saint-louis-billikens.html">Saint Louis Billikens</a></td><td>A</td><td>L</td><td>56-78</td></tr>
+<tr><td>01/17</td><td><a href="duquesne-dukes.html">Duquesne Dukes</a></td><td>H</td><td>L</td><td>63-74</td></tr>
+<tr><td>01/21</td><td><a href="davidson-wildcats.html">Davidson Wildcats</a></td><td>A</td><td>L</td><td>63-68</td></tr>
+<tr><td>01/28</td><td><a href="la-salle-explorers.html">La Salle Explorers</a></td><td>H</td><td>W</td><td>64-58</td></tr>
+<tr><td>01/31</td><td><a href="george-washington-revolutionaries.html">George Washington Revolutionaries</a></td><td>A</td><td>W</td><td>79-65</td></tr>
+<tr><td>02/03</td><td><a href="vcu-rams.html">VCU Rams</a></td><td>H</td><td>L</td><td>59-63</td></tr>
+<tr><td>02/07</td><td><a href="st-bonaventure-bonnies.html">St. Bonaventure Bonnies</a></td><td>H</td><td>L</td><td>67-70</td></tr>
+<tr><td>02/10</td><td><a href="saint-josephs-hawks.html">Saint Joseph&#x27;s Hawks</a></td><td>A</td><td>W</td><td>68-64</td></tr>
+<tr><td>02/14</td><td><a href="rhode-island-rams.html">Rhode Island Rams</a></td><td>A</td><td>W</td><td>70-66</td></tr>
+<tr><td>02/18</td><td><a href="loyola-chicago-ramblers.html">Loyola Chicago Ramblers</a></td><td>H</td><td>W</td><td>62-59</td></tr>
+<tr><td>02/21</td><td><a href="davidson-wildcats.html">Davidson Wildcats</a></td><td>H</td><td>W</td><td>63-59</td></tr>
+<tr><td>02/28</td><td><a href="vcu-rams.html">VCU Rams</a></td><td>A</td><td>L</td><td>63-82</td></tr>
+<tr><td>03/04</td><td><a href="la-salle-explorers.html">La Salle Explorers</a></td><td>A</td><td>L</td><td>84-87</td></tr>
+<tr><td>03/07</td><td><a href="rhode-island-rams.html">Rhode Island Rams</a></td><td>H</td><td>W</td><td>61-49</td></tr>
+<tr><td>03/12</td><td><a href="george-washington-revolutionaries.html">George Washington Revolutionaries</a></td><td>N</td><td>L</td><td>62-66</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Dejour Reaves</td><td>G</td><td>31</td><td>17.9</td><td>97.4</td><td>28.0</td><td>82.0</td><td>3.3</td></tr>
+<tr><td>Rikus Schulte</td><td>F</td><td>32</td><td>10.7</td><td>97.8</td><td>18.7</td><td>75.1</td><td>3.9</td></tr>
+<tr><td>Akira Jacobs</td><td>F</td><td>32</td><td>7.2</td><td>99.3</td><td>13.1</td><td>71.2</td><td>1.9</td></tr>
+<tr><td>Christian Henry</td><td>G</td><td>30</td><td>10.7</td><td>74.2</td><td>26.3</td><td>66.2</td><td>-0.3</td></tr>
+<tr><td>Louis Lesmond</td><td>G</td><td>28</td><td>3.3</td><td>60.7</td><td>14.6</td><td>42.3</td><td>-1.1</td></tr>
+<tr><td>Abass Bodija</td><td>F</td><td>27</td><td>7.3</td><td>100.3</td><td>19.3</td><td>40.9</td><td>2.1</td></tr>
+<tr><td>Marcus Greene</td><td>G</td><td>31</td><td>4.7</td><td>100.3</td><td>15.1</td><td>38.5</td><td>1.0</td></tr>
+<tr><td>Roor Akhuar</td><td>F</td><td>25</td><td>6.1</td><td>100.1</td><td>16.0</td><td>38.2</td><td>1.9</td></tr>
+<tr><td>Jack Whitbourn</td><td>C</td><td>11</td><td>8.4</td><td>88.3</td><td>20.5</td><td>20.5</td><td>1.5</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>2024-25</h2>
+<p>Net rank #225 &middot; AdjO 106.3 &middot; AdjD 110.9 &middot; Net -4.5 &middot; AdjT 70.3 &middot; 11-21 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/04</td><td><a href="st-johns-red-storm.html">St. John&#x27;s Red Storm</a></td><td>A</td><td>L</td><td>60-92</td></tr>
+<tr><td>11/09</td><td><a href="seton-hall-pirates.html">Seton Hall Pirates</a></td><td>A</td><td>W</td><td>57-56</td></tr>
+<tr><td>11/12</td><td><a href="binghamton-bearcats.html">Binghamton Bearcats</a></td><td>H</td><td>W</td><td>78-63</td></tr>
+<tr><td>11/15</td><td><a href="manhattan-jaspers.html">Manhattan Jaspers</a></td><td>A</td><td>L</td><td>76-78</td></tr>
+<tr><td>11/22</td><td><a href="drexel-dragons.html">Drexel Dragons</a></td><td>H</td><td>L</td><td>71-73</td></tr>
+<tr><td>11/25</td><td><a href="penn-state-nittany-lions.html">Penn State Nittany Lions</a></td><td>N</td><td>L</td><td>66-85</td></tr>
+<tr><td>11/26</td><td><a href="san-francisco-dons.html">San Francisco Dons</a></td><td>N</td><td>L</td><td>64-85</td></tr>
+<tr><td>12/01</td><td><a href="new-hampshire-wildcats.html">New Hampshire Wildcats</a></td><td>H</td><td>W</td><td>83-61</td></tr>
+<tr><td>12/04</td><td><a href="fairleigh-dickinson-knights.html">Fairleigh Dickinson Knights</a></td><td>H</td><td>W</td><td>84-75</td></tr>
+<tr><td>12/08</td><td><a href="maine-black-bears.html">Maine Black Bears</a></td><td>H</td><td>W</td><td>87-72</td></tr>
+<tr><td>12/14</td><td><a href="bryant-bulldogs.html">Bryant Bulldogs</a></td><td>N</td><td>W</td><td>86-84</td></tr>
+<tr><td>12/21</td><td><a href="ualbany-great-danes.html">UAlbany Great Danes</a></td><td>H</td><td>W</td><td>87-83</td></tr>
+<tr><td>12/31</td><td><a href="saint-louis-billikens.html">Saint Louis Billikens</a></td><td>H</td><td>L</td><td>63-88</td></tr>
+<tr><td>01/04</td><td><a href="st-bonaventure-bonnies.html">St. Bonaventure Bonnies</a></td><td>H</td><td>L</td><td>66-86</td></tr>
+<tr><td>01/08</td><td><a href="vcu-rams.html">VCU Rams</a></td><td>A</td><td>L</td><td>61-73</td></tr>
+<tr><td>01/11</td><td><a href="davidson-wildcats.html">Davidson Wildcats</a></td><td>A</td><td>L</td><td>64-74</td></tr>
+<tr><td>01/15</td><td><a href="massachusetts-minutemen.html">Massachusetts Minutemen</a></td><td>H</td><td>L</td><td>118-120</td></tr>
+<tr><td>01/22</td><td><a href="loyola-chicago-ramblers.html">Loyola Chicago Ramblers</a></td><td>A</td><td>L</td><td>66-70</td></tr>
+<tr><td>01/26</td><td><a href="duquesne-dukes.html">Duquesne Dukes</a></td><td>H</td><td>W</td><td>65-63</td></tr>
+<tr><td>01/29</td><td><a href="la-salle-explorers.html">La Salle Explorers</a></td><td>A</td><td>W</td><td>88-72</td></tr>
+<tr><td>02/01</td><td><a href="st-bonaventure-bonnies.html">St. Bonaventure Bonnies</a></td><td>A</td><td>L</td><td>72-74</td></tr>
+<tr><td>02/05</td><td><a href="rhode-island-rams.html">Rhode Island Rams</a></td><td>H</td><td>W</td><td>80-79</td></tr>
+<tr><td>02/12</td><td><a href="dayton-flyers.html">Dayton Flyers</a></td><td>H</td><td>L</td><td>76-93</td></tr>
+<tr><td>02/15</td><td><a href="richmond-spiders.html">Richmond Spiders</a></td><td>A</td><td>L</td><td>66-70</td></tr>
+<tr><td>02/19</td><td><a href="duquesne-dukes.html">Duquesne Dukes</a></td><td>A</td><td>L</td><td>64-73</td></tr>
+<tr><td>02/22</td><td><a href="davidson-wildcats.html">Davidson Wildcats</a></td><td>H</td><td>L</td><td>69-80</td></tr>
+<tr><td>02/26</td><td><a href="george-mason-patriots.html">George Mason Patriots</a></td><td>A</td><td>L</td><td>64-74</td></tr>
+<tr><td>03/01</td><td><a href="saint-josephs-hawks.html">Saint Joseph&#x27;s Hawks</a></td><td>H</td><td>L</td><td>76-90</td></tr>
+<tr><td>03/05</td><td><a href="george-washington-revolutionaries.html">George Washington Revolutionaries</a></td><td>H</td><td>L</td><td>58-81</td></tr>
+<tr><td>03/08</td><td><a href="rhode-island-rams.html">Rhode Island Rams</a></td><td>A</td><td>L</td><td>67-86</td></tr>
+<tr><td>03/12</td><td><a href="rhode-island-rams.html">Rhode Island Rams</a></td><td>N</td><td>W</td><td>88-71</td></tr>
+<tr><td>03/13</td><td><a href="george-washington-revolutionaries.html">George Washington Revolutionaries</a></td><td>N</td><td>L</td><td>81-88</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Japhet Medor</td><td>G</td><td>33</td><td>13.6</td><td>94.7</td><td>21.3</td><td>82.3</td><td>2.9</td></tr>
+<tr><td>Jackie Johnson III</td><td>G</td><td>33</td><td>19.4</td><td>95.3</td><td>32.9</td><td>75.6</td><td>1.1</td></tr>
+<tr><td>Romad Dean</td><td>F</td><td>33</td><td>6.9</td><td>97.7</td><td>13.0</td><td>66.4</td><td>2.1</td></tr>
+<tr><td>Joshua Rivera</td><td>F</td><td>32</td><td>10.7</td><td>84.7</td><td>24.4</td><td>61.4</td><td>-0.3</td></tr>
+<tr><td>Abdou Tsimbila</td><td>F</td><td>33</td><td>5.7</td><td>87.5</td><td>16.3</td><td>48.9</td><td>1.9</td></tr>
+<tr><td>Jahmere Tripp</td><td>G</td><td>29</td><td>7.9</td><td>85.0</td><td>22.2</td><td>44.6</td><td>1.1</td></tr>
+<tr><td>Zach Riley</td><td>G</td><td>33</td><td>2.3</td><td>78.4</td><td>8.1</td><td>44.2</td><td>1.3</td></tr>
+<tr><td>Matt Zona</td><td>F</td><td>33</td><td>5.4</td><td>96.9</td><td>16.2</td><td>41.7</td><td>1.9</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 11, 2026.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>

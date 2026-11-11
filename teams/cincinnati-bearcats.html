@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cincinnati Bearcats | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+.note { color: #656d76; font-size: 14px; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+</style>
+</head>
+<body>
+<h1>Cincinnati Bearcats</h1>
+<p class="subtitle">Big 12 &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<section><h2>2026-27</h2>
+<p>Net rank #53 &middot; AdjO 107.9 &middot; AdjD 92.9 &middot; Net 15.0 &middot; AdjT 70.6 &middot; 2-1 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/02</td><td><a href="american-university-eagles.html">American University Eagles</a></td><td>H</td><td>W</td><td>79-53</td></tr>
+<tr><td>11/05</td><td><a href="green-bay-phoenix.html">Green Bay Phoenix</a></td><td>H</td><td>W</td><td>81-64</td></tr>
+<tr><td>11/09</td><td><a href="minnesota-golden-gophers.html">Minnesota Golden Gophers</a></td><td>H</td><td>L</td><td>61-63</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>MJ Collins Jr.</td><td>G</td><td>3</td><td>11.0</td><td>106.6</td><td>18.1</td><td>71.7</td><td>4.6</td></tr>
+<tr><td>Tylen Riley</td><td>G</td><td>3</td><td>12.0</td><td>91.1</td><td>28.0</td><td>59.2</td><td>1.0</td></tr>
+<tr><td>Myles Colvin</td><td>G</td><td>3</td><td>12.0</td><td>116.3</td><td>22.2</td><td>58.3</td><td>4.5</td></tr>
+<tr><td>Tyler Tejada</td><td>F</td><td>3</td><td>7.7</td><td>78.4</td><td>23.4</td><td>52.5</td><td>-0.2</td></tr>
+<tr><td>Eric Mahaffey</td><td>G</td><td>3</td><td>8.0</td><td>129.6</td><td>15.3</td><td>50.8</td><td>5.2</td></tr>
+<tr><td>David Iweze</td><td>F</td><td>3</td><td>4.7</td><td>85.4</td><td>16.8</td><td>40.8</td><td>2.7</td></tr>
+<tr><td>Amani Lyles</td><td>F</td><td>3</td><td>5.3</td><td>80.0</td><td>21.4</td><td>39.2</td><td>0.9</td></tr>
+<tr><td>Adlan Elamin</td><td>F</td><td>3</td><td>3.7</td><td>71.2</td><td>19.4</td><td>33.3</td><td>-0.7</td></tr>
+<tr><td>Trevian Carson</td><td>G</td><td>3</td><td>2.3</td><td>77.8</td><td>12.6</td><td>30.0</td><td>-0.2</td></tr>
+<tr><td>Riley Allenspach</td><td>F</td><td>3</td><td>3.3</td><td>112.6</td><td>13.9</td><td>26.7</td><td>1.2</td></tr>
+<tr><td>Elijah Perryman</td><td>G</td><td>3</td><td>0.7</td><td>25.0</td><td>17.5</td><td>19.2</td><td>0.4</td></tr>
+<tr><td>Akai Fleming</td><td>G</td><td>2</td><td>4.5</td><td>101.4</td><td>24.8</td><td>15.0</td><td>3.2</td></tr>
+<tr><td>Jayden Hastings</td><td>F</td><td>1</td><td>0.0</td><td>0.0</td><td>50.2</td><td>2.5</td><td>-2.5</td></tr>
+<tr><td>Deshaun Vaden</td><td>F</td><td>1</td><td>0.0</td><td>—</td><td>—</td><td>0.8</td><td>—</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
+</section>
+<section><h2>2025-26</h2>
+<p>Net rank #47 &middot; AdjO 110.9 &middot; AdjD 95.0 &middot; Net 15.9 &middot; AdjT 68.3 &middot; 18-15 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/03</td><td><a href="western-carolina-catamounts.html">Western Carolina Catamounts</a></td><td>H</td><td>W</td><td>94-63</td></tr>
+<tr><td>11/07</td><td><a href="georgia-state-panthers.html">Georgia State Panthers</a></td><td>H</td><td>W</td><td>74-64</td></tr>
+<tr><td>11/11</td><td><a href="dayton-flyers.html">Dayton Flyers</a></td><td>H</td><td>W</td><td>74-62</td></tr>
+<tr><td>11/16</td><td><a href="mount-st-marys-mountaineers.html">Mount St. Mary&#x27;s Mountaineers</a></td><td>H</td><td>W</td><td>72-55</td></tr>
+<tr><td>11/21</td><td><a href="louisville-cardinals.html">Louisville Cardinals</a></td><td>N</td><td>L</td><td>64-74</td></tr>
+<tr><td>11/24</td><td><a href="njit-highlanders.html">NJIT Highlanders</a></td><td>H</td><td>W</td><td>94-67</td></tr>
+<tr><td>11/26</td><td><a href="eastern-michigan-eagles.html">Eastern Michigan Eagles</a></td><td>H</td><td>L</td><td>56-64</td></tr>
+<tr><td>12/01</td><td><a href="tarleton-state-texans.html">Tarleton State Texans</a></td><td>H</td><td>W</td><td>76-58</td></tr>
+<tr><td>12/05</td><td><a href="xavier-musketeers.html">Xavier Musketeers</a></td><td>A</td><td>L</td><td>74-79</td></tr>
+<tr><td>12/13</td><td><a href="georgia-bulldogs.html">Georgia Bulldogs</a></td><td>N</td><td>L</td><td>65-84</td></tr>
+<tr><td>12/17</td><td><a href="alabama-state-hornets.html">Alabama State Hornets</a></td><td>H</td><td>W</td><td>88-51</td></tr>
+<tr><td>12/21</td><td><a href="clemson-tigers.html">Clemson Tigers</a></td><td>N</td><td>L</td><td>65-68</td></tr>
+<tr><td>12/29</td><td><a href="lipscomb-bisons.html">Lipscomb Bisons</a></td><td>H</td><td>W</td><td>89-62</td></tr>
+<tr><td>01/03</td><td><a href="houston-cougars.html">Houston Cougars</a></td><td>H</td><td>L</td><td>60-67</td></tr>
+<tr><td>01/06</td><td><a href="west-virginia-mountaineers.html">West Virginia Mountaineers</a></td><td>A</td><td>L</td><td>60-62</td></tr>
+<tr><td>01/11</td><td><a href="ucf-knights.html">UCF Knights</a></td><td>A</td><td>L</td><td>72-73</td></tr>
+<tr><td>01/14</td><td><a href="colorado-buffaloes.html">Colorado Buffaloes</a></td><td>H</td><td>W</td><td>77-68</td></tr>
+<tr><td>01/17</td><td><a href="iowa-state-cyclones.html">Iowa State Cyclones</a></td><td>H</td><td>W</td><td>79-70</td></tr>
+<tr><td>01/21</td><td><a href="arizona-wildcats.html">Arizona Wildcats</a></td><td>A</td><td>L</td><td>51-77</td></tr>
+<tr><td>01/24</td><td><a href="arizona-state-sun-devils.html">Arizona State Sun Devils</a></td><td>A</td><td>L</td><td>68-82</td></tr>
+<tr><td>01/28</td><td><a href="baylor-bears.html">Baylor Bears</a></td><td>H</td><td>W</td><td>67-57</td></tr>
+<tr><td>01/31</td><td><a href="houston-cougars.html">Houston Cougars</a></td><td>A</td><td>L</td><td>54-76</td></tr>
+<tr><td>02/05</td><td><a href="west-virginia-mountaineers.html">West Virginia Mountaineers</a></td><td>H</td><td>L</td><td>54-59</td></tr>
+<tr><td>02/08</td><td><a href="ucf-knights.html">UCF Knights</a></td><td>H</td><td>W</td><td>92-72</td></tr>
+<tr><td>02/11</td><td><a href="kansas-state-wildcats.html">Kansas State Wildcats</a></td><td>A</td><td>W</td><td>91-62</td></tr>
+<tr><td>02/15</td><td><a href="utah-utes.html">Utah Utes</a></td><td>H</td><td>W</td><td>69-65</td></tr>
+<tr><td>02/21</td><td><a href="kansas-jayhawks.html">Kansas Jayhawks</a></td><td>A</td><td>W</td><td>84-68</td></tr>
+<tr><td>02/24</td><td><a href="texas-tech-red-raiders.html">Texas Tech Red Raiders</a></td><td>A</td><td>L</td><td>68-80</td></tr>
+<tr><td>02/28</td><td><a href="oklahoma-state-cowboys.html">Oklahoma State Cowboys</a></td><td>H</td><td>W</td><td>91-68</td></tr>
+<tr><td>03/03</td><td><a href="byu-cougars.html">BYU Cougars</a></td><td>H</td><td>W</td><td>90-68</td></tr>
+<tr><td>03/07</td><td><a href="tcu-horned-frogs.html">TCU Horned Frogs</a></td><td>A</td><td>L</td><td>63-73</td></tr>
+<tr><td>03/10</td><td><a href="utah-utes.html">Utah Utes</a></td><td>N</td><td>W</td><td>73-66</td></tr>
+<tr><td>03/11</td><td><a href="ucf-knights.html">UCF Knights</a></td><td>N</td><td>L</td><td>65-66</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Daveon Thomas</td><td>G</td><td>33</td><td>11.6</td><td>92.2</td><td>20.7</td><td>76.1</td><td>2.1</td></tr>
+<tr><td>Baba Miller</td><td>F</td><td>31</td><td>13.0</td><td>97.7</td><td>21.0</td><td>74.8</td><td>4.9</td></tr>
+<tr><td>Moustapha Thiam</td><td>C</td><td>31</td><td>12.8</td><td>101.8</td><td>23.2</td><td>63.9</td><td>4.0</td></tr>
+<tr><td>Jalen Celestine</td><td>G</td><td>32</td><td>8.6</td><td>107.0</td><td>17.0</td><td>57.7</td><td>2.8</td></tr>
+<tr><td>Jizzle James</td><td>G</td><td>23</td><td>10.9</td><td>94.5</td><td>19.4</td><td>52.2</td><td>1.0</td></tr>
+<tr><td>Sencire Harris</td><td>G</td><td>31</td><td>5.7</td><td>81.6</td><td>20.9</td><td>39.7</td><td>1.1</td></tr>
+<tr><td>Kerr Kriisa</td><td>G</td><td>19</td><td>5.8</td><td>81.9</td><td>16.9</td><td>30.2</td><td>0.4</td></tr>
+<tr><td>Shon Abaev</td><td>F</td><td>24</td><td>7.0</td><td>79.9</td><td>27.4</td><td>29.0</td><td>-0.5</td></tr>
+<tr><td>Keyshuan Tillery</td><td>G</td><td>31</td><td>3.8</td><td>74.0</td><td>20.7</td><td>29.0</td><td>-0.1</td></tr>
+<tr><td>Tyler McKinley</td><td>F</td><td>25</td><td>1.8</td><td>78.6</td><td>9.3</td><td>23.0</td><td>0.7</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<section><h2>2024-25</h2>
+<p>Net rank #52 &middot; AdjO 111.6 &middot; AdjD 96.8 &middot; Net 14.9 &middot; AdjT 65.9 &middot; 19-16 (D1 games)</p>
+<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<tr><td>11/04</td><td><a href="arkansas-pine-bluff-golden-lions.html">Arkansas-Pine Bluff Golden Lions</a></td><td>H</td><td>W</td><td>109-54</td></tr>
+<tr><td>11/08</td><td><a href="morehead-state-eagles.html">Morehead State Eagles</a></td><td>H</td><td>W</td><td>83-56</td></tr>
+<tr><td>11/15</td><td><a href="nicholls-colonels.html">Nicholls Colonels</a></td><td>H</td><td>W</td><td>86-49</td></tr>
+<tr><td>11/19</td><td><a href="northern-kentucky-norse.html">Northern Kentucky Norse</a></td><td>A</td><td>W</td><td>76-60</td></tr>
+<tr><td>11/23</td><td><a href="georgia-tech-yellow-jackets.html">Georgia Tech Yellow Jackets</a></td><td>A</td><td>W</td><td>81-58</td></tr>
+<tr><td>11/27</td><td><a href="alabama-state-hornets.html">Alabama State Hornets</a></td><td>H</td><td>W</td><td>77-59</td></tr>
+<tr><td>12/03</td><td><a href="villanova-wildcats.html">Villanova Wildcats</a></td><td>A</td><td>L</td><td>60-68</td></tr>
+<tr><td>12/08</td><td><a href="howard-bison.html">Howard Bison</a></td><td>H</td><td>W</td><td>84-67</td></tr>
+<tr><td>12/14</td><td><a href="xavier-musketeers.html">Xavier Musketeers</a></td><td>H</td><td>W</td><td>68-65</td></tr>
+<tr><td>12/20</td><td><a href="dayton-flyers.html">Dayton Flyers</a></td><td>N</td><td>W</td><td>66-59</td></tr>
+<tr><td>12/22</td><td><a href="grambling-tigers.html">Grambling Tigers</a></td><td>H</td><td>W</td><td>84-49</td></tr>
+<tr><td>12/30</td><td><a href="kansas-state-wildcats.html">Kansas State Wildcats</a></td><td>A</td><td>L</td><td>67-70</td></tr>
+<tr><td>01/04</td><td><a href="arizona-wildcats.html">Arizona Wildcats</a></td><td>H</td><td>L</td><td>67-72</td></tr>
+<tr><td>01/07</td><td><a href="baylor-bears.html">Baylor Bears</a></td><td>A</td><td>L</td><td>48-68</td></tr>
+<tr><td>01/11</td><td><a href="kansas-jayhawks.html">Kansas Jayhawks</a></td><td>H</td><td>L</td><td>40-54</td></tr>
+<tr><td>01/15</td><td><a href="colorado-buffaloes.html">Colorado Buffaloes</a></td><td>A</td><td>W</td><td>68-62</td></tr>
+<tr><td>01/18</td><td><a href="arizona-state-sun-devils.html">Arizona State Sun Devils</a></td><td>H</td><td>W</td><td>67-60</td></tr>
+<tr><td>01/21</td><td><a href="texas-tech-red-raiders.html">Texas Tech Red Raiders</a></td><td>H</td><td>L</td><td>71-81</td></tr>
+<tr><td>01/25</td><td><a href="byu-cougars.html">BYU Cougars</a></td><td>A</td><td>L</td><td>52-80</td></tr>
+<tr><td>01/28</td><td><a href="utah-utes.html">Utah Utes</a></td><td>A</td><td>L</td><td>66-69</td></tr>
+<tr><td>02/02</td><td><a href="west-virginia-mountaineers.html">West Virginia Mountaineers</a></td><td>H</td><td>L</td><td>50-63</td></tr>
+<tr><td>02/05</td><td><a href="ucf-knights.html">UCF Knights</a></td><td>A</td><td>W</td><td>93-83</td></tr>
+<tr><td>02/08</td><td><a href="byu-cougars.html">BYU Cougars</a></td><td>H</td><td>W</td><td>84-66</td></tr>
+<tr><td>02/11</td><td><a href="utah-utes.html">Utah Utes</a></td><td>H</td><td>W</td><td>85-75</td></tr>
+<tr><td>02/15</td><td><a href="iowa-state-cyclones.html">Iowa State Cyclones</a></td><td>A</td><td>L</td><td>70-81</td></tr>
+<tr><td>02/19</td><td><a href="west-virginia-mountaineers.html">West Virginia Mountaineers</a></td><td>A</td><td>L</td><td>59-62</td></tr>
+<tr><td>02/22</td><td><a href="tcu-horned-frogs.html">TCU Horned Frogs</a></td><td>H</td><td>W</td><td>75-63</td></tr>
+<tr><td>02/25</td><td><a href="baylor-bears.html">Baylor Bears</a></td><td>H</td><td>W</td><td>69-67</td></tr>
+<tr><td>03/01</td><td><a href="houston-cougars.html">Houston Cougars</a></td><td>A</td><td>L</td><td>64-73</td></tr>
+<tr><td>03/05</td><td><a href="kansas-state-wildcats.html">Kansas State Wildcats</a></td><td>H</td><td>L</td><td>49-54</td></tr>
+<tr><td>03/08</td><td><a href="oklahoma-state-cowboys.html">Oklahoma State Cowboys</a></td><td>A</td><td>L</td><td>67-78</td></tr>
+<tr><td>03/11</td><td><a href="oklahoma-state-cowboys.html">Oklahoma State Cowboys</a></td><td>N</td><td>W</td><td>87-68</td></tr>
+<tr><td>03/12</td><td><a href="iowa-state-cyclones.html">Iowa State Cyclones</a></td><td>N</td><td>L</td><td>56-76</td></tr>
+<tr><td>04/01</td><td><a href="depaul-blue-demons.html">DePaul Blue Demons</a></td><td>N</td><td>W</td><td>83-61</td></tr>
+<tr><td>04/03</td><td><a href="ucf-knights.html">UCF Knights</a></td><td>N</td><td>L</td><td>80-88</td></tr>
+</tbody></table>
+<h3>Roster</h3>
+<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<tr><td>Dillon Mitchell</td><td>F</td><td>35</td><td>9.9</td><td>106.6</td><td>17.2</td><td>70.3</td><td>4.6</td></tr>
+<tr><td>Jizzle James</td><td>G</td><td>35</td><td>12.7</td><td>84.1</td><td>29.1</td><td>67.6</td><td>0.5</td></tr>
+<tr><td>Aziz Bandaogo</td><td>F</td><td>35</td><td>7.4</td><td>115.1</td><td>13.0</td><td>64.1</td><td>4.3</td></tr>
+<tr><td>Simas Lukosius</td><td>G</td><td>33</td><td>10.3</td><td>94.6</td><td>21.2</td><td>62.8</td><td>1.4</td></tr>
+<tr><td>Daveon Thomas</td><td>G</td><td>32</td><td>10.2</td><td>87.0</td><td>23.8</td><td>58.2</td><td>1.5</td></tr>
+<tr><td>Dan Skillings Jr.</td><td>G</td><td>29</td><td>9.2</td><td>88.9</td><td>23.7</td><td>47.2</td><td>1.8</td></tr>
+<tr><td>Josh Reed</td><td>F</td><td>33</td><td>4.8</td><td>99.4</td><td>14.3</td><td>41.5</td><td>1.7</td></tr>
+<tr><td>Tyler Betsey</td><td>F</td><td>34</td><td>3.3</td><td>89.2</td><td>17.4</td><td>27.0</td><td>0.2</td></tr>
+<tr><td>Arrinten Page</td><td>F</td><td>31</td><td>3.5</td><td>91.6</td><td>22.3</td><td>20.0</td><td>0.9</td></tr>
+</tbody></table>
+<p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
+</section>
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 11, 2026.
+Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>
