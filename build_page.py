@@ -10,9 +10,11 @@ Format: a KenPom-style dense ratings table is the centerpiece of
 each season section, all teams, rank / team / conference / W-L /
 AdjO / AdjD / Net / AdjT, with click-to-sort columns, a team
 filter, and conference filter tabs. A sticky top nav links to
-each season, the player leaders, and the predictions. Clicking
-a team row expands that team's game log for the season. The
-look is our own (plain typography, no KenPom branding, colors,
+each season, the player leaders, the top players, and the
+predictions. Clicking a team row expands that team's game log
+and roster for the season. A separate top-players section lists
+the top 150 players of 2026-27 by RPR, sortable and filterable.
+The look is our own (plain typography, no KenPom branding, colors,
 logos, or text); only the table shape and column set are in
 that spirit.
 
@@ -224,6 +226,110 @@ def season_game_logs(season):
     return names, logs
 
 
+def season_rosters(season, rated_teams):
+    """(team -> roster) for the expandable detail panels.
+
+    One compact list per team: [name, position, gp, pts_pg, ortg,
+    poss_pct, min_pct, rpr], sorted by minutes descending.
+    2026-27 embeds every player who appeared, all teams in the
+    CSV. Older seasons embed rotation players only (%Min >= 20)
+    on rated (D1) teams: rosters are only reachable by clicking
+    a team row, and only rated teams have rows, so players on
+    unrated non-D1 opponents would be dead weight in the page.
+    The full profiles stay in the linked players CSV either way.
+    """
+    players = read_csv(DATA / f"players_{season.replace('-', '_')}.csv")
+    by_team = {}
+    for p in players:
+        if season != "2026-27":
+            if p["team"] not in rated_teams:
+                continue
+            if not p["min_pct"] or float(p["min_pct"]) < 20:
+                continue
+        by_team.setdefault(p["team"], []).append(p)
+    out = {}
+    for team, lst in by_team.items():
+        lst.sort(key=lambda p: float(p["min"]), reverse=True)
+        out[team] = [[p["name"], p["position"], int(p["gp"]),
+                      float(p["pts_pg"]),
+                      float(p["ortg"]) if p["ortg"] else None,
+                      float(p["poss_pct"]) if p["poss_pct"] else None,
+                      float(p["min_pct"]) if p["min_pct"] else None,
+                      float(p["rpr"]) if p["rpr"] else None]
+                     for p in lst]
+    return out
+
+
+def top_players_section():
+    """Full top-150 players table for 2026-27, by RPR.
+
+    Same filters as the 2026-27 leader tables: min 2 GP, 40% of
+    team minutes. Sortable and filterable like the team tables
+    (same th[data-t] / td[data-v] pattern). Team names link to
+    that team's row in the 2026-27 ratings table.
+    """
+    players = read_csv(DATA / "players_2026_27.csv")
+    qualified = [p for p in players
+                 if int(p["gp"]) >= 2 and p["rpr"]
+                 and p["min_pct"] and float(p["min_pct"]) >= 40]
+    top = sorted(qualified, key=lambda p: float(p["rpr"]),
+                 reverse=True)[:150]
+
+    def num(v, disp):
+        return (f"<td data-v=\"{v}\">{disp}</td>" if v not in (None, "")
+                else "<td data-v=\"0\">&mdash;</td>")
+
+    out = ["<section id=\"top-players\"><h2>Top players</h2>",
+           "<p>Top 150 players of 2026-27 by RPR. Minimum 2 games "
+           "and 40% of team minutes, same as the leader tables. "
+           "Click a column header to sort; the filter box searches "
+           "player names. Click a team name to open that team's "
+           "game log and roster.</p>",
+           "<input class=\"filter\" type=\"search\" "
+           "placeholder=\"Filter players...\" data-table=\"top-players\">",
+           "<table class=\"ratings\" id=\"top-players\">"
+           "<thead><tr>"
+           "<th data-t=\"num\">Rk</th>"
+           "<th data-t=\"text\">Player</th>"
+           "<th data-t=\"text\">Team</th>"
+           "<th data-t=\"text\">Pos</th>"
+           "<th data-t=\"num\">GP</th>"
+           "<th data-t=\"num\">PPG</th>"
+           "<th data-t=\"num\">ORtg</th>"
+           "<th data-t=\"num\">%Poss</th>"
+           "<th data-t=\"num\">%Min</th>"
+           "<th data-t=\"num\">RPR</th>"
+           "</tr></thead><tbody>"]
+    for rank, p in enumerate(top, 1):
+        pos = p["position"] if p["position"] not in ("", "NA") else ""
+        out.append(
+            f"<tr>"
+            f"<td data-v=\"{rank}\">{rank}</td>"
+            f"<td data-v=\"{html.escape(p['name'].lower())}\">"
+            f"{html.escape(p['name'])}</td>"
+            f"<td data-v=\"{html.escape(p['team'].lower())}\">"
+            f"<a class=\"team-link\" href=\"#season-2026_27\" "
+            f"data-team=\"{html.escape(p['team'])}\">"
+            f"{html.escape(p['team'])}</a></td>"
+            f"<td data-v=\"{html.escape(pos.lower())}\">"
+            f"{html.escape(pos) if pos else '&mdash;'}</td>"
+            f"<td data-v=\"{p['gp']}\">{p['gp']}</td>"
+            f"{num(p['pts_pg'], p['pts_pg'])}"
+            f"{num(p['ortg'], p['ortg'])}"
+            f"{num(p['poss_pct'], p['poss_pct'])}"
+            f"{num(p['min_pct'], p['min_pct'])}"
+            f"{num(p['rpr'], p['rpr'])}"
+            f"</tr>")
+    out.append("</tbody></table>")
+    out.append(
+        "<p class=\"note\">ORtg is approximate (no assist credit); "
+        "read it with %Poss. RPR is our own single-number rating, "
+        "not KenPom's proprietary kPOY. Full profiles in "
+        "<a href=\"data/players_2026_27.csv\">players_2026_27.csv</a>."
+        "</p></section>")
+    return "\n".join(out)
+
+
 def team_table(season, rows, records, conf_names, log_idx):
     tid = season.replace("-", "_")
     confs = sorted({conf_names.get(r["team"], "") for r in rows} - {""})
@@ -320,6 +426,8 @@ def season_section(season, conf_by_id):
                   for team, cid in team_conf.items()}
     log_names, log_entries = season_game_logs(season)
     LOGS[season] = {"teams": log_names, "logs": log_entries}
+    ROSTERS[season] = season_rosters(
+        season, {r["team"] for r in ratings})
     log_idx = {name: i for i, name in enumerate(log_names)}
     tid = season.replace("-", "_")
     warn = ""
@@ -339,7 +447,7 @@ def season_section(season, conf_by_id):
     return (f"<section id=\"season-{tid}\"><h2>{season}</h2>{warn}"
             f"<p>{len(ratings)} teams rated, {len(players)} players. "
             f"Click a column header to sort. Click a team row to see "
-            f"its game log.</p>"
+            f"its game log and roster.</p>"
             f"<h3>Team ratings</h3>"
             f"{team_table(season, ratings, records, conf_names, log_idx)}"
             f"<h3>Player leaders</h3>"
@@ -436,6 +544,12 @@ tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
 table.gamelog { font-size: 13px; width: auto; margin: 0; }
 table.gamelog th, table.gamelog td { padding: 2px 10px; }
 table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link { color: #0969da; text-decoration: none; }
+a.team-link:hover { text-decoration: underline; }
 .conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
 button.conf-tab { padding: 3px 9px; font-size: 12px;
   border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
@@ -469,6 +583,9 @@ function esc(s) {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 }
+function fmt1(v) {
+  return (v === null || v === undefined) ? "\u2014" : v.toFixed(1);
+}
 function closeDetails(table) {
   table.querySelectorAll("tbody tr.detail").forEach(function (d) {
     d.remove();
@@ -477,7 +594,7 @@ function closeDetails(table) {
 function applyFilter(table) {
   var q = table._q || "";
   var conf = table._conf || "";
-  table.querySelectorAll("tbody tr.team").forEach(function (r) {
+  table.querySelectorAll("tbody tr:not(.detail)").forEach(function (r) {
     var team = r.cells[1].textContent.toLowerCase();
     var ok = (q === "" || team.indexOf(q) !== -1)
       && (conf === "" || r.dataset.conf === conf);
@@ -511,6 +628,29 @@ function openDetail(table, row) {
       + f + "-" + a + "</td></tr>";
   });
   html += "</tbody></table>";
+  var roster = (ROSTERS[row.dataset.season] || {})[c[1].textContent];
+  if (roster && roster.length) {
+    html += "<h4>Roster</h4>"
+      + '<table class="roster"><thead><tr><th>Player</th><th>Pos</th>'
+      + "<th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th>"
+      + "<th>%Min</th><th>RPR</th></tr></thead><tbody>";
+    roster.forEach(function (p) {
+      html += "<tr><td>" + esc(p[0]) + "</td><td>"
+        + ((p[1] && p[1] !== "NA") ? esc(p[1]) : "\u2014")
+        + "</td><td>" + p[2] + "</td><td>" + fmt1(p[3]) + "</td><td>"
+        + fmt1(p[4]) + "</td><td>" + fmt1(p[5]) + "</td><td>"
+        + fmt1(p[6]) + "</td><td>" + fmt1(p[7]) + "</td></tr>";
+    });
+    html += "</tbody></table>"
+      + '<p class="note">Sorted by minutes. ORtg is approximate '
+      + "(no assist credit); RPR is our own rating, not KenPom\u2019s "
+      + "kPOY."
+      + (row.dataset.season === "2026-27"
+        ? ""
+        : " Rotation players only (%Min \u2265 20); full profiles "
+        + "in the players CSV.")
+      + "</p>";
+  }
   var tr = document.createElement("tr");
   tr.className = "detail";
   var td = document.createElement("td");
@@ -529,7 +669,7 @@ document.querySelectorAll("table.ratings").forEach(function (table) {
         h.classList.remove("sorted-asc", "sorted-desc");
       });
       th.classList.add(asc ? "sorted-asc" : "sorted-desc");
-      var rows = Array.from(table.querySelectorAll("tbody tr.team"));
+      var rows = Array.from(table.querySelectorAll("tbody tr:not(.detail)"));
       var numeric = th.dataset.t === "num" || th.dataset.t === "wl";
       rows.sort(function (a, b) {
         var va = a.cells[i].dataset.v, vb = b.cells[i].dataset.v;
@@ -569,6 +709,33 @@ document.querySelectorAll(".conftabs").forEach(function (bar) {
     applyFilter(table);
   });
 });
+// Top-players team links: open that team's detail panel in the
+// 2026-27 ratings table (game log and roster). Non-D1 teams
+// have no ratings row, so those links just follow the anchor.
+document.querySelectorAll("a.team-link").forEach(function (a) {
+  a.addEventListener("click", function (e) {
+    var table = document.getElementById("teams-2026_27");
+    var row = null;
+    table.querySelectorAll("tbody tr.team").forEach(function (r) {
+      if (r.cells[1].textContent === a.dataset.team) row = r;
+    });
+    if (!row) return;
+    e.preventDefault();
+    var input = document.querySelector(
+      'input.filter[data-table="teams-2026_27"]');
+    if (input) input.value = "";
+    table._q = "";
+    table._conf = "";
+    document.querySelectorAll(
+      '.conftabs[data-table="teams-2026_27"] button').forEach(
+      function (b) {
+        b.classList.toggle("active", b.dataset.conf === "");
+      });
+    applyFilter(table);
+    row.scrollIntoView({block: "center"});
+    openDetail(table, row);
+  });
+});
 """
 
 # Conference ids needed across all three seasons, mapped once
@@ -586,12 +753,16 @@ if CONF_UNMAPPED:
 print(f"Conference map: {len(CONF_BY_ID)} ids "
       f"({', '.join(sorted(CONF_BY_ID.values()))})")
 
-# Game logs, filled in by season_section as each section is built.
+# Game logs and rosters, filled in by season_section as each
+# section is built.
 LOGS = {}
+ROSTERS = {}
 
 SECTIONS = "\n".join(season_section(s, CONF_BY_ID)
                      for s in DISPLAY_SEASONS)
 LOGS_JSON = json.dumps(LOGS, separators=(",", ":"))
+ROSTERS_JSON = json.dumps(ROSTERS, separators=(",", ":"))
+TOP_PLAYERS = top_players_section()
 PREDICTIONS = predictions_section()
 BUILT = datetime.now(ZoneInfo("America/Chicago")).strftime("%B %-d, %Y")
 
@@ -615,20 +786,23 @@ last season's ratings faded by returning minutes.</p>
 <a href="#season-2025_26">2025-26</a>
 <a href="#season-2024_25">2024-25</a>
 <a href="#players">Players</a>
+<a href="#top-players">Top players</a>
 <a href="#predictions">Predictions</a>
 <a href="#how-to-read">How to read this</a>
 </nav>
 
 {SECTIONS}
 
+{TOP_PLAYERS}
+
 {PREDICTIONS}
 
 <section id="how-to-read"><h2>How to read this</h2>
 <p><strong>Getting around</strong>: the bar at the top jumps to any
-season, the player leaders, or the predictions. Conference tabs
-above each table filter to one conference; the filter box searches
-team names. Click any team row to see that team's game log for
-the season.</p>
+season, the player leaders, the top 150 players, or the
+predictions. Conference tabs above each table filter to one
+conference; the filter box searches team names. Click any team
+row to see that team's game log and roster for the season.</p>
 <p><strong>AdjO / AdjD</strong>: points scored and allowed per 100
 possessions, adjusted for opponent. <strong>Net</strong> is AdjO minus
 AdjD, the same idea as KenPom's AdjEM. <strong>AdjT</strong> is
@@ -653,6 +827,7 @@ published rankings are only a benchmark to compare against.</p></section>
 Not affiliated with KenPom.</p>
 </footer>
 <script>var GAME_LOGS = {LOGS_JSON};</script>
+<script>var ROSTERS = {ROSTERS_JSON};</script>
 <script>{JS}</script>
 </body>
 </html>
