@@ -109,8 +109,19 @@ basketball, and it does not need his numbers at all.
 2. Predict: for each 2025-26 game, predict the winner from
    the fitted AdjO/AdjD, adjusted for tempo and home court.
    The predicted margin is:
-   (AdjO_home - AdjD_away) - (AdjO_away - AdjD_home), scaled
-   by expected possessions / 100, plus the home court margin.
+   (AdjO_home + AdjD_away - league_avg)
+   - (AdjO_away + AdjD_home - league_avg), scaled by expected
+   possessions / 100, plus the home court margin. AdjD is
+   points allowed per 100 (lower is better), so a bad opposing
+   defense raises your expected efficiency, and the plus signs
+   are load-bearing. An earlier printing of this rubric had
+   the defensive term backwards
+   ((AdjO_home - AdjD_away) - (AdjO_away - AdjD_home)); the
+   Nov 10, 2026 backtest caught it: the literal version
+   scores accuracy 0.637 and Brier 0.2308, no better than
+   just picking the home team (0.637 / 0.2313), against
+   0.660 / 0.2192 for the correct form. backtest.py keeps
+   the literal version as a diagnostic.
    Convert the margin to a win probability with a logistic
    curve fitted on the 2024-25 games, not a guessed constant.
 3. Score, on the 2025-26 games only, never on the fitting games:
