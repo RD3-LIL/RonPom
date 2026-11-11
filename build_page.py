@@ -8,7 +8,8 @@ regenerating the CSVs.
 
 Format: a KenPom-style dense ratings table is the centerpiece of
 each season section, all teams, rank / team / conference / W-L /
-AdjO / AdjD / Net / AdjT, with click-to-sort columns, a team
+AdjO / AdjD / Net / AdjT / Luck / SOS / NCSOS, with click-to-sort
+columns, a team
 filter, and conference filter tabs. A sticky top nav links to
 each season, the player leaders, the top players, and the
 predictions. Clicking a team row expands that team's game log
@@ -372,6 +373,9 @@ def team_table(season, rows, records, conf_names, log_idx):
                "<th data-t=\"num\">AdjD</th>"
                "<th data-t=\"num\">Net</th>"
                "<th data-t=\"num\">AdjT</th>"
+               "<th data-t=\"num\">Luck</th>"
+               "<th data-t=\"num\">SOS</th>"
+               "<th data-t=\"num\">NCSOS</th>"
                "</tr></thead><tbody>")
     for r in rows:
         w, l = records.get(r["team"], [0, 0])
@@ -392,7 +396,12 @@ def team_table(season, rows, records, conf_names, log_idx):
             f"<td data-v=\"{r['adj_o']}\">{r['adj_o']}</td>"
             f"<td data-v=\"{r['adj_d']}\">{r['adj_d']}</td>"
             f"<td class=\"net\" data-v=\"{r['net']}\">{r['net']}</td>"
-            f"<td data-v=\"{r['adj_t']}\">{r['adj_t']}</td></tr>")
+            f"<td data-v=\"{r['adj_t']}\">{r['adj_t']}</td>"
+            f"<td data-v=\"{r['luck']}\">"
+            f"{float(r['luck']):+.3f}</td>"
+            f"<td data-v=\"{r['sos']}\">{r['sos']}</td>"
+            f"<td data-v=\"{r['ncsos'] or '0'}\">"
+            f"{r['ncsos'] or '-'}</td></tr>")
     out.append("</tbody></table>")
     out.append(
         f"<p class=\"note\">Full table above ({len(rows)} teams). "
@@ -571,7 +580,9 @@ def team_page_html(team, slug_by_team, upcoming):
         parts.append(
             f"<p>Net rank #{r['rank']} &middot; AdjO {r['adj_o']} "
             f"&middot; AdjD {r['adj_d']} &middot; Net {r['net']} "
-            f"&middot; AdjT {r['adj_t']} &middot; {w}-{l} "
+            f"&middot; AdjT {r['adj_t']} &middot; Luck "
+            f"{float(r['luck']):+.3f} &middot; SOS {r['sos']} "
+            f"&middot; NCSOS {r['ncsos'] or '-'} &middot; {w}-{l} "
             f"(D1 games)</p>")
         entry = LOGS.get(season)
         tidx = LOG_IDX.get(season, {}).get(team)
@@ -1016,6 +1027,16 @@ adjusted tempo, possessions per 40 minutes.
 <strong>Conf</strong> is the ESPN conference abbreviation.
 <strong>W-L</strong> is the record in the D1 games these ratings
 are built from, so W+L equals GP; non-D1 games are excluded.</p>
+<p><strong>Luck</strong>: actual winning percentage minus the
+Pythagorean expected winning percentage from AdjO and AdjD
+(exponent 11.5). Positive Luck means the record is better than
+the play, usually close wins and blowout losses; negative means
+the reverse. Ours is the Pythagorean version; KenPom's own Luck
+uses a correlated-Gaussian method on per-game margins.
+<strong>SOS</strong> is the average Net rating of a team's
+opponents, positive means a harder schedule than average.
+<strong>NCSOS</strong> is the same average over non-conference
+games only, where a team chooses its difficulty.</p>
 <p><strong>ORtg</strong> (players) is a simplified approximation:
 points per 100 possessions used, with no assist credit, so it
 underrates playmakers. Read it with %Poss. <strong>RPR</strong> is

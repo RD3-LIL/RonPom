@@ -1,7 +1,10 @@
 """Run solver v2 on each consolidated season and write team ratings.
 
 For each data/games_<season>.json, runs solver.solve() and writes
-data/ratings_<season>.csv: rank, team, gp, adj_o, adj_d, net, adj_t.
+data/ratings_<season>.csv: rank, team, gp, adj_o, adj_d, net, adj_t,
+luck, exp_wpct, sos, ncsos. Luck / SOS / NCSOS come from
+extra_stats.py (Pythagorean Luck, opponent-Net SOS), computed
+from the same ratings and games, no new data pull.
 The CSVs are what goes on GitHub; the games JSONs stay local.
 
 Prior: 2026-27 uses the real preseason prior from
@@ -25,6 +28,7 @@ from pathlib import Path
 HERE = Path(__file__).parent
 DATA = HERE / "data"
 sys.path.insert(0, str(HERE))
+from extra_stats import compute_extra  # noqa: E402
 from solver import solve  # noqa: E402
 
 SEASONS = ["2024-25", "2025-26", "2026-27"]
@@ -60,17 +64,24 @@ def run_season(season):
     prior, prior_desc = load_prior(season)
     teams, league_o, league_t, info = solve(
         games, prior=prior, return_info=True)
+    extra = compute_extra(teams, games)
     ranked = sorted(teams.items(), key=lambda kv: kv[1]["net"],
                     reverse=True)
     out_path = DATA / f"ratings_{season.replace('-', '_')}.csv"
     with open(out_path, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["rank", "team", "gp", "adj_o", "adj_d", "net",
-                         "adj_t"])
+                         "adj_t", "luck", "exp_wpct", "sos", "ncsos"])
         for rank, (name, t) in enumerate(ranked, 1):
+            e = extra[name]
             writer.writerow([rank, name, t["games"],
                              round(t["adj_o"], 1), round(t["adj_d"], 1),
-                             round(t["net"], 1), round(t["adj_t"], 1)])
+                             round(t["net"], 1), round(t["adj_t"], 1),
+                             round(e["luck"], 3),
+                             round(e["exp_wpct"], 3),
+                             round(e["sos"], 1),
+                             (round(e["ncsos"], 1)
+                              if e["ncsos"] is not None else "")])
     print(f"{season}: {info['n_games']} games used, "
           f"{info['n_teams']} teams, league OffEff {league_o:.1f}, "
           f"tempo {league_t:.1f}, {info['iterations']} iterations, "
