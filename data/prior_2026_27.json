@@ -180,13 +180,13 @@
   "reason": "returning share 0.21"
  },
  "Saint Louis Billikens": {
-  "prior_o": 115.51639,
-  "prior_d": 104.71171214285714,
-  "prior_t": 69.37827,
-  "returning_share": 0.5804285714285714,
+  "prior_o": 115.57300000000001,
+  "prior_d": 104.66992857142857,
+  "prior_t": 69.389,
+  "returning_share": 0.5857142857142857,
   "has_prior": true,
-  "prior_weight": 205.59642857142856,
-  "reason": "returning share 0.58"
+  "prior_weight": 206.78571428571428,
+  "reason": "returning share 0.59"
  },
  "BYU Cougars": {
   "prior_o": 112.41796939501779,
@@ -684,13 +684,13 @@
   "reason": "returning share 0.13"
  },
  "Yale Bulldogs": {
-  "prior_o": 112.43225338645418,
-  "prior_d": 109.26929163346614,
-  "prior_t": 67.64363665338645,
-  "returning_share": 0.3612749003984064,
+  "prior_o": 112.48061195219124,
+  "prior_d": 109.26881752988048,
+  "prior_t": 67.6350470119522,
+  "returning_share": 0.36685258964143425,
   "has_prior": true,
-  "prior_weight": 156.28685258964143,
-  "reason": "returning share 0.36"
+  "prior_weight": 157.5418326693227,
+  "reason": "returning share 0.37"
  },
  "Syracuse Orange": {
   "prior_o": 109.98620076628352,
@@ -1026,13 +1026,13 @@
   "reason": "returning share 0.10"
  },
  "Bradley Braves": {
-  "prior_o": 109.35045551601424,
-  "prior_d": 109.27309039145908,
-  "prior_t": 68.21939074733096,
-  "returning_share": 0.019786476868327404,
+  "prior_o": 109.63249822064057,
+  "prior_d": 109.12266761565836,
+  "prior_t": 68.32778362989325,
+  "returning_share": 0.1303914590747331,
   "has_prior": true,
-  "prior_weight": 79.45195729537367,
-  "reason": "returning share 0.02"
+  "prior_weight": 104.33807829181495,
+  "reason": "returning share 0.13"
  },
  "Florida Atlantic Owls": {
   "prior_o": 109.47133707865169,
@@ -1242,13 +1242,13 @@
   "reason": "returning share 0.00"
  },
  "Rutgers Scarlet Knights": {
-  "prior_o": 109.6177949090909,
-  "prior_d": 108.70413454545454,
-  "prior_t": 68.10185745454545,
-  "returning_share": 0.46734545454545456,
+  "prior_o": 109.66269963636363,
+  "prior_d": 108.61993818181818,
+  "prior_t": 68.08798981818182,
+  "returning_share": 0.5333818181818182,
   "has_prior": true,
-  "prior_weight": 180.15272727272728,
-  "reason": "returning share 0.47"
+  "prior_weight": 195.01090909090908,
+  "reason": "returning share 0.53"
  },
  "Washington State Cougars": {
   "prior_o": 109.3,
@@ -1854,13 +1854,13 @@
   "reason": "returning share 0.18"
  },
  "Montana Grizzlies": {
-  "prior_o": 108.85510957493749,
-  "prior_d": 109.33295484630092,
-  "prior_t": 68.4035446389175,
-  "returning_share": 0.19385203706427415,
+  "prior_o": 108.81392851889983,
+  "prior_d": 109.33600529489631,
+  "prior_t": 68.4223856449478,
+  "returning_share": 0.2117958523312252,
   "has_prior": true,
-  "prior_weight": 118.61670833946168,
-  "reason": "returning share 0.19"
+  "prior_weight": 122.65406677452566,
+  "reason": "returning share 0.21"
  },
  "Tulane Green Wave": {
   "prior_o": 109.08551879699247,
@@ -2133,22 +2133,22 @@
   "reason": "returning share 0.24"
  },
  "Tarleton State Texans": {
-  "prior_o": 108.64026872586872,
-  "prior_d": 109.40995521235521,
-  "prior_t": 68.4376972972973,
-  "returning_share": 0.1616988416988417,
+  "prior_o": 108.63081698841698,
+  "prior_d": 109.4115305019305,
+  "prior_t": 68.44110270270271,
+  "returning_share": 0.16401544401544402,
   "has_prior": true,
-  "prior_weight": 111.38223938223939,
+  "prior_weight": 111.9034749034749,
   "reason": "returning share 0.16"
  },
  "Fairfield Stags": {
-  "prior_o": 108.36818827838827,
-  "prior_d": 110.63694725274725,
-  "prior_t": 68.0331794871795,
-  "returning_share": 0.4766300366300366,
+  "prior_o": 108.32264322344322,
+  "prior_d": 110.7022945054945,
+  "prior_t": 68.02502564102565,
+  "returning_share": 0.4999267399267399,
   "has_prior": true,
-  "prior_weight": 182.24175824175825,
-  "reason": "returning share 0.48"
+  "prior_weight": 187.48351648351647,
+  "reason": "returning share 0.50"
  },
  "Florida Gulf Coast Eagles": {
   "prior_o": 109.05464363636364,
@@ -2322,13 +2322,13 @@
   "reason": "returning share 0.00"
  },
  "Presbyterian Blue Hose": {
-  "prior_o": 106.4129288389513,
-  "prior_d": 110.68801498127341,
-  "prior_t": 66.87403745318352,
-  "returning_share": 0.6531835205992509,
+  "prior_o": 106.19573632958802,
+  "prior_d": 110.79243445692883,
+  "prior_t": 66.7742861423221,
+  "returning_share": 0.7023220973782771,
   "has_prior": true,
-  "prior_weight": 221.96629213483143,
-  "reason": "returning share 0.65"
+  "prior_weight": 233.02247191011236,
+  "reason": "returning share 0.70"
  },
  "UTEP Miners": {
   "prior_o": 109.3,
@@ -2871,12 +2871,12 @@
   "reason": "returning share 0.39"
  },
  "Northern Arizona Lumberjacks": {
-  "prior_o": 108.08552265624999,
-  "prior_d": 111.39556875,
-  "prior_t": 67.47439531250001,
-  "returning_share": 0.28015625,
+  "prior_o": 108.08078125,
+  "prior_d": 111.40375,
+  "prior_t": 67.4715625,
+  "returning_share": 0.28125,
   "has_prior": true,
-  "prior_weight": 138.03515625,
+  "prior_weight": 138.28125,
   "reason": "returning share 0.28"
  },
  "Eastern Illinois Panthers": {
@@ -2907,13 +2907,13 @@
   "reason": "returning share 0.13"
  },
  "New Haven Chargers": {
-  "prior_o": 107.6893870967742,
-  "prior_d": 109.62212258064515,
-  "prior_t": 67.75787096774194,
-  "returning_share": 0.1579032258064516,
+  "prior_o": 106.84541935483871,
+  "prior_d": 109.79091612903225,
+  "prior_t": 67.5261935483871,
+  "returning_share": 0.24064516129032257,
   "has_prior": true,
-  "prior_weight": 110.5282258064516,
-  "reason": "returning share 0.16"
+  "prior_weight": 129.1451612903226,
+  "reason": "returning share 0.24"
  },
  "Texas Southern Tigers": {
   "prior_o": 108.77896393442623,
@@ -2961,13 +2961,13 @@
   "reason": "returning share 0.05"
  },
  "Bucknell Bison": {
-  "prior_o": 106.3398606741573,
-  "prior_d": 110.80909063670411,
-  "prior_t": 68.1283011235955,
-  "returning_share": 0.34142322097378275,
+  "prior_o": 106.28920449438202,
+  "prior_d": 110.83491535580524,
+  "prior_t": 68.12707415730337,
+  "returning_share": 0.34726591760299624,
   "has_prior": true,
-  "prior_weight": 151.82022471910113,
-  "reason": "returning share 0.34"
+  "prior_weight": 153.13483146067415,
+  "reason": "returning share 0.35"
  },
  "Cal State Bakersfield Roadrunners": {
   "prior_o": 108.90853515625,
@@ -4053,7 +4053,7 @@
   "prior_o": 109.3,
   "prior_d": 109.3,
   "prior_t": 68.2,
-  "returning_share": 0.0,
+  "returning_share": 0.445,
   "has_prior": false,
   "prior_weight": 150.0,
   "reason": "no last season rating, league average"
@@ -4548,7 +4548,7 @@
   "prior_o": 109.3,
   "prior_d": 109.3,
   "prior_t": 68.2,
-  "returning_share": 0.0,
+  "returning_share": 0.27,
   "has_prior": false,
   "prior_weight": 150.0,
   "reason": "no last season rating, league average"
@@ -5088,7 +5088,7 @@
   "prior_o": 109.3,
   "prior_d": 109.3,
   "prior_t": 68.2,
-  "returning_share": 0.0,
+  "returning_share": 0.74,
   "has_prior": false,
   "prior_weight": 150.0,
   "reason": "no last season rating, league average"
@@ -5187,7 +5187,7 @@
   "prior_o": 109.3,
   "prior_d": 109.3,
   "prior_t": 68.2,
-  "returning_share": 0.0,
+  "returning_share": 0.6,
   "has_prior": false,
   "prior_weight": 150.0,
   "reason": "no last season rating, league average"
@@ -5637,7 +5637,7 @@
   "prior_o": 109.3,
   "prior_d": 109.3,
   "prior_t": 68.2,
-  "returning_share": 0.0,
+  "returning_share": 0.43,
   "has_prior": false,
   "prior_weight": 150.0,
   "reason": "no last season rating, league average"
