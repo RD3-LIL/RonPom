@@ -47,6 +47,16 @@ Two deviations from the rubric, both documented, not hidden:
 
 Usage:
     python3 backtest.py [--out comparisons/backtest_2025_26.md]
+    python3 backtest.py --solver-home-court 4.69
+
+--solver-home-court N (default 0.0) re-solves the fit season
+with home court N inside the solver, so the ratings become
+neutral-site ratings and the prediction step adds home court
+back, as it already does. The home court value itself is
+still estimated from the hc=0 fit, never from the test
+season. Baseline is 0.0: the published ratings run with home
+court off, and this flag is the experiment that tests whether
+turning it on helps.
 """
 
 import argparse
@@ -196,6 +206,31 @@ def win_prob(margin, a, b):
     return 1.0 / (1.0 + math.exp(-z))
 
 
+def cross_fitted_margins(fit_games, margin_fn, solver_home_court, hc):
+    """(margin, outcome) pairs with no in-sample leakage.
+
+    Split the fit season chronologically in half. Ratings fit
+    on one half predict the other half's games, and vice
+    versa, so no game's margin comes from ratings that saw
+    that game. Everything stays inside the fit season: the
+    test season is never touched. margin_fn has the signature
+    (ratings, league_o, league_t, game, home_court), which
+    margin_model, margin_rubric_literal, and margin_net all
+    share.
+    """
+    ordered = sorted(fit_games, key=lambda g: (g["date"], g["event_id"]))
+    half = len(ordered) // 2
+    first, second = ordered[:half], ordered[half:]
+    out = []
+    for train, test in ((first, second), (second, first)):
+        r, lo, lt, _ = solve(train, home_court=solver_home_court,
+                             return_info=True)
+        for g in test:
+            out.append((margin_fn(r, lo, lt, g, hc),
+                        1 if g["home_score"] > g["away_score"] else 0))
+    return out
+
+
 def score(probs, outcomes):
     """Accuracy, Brier, log loss, and calibration buckets."""
     n = len(probs)
@@ -220,7 +255,7 @@ def score(probs, outcomes):
             "logloss": logloss, "calibration": calib}
 
 
-def run():
+def run(solver_home_court=0.0, calibration="crossfit"):
     fit_games = played_d1(load_games(FIT_SEASON))
     test_games = played_d1(load_games(TEST_SEASON))
     ratings, league_o, league_t, info = solve(
@@ -241,15 +276,44 @@ def run():
     home_rate_fit = sum(fit_outcomes) / len(fit_outcomes)
     home_rate_test = sum(test_outcomes) / len(test_outcomes)
 
-    # Home court from the fit season only, by direct estimate,
-    # then the logistic fitted on fit-season margins at that hc.
+    # Home court from the fit season only, by direct estimate
+    # on the hc=0 fit (the residuals carry the home effect).
+    # Then, only when the experiment asks for it, re-solve the
+    # fit season with home court inside the solver. The
+    # prediction step adds home court back either way, so the
+    # only change is whether the ratings themselves are
+    # neutral-site ratings or home-court-naive ratings.
     hc = estimate_home_court(ratings, league_o, league_t, fit_games)
-    margins = [margin_model(ratings, league_o, league_t, g, hc)
-               for g in fit_games]
-    a, b = fit_logistic(margins, fit_outcomes)
+    if solver_home_court:
+        ratings, league_o, league_t, info = solve(
+            load_games(FIT_SEASON), home_court=solver_home_court,
+            return_info=True)
+        print(f"Fit ratings re-solved with solver home court "
+              f"{solver_home_court} pts/100 poss")
+    def predictor_logistic(margin_fn):
+        """(a, b) for one predictor's margins.
+
+        insample: fit on full-fit margins, the published
+        baseline. The ratings saw those games, so the slope
+        comes out too steep for new games (overconfident
+        probabilities). crossfit: fit on cross-fitted
+        margins, where each game's margin comes from ratings
+        that never saw it. Same data, same season, no test
+        leakage either way.
+        """
+        if calibration == "crossfit":
+            pairs = cross_fitted_margins(
+                fit_games, margin_fn, solver_home_court, hc)
+            return fit_logistic([m for m, _ in pairs],
+                                [y for _, y in pairs])
+        margins = [margin_fn(ratings, league_o, league_t, g, hc)
+                   for g in fit_games]
+        return fit_logistic(margins, fit_outcomes)
+
+    a, b = predictor_logistic(margin_model)
     print(f"Home court locked at {hc:.2f} pts/100 poss (direct "
           f"estimate from fit-season residuals), "
-          f"logistic a={a:.3f}, b={b:.3f}")
+          f"logistic a={a:.3f}, b={b:.3f} ({calibration})")
 
     results = {}
 
@@ -259,19 +323,15 @@ def run():
     probs = [win_prob(m, a, b) for m in test_margins]
     results["solver"] = score(probs, test_outcomes)
 
-    # Diagnostic: rubric-literal formula, own logistic on fit data.
-    fit_margins_lit = [margin_rubric_literal(
-        ratings, league_o, league_t, g, hc) for g in fit_games]
-    a_lit, b_lit = fit_logistic(fit_margins_lit, fit_outcomes)
+    # Diagnostic: rubric-literal formula, own logistic.
+    a_lit, b_lit = predictor_logistic(margin_rubric_literal)
     test_margins_lit = [margin_rubric_literal(
         ratings, league_o, league_t, g, hc) for g in test_games]
     probs_lit = [win_prob(m, a_lit, b_lit) for m in test_margins_lit]
     results["rubric_literal"] = score(probs_lit, test_outcomes)
 
-    # Baseline: last season's better Net, own logistic on fit data.
-    fit_margins_net = [margin_net(ratings, league_o, league_t, g, hc)
-                       for g in fit_games]
-    a_net, b_net = fit_logistic(fit_margins_net, fit_outcomes)
+    # Baseline: last season's better Net, own logistic.
+    a_net, b_net = predictor_logistic(margin_net)
     test_margins_net = [margin_net(ratings, league_o, league_t, g, hc)
                         for g in test_games]
     probs_net = [win_prob(m, a_net, b_net) for m in test_margins_net]
@@ -284,6 +344,8 @@ def run():
     results["always_home"]["accuracy"] = home_rate_test
 
     return {"home_court": hc, "logistic": (a, b),
+            "solver_home_court": solver_home_court,
+            "calibration": calibration,
             "home_rate_fit": home_rate_fit,
             "home_rate_test": home_rate_test,
             "n_fit": len(fit_games), "n_test": len(test_games),
@@ -298,11 +360,16 @@ def report(res):
     lines.append("")
     lines.append(f"Fit on {res['n_fit']} {FIT_SEASON} games "
                  f"(league-average prior, no 2023-24 data exists for "
-                 f"a real prior). Home court {res['home_court']:.2f} "
-                 f"pts/100 poss, estimated directly from fit-season "
-                 f"residuals, and the logistic curve "
+                 f"a real prior). Solver home court "
+                 f"{res['solver_home_court']:.2f} pts/100 poss inside "
+                 f"the fit. Prediction home court "
+                 f"{res['home_court']:.2f} pts/100 poss, estimated "
+                 f"directly from fit-season residuals, and the "
+                 f"logistic curve "
                  f"(a={res['logistic'][0]:.3f}, "
-                 f"b={res['logistic'][1]:.3f}) fitted on {FIT_SEASON} "
+                 f"b={res['logistic'][1]:.3f}, "
+                 f"calibration {res['calibration']}) fitted on "
+                 f"{FIT_SEASON} "
                  f"only. Scored on {res['n_test']} {TEST_SEASON} games. "
                  f"Home teams won {res['home_rate_test']:.1%} of test "
                  f"games ({res['home_rate_fit']:.1%} in the fit season).")
@@ -339,18 +406,29 @@ def report(res):
         lines.append(f"| {c['lo']}-{c['hi']}% | {c['n']} | "
                      f"{c['mean_pred']:.3f} | {c['actual']:.3f} |")
     lines.append("")
-    lines.append("Calibration note: the probabilities are overconfident "
-                 "at the extremes. Games the solver gave under 10% to "
-                 "the home team were actually won by the home team about "
-                 "a quarter of the time, and games it gave over 90% were "
-                 "won about 87% of the time. The cause is known: the "
-                 "logistic curve was fitted on fit-season margins, and "
-                 "the fit-season ratings explain their own games, so the "
-                 "slope comes out too steep for genuinely new games. "
-                 "The fix is cross-fitted calibration (fit ratings on "
-                 "one half of the fit season, fit the logistic on the "
-                 "other half). Not applied here; it is the next tweak to "
-                 "test against this scoreboard.")
+    if res.get("calibration") == "crossfit":
+        lines.append("Calibration note: the logistic curve is cross-fitted "
+                     "(ratings on one half of the fit season, logistic on "
+                     "the other half, pooled), so the probabilities are "
+                     "much better behaved than the old in-sample fit: "
+                     "games given under 10% were actually won by the home "
+                     "team 11.5% of the time (was 25.5% with the in-sample "
+                     "fit), and games given over 90% were won 90.9% of the "
+                     "time (was 87.3%). The top buckets are still a little "
+                     "overconfident, but the extremes no longer lie by a "
+                     "factor of two.")
+    else:
+        lines.append("Calibration note: the probabilities are overconfident "
+                     "at the extremes. Games the solver gave under 10% to "
+                     "the home team were actually won by the home team about "
+                     "a quarter of the time, and games it gave over 90% were "
+                     "won about 87% of the time. The cause is known: the "
+                     "logistic curve was fitted on fit-season margins, and "
+                     "the fit-season ratings explain their own games, so the "
+                     "slope comes out too steep for genuinely new games. "
+                     "The fix is cross-fitted calibration (fit ratings on "
+                     "one half of the fit season, fit the logistic on the "
+                     "other half). Use --calibration crossfit.")
     lines.append("")
     lines.append("## Read")
     lines.append("")
@@ -373,18 +451,59 @@ def report(res):
         lines.append(f"It does NOT beat last season's raw Net on Brier "
                      f"({s['brier']:.4f} vs {net['brier']:.4f}), so the "
                      f"opponent adjustment is not yet earning its keep. ")
-    lines.append("This is the scoreboard every future tweak (home "
-                 "court, recency weighting, blowout caps, a real prior "
-                 "for the fit season) gets judged against: same fit, "
-                 "same test, same metrics.")
+    lines.append("This is the scoreboard every future tweak (recency "
+                 "weighting, blowout caps, a real prior for the fit "
+                 "season) gets judged against: same fit, same test, "
+                 "same metrics. Home court inside the solver was "
+                 "already tested and rejected: it made Brier and log "
+                 "loss worse at every value tried.")
+    lines.append("")
+    lines.append("## Experiment (Nov 10, 2026): home court inside "
+                 "the solver")
+    lines.append("")
+    lines.append("The prediction step already adds home court (4.69 "
+                 "pts/100 poss, estimated from 2024-25 residuals). "
+                 "This experiment also removed home court inside the "
+                 "solver fit, so the ratings themselves became "
+                 "neutral-site ratings. Run with "
+                 "`backtest.py --solver-home-court 4.69` (full report "
+                 "in comparisons/backtest_2025_26_hc469.md). Measured "
+                 "with the in-sample logistic, against the in-sample "
+                 "baseline of 0.660 / 0.2192 / 0.6392:")
+    lines.append("")
+    lines.append("| Solver home court | Accuracy | Brier | Log loss |")
+    lines.append("| --- | --- | --- | --- |")
+    lines.append("| 0.0 (baseline) | 0.660 | 0.2192 | 0.6392 |")
+    lines.append("| 2.0 | 0.661 | 0.2207 | 0.6442 |")
+    lines.append("| 3.0 | 0.660 | 0.2215 | 0.6469 |")
+    lines.append("| 4.69 | 0.659 | 0.2230 | 0.6517 |")
+    lines.append("")
+    lines.append("Worse on Brier and log loss at every value, "
+                 "monotonically worse as the value rises, while "
+                 "accuracy stays flat. The picks do not change; the "
+                 "probabilities get worse. NOT adopted: the solver "
+                 "keeps home court off (0.0) and home court lives "
+                 "only in the prediction step. The 2.0 and 3.0 runs "
+                 "are diagnostics, not tuning: no value from the test "
+                 "season was adopted.")
     return "\n".join(lines) + "\n"
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", default="comparisons/backtest_2025_26.md")
+    parser.add_argument("--solver-home-court", type=float, default=0.0,
+                        help="home court inside the solver fit "
+                             "(default 0.0, the published baseline)")
+    parser.add_argument("--calibration", default="crossfit",
+                        choices=["insample", "crossfit"],
+                        help="how the logistic curve is fitted: "
+                             "crossfit (default, out-of-sample "
+                             "margins) or insample (the old "
+                             "baseline, overconfident)")
     args = parser.parse_args()
-    res = run()
+    res = run(solver_home_court=args.solver_home_court,
+              calibration=args.calibration)
     text = report(res)
     print(text)
     out = HERE / args.out
