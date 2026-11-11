@@ -1,4 +1,4 @@
-"""Build the RonPom GitHub Pages site (index.html) from the CSVs.
+"""Build the College Ratings GitHub Pages site (index.html) from the CSVs.
 
 Reads data/ratings_<season>.csv and data/players_<season>.csv and
 writes a static index.html at the repo root. No network, no build
@@ -135,11 +135,11 @@ PAGE = f"""<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RonPom: college basketball ratings</title>
+<title>College Ratings</title>
 <style>{CSS}</style>
 </head>
 <body>
-<h1>RonPom</h1>
+<h1>College Ratings</h1>
 <p class="subtitle">College basketball ratings in the style of KenPom,
 built from free ESPN data. Adjusted offense and defense per 100
 possessions, solved properly (damped Gauss-Seidel), with a
@@ -155,7 +155,7 @@ minutes.</p>
 <p><strong>ORtg</strong> (players) is a simplified approximation:
 points per 100 possessions used, with no assist credit, so it
 underrates playmakers. Read it with %Poss. <strong>RPR</strong> is
-RonPom's own single-number player rating, not KenPom's proprietary
+our own single-number player rating, not KenPom's proprietary
 kPOY. Leaderboards only include players with at least 40% of their
 team's minutes, so a two-minute cameo cannot top the list.</p>
 <p><strong>Honest limits</strong>: 2026-27 is two games per team, so

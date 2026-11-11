@@ -124,7 +124,7 @@ python3 player_profiles.py --season 2026-27 --top pts_per_game --min-games 2 --l
 Each profile carries totals, per-game and per-40 numbers, shooting
 splits (FG%, 3P%, FT%, eFG%, TS%), and KenPom-style ratings: ORtg
 (simplified approximation, points per 100 possessions used, no
-assist credit), %Poss usage, %Min, and RPR, RonPom's own
+assist credit), %Poss usage, %Min, and RPR, our own
 single-number rating (not KenPom's proprietary kPOY). The full JSON
 stays local (too large for the push route); the repo gets the CSV.
 Leaderboards (`--top`) have a minutes floor: a player must have

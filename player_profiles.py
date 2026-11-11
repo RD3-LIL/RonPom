@@ -47,8 +47,9 @@ Ratings (added Nov 10, 2026, KenPom-style, from the same box scores):
       100 * (player poss used * (team MIN / 5))
           / (player MIN * team poss used)
       20% is average, 25% a go-to guy, 15% a limited role.
-  %Min = player MIN / team MIN (team minutes include overtime).
-  RPR (RonPom Rating) = our own single-number rating, in the
+  %Min = player MIN / (team games x 40), the share of one roster
+      spot's available minutes. Slightly high in overtime games.
+  RPR = our own single-number rating, in the
       spirit of KenPom's kPOY but a different, documented formula
       (kPOY itself is proprietary and not published):
       (ORtg - 100) * poss used per game / 100
@@ -168,7 +169,7 @@ def compute_usage(totals, team):
 
 
 def compute_rpr(ortg, poss_used_per_game, per_game):
-    """RonPom Rating: our own single-number player rating.
+    """RPR: our own single-number player rating.
 
     (ORtg - 100) * possessions used per game / 100
         + 0.5 * (AST - TO) per game
@@ -444,7 +445,7 @@ def write_players_json(season, profiles, games_included, out_path):
             "zero. DNP players are excluded. ratings.ortg is a "
             "simplified ORtg (points per 100 possessions used, no "
             "assist credit), an approximation of KenPom's full Dean "
-            "Oliver formula. ratings.rpr is RonPom's own single-number "
+            "Oliver formula. ratings.rpr is our own single-number "
             "rating, not KenPom's proprietary kPOY."
         ),
     }
