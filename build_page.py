@@ -52,7 +52,18 @@ RAW_SUMMARY = DATA / "raw" / "summary"
 SEASONS = ["2024-25", "2025-26", "2026-27"]
 # Display order: current season first, then the full seasons.
 DISPLAY_SEASONS = ["2026-27", "2025-26", "2024-25"]
-PREDICTIONS_CSV = DATA / "predictions_2026_11_12.csv"
+def _latest_predictions_csv():
+    """Newest data/predictions_*.csv, by filename date.
+
+    predict.py writes a dated file each run, so the page
+    always shows the latest run without editing this file.
+    """
+    files = sorted(glob.glob(str(DATA / "predictions_*.csv")))
+    return Path(files[-1]) if files else None
+
+
+PREDICTIONS_CSV = _latest_predictions_csv()
+SCORES_CSV = DATA / "prediction_scores.csv"
 REPO = "https://github.com/RD3-LIL/RonPom"
 
 # Fallback for the prototype games file, copied from solver.py.
@@ -512,10 +523,81 @@ def _trap_cell(r):
     return f"<td>{score}</td>"
 
 
+def _scorecard_html():
+    """Live scorecard from data/prediction_scores.csv, if any.
+
+    Same metrics as the backtests, with the game count beside
+    each number. Returns an empty string when no predictions
+    have been scored yet.
+    """
+    if not SCORES_CSV.exists():
+        return ""
+    rows = read_csv(SCORES_CSV)
+    if not rows:
+        return ""
+    n = len(rows)
+    acc = sum(int(r["correct_pick"]) for r in rows) / n
+    brier = sum(float(r["brier"]) for r in rows) / n
+    logloss = sum(float(r["logloss"]) for r in rows) / n
+    model_mae = sum(float(r["model_abs_err"]) for r in rows) / n
+    market_rows = [r for r in rows if r.get("market_abs_err")]
+    market_mae = (sum(float(r["market_abs_err"])
+                      for r in market_rows) / len(market_rows)
+                  if market_rows else None)
+    edge_rows = [r for r in rows
+                 if r.get("edge") and abs(float(r["edge"])) >= 3
+                 and r.get("edge_cover") != ""]
+    edge_rate = (sum(int(r["edge_cover"]) for r in edge_rows)
+                 / len(edge_rows) if edge_rows else None)
+    traps = [r for r in rows if r.get("trap") == "True"]
+    trap_cover = None
+    if traps:
+        covered = [r for r in traps
+                   if r.get("trap_dog_covers") != ""]
+        if covered:
+            trap_cover = (sum(int(r["trap_dog_covers"])
+                              for r in covered) / len(covered))
+    market_txt = (f"{market_mae:.2f} (n={len(market_rows)})"
+                  if market_mae is not None else "-")
+    edge_txt = (f"{edge_rate:.1%} (n={len(edge_rows)})"
+                if edge_rate is not None else "-")
+    trap_txt = (f"{len(traps)} scored, underdog cover "
+                f"{trap_cover:.1%}" if trap_cover is not None
+                else f"{len(traps)} scored")
+    warn = ""
+    if n < 100:
+        warn = (f" Only {n} games scored so far, so do not draw a "
+                "conclusion from this sample yet.")
+    return ("<h3>How we are doing so far</h3>"
+            "<p>Live scorecard from score_predictions.py, which "
+            "matches each dated prediction to its final score and "
+            "appends it to data/prediction_scores.csv. Backtest "
+            "baseline (fit 2024-25, predict 2025-26): accuracy "
+            "66.9%, Brier 0.2105, log loss 0.6081.</p>"
+            "<table class=\"preds\"><thead><tr><th>Metric</th>"
+            "<th>Live</th></tr></thead><tbody>"
+            f"<tr><td>Accuracy</td><td>{acc:.1%} (n={n})</td></tr>"
+            f"<tr><td>Brier</td><td>{brier:.4f}</td></tr>"
+            f"<tr><td>Log loss</td><td>{logloss:.4f}</td></tr>"
+            f"<tr><td>Spread MAE, model</td><td>{model_mae:.2f}</td></tr>"
+            f"<tr><td>Spread MAE, market</td><td>{market_txt}</td></tr>"
+            f"<tr><td>Edge cover, model vs market by 3+ pts</td>"
+            f"<td>{edge_txt}</td></tr>"
+            f"<tr><td>Trap games</td><td>{trap_txt}</td></tr>"
+            "</tbody></table>"
+            f"<p class=\"note\">Full log in "
+            "<a href=\"data/prediction_scores.csv\">"
+            "prediction_scores.csv</a> and the written report in "
+            "<a href=\"https://github.com/RD3-LIL/RonPom/blob/main/"
+            "comparisons/live_predictions_scorecard.md\">"
+            "live_predictions_scorecard.md</a>."
+            f"{warn}</p>")
+
+
 def predictions_section():
     """Upcoming-game spreads from predict.py, if the file exists.
 
-    Reads data/predictions_2026_11_12.csv.
+    Reads the newest data/predictions_*.csv file.
     If no predictions file has been generated yet, the section
     is a short note instead, so the nav link still lands.
     The Trap column is the trap detector from trap.py: a
@@ -525,7 +607,7 @@ def predictions_section():
     (76 games), below the 52.4% breakeven, so this is a watch
     list, not a pick.
     """
-    if not PREDICTIONS_CSV.exists():
+    if PREDICTIONS_CSV is None or not PREDICTIONS_CSV.exists():
         return ("<section id=\"predictions\"><h2>Predictions</h2>"
                 "<p>Upcoming-game spreads come from predict.py, which "
                 "recomputes them from the current ratings. No "
@@ -540,15 +622,22 @@ def predictions_section():
         date_range = (_fmt(dates[0]) if len(dates) == 1
                       else f"{_fmt(dates[0])}-{_fmt(dates[-1])}")
     traps = [r for r in rows if r.get("trap") in ("True", True)]
+    gen = ""
+    m = re.search(r"(\d{4})_(\d{2})_(\d{2})",
+                  PREDICTIONS_CSV.name)
+    if m:
+        gen = (f"generated {m.group(2)}/{m.group(3)} "
+               f"by predict.py from the 2026-27 ratings: ")
     out = ["<section id=\"predictions\"><h2>Predictions</h2>",
-           "<p>Predicted spreads for the next three days, generated "
-           "Nov 12 by predict.py from the 2026-27 ratings: "
+           "<p>Predicted spreads for the next three days, "
+           + gen +
            "model-consistent margin plus 4.69 home court (none on "
            "neutral floors), win probability from the cross-fitted "
            "logistic. The market line is ESPN's when one is out yet; "
            "lines move, and some of these games may already have "
            "tipped. The win/loss picks behind these spreads are "
            "backtested; the spread magnitudes are not.</p>",
+           _scorecard_html(),
            "<h3>Trap games</h3>",
            "<p>A trap is a favorite the market likes even more "
            "than the model does (market gap of 4+ points), plus at "
@@ -788,7 +877,7 @@ def build_team_pages():
     teams_dir = HERE / "teams"
     teams_dir.mkdir(exist_ok=True)
     upcoming = {}
-    if PREDICTIONS_CSV.exists():
+    if PREDICTIONS_CSV is not None and PREDICTIONS_CSV.exists():
         for r in read_csv(PREDICTIONS_CSV):
             for key in (r["home"], r["away"]):
                 upcoming.setdefault(key, []).append(r)
