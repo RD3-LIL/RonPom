@@ -43,8 +43,9 @@ from zoneinfo import ZoneInfo
 HERE = Path(__file__).parent
 DATA = HERE / "data"
 sys.path.insert(0, str(HERE))
-from backtest import margin_model, win_prob  # noqa: E402
+from backtest import margin_model, played_d1, win_prob  # noqa: E402
 from solver import is_d1_game, solve  # noqa: E402
+from trap import build_history, flags_for_game, rank_map  # noqa: E402
 from write_ratings import load_prior  # noqa: E402
 
 SEASON = "2026-27"
@@ -170,13 +171,37 @@ def fetch_upcoming(start_date, days):
     return games
 
 
-def predict_all(ratings, league_o, league_t, games):
-    """One prediction row per upcoming game."""
+def load_history(ranks):
+    """Per-team prior-game index for the trap detector.
+
+    Played D1 games from the current season only, so every
+    trap flag uses games played before the upcoming game's
+    date, never future games.
+    """
+    path = DATA / "games_2026_27.json"
+    games = json.loads(path.read_text())
+    return build_history(played_d1(games), ranks)
+
+
+def predict_all(ratings, league_o, league_t, games,
+                ranks=None, history=None):
+    """One prediction row per upcoming game.
+
+    Each row also carries the trap detector output from
+    trap.py: trap (bool), trap_score, trap_flags, and
+    trap_reasons. The trap flag never changes the spread
+    or win probability.
+    """
+    if ranks is None:
+        ranks = rank_map(ratings)
+    if history is None:
+        history = {}
     rows = []
     for g in games:
         margin = predict_margin(ratings, league_o, league_t, g)
         prob = win_prob(margin, LOGISTIC_A, LOGISTIC_B)
         market = g.get("market_spread")
+        trap = flags_for_game(g, margin, market, ranks, history)
         rows.append({
             "date": g["date"],
             "tipoff": g.get("tipoff"),
@@ -193,6 +218,11 @@ def predict_all(ratings, league_o, league_t, games):
             # home margin is -market. Edge = model margin minus
             # implied market margin = margin + market.
             "edge": (margin + market) if market is not None else None,
+            "trap": trap["trap"],
+            "trap_score": trap["score"],
+            "trap_flags": ";".join(trap["flags"]),
+            "trap_reasons": "; ".join(trap["reasons"]),
+            "trap_favorite": trap["favorite"] or "",
         })
     return rows
 
@@ -211,21 +241,27 @@ def tipoff_chicago(row):
 
 def print_table(rows):
     with_market = sum(1 for r in rows if r["market_spread"] is not None)
+    n_trap = sum(1 for r in rows if r.get("trap"))
     print(f"{len(rows)} upcoming D1 games, {with_market} with a "
-          "market line so far")
+          f"market line so far, {n_trap} trap games")
     print(f"{'Tip-off':<14} {'Matchup':<44} {'Spread':<20} "
-          f"{'Home win%':<9} {'Market':<9} {'Edge':<6}")
+          f"{'Home win%':<9} {'Market':<9} {'Edge':<6} {'Trap':<5}")
     for r in rows:
         market = (f"{r['market_spread']:+.1f}"
                   if r["market_spread"] is not None else "-")
         edge = (f"{r['edge']:+.1f}"
                 if r["edge"] is not None else "-")
+        trap = (f"{r.get('trap_score', 0)}*"
+                if r.get("trap") else str(r.get("trap_score", 0)))
         matchup = f"{r['away_short']} @ {r['home_short']}"
         if r["neutral_site"]:
             matchup += " (N)"
         print(f"{tipoff_chicago(r):<14} {matchup:<44} "
               f"{r['spread']:<20} {r['home_win_prob'] * 100:>7.1f}% "
-              f"{market:<9} {edge:<6}")
+              f"{market:<9} {edge:<6} {trap:<5}")
+        if r.get("trap"):
+            print(f"  TRAP: {r.get('trap_favorite')} - "
+                  f"{r.get('trap_reasons')}")
 
 
 def main():
@@ -243,8 +279,11 @@ def main():
     else:
         start = datetime.now(CHICAGO).date()
     ratings, league_o, league_t = load_ratings()
+    ranks = rank_map(ratings)
+    history = load_history(ranks)
     games = fetch_upcoming(start, args.days)
-    rows = predict_all(ratings, league_o, league_t, games)
+    rows = predict_all(ratings, league_o, league_t, games,
+                       ranks=ranks, history=history)
     rows.sort(key=lambda r: (r["date"], r["tipoff"] or ""))
     print_table(rows)
     if args.out:
@@ -252,7 +291,9 @@ def main():
             writer = csv.DictWriter(f, fieldnames=[
                 "date", "tipoff", "home", "away", "home_short",
                 "away_short", "neutral_site", "margin", "spread",
-                "home_win_prob", "market_spread", "edge"])
+                "home_win_prob", "market_spread", "edge",
+                "trap", "trap_score", "trap_flags",
+                "trap_reasons", "trap_favorite"])
             writer.writeheader()
             writer.writerows(rows)
         print(f"wrote {args.out}")

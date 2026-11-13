@@ -52,7 +52,7 @@ RAW_SUMMARY = DATA / "raw" / "summary"
 SEASONS = ["2024-25", "2025-26", "2026-27"]
 # Display order: current season first, then the full seasons.
 DISPLAY_SEASONS = ["2026-27", "2025-26", "2024-25"]
-PREDICTIONS_CSV = DATA / "predictions_2026_11_11.csv"
+PREDICTIONS_CSV = DATA / "predictions_2026_11_12.csv"
 REPO = "https://github.com/RD3-LIL/RonPom"
 
 # Fallback for the prototype games file, copied from solver.py.
@@ -503,12 +503,27 @@ def fmt_tipoff(tipoff, date_str):
         return date_str
 
 
+def _trap_cell(r):
+    """Trap column cell for a predictions row."""
+    score = r.get("trap_score") or "0"
+    is_trap = r.get("trap") in ("True", True)
+    if is_trap:
+        return f"<td><strong>Trap {score}</strong></td>"
+    return f"<td>{score}</td>"
+
+
 def predictions_section():
     """Upcoming-game spreads from predict.py, if the file exists.
 
-    Reads data/predictions_2026_11_11.csv.
+    Reads data/predictions_2026_11_12.csv.
     If no predictions file has been generated yet, the section
     is a short note instead, so the nav link still lands.
+    The Trap column is the trap detector from trap.py: a
+    favorite with a market gap plus letdown flags. Trap games
+    are listed first, with their reasons. The backtest is
+    honest about it: trap underdogs covered 47.4% in 2025-26
+    (76 games), below the 52.4% breakeven, so this is a watch
+    list, not a pick.
     """
     if not PREDICTIONS_CSV.exists():
         return ("<section id=\"predictions\"><h2>Predictions</h2>"
@@ -517,19 +532,65 @@ def predictions_section():
                 "predictions file has been generated yet.</p></section>")
     rows = read_csv(PREDICTIONS_CSV)
     rows.sort(key=lambda r: (r["date"], r["tipoff"] or ""))
+    dates = sorted({r["date"] for r in rows})
+    date_range = ""
+    if dates:
+        def _fmt(ds):
+            return f"{ds[4:6]}/{ds[6:8]}"
+        date_range = (_fmt(dates[0]) if len(dates) == 1
+                      else f"{_fmt(dates[0])}-{_fmt(dates[-1])}")
+    traps = [r for r in rows if r.get("trap") in ("True", True)]
     out = ["<section id=\"predictions\"><h2>Predictions</h2>",
            "<p>Predicted spreads for the next three days, generated "
-           "Nov 11 by predict.py from the 2026-27 ratings: "
+           "Nov 12 by predict.py from the 2026-27 ratings: "
            "model-consistent margin plus 4.69 home court (none on "
            "neutral floors), win probability from the cross-fitted "
            "logistic. The market line is ESPN's when one is out yet; "
            "lines move, and some of these games may already have "
            "tipped. The win/loss picks behind these spreads are "
            "backtested; the spread magnitudes are not.</p>",
-           "<table class=\"preds\"><thead><tr><th>Tip-off</th>"
-           "<th>Matchup</th><th>Predicted spread</th>"
-           "<th>Home win%</th><th>Market</th><th>Edge</th>"
-           "</tr></thead><tbody>"]
+           "<h3>Trap games</h3>",
+           "<p>A trap is a favorite the market likes even more "
+           "than the model does (market gap of 4+ points), plus at "
+           "least two letdown flags: top-25 favorite, big win last "
+           "game, 3+ games in 7 days, short rest vs the underdog, "
+           "or a road favorite. Full rules in trap.py. "
+           "Backtest (fit 2024-25, test 2025-26, "
+           "<a href=\"https://github.com/RD3-LIL/RonPom/blob/main/"
+           "comparisons/trap_backtest_2025_26.md\">trap backtest</a>): "
+           "trap underdogs covered 47.4% (76 games), below the "
+           "52.4% breakeven, and trap games were mostly blowout "
+           "favorites (median market line 16.5). This is a watch "
+           "list, what is weird, not a pick.</p>"]
+    if traps:
+        out.append("<table class=\"preds\"><thead><tr><th>Tip-off</th>"
+                   "<th>Matchup</th><th>Predicted spread</th>"
+                   "<th>Market</th><th>Why it is a trap</th>"
+                   "</tr></thead><tbody>")
+        for r in traps:
+            tip = fmt_tipoff(r["tipoff"], r["date"])
+            matchup = f"{r['away_short']} @ {r['home_short']}"
+            if r["neutral_site"] == "True":
+                matchup += " (N)"
+            market = (f"{float(r['market_spread']):+.1f}"
+                      if r["market_spread"] else "-")
+            reasons = html.escape(r.get("trap_reasons") or
+                                  r.get("trap_flags") or "")
+            out.append(f"<tr class=\"trap-row\"><td>{tip}</td>"
+                       f"<td>{html.escape(matchup)}</td>"
+                       f"<td>{html.escape(r['spread'])}</td>"
+                       f"<td>{market}</td><td>{reasons}</td></tr>")
+        out.append("</tbody></table>")
+    else:
+        out.append("<p>No trap games in this window. That usually "
+                   "means few market lines are out yet, since a "
+                   "market gap is required for a trap.</p>")
+    out.append("<h3>All predictions</h3>")
+    out.append("<table class=\"preds\"><thead><tr><th>Tip-off</th>"
+               "<th>Matchup</th><th>Predicted spread</th>"
+               "<th>Home win%</th><th>Market</th><th>Edge</th>"
+               "<th>Trap</th>"
+               "</tr></thead><tbody>")
     for r in rows:
         tip = fmt_tipoff(r["tipoff"], r["date"])
         matchup = f"{r['away_short']} @ {r['home_short']}"
@@ -538,15 +599,24 @@ def predictions_section():
         market = (f"{float(r['market_spread']):+.1f}"
                   if r["market_spread"] else "-")
         edge = (f"{float(r['edge']):+.1f}" if r["edge"] else "-")
-        out.append(f"<tr><td>{tip}</td><td>{html.escape(matchup)}</td>"
+        cls = (" class=\"trap-row\""
+               if r.get("trap") in ("True", True) else "")
+        out.append(f"<tr{cls}><td>{tip}</td>"
+                   f"<td>{html.escape(matchup)}</td>"
                    f"<td>{html.escape(r['spread'])}</td>"
                    f"<td>{float(r['home_win_prob']) * 100:.1f}%</td>"
-                   f"<td>{market}</td><td>{edge}</td></tr>")
+                   f"<td>{market}</td><td>{edge}</td>"
+                   f"{_trap_cell(r)}</tr>")
     out.append("</tbody></table>")
-    out.append(f"<p class=\"note\">{len(rows)} games, Nov 11-13. "
+    out.append(f"<p class=\"note\">{len(rows)} games"
+               + (f", {date_range}" if date_range else "")
+               + f", {len(traps)} trap. "
                "Edge is the model home margin minus the market's "
                "implied home margin: positive means the model likes "
-               "the home team more than the market does.</p></section>")
+               "the home team more than the market does. Trap is "
+               "the count of trap flags for the favorite; a bold "
+               "Trap score means the game is flagged as a trap.</p>"
+               "</section>")
     return "\n".join(out)
 
 
@@ -637,14 +707,17 @@ def team_page_html(team, slug_by_team, upcoming):
     if upcoming:
         parts.append("<section><h2>Upcoming games</h2>"
                      "<p>Predicted spreads for this team from the "
-                     "predictions file (Nov 11-13). Lines move, and "
+                     "predictions file. Lines move, and "
                      "some of these games may already have tipped. "
                      "The win/loss picks behind these spreads are "
-                     "backtested; the spread magnitudes are not.</p>"
+                     "backtested; the spread magnitudes are not. "
+                     "Trap marks a trap game for the favorite; see "
+                     "the Predictions section on the main page for "
+                     "the rules and the backtest.</p>"
                      '<table class="preds"><thead><tr><th>Tip-off</th>'
                      "<th>Opponent</th><th>Venue</th>"
                      "<th>Predicted spread</th><th>Team win%</th>"
-                     "<th>Market</th><th>Edge</th>"
+                     "<th>Market</th><th>Edge</th><th>Trap</th>"
                      "</tr></thead><tbody>")
         for r in sorted(upcoming,
                         key=lambda x: (x["date"], x["tipoff"] or "")):
@@ -666,13 +739,19 @@ def team_page_html(team, slug_by_team, upcoming):
             if opp_full in slug_by_team:
                 opp_html = (f"<a href=\"{slug_by_team[opp_full]}.html\">"
                             f"{opp_html}</a>")
+            trap_score = r.get("trap_score") or "0"
+            is_trap = r.get("trap") in ("True", True)
+            trap_cell = (f"<strong>Trap {trap_score}</strong>"
+                         if is_trap else trap_score)
+            trap_cls = " class=\"trap-row\"" if is_trap else ""
             parts.append(
-                f"<tr><td>{fmt_tipoff(r['tipoff'], r['date'])}</td>"
+                f"<tr{trap_cls}><td>{fmt_tipoff(r['tipoff'], r['date'])}</td>"
                 f"<td>{opp_html}</td><td>{venue}</td>"
                 f"<td>{html.escape(r['spread'])}</td>"
                 f"<td>{team_win * 100:.1f}%</td>"
                 f"<td>{market}</td>"
-                f"<td>{f'{edge_team:+.1f}' if edge_team is not None else '-'}</td></tr>")
+                f"<td>{f'{edge_team:+.1f}' if edge_team is not None else '-'}</td>"
+                f"<td>{trap_cell}</td></tr>")
         parts.append("</tbody></table>"
                      '<p class="note">Market is the home team\u2019s line. '
                      "Edge is from this team\u2019s perspective: positive "
@@ -767,6 +846,7 @@ table.ratings tbody tr.team:hover td { background: #eef4ff; }
 table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
 table.ratings td.net { font-weight: 700; }
 tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.trap-row td { background: #fff8e6; }
 tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
 .detail-box { margin-bottom: 8px; }
 table.gamelog { font-size: 13px; width: auto; margin: 0; }

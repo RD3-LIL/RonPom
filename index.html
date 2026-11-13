@@ -35,6 +35,7 @@ table.ratings tbody tr.team:hover td { background: #eef4ff; }
 table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
 table.ratings td.net { font-weight: 700; }
 tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.trap-row td { background: #fff8e6; }
 tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
 .detail-box { margin-bottom: 8px; }
 table.gamelog { font-size: 13px; width: auto; margin: 0; }
@@ -1492,135 +1493,131 @@ last season's ratings faded by returning minutes.</p>
 <p class="note">ORtg is approximate (no assist credit); read it with %Poss. RPR is our own single-number rating, not KenPom's proprietary kPOY. Full profiles in <a href="data/players_2026_27.csv">players_2026_27.csv</a>.</p></section>
 
 <section id="predictions"><h2>Predictions</h2>
-<p>Predicted spreads for the next three days, generated Nov 11 by predict.py from the 2026-27 ratings: model-consistent margin plus 4.69 home court (none on neutral floors), win probability from the cross-fitted logistic. The market line is ESPN's when one is out yet; lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not.</p>
-<table class="preds"><thead><tr><th>Tip-off</th><th>Matchup</th><th>Predicted spread</th><th>Home win%</th><th>Market</th><th>Edge</th></tr></thead><tbody>
-<tr><td>Wed 12:00 PM</td><td>Dartmouth @ UAlbany</td><td>UAlbany -2.7</td><td>63.4%</td><td>-1.5</td><td>+1.2</td></tr>
-<tr><td>Wed 01:00 PM</td><td>Incarnate Word @ UC Davis</td><td>UC Davis -12.6</td><td>88.2%</td><td>-11.5</td><td>+1.1</td></tr>
-<tr><td>Wed 02:00 PM</td><td>Saint Joseph&#x27;s @ South Florida (N)</td><td>South Florida -6.3</td><td>74.6%</td><td>-6.5</td><td>-0.2</td></tr>
-<tr><td>Wed 02:00 PM</td><td>Loyola Chicago @ Air Force</td><td>Loyola Chicago -14.9</td><td>11.4%</td><td>+10.5</td><td>-4.4</td></tr>
-<tr><td>Wed 03:00 PM</td><td>NC A&amp;T @ East Carolina</td><td>East Carolina -7.6</td><td>78.1%</td><td>-11.5</td><td>-3.9</td></tr>
-<tr><td>Wed 04:00 PM</td><td>Bethune @ San Diego St</td><td>San Diego St -15.4</td><td>91.9%</td><td>-18.5</td><td>-3.1</td></tr>
-<tr><td>Wed 04:30 PM</td><td>Penn @ Navy</td><td>Penn -2.2</td><td>45.7%</td><td>+8.5</td><td>+6.3</td></tr>
-<tr><td>Wed 05:00 PM</td><td>NC Central @ VMI</td><td>VMI -2.1</td><td>61.3%</td><td>-8.5</td><td>-6.4</td></tr>
-<tr><td>Wed 05:30 PM</td><td>Charleston @ Temple</td><td>Charleston -0.3</td><td>52.7%</td><td>+1.5</td><td>+1.2</td></tr>
-<tr><td>Wed 05:30 PM</td><td>S Indiana @ IU Indy</td><td>IU Indy -8.8</td><td>81.1%</td><td>-8.5</td><td>+0.3</td></tr>
-<tr><td>Wed 06:00 PM</td><td>Colgate @ St John&#x27;s</td><td>St John&#x27;s -18.9</td><td>95.0%</td><td>-29.5</td><td>-10.6</td></tr>
-<tr><td>Wed 06:00 PM</td><td>Marquette @ Michigan</td><td>Marquette -1.9</td><td>46.6%</td><td>-3.5</td><td>-5.4</td></tr>
-<tr><td>Wed 06:00 PM</td><td>Milwaukee @ Indiana St</td><td>Indiana St -9.2</td><td>81.9%</td><td>-4.5</td><td>+4.7</td></tr>
-<tr><td>Wed 06:00 PM</td><td>Kent State @ UNC Wilmington</td><td>UNC Wilmington -8.3</td><td>79.9%</td><td>-7.5</td><td>+0.8</td></tr>
-<tr><td>Wed 06:00 PM</td><td>Old Dominion @ Norfolk St</td><td>Old Dominion -7.5</td><td>27.6%</td><td>+6.5</td><td>-1.0</td></tr>
-<tr><td>Wed 06:00 PM</td><td>SC State @ Notre Dame</td><td>Notre Dame -10.7</td><td>84.9%</td><td>-26.5</td><td>-15.8</td></tr>
-<tr><td>Wed 06:00 PM</td><td>Stony Brook @ Princeton</td><td>Princeton -0.8</td><td>56.8%</td><td>-4.5</td><td>-3.7</td></tr>
-<tr><td>Wed 06:00 PM</td><td>Saint Peter&#x27;s @ South Carolina</td><td>South Carolina -18.4</td><td>94.6%</td><td>-22.5</td><td>-4.1</td></tr>
-<tr><td>Wed 06:00 PM</td><td>Furman @ Holy Cross</td><td>Furman -13.4</td><td>13.7%</td><td>+11.5</td><td>-1.9</td></tr>
-<tr><td>Wed 06:00 PM</td><td>James Madison @ Delaware</td><td>Delaware -3.5</td><td>66.2%</td><td>+3.5</td><td>+7.0</td></tr>
-<tr><td>Wed 06:00 PM</td><td>Campbell @ ETSU</td><td>ETSU -8.1</td><td>79.4%</td><td>-5.5</td><td>+2.6</td></tr>
-<tr><td>Wed 06:00 PM</td><td>NJIT @ VCU</td><td>VCU -23.9</td><td>97.6%</td><td>-34.5</td><td>-10.6</td></tr>
-<tr><td>Wed 06:00 PM</td><td>William &amp; Mary @ FAU</td><td>William &amp; Mary -6.1</td><td>32.0%</td><td>-4.5</td><td>-10.6</td></tr>
-<tr><td>Wed 06:00 PM</td><td>UNC Asheville @ West Georgia</td><td>West Georgia -2.0</td><td>60.9%</td><td>-1.5</td><td>+0.5</td></tr>
-<tr><td>Wed 06:00 PM</td><td>American @ Drexel</td><td>Drexel -5.5</td><td>72.5%</td><td>-1.5</td><td>+4.0</td></tr>
-<tr><td>Wed 06:00 PM</td><td>Cornell @ St Bonaventure</td><td>St Bonaventure -8.3</td><td>79.9%</td><td>-8.5</td><td>-0.2</td></tr>
-<tr><td>Wed 06:00 PM</td><td>UMass Lowell @ UMass</td><td>UMass -5.2</td><td>71.4%</td><td>-9.5</td><td>-4.3</td></tr>
-<tr><td>Wed 06:30 PM</td><td>Pepperdine @ Sam Houston</td><td>Sam Houston -2.6</td><td>62.9%</td><td>+3.5</td><td>+6.1</td></tr>
-<tr><td>Wed 07:00 PM</td><td>Jax State @ Houston</td><td>Houston -18.0</td><td>94.3%</td><td>-34.5</td><td>-16.5</td></tr>
-<tr><td>Wed 07:00 PM</td><td>Robert Morris @ Arkansas</td><td>Arkansas -16.6</td><td>93.1%</td><td>-30.5</td><td>-13.9</td></tr>
-<tr><td>Wed 07:00 PM</td><td>Valparaiso @ S Dakota St</td><td>Pick&#x27;em</td><td>53.6%</td><td>+1.5</td><td>+1.5</td></tr>
-<tr><td>Wed 07:00 PM</td><td>Oral Roberts @ Tulsa</td><td>Tulsa -16.5</td><td>93.0%</td><td>-18.5</td><td>-2.0</td></tr>
-<tr><td>Wed 07:00 PM</td><td>Jackson St @ Southern Miss</td><td>Southern Miss -9.9</td><td>83.4%</td><td>-9.5</td><td>+0.4</td></tr>
-<tr><td>Wed 07:00 PM</td><td>SF Austin @ Abilene Chrstn</td><td>SF Austin -2.4</td><td>44.9%</td><td>+6.5</td><td>+4.1</td></tr>
-<tr><td>Wed 07:00 PM</td><td>Santa Clara @ North Texas</td><td>Santa Clara -1.1</td><td>49.9%</td><td>+1.5</td><td>+0.4</td></tr>
-<tr><td>Wed 08:00 PM</td><td>AR-Pine Bluff @ UCLA</td><td>UCLA -35.2</td><td>99.5%</td><td>-45.5</td><td>-10.3</td></tr>
-<tr><td>Wed 08:00 PM</td><td>Lindenwood @ Nebraska</td><td>Nebraska -23.3</td><td>97.3%</td><td>-34.5</td><td>-11.2</td></tr>
-<tr><td>Wed 08:00 PM</td><td>Oakland @ Boise St</td><td>Boise St -21.1</td><td>96.3%</td><td>-16.5</td><td>+4.6</td></tr>
-<tr><td>Wed 08:00 PM</td><td>Portland St @ Colorado St</td><td>Colorado St -13.0</td><td>88.9%</td><td>-16.5</td><td>-3.5</td></tr>
-<tr><td>Wed 08:00 PM</td><td>Nevada @ Santa Barbara</td><td>Nevada -1.2</td><td>49.2%</td><td>+1.5</td><td>+0.3</td></tr>
-<tr><td>Wed 08:00 PM</td><td>Cal Poly @ Grand Canyon</td><td>Grand Canyon -16.8</td><td>93.3%</td><td>-18.5</td><td>-1.7</td></tr>
-<tr><td>Wed 09:00 PM</td><td>Miss Valley St @ Oregon</td><td>Oregon -21.1</td><td>96.4%</td><td>-35.5</td><td>-14.4</td></tr>
-<tr><td>Wed 09:00 PM</td><td>Chicago St @ CA Baptist</td><td>CA Baptist -3.4</td><td>65.8%</td><td>-11.5</td><td>-8.1</td></tr>
-<tr><td>Wed 09:00 PM</td><td>Pacific @ Long Beach St</td><td>Pacific -2.2</td><td>45.5%</td><td>+5.5</td><td>+3.3</td></tr>
-<tr><td>Wed 09:00 PM</td><td>UTSA @ Seattle U</td><td>Seattle U -11.5</td><td>86.4%</td><td>-16.5</td><td>-5.0</td></tr>
-<tr><td>Wed 10:00 PM</td><td>USC @ California</td><td>California -0.7</td><td>56.4%</td><td>+8.5</td><td>+9.2</td></tr>
-<tr><td>Thu 02:00 PM</td><td>Kansas City @ George Mason (N)</td><td>George Mason -8.9</td><td>81.3%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 05:00 PM</td><td>Bradley @ Coppin St (N)</td><td>Bradley -6.5</td><td>30.8%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 05:00 PM</td><td>Morgan St @ UMBC</td><td>Morgan St -1.4</td><td>48.7%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 05:30 PM</td><td>Mercyhurst @ Penn State</td><td>Penn State -18.1</td><td>94.4%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 05:30 PM</td><td>Tennessee Tech @ Indiana</td><td>Indiana -15.6</td><td>92.1%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 06:00 PM</td><td>W Michigan @ Purdue FW</td><td>Purdue FW -0.9</td><td>57.1%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 06:00 PM</td><td>C Connecticut @ Sacred Heart</td><td>Sacred Heart -11.9</td><td>87.1%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 06:00 PM</td><td>Monmouth @ Quinnipiac</td><td>Quinnipiac -2.7</td><td>63.5%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 06:00 PM</td><td>Stetson @ Howard</td><td>Howard -10.3</td><td>84.3%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 06:00 PM</td><td>Mercer @ West Virginia</td><td>West Virginia -20.5</td><td>96.0%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 06:00 PM</td><td>Loyola MD @ Towson</td><td>Towson -10.8</td><td>85.2%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 06:00 PM</td><td>Southern Utah @ High Point</td><td>High Point -8.1</td><td>79.4%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 06:00 PM</td><td>Bakersfield @ W Illinois</td><td>Bakersfield -4.1</td><td>38.9%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 06:00 PM</td><td>MD Eastern @ Rhode Island</td><td>Rhode Island -20.1</td><td>95.8%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 06:00 PM</td><td>Canisius @ Brown</td><td>Brown -16.2</td><td>92.7%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 06:00 PM</td><td>Niagara @ Bowling Green</td><td>Bowling Green -13.9</td><td>90.1%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 07:00 PM</td><td>West Florida @ Alabama A&amp;M</td><td>West Florida -2.7</td><td>43.7%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 07:00 PM</td><td>Oklahoma St @ Texas A&amp;M</td><td>Texas A&amp;M -6.0</td><td>74.0%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 07:00 PM</td><td>LMU @ South Alabama (N)</td><td>LMU -1.2</td><td>49.4%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 07:00 PM</td><td>Southern @ Minnesota</td><td>Minnesota -26.7</td><td>98.4%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 07:00 PM</td><td>Richmond @ S Illinois</td><td>Richmond -6.8</td><td>29.8%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 08:00 PM</td><td>Montana St @ BYU</td><td>BYU -13.5</td><td>89.6%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 08:00 PM</td><td>New Mexico St @ UTEP</td><td>UTEP -8.8</td><td>81.1%</td><td>-</td><td>-</td></tr>
-<tr><td>Thu 09:00 PM</td><td>UC Riverside @ San José St</td><td>San José St -5.1</td><td>71.3%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 02:00 PM</td><td>West Florida @ Cleveland St (N)</td><td>West Florida -8.0</td><td>26.3%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 04:00 PM</td><td>North Alabama @ Miami</td><td>Miami -15.6</td><td>92.2%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 04:00 PM</td><td>Texas A&amp;M-CC @ Florida St</td><td>Florida St -16.6</td><td>93.1%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 05:00 PM</td><td>Bryant @ Rutgers</td><td>Rutgers -17.6</td><td>94.0%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 05:00 PM</td><td>Georgetown @ Clemson</td><td>Clemson -1.3</td><td>58.5%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 05:30 PM</td><td>Pitt @ Butler</td><td>Butler -0.1</td><td>54.3%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Merrimack @ Florida</td><td>Florida -24.5</td><td>97.7%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Sam Houston @ Illinois</td><td>Illinois -25.1</td><td>98.0%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Northern Iowa @ Michigan St</td><td>Michigan St -20.5</td><td>96.0%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Tennessee St @ Tennessee</td><td>Tennessee -19.1</td><td>95.1%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Prairie View @ Vanderbilt</td><td>Vanderbilt -27.5</td><td>98.6%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>N Arizona @ Kentucky</td><td>Kentucky -17.7</td><td>94.1%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Ohio @ Purdue</td><td>Purdue -9.1</td><td>81.7%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>App State @ Charlotte</td><td>Charlotte -6.5</td><td>75.4%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Marist @ Lehigh</td><td>Lehigh -2.5</td><td>62.6%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Columbia @ Bucknell</td><td>Columbia -7.9</td><td>26.5%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>FIU @ FGCU</td><td>FGCU -1.9</td><td>60.5%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Iona @ Hofstra</td><td>Hofstra -1.5</td><td>59.2%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Chattanooga @ Elon</td><td>Elon -4.5</td><td>69.3%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Yale @ Northeastern</td><td>Pick&#x27;em</td><td>53.7%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Mount St Marys @ Virginia Tech</td><td>Virginia Tech -21.3</td><td>96.5%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Troy @ NC State</td><td>NC State -16.5</td><td>93.0%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Harvard @ G Washington</td><td>G Washington -17.8</td><td>94.2%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Long Island @ Fordham</td><td>Fordham -12.1</td><td>87.5%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:00 PM</td><td>Georgia @ North Carolina</td><td>North Carolina -5.6</td><td>72.6%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:30 PM</td><td>Ohio State @ UConn</td><td>UConn -11.8</td><td>87.0%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:30 PM</td><td>South Dakota @ Drake</td><td>Drake -6.8</td><td>76.0%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:30 PM</td><td>NC Central @ Liberty</td><td>Liberty -8.0</td><td>79.1%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 06:30 PM</td><td>SE Missouri @ MTSU</td><td>SE Missouri -2.9</td><td>43.2%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 07:00 PM</td><td>SIUE @ Duke</td><td>Duke -27.4</td><td>98.5%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 07:00 PM</td><td>Virginia @ Maryland</td><td>Virginia -8.2</td><td>25.8%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 07:00 PM</td><td>C Arkansas @ Arkansas</td><td>Arkansas -7.5</td><td>77.8%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 07:00 PM</td><td>Southern Miss @ Texas St</td><td>Texas St -8.5</td><td>80.4%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 07:00 PM</td><td>Texas Southern @ Murray St</td><td>Murray St -22.3</td><td>96.9%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 07:00 PM</td><td>Illinois St @ N Dakota St</td><td>Illinois St -5.3</td><td>34.7%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 07:00 PM</td><td>Wright St @ Samford</td><td>Wright St -6.1</td><td>32.0%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 07:00 PM</td><td>Alcorn St @ Tarleton St</td><td>Tarleton St -12.5</td><td>88.1%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 07:00 PM</td><td>GA Southern @ UCF</td><td>UCF -8.1</td><td>79.3%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 07:00 PM</td><td>Milwaukee @ TCU</td><td>TCU -25.2</td><td>98.0%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 07:00 PM</td><td>FDU @ Oklahoma</td><td>Oklahoma -28.9</td><td>98.8%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 07:45 PM</td><td>Lindenwood @ Omaha</td><td>Omaha -0.3</td><td>55.0%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 08:00 PM</td><td>Arizona @ Auburn</td><td>Auburn -4.0</td><td>67.6%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 08:00 PM</td><td>Seton Hall @ Alabama</td><td>Alabama -9.1</td><td>81.6%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 08:00 PM</td><td>Stanford @ UNLV</td><td>UNLV -1.3</td><td>58.5%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 08:00 PM</td><td>Cal Poly @ Idaho</td><td>Idaho -5.6</td><td>72.8%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 08:00 PM</td><td>UL Monroe @ Arizona St</td><td>Arizona St -16.0</td><td>92.6%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 08:00 PM</td><td>Ball State @ SMU</td><td>SMU -15.1</td><td>91.5%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 08:00 PM</td><td>DePaul @ Northwestern</td><td>Northwestern -2.5</td><td>62.6%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 08:00 PM</td><td>Xavier @ Mississippi St (N)</td><td>Xavier -1.3</td><td>49.0%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 08:30 PM</td><td>Miss Valley St @ Oregon St</td><td>Oregon St -20.3</td><td>95.9%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 08:30 PM</td><td>Chicago St @ San Diego</td><td>San Diego -11.9</td><td>87.1%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 09:00 PM</td><td>UC San Diego @ Utah State</td><td>Utah State -11.6</td><td>86.7%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 09:00 PM</td><td>East Texas A&amp;M @ Portland</td><td>East Texas A&amp;M -0.3</td><td>52.6%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 09:00 PM</td><td>UIC @ Saint Mary&#x27;s</td><td>Saint Mary&#x27;s -8.0</td><td>79.1%</td><td>-</td><td>-</td></tr>
-<tr><td>Fri 09:30 PM</td><td>AR-Pine Bluff @ CA Baptist</td><td>CA Baptist -11.9</td><td>87.2%</td><td>-</td><td>-</td></tr>
+<p>Predicted spreads for the next three days, generated Nov 12 by predict.py from the 2026-27 ratings: model-consistent margin plus 4.69 home court (none on neutral floors), win probability from the cross-fitted logistic. The market line is ESPN's when one is out yet; lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not.</p>
+<h3>Trap games</h3>
+<p>A trap is a favorite the market likes even more than the model does (market gap of 4+ points), plus at least two letdown flags: top-25 favorite, big win last game, 3+ games in 7 days, short rest vs the underdog, or a road favorite. Full rules in trap.py. Backtest (fit 2024-25, test 2025-26, <a href="https://github.com/RD3-LIL/RonPom/blob/main/comparisons/trap_backtest_2025_26.md">trap backtest</a>): trap underdogs covered 47.4% (76 games), below the 52.4% breakeven, and trap games were mostly blowout favorites (median market line 16.5). This is a watch list, what is weird, not a pick.</p>
+<table class="preds"><thead><tr><th>Tip-off</th><th>Matchup</th><th>Predicted spread</th><th>Market</th><th>Why it is a trap</th></tr></thead><tbody>
+<tr class="trap-row"><td>Fri 06:00 PM</td><td>Prairie View @ Vanderbilt</td><td>Vanderbilt -27.4</td><td>-37.5</td><td>Favorite is ranked #15; Won last game by 23 vs Wake Forest Demon Deacons; Market favors favorite by 37.5, model says 27.4 (gap +10.1)</td></tr>
 </tbody></table>
-<p class="note">125 games, Nov 11-13. Edge is the model home margin minus the market's implied home margin: positive means the model likes the home team more than the market does.</p></section>
+<h3>All predictions</h3>
+<table class="preds"><thead><tr><th>Tip-off</th><th>Matchup</th><th>Predicted spread</th><th>Home win%</th><th>Market</th><th>Edge</th><th>Trap</th></tr></thead><tbody>
+<tr><td>Fri 02:00 PM</td><td>West Florida @ Cleveland St (N)</td><td>West Florida -8.0</td><td>26.3%</td><td>-3.5</td><td>-11.5</td><td>0</td></tr>
+<tr><td>Fri 04:00 PM</td><td>North Alabama @ Miami</td><td>Miami -15.8</td><td>92.3%</td><td>-34.5</td><td>-18.7</td><td>2</td></tr>
+<tr><td>Fri 04:00 PM</td><td>Texas A&amp;M-CC @ Florida St</td><td>Florida St -16.3</td><td>92.8%</td><td>-21.5</td><td>-5.2</td><td>1</td></tr>
+<tr><td>Fri 05:00 PM</td><td>Bryant @ Rutgers</td><td>Rutgers -17.1</td><td>93.6%</td><td>-23.5</td><td>-6.4</td><td>2</td></tr>
+<tr><td>Fri 05:00 PM</td><td>Georgetown @ Clemson</td><td>Clemson -1.4</td><td>58.7%</td><td>-4.5</td><td>-3.1</td><td>0</td></tr>
+<tr><td>Fri 05:30 PM</td><td>Pitt @ Butler</td><td>Butler -1.1</td><td>57.9%</td><td>-3.5</td><td>-2.4</td><td>0</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Merrimack @ Florida</td><td>Florida -24.8</td><td>97.9%</td><td>-37.5</td><td>-12.7</td><td>2</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Sam Houston @ Illinois</td><td>Illinois -23.9</td><td>97.6%</td><td>-36.5</td><td>-12.6</td><td>2</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Northern Iowa @ Michigan St</td><td>Michigan St -20.6</td><td>96.1%</td><td>-29.5</td><td>-8.9</td><td>2</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Tennessee St @ Tennessee</td><td>Tennessee -19.1</td><td>95.1%</td><td>-29.5</td><td>-10.4</td><td>2</td></tr>
+<tr class="trap-row"><td>Fri 06:00 PM</td><td>Prairie View @ Vanderbilt</td><td>Vanderbilt -27.4</td><td>98.5%</td><td>-37.5</td><td>-10.1</td><td><strong>Trap 3</strong></td></tr>
+<tr><td>Fri 06:00 PM</td><td>N Arizona @ Kentucky</td><td>Kentucky -17.8</td><td>94.2%</td><td>-35.5</td><td>-17.7</td><td>1</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Ohio @ Purdue</td><td>Purdue -9.0</td><td>81.4%</td><td>-19.5</td><td>-10.5</td><td>1</td></tr>
+<tr><td>Fri 06:00 PM</td><td>App State @ Charlotte</td><td>Charlotte -6.3</td><td>74.7%</td><td>-7.5</td><td>-1.2</td><td>0</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Marist @ Lehigh</td><td>Lehigh -2.0</td><td>61.0%</td><td>-1.5</td><td>+0.5</td><td>0</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Columbia @ Bucknell</td><td>Columbia -7.9</td><td>26.5%</td><td>+4.5</td><td>-3.4</td><td>2</td></tr>
+<tr><td>Fri 06:00 PM</td><td>FIU @ FGCU</td><td>FGCU -1.7</td><td>60.0%</td><td>-3.5</td><td>-1.8</td><td>0</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Iona @ Hofstra</td><td>Hofstra -1.9</td><td>60.7%</td><td>-7.5</td><td>-5.6</td><td>0</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Chattanooga @ Elon</td><td>Elon -4.5</td><td>69.3%</td><td>-2.5</td><td>+2.0</td><td>0</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Yale @ Northeastern</td><td>Northeastern -0.2</td><td>54.3%</td><td>+1.5</td><td>+1.7</td><td>0</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Mount St Marys @ Virginia Tech</td><td>Virginia Tech -21.3</td><td>96.5%</td><td>-28.5</td><td>-7.2</td><td>2</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Troy @ NC State</td><td>NC State -16.2</td><td>92.8%</td><td>-22.5</td><td>-6.3</td><td>2</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Harvard @ G Washington</td><td>G Washington -18.2</td><td>94.5%</td><td>-12.5</td><td>+5.7</td><td>1</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Long Island @ Fordham</td><td>Fordham -11.7</td><td>86.8%</td><td>-12.5</td><td>-0.8</td><td>0</td></tr>
+<tr><td>Fri 06:00 PM</td><td>Georgia @ North Carolina</td><td>North Carolina -6.0</td><td>73.8%</td><td>-4.5</td><td>+1.5</td><td>0</td></tr>
+<tr><td>Fri 06:30 PM</td><td>Ohio State @ UConn</td><td>UConn -12.1</td><td>87.5%</td><td>-11.5</td><td>+0.6</td><td>2</td></tr>
+<tr><td>Fri 06:30 PM</td><td>South Dakota @ Drake</td><td>Drake -6.8</td><td>76.0%</td><td>-13.5</td><td>-6.7</td><td>1</td></tr>
+<tr><td>Fri 06:30 PM</td><td>NC Central @ Liberty</td><td>Liberty -10.1</td><td>83.7%</td><td>-18.5</td><td>-8.4</td><td>1</td></tr>
+<tr><td>Fri 06:30 PM</td><td>SE Missouri @ MTSU</td><td>SE Missouri -3.5</td><td>41.0%</td><td>-5.5</td><td>-9.0</td><td>1</td></tr>
+<tr><td>Fri 07:00 PM</td><td>SIUE @ Duke</td><td>Duke -27.3</td><td>98.5%</td><td>-44.5</td><td>-17.2</td><td>2</td></tr>
+<tr><td>Fri 07:00 PM</td><td>Virginia @ Maryland</td><td>Virginia -8.1</td><td>25.9%</td><td>+5.5</td><td>-2.6</td><td>4</td></tr>
+<tr><td>Fri 07:00 PM</td><td>C Arkansas @ Arkansas</td><td>Arkansas -7.9</td><td>78.9%</td><td>-25.5</td><td>-17.6</td><td>2</td></tr>
+<tr><td>Fri 07:00 PM</td><td>Southern Miss @ Texas St</td><td>Texas St -9.3</td><td>82.2%</td><td>-11.5</td><td>-2.2</td><td>0</td></tr>
+<tr><td>Fri 07:00 PM</td><td>Texas Southern @ Murray St</td><td>Murray St -21.9</td><td>96.8%</td><td>-27.5</td><td>-5.6</td><td>2</td></tr>
+<tr><td>Fri 07:00 PM</td><td>Illinois St @ N Dakota St</td><td>Illinois St -5.2</td><td>35.0%</td><td>+2.5</td><td>-2.7</td><td>1</td></tr>
+<tr><td>Fri 07:00 PM</td><td>Wright St @ Samford</td><td>Wright St -7.1</td><td>28.8%</td><td>+1.5</td><td>-5.6</td><td>1</td></tr>
+<tr><td>Fri 07:00 PM</td><td>Alcorn St @ Tarleton St</td><td>Tarleton St -12.6</td><td>88.2%</td><td>-14.5</td><td>-1.9</td><td>0</td></tr>
+<tr><td>Fri 07:00 PM</td><td>GA Southern @ UCF</td><td>UCF -7.9</td><td>78.9%</td><td>-23.5</td><td>-15.6</td><td>1</td></tr>
+<tr><td>Fri 07:00 PM</td><td>Cal Poly @ Idaho</td><td>Idaho -7.6</td><td>78.2%</td><td>-1.5</td><td>+6.1</td><td>0</td></tr>
+<tr><td>Fri 07:00 PM</td><td>Milwaukee @ TCU</td><td>TCU -22.3</td><td>96.9%</td><td>-23.5</td><td>-1.2</td><td>0</td></tr>
+<tr><td>Fri 07:00 PM</td><td>FDU @ Oklahoma</td><td>Oklahoma -24.5</td><td>97.8%</td><td>-33.5</td><td>-9.0</td><td>1</td></tr>
+<tr><td>Fri 07:45 PM</td><td>Lindenwood @ Omaha</td><td>Omaha -2.9</td><td>64.1%</td><td>-4.5</td><td>-1.6</td><td>0</td></tr>
+<tr><td>Fri 08:00 PM</td><td>Arizona @ Auburn</td><td>Auburn -3.5</td><td>66.1%</td><td>+2.5</td><td>+6.0</td><td>1</td></tr>
+<tr><td>Fri 08:00 PM</td><td>Seton Hall @ Alabama</td><td>Alabama -9.6</td><td>82.9%</td><td>-17.5</td><td>-7.9</td><td>2</td></tr>
+<tr><td>Fri 08:00 PM</td><td>Stanford @ UNLV</td><td>UNLV -1.6</td><td>59.6%</td><td>+1.5</td><td>+3.1</td><td>0</td></tr>
+<tr><td>Fri 08:00 PM</td><td>UL Monroe @ Arizona St</td><td>Arizona St -16.4</td><td>92.9%</td><td>-32.5</td><td>-16.1</td><td>2</td></tr>
+<tr><td>Fri 08:00 PM</td><td>Ball State @ SMU</td><td>SMU -16.1</td><td>92.6%</td><td>-23.5</td><td>-7.4</td><td>2</td></tr>
+<tr><td>Fri 08:00 PM</td><td>DePaul @ Northwestern</td><td>Northwestern -2.5</td><td>62.7%</td><td>+1.5</td><td>+4.0</td><td>0</td></tr>
+<tr><td>Fri 08:00 PM</td><td>Xavier @ Mississippi St (N)</td><td>Xavier -1.1</td><td>49.5%</td><td>+3.5</td><td>+2.4</td><td>0</td></tr>
+<tr><td>Fri 08:30 PM</td><td>Miss Valley St @ Oregon St</td><td>Oregon St -23.9</td><td>97.6%</td><td>-33.5</td><td>-9.6</td><td>1</td></tr>
+<tr><td>Fri 08:30 PM</td><td>Chicago St @ San Diego</td><td>San Diego -9.9</td><td>83.4%</td><td>-14.5</td><td>-4.6</td><td>1</td></tr>
+<tr><td>Fri 09:00 PM</td><td>UC San Diego @ Utah State</td><td>Utah State -11.9</td><td>87.1%</td><td>-13.5</td><td>-1.6</td><td>1</td></tr>
+<tr><td>Fri 09:00 PM</td><td>East Texas A&amp;M @ Portland</td><td>Portland -4.5</td><td>69.3%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Fri 09:00 PM</td><td>UIC @ Saint Mary&#x27;s</td><td>Saint Mary&#x27;s -7.8</td><td>78.7%</td><td>-6.5</td><td>+1.3</td><td>0</td></tr>
+<tr><td>Fri 09:30 PM</td><td>AR-Pine Bluff @ CA Baptist</td><td>CA Baptist -13.3</td><td>89.3%</td><td>-16.5</td><td>-3.2</td><td>0</td></tr>
+<tr><td>Sat 10:00 AM</td><td>UNC Greensboro @ Cornell</td><td>Cornell -0.8</td><td>56.6%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 11:00 AM</td><td>Tulane @ Akron</td><td>Akron -9.5</td><td>82.6%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 12:00 PM</td><td>Stonehill @ Texas Tech</td><td>Texas Tech -25.0</td><td>97.9%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 12:00 PM</td><td>Drexel @ Maine</td><td>Maine -0.9</td><td>57.1%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 12:00 PM</td><td>Montana @ North Dakota</td><td>Montana -1.9</td><td>46.8%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 12:00 PM</td><td>Towson @ Morgan St (N)</td><td>Towson -3.5</td><td>40.7%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 12:00 PM</td><td>Bradley @ George Mason (N)</td><td>George Mason -8.9</td><td>81.4%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 12:00 PM</td><td>St Thomas @ Army</td><td>St Thomas -5.3</td><td>34.7%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 12:30 PM</td><td>Loyola Chicago @ Colorado St</td><td>Colorado St -6.8</td><td>76.0%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 01:00 PM</td><td>Wofford @ Queens</td><td>Queens -9.2</td><td>81.9%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 01:00 PM</td><td>The Citadel @ North Florida</td><td>The Citadel -0.5</td><td>51.8%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 01:00 PM</td><td>Rice @ SF Austin</td><td>SF Austin -6.9</td><td>76.2%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 01:00 PM</td><td>N Illinois @ Bellarmine</td><td>N Illinois -3.0</td><td>42.8%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 01:00 PM</td><td>Coppin St @ South Florida</td><td>South Florida -20.7</td><td>96.1%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 01:00 PM</td><td>Gardner-Webb @ South Carolina</td><td>South Carolina -25.4</td><td>98.0%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 01:00 PM</td><td>Miami OH @ Evansville</td><td>Miami OH -4.5</td><td>37.5%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 01:30 PM</td><td>Jackson St @ Winthrop</td><td>Winthrop -8.2</td><td>79.7%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 02:00 PM</td><td>Wyoming @ Denver</td><td>Wyoming -0.1</td><td>53.3%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 02:30 PM</td><td>LSU @ Gonzaga</td><td>LSU -0.5</td><td>51.8%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 02:30 PM</td><td>C Michigan @ N Kentucky</td><td>C Michigan -4.7</td><td>36.7%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 03:00 PM</td><td>Toledo @ Detroit Mercy</td><td>Toledo -11.3</td><td>17.8%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 03:00 PM</td><td>S Dakota St @ N Colorado (N)</td><td>S Dakota St -7.5</td><td>27.6%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 03:00 PM</td><td>Longwood @ Old Dominion</td><td>Old Dominion -9.2</td><td>81.9%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 03:00 PM</td><td>Hampton @ Navy</td><td>Navy -3.7</td><td>66.9%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 03:00 PM</td><td>UNC Asheville @ Georgia Tech</td><td>Georgia Tech -13.9</td><td>90.1%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 03:00 PM</td><td>Delaware St @ East Carolina</td><td>East Carolina -6.8</td><td>76.1%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 03:00 PM</td><td>Air Force @ Pacific</td><td>Pacific -11.5</td><td>86.4%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 03:00 PM</td><td>Lafayette @ St Bonaventure</td><td>St Bonaventure -17.9</td><td>94.2%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 03:00 PM</td><td>Southern Utah @ Wake Forest</td><td>Wake Forest -6.5</td><td>75.3%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 03:30 PM</td><td>SC Upstate @ Campbell</td><td>Campbell -2.5</td><td>62.6%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 04:00 PM</td><td>Northern Iowa @ Oakland</td><td>Northern Iowa -6.7</td><td>30.0%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 04:00 PM</td><td>Utah Tech @ California</td><td>California -17.1</td><td>93.6%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 05:00 PM</td><td>UC Riverside @ Fresno St</td><td>Fresno St -0.6</td><td>55.9%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 05:00 PM</td><td>South Alabama @ North Texas</td><td>North Texas -10.0</td><td>83.6%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 05:00 PM</td><td>Marshall @ Youngstown St</td><td>Marshall -1.2</td><td>49.3%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 05:00 PM</td><td>Manhattan @ Le Moyne</td><td>Manhattan -2.2</td><td>45.6%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 05:00 PM</td><td>Colorado @ Providence</td><td>Providence -5.5</td><td>72.3%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 05:30 PM</td><td>Penn @ Saint Joseph&#x27;s</td><td>Saint Joseph&#x27;s -8.4</td><td>80.1%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 06:00 PM</td><td>Howard @ Davidson</td><td>Davidson -12.8</td><td>88.6%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 06:00 PM</td><td>UT Rio Grande @ UT Arlington</td><td>UT Arlington -4.1</td><td>68.0%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 06:00 PM</td><td>Rider @ Villanova</td><td>Villanova -20.7</td><td>96.1%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 06:00 PM</td><td>Washington @ Utah</td><td>Utah -1.4</td><td>58.9%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 06:00 PM</td><td>Portland St @ San Francisco</td><td>San Francisco -12.6</td><td>88.2%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 06:00 PM</td><td>NJIT @ Fairfield</td><td>Fairfield -11.8</td><td>86.9%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 06:00 PM</td><td>Lipscomb @ W Carolina</td><td>W Carolina -4.4</td><td>69.1%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 06:00 PM</td><td>UAB @ Jax State</td><td>UAB -1.9</td><td>46.7%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 06:00 PM</td><td>Austin Peay @ Wichita St</td><td>Wichita St -8.3</td><td>79.9%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 06:00 PM</td><td>West Georgia @ Charleston So</td><td>Charleston So -2.8</td><td>63.7%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 06:00 PM</td><td>Brown @ Siena</td><td>Siena -7.5</td><td>77.9%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 06:30 PM</td><td>IU Indy @ Morehead St</td><td>IU Indy -10.2</td><td>20.5%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 06:30 PM</td><td>Binghamton @ Duquesne</td><td>Duquesne -12.2</td><td>87.6%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 06:30 PM</td><td>Cincinnati @ Dayton</td><td>Cincinnati -6.6</td><td>30.3%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 07:00 PM</td><td>N&#x27;Western St @ Little Rock</td><td>Little Rock -7.5</td><td>77.9%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 07:00 PM</td><td>Louisiana Tech @ Nicholls</td><td>Nicholls -1.2</td><td>58.0%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 07:00 PM</td><td>UC Davis @ Sacramento St</td><td>Sacramento St -2.6</td><td>63.1%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 07:00 PM</td><td>UL Monroe @ Grand Canyon</td><td>Grand Canyon -17.4</td><td>93.8%</td><td>-</td><td>-</td><td>1</td></tr>
+<tr><td>Sat 07:30 PM</td><td>Furman @ Belmont</td><td>Belmont -3.0</td><td>64.4%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 09:00 PM</td><td>New Mexico @ Santa Clara</td><td>New Mexico -0.9</td><td>50.3%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 09:00 PM</td><td>Idaho St @ Seattle U</td><td>Seattle U -16.1</td><td>92.7%</td><td>-</td><td>-</td><td>0</td></tr>
+<tr><td>Sat 09:00 PM</td><td>Utah Valley @ Nevada</td><td>Nevada -6.3</td><td>74.8%</td><td>-</td><td>-</td><td>0</td></tr>
+</tbody></table>
+<p class="note">115 games, 11/13-11/14, 1 trap. Edge is the model home margin minus the market's implied home margin: positive means the model likes the home team more than the market does. Trap is the count of trap flags for the favorite; a bold Trap score means the game is flagged as a trap.</p></section>
 
 <section id="how-to-read"><h2>How to read this</h2>
 <p><strong>Getting around</strong>: the bar at the top jumps to any
