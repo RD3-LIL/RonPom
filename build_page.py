@@ -361,7 +361,49 @@ def top_players_section():
     return "\n".join(out)
 
 
+def _rank_map(rows, key, reverse):
+    """Competition ranks (1, 2, 2, 4) for one metric column.
+    reverse=True means rank 1 is the highest value (AdjO, AdjT,
+    Luck, SOS, NCSOS); reverse=False means rank 1 is the lowest
+    (AdjD, best defense). Rows with a missing value get no rank."""
+    vals = [(r["team"], float(r[key])) for r in rows
+            if r.get(key) not in (None, "")]
+    vals.sort(key=lambda kv: kv[1], reverse=reverse)
+    out, prev_val, prev_rank = {}, None, 0
+    for i, (team, v) in enumerate(vals):
+        rank = prev_rank if v == prev_val else i + 1
+        out[team] = rank
+        prev_val, prev_rank = v, rank
+    return out
+
+
+def metric_ranks(rows):
+    """Per-metric ranks for one season's rows, keyed by metric
+    then team. Stored in SEASON_RANKS so team pages can show
+    the same numbers as the main tables."""
+    return {
+        "adj_o": _rank_map(rows, "adj_o", True),
+        "adj_d": _rank_map(rows, "adj_d", False),
+        "adj_t": _rank_map(rows, "adj_t", True),
+        "luck": _rank_map(rows, "luck", True),
+        "sos": _rank_map(rows, "sos", True),
+        "ncsos": _rank_map(rows, "ncsos", True),
+    }
+
+
+def _metric_cell(data_v, disp, rank):
+    """A metric table cell: value on top, small rank underneath.
+    data-v keeps the sortable value; data-r feeds the JS detail
+    panel. No rank (missing value) renders a plain cell."""
+    if rank is None:
+        return f"<td data-v=\"{data_v}\">{disp}</td>"
+    return (f"<td data-v=\"{data_v}\" data-r=\"{rank}\">{disp}"
+            f"<span class=\"sub-rank\">{rank}</span></td>")
+
+
 def team_table(season, rows, records, conf_names, log_idx):
+    ranks = metric_ranks(rows)
+    SEASON_RANKS[season] = ranks
     tid = season.replace("-", "_")
     confs = sorted({conf_names.get(r["team"], "") for r in rows} - {""})
     tabs = [f"<div class=\"conftabs\" data-table=\"teams-{tid}\">"
@@ -393,6 +435,7 @@ def team_table(season, rows, records, conf_names, log_idx):
         conf = conf_names.get(r["team"], "")
         cls = ("team ill" if r["team"] == "Illinois Fighting Illini"
                else "team")
+        luck_disp = f"{float(r['luck']):+.3f}"
         out.append(
             f"<tr class=\"{cls}\" data-conf=\"{html.escape(conf.lower())}\" "
             f"data-season=\"{season}\" data-tidx=\"{log_idx.get(r['team'], '')}\">"
@@ -404,15 +447,13 @@ def team_table(season, rows, records, conf_names, log_idx):
             f"<td data-v=\"{html.escape(conf.lower())}\">"
             f"{html.escape(conf)}</td>"
             f"<td data-v=\"{w * 100 - l}\">{w}-{l}</td>"
-            f"<td data-v=\"{r['adj_o']}\">{r['adj_o']}</td>"
-            f"<td data-v=\"{r['adj_d']}\">{r['adj_d']}</td>"
+            f"{_metric_cell(r['adj_o'], r['adj_o'], ranks['adj_o'].get(r['team']))}"
+            f"{_metric_cell(r['adj_d'], r['adj_d'], ranks['adj_d'].get(r['team']))}"
             f"<td class=\"net\" data-v=\"{r['net']}\">{r['net']}</td>"
-            f"<td data-v=\"{r['adj_t']}\">{r['adj_t']}</td>"
-            f"<td data-v=\"{r['luck']}\">"
-            f"{float(r['luck']):+.3f}</td>"
-            f"<td data-v=\"{r['sos']}\">{r['sos']}</td>"
-            f"<td data-v=\"{r['ncsos'] or '0'}\">"
-            f"{r['ncsos'] or '-'}</td></tr>")
+            f"{_metric_cell(r['adj_t'], r['adj_t'], ranks['adj_t'].get(r['team']))}"
+            f"{_metric_cell(r['luck'], luck_disp, ranks['luck'].get(r['team']))}"
+            f"{_metric_cell(r['sos'], r['sos'], ranks['sos'].get(r['team']))}"
+            f"{_metric_cell(r['ncsos'] or '0', r['ncsos'] or '-', ranks['ncsos'].get(r['team']))}</tr>")
     out.append("</tbody></table>")
     out.append(
         f"<p class=\"note\">Full table above ({len(rows)} teams). "
@@ -709,6 +750,13 @@ def predictions_section():
     return "\n".join(out)
 
 
+def _rank_str(season, team, key):
+    """' (#n)' for a team's rank in one metric this season,
+    or '' when the team has no rank in it."""
+    r = SEASON_RANKS.get(season, {}).get(key, {}).get(team)
+    return f" (#{r})" if r is not None else ""
+
+
 def team_page_html(team, slug_by_team, upcoming):
     """One team's full page, as an HTML string.
 
@@ -737,11 +785,17 @@ def team_page_html(team, slug_by_team, upcoming):
         w, l = d["record"]
         parts.append(f"<section><h2>{season}</h2>")
         parts.append(
-            f"<p>Net rank #{r['rank']} &middot; AdjO {r['adj_o']} "
-            f"&middot; AdjD {r['adj_d']} &middot; Net {r['net']} "
-            f"&middot; AdjT {r['adj_t']} &middot; Luck "
-            f"{float(r['luck']):+.3f} &middot; SOS {r['sos']} "
-            f"&middot; NCSOS {r['ncsos'] or '-'} &middot; {w}-{l} "
+            f"<p>Net rank #{r['rank']} &middot; AdjO {r['adj_o']}"
+            f"{_rank_str(season, team, 'adj_o')} "
+            f"&middot; AdjD {r['adj_d']}"
+            f"{_rank_str(season, team, 'adj_d')} &middot; Net {r['net']} "
+            f"&middot; AdjT {r['adj_t']}"
+            f"{_rank_str(season, team, 'adj_t')} &middot; Luck "
+            f"{float(r['luck']):+.3f}"
+            f"{_rank_str(season, team, 'luck')} &middot; SOS {r['sos']}"
+            f"{_rank_str(season, team, 'sos')} "
+            f"&middot; NCSOS {r['ncsos'] or '-'}"
+            f"{_rank_str(season, team, 'ncsos')} &middot; {w}-{l} "
             f"(D1 games)</p>")
         entry = LOGS.get(season)
         tidx = LOG_IDX.get(season, {}).get(team)
@@ -934,6 +988,8 @@ table.ratings tbody tr.team { cursor: pointer; }
 table.ratings tbody tr.team:hover td { background: #eef4ff; }
 table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
 table.ratings td.net { font-weight: 700; }
+table.ratings td .sub-rank { display: block; font-size: 10px;
+  line-height: 1.1; color: #656d76; font-weight: 400; }
 tr.ill td { background: #fff8e6 !important; font-weight: 600; }
 tr.trap-row td { background: #fff8e6; }
 tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
@@ -1011,9 +1067,9 @@ function openDetail(table, row) {
   var teams = entry.teams;
   var c = row.cells;
   var html = '<div class="detail-box"><strong>' + esc(c[1].textContent)
-    + '</strong> &mdash; AdjO ' + c[4].textContent + ' &middot; AdjD '
-    + c[5].textContent + ' &middot; Net ' + c[6].textContent
-    + ' &middot; AdjT ' + c[7].textContent + ' &middot; '
+    + '</strong> &mdash; AdjO ' + c[4].dataset.v + ' (#' + c[4].dataset.r + ') &middot; AdjD '
+    + c[5].dataset.v + ' (#' + c[5].dataset.r + ') &middot; Net ' + c[6].dataset.v
+    + ' &middot; AdjT ' + c[7].dataset.v + ' (#' + c[7].dataset.r + ') &middot; '
     + c[3].textContent + ' (D1 games)</div>'
     + '<table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th>'
     + '<th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>';
@@ -1140,6 +1196,7 @@ LOGS = {}
 ROSTERS = {}
 LOG_IDX = {}
 TEAM_SEASONS = {}
+SEASON_RANKS = {}
 
 SECTIONS = "\n".join(season_section(s, CONF_BY_ID)
                      for s in DISPLAY_SEASONS)
@@ -1190,8 +1247,10 @@ game log, roster, and upcoming games for every season it
 played in. Click a team row to see its game log and roster
 for the season right here.</p>
 <p><strong>AdjO / AdjD</strong>: points scored and allowed per 100
-possessions, adjusted for opponent. <strong>Net</strong> is AdjO minus
-AdjD, the same idea as KenPom's AdjEM. <strong>AdjT</strong> is
+possessions, adjusted for opponent. The small number under each
+value is that team's rank in the metric; AdjD rank 1 is the best
+defense. <strong>Net</strong> is AdjO minus AdjD, the same idea as
+KenPom's AdjEM, and its rank is the Rk column. <strong>AdjT</strong> is
 adjusted tempo, possessions per 40 minutes.
 <strong>Conf</strong> is the ESPN conference abbreviation.
 <strong>W-L</strong> is the record in the D1 games these ratings
