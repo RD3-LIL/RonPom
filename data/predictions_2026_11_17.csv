@@ -1,0 +1,55 @@
+date,tipoff,home,away,home_short,away_short,neutral_site,margin,spread,home_win_prob,market_spread,edge,trap,trap_score,trap_flags,trap_reasons,trap_favorite
+20261117,2026-11-17T17:00Z,Murray State Racers,Hofstra Pride,Murray St,Hofstra,True,7.194766083850351,Murray St -7.2,0.7711516307096355,,,False,1,BIG_WIN,Won last game by 21 vs Texas Southern Tigers,Murray State Racers
+20261117,2026-11-17T19:00Z,Houston Cougars,Rutgers Scarlet Knights,Houston,Rutgers,True,16.221994747650616,Houston -16.2,0.9276309482517701,,,False,2,TOP25;BIG_WIN,Favorite is ranked #3; Won last game by 46 vs Jacksonville State Gamecocks,Houston Cougars
+20261117,2026-11-17T21:30Z,Florida Gators,Notre Dame Fighting Irish,Florida,Notre Dame,True,12.187452467375797,Florida -12.2,0.8758542008461015,,,False,2,TOP25;BIG_WIN,Favorite is ranked #5; Won last game by 29 vs Merrimack Warriors,Florida Gators
+20261117,2026-11-17T23:00Z,UMass Lowell River Hawks,Saint Peter's Peacocks,UMass Lowell,Saint Peter's,False,6.4726392408302615,UMass Lowell -6.5,0.7517468439669027,,,False,0,,,UMass Lowell River Hawks
+20261117,2026-11-17T23:00Z,Southern Illinois Salukis,Liberty Flames,S Illinois,Liberty,True,-0.6246638173326748,Liberty -0.6,0.5143834691711132,,,False,0,,,
+20261117,2026-11-17T23:00Z,Army Black Knights,Marist Red Foxes,Army,Marist,False,-2.9027981445583215,Marist -2.9,0.43054838089883557,,,False,1,ROAD_FAV,Favorite is on the road,Marist Red Foxes
+20261117,2026-11-17T23:30Z,Purdue Boilermakers,Lipscomb Bisons,Purdue,Lipscomb,False,19.32173728236019,Purdue -19.3,0.953006709946127,,,False,0,,,Purdue Boilermakers
+20261117,2026-11-18T00:00Z,Duke Blue Devils,Illinois Fighting Illini,Duke,Illinois,False,4.767211401066293,Duke -4.8,0.701729516351833,,,False,2,TOP25;BIG_WIN,Favorite is ranked #1; Won last game by 43 vs SIU Edwardsville Cougars,Duke Blue Devils
+20261117,2026-11-18T00:00Z,Miami Hurricanes,Rider Broncs,Miami,Rider,False,35.040233980465096,Miami -35.0,0.9952077650208897,,,False,1,BIG_WIN,Won last game by 42 vs North Alabama Lions,Miami Hurricanes
+20261117,2026-11-18T00:00Z,Davidson Wildcats,Charlotte 49ers,Davidson,Charlotte,False,7.412329019047807,Davidson -7.4,0.7767843967005216,,,False,0,,,Davidson Wildcats
+20261117,2026-11-18T00:00Z,Bucknell Bison,Akron Zips,Bucknell,Akron,False,-16.57783883985477,Akron -16.6,0.09083184316583943,,,False,1,ROAD_FAV,Favorite is on the road,Akron Zips
+20261117,2026-11-18T00:00Z,West Florida Argonauts,Green Bay Phoenix,West Florida,Green Bay,False,0.6492514125250212,West Florida -0.6,0.5612136890539312,,,False,0,,,
+20261117,2026-11-18T00:00Z,UCF Knights,Mississippi State Bulldogs,UCF,Mississippi St,False,3.4116155055495523,UCF -3.4,0.6581181117238863,,,False,0,,,UCF Knights
+20261117,2026-11-18T00:00Z,Mount St. Mary's Mountaineers,Lehigh Mountain Hawks,Mount St Marys,Lehigh,False,0.5194128992026764,Mount St Marys -0.5,0.5564762421854293,,,False,0,,,
+20261117,2026-11-18T00:00Z,Marshall Thundering Herd,East Tennessee State Buccaneers,Marshall,ETSU,False,1.8107874822913856,Marshall -1.8,0.6030037419958809,,,False,0,,,
+20261117,2026-11-18T00:00Z,Georgia Tech Yellow Jackets,Norfolk State Spartans,Georgia Tech,Norfolk St,False,17.631134219938712,Georgia Tech -17.6,0.9404424769140131,,,False,0,,,Georgia Tech Yellow Jackets
+20261117,2026-11-18T00:00Z,Troy Trojans,Cal State Northridge Matadors,Troy,CSU Northridge,False,4.026627866778365,Troy -4.0,0.6782936043832838,,,False,0,,,Troy Trojans
+20261117,2026-11-18T00:00Z,Saint Joseph's Hawks,Wagner Seahawks,Saint Joseph's,Wagner,False,16.766940192019163,Saint Joseph's -16.8,0.9328620044521295,,,False,0,,,Saint Joseph's Hawks
+20261117,2026-11-18T00:00Z,South Florida Bulls,Tennessee State Tigers,South Florida,Tennessee St,False,14.050813155157737,South Florida -14.1,0.902869303332724,,,False,0,,,South Florida Bulls
+20261117,2026-11-18T00:00Z,Manhattan Jaspers,Fordham Rams,Manhattan,Fordham,False,-10.039275153304652,Fordham -10.0,0.20819949815601554,,,False,2,BIG_WIN;ROAD_FAV,Won last game by 22 vs Long Island University Sharks; Favorite is on the road,Fordham Rams
+20261117,2026-11-18T00:00Z,Dayton Flyers,Central Michigan Chippewas,Dayton,C Michigan,False,8.443127581422203,Dayton -8.4,0.8021176898963813,,,False,0,,,Dayton Flyers
+20261117,2026-11-18T00:00Z,William & Mary Tribe,Bowling Green Falcons,William & Mary,Bowling Green,False,5.040220442144363,William & Mary -5.0,0.7101170563091139,,,False,0,,,William & Mary Tribe
+20261117,2026-11-18T00:00Z,Wake Forest Demon Deacons,Monmouth Hawks,Wake Forest,Monmouth,False,12.829584818747996,Wake Forest -12.8,0.8858241401208771,,,False,1,BIG_WIN,Won last game by 38 vs Southern Utah Thunderbirds,Wake Forest Demon Deacons
+20261117,2026-11-18T00:00Z,Pittsburgh Panthers,Villanova Wildcats,Pitt,Villanova,False,-0.725145690575916,Villanova -0.7,0.5106679902311209,,,False,0,,,
+20261117,2026-11-18T00:00Z,Florida State Seminoles,Ball State Cardinals,Florida St,Ball State,False,22.416880297482084,Florida St -22.4,0.9697545806718766,,,False,1,BIG_WIN,Won last game by 24 vs Texas A&M-Corpus Christi Islanders,Florida State Seminoles
+20261117,2026-11-18T00:00Z,Xavier Musketeers,Cleveland State Vikings,Xavier,Cleveland St,False,28.613387751806883,Xavier -28.6,0.9876878653275665,,,False,0,,,Xavier Musketeers
+20261117,2026-11-18T00:00Z,Providence Friars,Sacred Heart Pioneers,Providence,Sacred Heart,False,20.123774206967084,Providence -20.1,0.958045862098187,,,False,0,,,Providence Friars
+20261117,2026-11-18T00:00Z,Butler Bulldogs,Western Carolina Catamounts,Butler,W Carolina,False,12.010037059080478,Butler -12.0,0.8729708397700459,,,False,0,,,Butler Bulldogs
+20261117,2026-11-18T00:30Z,Alabama Crimson Tide,Kennesaw State Owls,Alabama,Kennesaw St,False,19.7894835796809,Alabama -19.8,0.9560115783727711,,,False,1,TOP25,Favorite is ranked #22,Alabama Crimson Tide
+20261117,2026-11-18T00:30Z,Indiana Hoosiers,Arkansas Razorbacks,Indiana,Arkansas,True,-1.5259337045929857,Arkansas -1.5,0.4810495347503327,,,False,0,,,
+20261117,2026-11-18T00:30Z,Louisiana Tech Bulldogs,Jacksonville State Gamecocks,Louisiana Tech,Jax State,False,2.234413182467863,Louisiana Tech -2.2,0.6179115389211242,,,False,0,,,Louisiana Tech Bulldogs
+20261117,2026-11-18T00:30Z,UAB Blazers,Florida International Panthers,UAB,FIU,False,3.5350121058359583,UAB -3.5,0.6622152490645097,,,False,0,,,UAB Blazers
+20261117,2026-11-18T00:30Z,Massachusetts Minutemen,Bryant Bulldogs,UMass,Bryant,False,14.134012534020309,UMass -14.1,0.903943808818564,,,False,0,,,Massachusetts Minutemen
+20261117,2026-11-18T01:00Z,Vanderbilt Commodores,Eastern Illinois Panthers,Vanderbilt,E Illinois,False,36.80055950989698,Vanderbilt -36.8,0.9963028270975292,,,False,2,TOP25;BIG_WIN,Favorite is ranked #11; Won last game by 27 vs Prairie View A&M Panthers,Vanderbilt Commodores
+20261117,2026-11-18T01:00Z,Southern Miss Golden Eagles,UT Arlington Mavericks,Southern Miss,UT Arlington,False,-2.7890204004680537,UT Arlington -2.8,0.4346816697673514,,,False,1,ROAD_FAV,Favorite is on the road,UT Arlington Mavericks
+20261117,2026-11-18T01:00Z,Northern Iowa Panthers,Lindenwood Lions,Northern Iowa,Lindenwood,False,15.232549935033813,Northern Iowa -15.2,0.9171635319652156,,,False,1,BUSY,3 games in the last 7 days,Northern Iowa Panthers
+20261117,2026-11-18T01:00Z,Omaha Mavericks,Lamar Cardinals,Omaha,Lamar,False,0.25501082303982836,Omaha -0.3,0.5467980239924746,,,False,0,,,
+20261117,2026-11-18T01:00Z,Illinois State Redbirds,Bellarmine Knights,Illinois St,Bellarmine,False,15.48529366413069,Illinois St -15.5,0.9199614565466178,,,False,0,,,Illinois State Redbirds
+20261117,2026-11-18T01:00Z,Rice Owls,Texas A&M-Corpus Christi Islanders,Rice,Texas A&M-CC,False,4.027457857973259,Rice -4.0,0.6783204085990637,,,False,0,,,Rice Owls
+20261117,2026-11-18T01:00Z,Georgia Southern Eagles,Middle Tennessee Blue Raiders,GA Southern,MTSU,False,1.048482718501553,GA Southern -1.0,0.5757072066342194,,,False,0,,,
+20261117,2026-11-18T01:00Z,Evansville Purple Aces,Le Moyne Dolphins,Evansville,Le Moyne,False,5.022231375234155,Evansville -5.0,0.709568696369101,,,False,0,,,Evansville Purple Aces
+20261117,2026-11-18T01:00Z,SMU Mustangs,Oral Roberts Golden Eagles,SMU,Oral Roberts,False,24.023775567035862,SMU -24.0,0.9760025771575259,,,False,1,BIG_WIN,Won last game by 25 vs Ball State Cardinals,SMU Mustangs
+20261117,2026-11-18T01:00Z,DePaul Blue Demons,Maryland Eastern Shore Hawks,DePaul,MD Eastern,False,23.66777062379967,DePaul -23.7,0.9747370796861007,,,False,1,BIG_WIN,Won last game by 20 vs Northwestern Wildcats,DePaul Blue Demons
+20261117,2026-11-18T01:30Z,Ole Miss Rebels,Nicholls Colonels,Ole Miss,Nicholls,False,21.38972719637773,Ole Miss -21.4,0.964962814466794,,,False,1,BIG_WIN,Won last game by 40 vs SE Louisiana Lions,Ole Miss Rebels
+20261117,2026-11-18T01:30Z,Wyoming Cowboys,Sam Houston Bearkats,Wyoming,Sam Houston,False,8.197082548538576,Wyoming -8.2,0.7962741335467682,,,False,1,BIG_WIN,Won last game by 23 vs Denver Pioneers,Wyoming Cowboys
+20261117,2026-11-18T01:30Z,Utah Utes,Eastern Washington Eagles,Utah,E Washington,False,11.319339567029406,Utah -11.3,0.8611963587582778,,,False,1,BIG_WIN,Won last game by 21 vs Weber State Wildcats,Utah Utes
+20261117,2026-11-18T02:00Z,Tennessee Volunteers,Michigan State Spartans,Tennessee,Michigan St,False,-4.30946995198046,Michigan St -4.3,0.3804116021909293,,,False,3,TOP25;BIG_WIN;ROAD_FAV,Favorite is ranked #4; Won last game by 34 vs Northern Iowa Panthers; Favorite is on the road,Michigan State Spartans
+20261117,2026-11-18T02:00Z,Virginia Cavaliers,Old Dominion Monarchs,Virginia,Old Dominion,False,20.628923606927756,Virginia -20.6,0.9609500447160295,,,False,1,TOP25,Favorite is ranked #21,Virginia Cavaliers
+20261117,2026-11-18T02:00Z,UC Davis Aggies,Alabama State Hornets,UC Davis,Alabama St,False,12.659973336964196,UC Davis -12.7,0.8832605862560031,,,False,0,,,UC Davis Aggies
+20261117,2026-11-18T02:30Z,Kansas Jayhawks,UNLV Rebels,Kansas,UNLV,True,15.729991578345816,Kansas -15.7,0.9225878426354073,,,False,2,TOP25;BIG_WIN,Favorite is ranked #8; Won last game by 20 vs Kentucky Wildcats,Kansas Jayhawks
+20261117,2026-11-18T03:00Z,Stanford Cardinal,UC Irvine Anteaters,Stanford,UC Irvine,False,6.597833402393717,Stanford -6.6,0.755188589343076,,,False,0,,,Stanford Cardinal
+20261117,2026-11-18T03:00Z,California Baptist Lancers,Seattle U Redhawks,CA Baptist,Seattle U,False,-4.6611847770900345,Seattle U -4.7,0.3682212328777918,,,False,1,ROAD_FAV,Favorite is on the road,Seattle U Redhawks
+20261117,2026-11-18T04:00Z,Gonzaga Bulldogs,Montana State Bobcats,Gonzaga,Montana St,False,20.953358660131684,Gonzaga -21.0,0.9627125147366997,,,False,1,TOP25,Favorite is ranked #10,Gonzaga Bulldogs
+20261117,2026-11-18T04:59Z,Auburn Tigers,West Virginia Mountaineers,Auburn,West Virginia,True,-0.2333298076817241,West Virginia -0.2,0.5288347671923417,,,False,0,,,
