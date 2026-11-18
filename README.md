@@ -69,9 +69,13 @@ JSONs are not, they are about 15 MB per full season.
   2 Houston +34.3, 3 Auburn +32.8. Illinois rank 14, Net +23.3.
 - 2025-26: 5,752 D1 games used, 365 teams. 1 Michigan +37.3,
   2 Duke +36.2, 3 Arizona +33.9. Illinois rank 5, Net +31.1.
-- 2026-27: 360 D1 games used, 358 teams, 2 games per team at
-  most. Illinois rank 1 is noise from two blowouts plus a
-  league-average prior, not a real claim.
+- 2026-27 (current, Nov 18, 2026, 12:00 files): 711 D1 games
+  used, 365 teams, 1-6 games per team. 1 Illinois Net +37.3
+  (AdjO 130.3, AdjD 93.0, AdjT 74.8, 5 GP). Early season, and
+  Illinois at rank 1 is still mostly two blowouts plus a small
+  sample, not a real claim, even though 2026-27 now uses the
+  real noshrinkw600 preseason prior (see `write_ratings.py`),
+  not the league-average prior the prototype used.
 
 ## Honest limits (read this before trusting the ranking)
 
@@ -101,7 +105,8 @@ a preseason prior, and solve the AdjO/AdjD system properly.
 `fetch_full.py` pulls three seasons from the free ESPN endpoints
 (scoreboard with groups=50, full summary JSON per game):
 2024-25 (Nov 4, 2024 to Apr 7, 2025), 2025-26 (Nov 3, 2025 to
-Apr 6, 2026), and 2026-27 to date (Nov 2-9, 2026). Raw summaries
+Apr 6, 2026), and 2026-27 to date (Nov 2-18, 2026, 963 events).
+Raw summaries
 live in `data/raw/summary/{event_id}.json`, parsed games in
 `data/games_2024_25.json`, `data/games_2025_26.json`,
 `data/games_2026_27.json`. Teams list in `data/teams_parsed.json`
@@ -148,14 +153,21 @@ above about 5 MB). Per-40 can be recomputed from totals and
 minutes, and the headshot URL is deterministic from the ESPN
 athlete id.
 
-As of the first build (Nov 10, 2026, about 00:04 CST, updated
-00:11 CST):
-2026-27 complete, 520 games, 6,631 players (6,591 with minutes).
-2025-26 partial, 428 games and counting, 6,191 players. Full
-2025-26 is 6,318 events. Re-run the same command once the pull
-finishes and both files rebuild from the complete data:
-`python3 player_profiles.py`. Same for 2024-25 when its pull lands.
+Current state (Nov 18, 2026, 12:00 files; the Nov 10 numbers
+below are superseded):
+2024-25: 6,298 events in `data/games_2024_25.json`, 5,759 D1
+games used, 9,812 players in `data/players_2024_25.csv`.
+2025-26: 6,318 events, 5,752 D1 games used, 10,027 players.
+2026-27 to date: 963 events in `data/games_2026_27.json`, 711
+D1 games used, 7,721 players (7,683 with minutes), up to 7 GP.
+Re-run `python3 player_profiles.py` to rebuild all three files
+from the raw summaries on disk.
 Tests: `python3 test_player_profiles.py`.
+
+Player-stats research, corrected after a Nov 18 fresh-context
+review (Block verdict, 7 blockers fixed): see
+`docs/player-stats-research.md`. Research only, no code changed
+by that doc; Phase 1 is not built yet.
 
 Honest limits: no height, weight, or class year until rosters run
 (`fetch_rosters.py`, not started yet), so profiles have no bio fields.
