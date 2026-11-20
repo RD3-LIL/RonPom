@@ -1,9 +1,14 @@
-# KenPom-like college basketball ratings (prototype)
+# KenPom-like college basketball ratings
 
 A real database + Python ratings engine, not a scrape of KenPom.
 No KenPom data, no paywall, no login. Free ESPN box scores only.
 
-## Method
+Last updated: Nov 20, 2026. Current season: 2026-27, 1,070 events,
+801 D1 games used, 365 teams, 1-7 games per team. Illinois #1,
+Net +37.6 (AdjO 130.8, AdjD 93.2, AdjT 74.7, 5 GP). Daily update
+runs 6:00 AM Chicago time; the site and CSVs update with it.
+
+## Method (current)
 
 Possessions (Dean Oliver / KenPom formula):
   Poss = FGA - ORB + TOV + 0.44 * FTA
@@ -13,20 +18,29 @@ Raw efficiency, per 100 possessions:
   DefEff = 100 * opponent points / possessions
   Tempo = possessions per game
 
-Adjusted efficiency, one pass, additive:
+Adjusted efficiency is solved, not one-pass adjusted. `solver.py`
+runs damped Gauss-Seidel on y_ij = AdjO_i + AdjD_j - league_avg,
+with a preseason prior and home court off by default. Net = AdjO - AdjD.
+The 2026-27 prior is noshrinkw600, adopted Nov 14, 2026: a team's
+own 2025-26 final rating, regressed 0.85 toward the league average,
+weight 600 possessions scaled by informed returning-minutes share,
+no minutes fade (see `build_prior_2026.py` and `write_ratings.py`).
+2024-25 and 2025-26 still use a league-average prior.
+
+The one-pass additive adjustment below was the prototype (v1).
+It is kept here as history, not the current method:
   AdjO = RawO + (league_avg - avg opponent RawD)
   AdjD = RawD + (league_avg - avg opponent RawO)
   AdjT = RawT + (league_avg_tempo - avg opponent RawT)
-  Net = AdjO - AdjD
 
-## Data
+## Data (prototype, Nov 2-8, 2026)
 
 57 games, 84 teams, Nov 2-8, 2026, from ESPN's public
 scoreboard/summary endpoints (`fetch_games.py`).
 Excluded: not-yet-played games (Nov 9, 0-0), and obvious
 non-D1 opponents (KenPom excludes those too).
 
-## Results, early season
+## Results, prototype early season
 
 League avg OffEff 104.2, tempo 72.4.
 Illinois: AdjO 106.6, AdjD 96.5, Net +10.1, AdjT 74.1, rank 18 of 84.
@@ -50,13 +64,15 @@ Net +20.9, AdjT 75.9, rank 1 of 84 (v1: 106.6, 96.5, +10.1,
 0.496, mean absolute rank change 19.2. The biggest v2 fix is
 Chattanooga: v1 ranked it 1st (Net +25.9) after losing its only
 game, v2 has it at Net -1.4. The 17-way tie at Net 0 in v1 is
-gone. But v2 is still noisy: Illinois at rank 1 says more about
-two blowouts of weak teams plus a league-average prior than
-about Illinois, and a prior on one team in a tiny component can
-even push its Net the "wrong" way (see solver.py). A real prior
-from last season would pull it down. Run `python3 test_solver.py`
-for the full check, including a synthetic 8-team season where
-the solver recovers the true ordering (Spearman 0.9 or better).
+gone. But v2 is still noisy on that tiny sample: Illinois at rank 1
+says more about two blowouts of weak teams than about Illinois,
+and a prior on one team in a tiny component can even push its Net
+the "wrong" way (see solver.py). The real prior from last season
+is now in place for 2026-27 (noshrinkw600, see Method above),
+so that caveat no longer applies in the same way. Run
+`python3 test_solver.py` for the full check, including a synthetic
+8-team season where the solver recovers the true ordering
+(Spearman 0.9 or better).
 
 ## Team ratings (full seasons)
 
@@ -69,43 +85,49 @@ JSONs are not, they are about 15 MB per full season.
   2 Houston +34.3, 3 Auburn +32.8. Illinois rank 14, Net +23.3.
 - 2025-26: 5,752 D1 games used, 365 teams. 1 Michigan +37.3,
   2 Duke +36.2, 3 Arizona +33.9. Illinois rank 5, Net +31.1.
-- 2026-27 (current, Nov 18, 2026, 12:00 files): 711 D1 games
-  used, 365 teams, 1-6 games per team. 1 Illinois Net +37.3
-  (AdjO 130.3, AdjD 93.0, AdjT 74.8, 5 GP). Early season, and
-  Illinois at rank 1 is still mostly two blowouts plus a small
-  sample, not a real claim, even though 2026-27 now uses the
-  real noshrinkw600 preseason prior (see `write_ratings.py`),
+- 2026-27 (current, Nov 20, 2026): 801 D1 games used, 1,070 events,
+  365 teams, 1-7 games per team. League OffEff 107.2, tempo 69.8,
+  solver converged in 36 iterations. 1 Illinois Net +37.6
+  (AdjO 130.8, AdjD 93.2, AdjT 74.7, 5 GP), 2 Duke +33.7,
+  3 Houston +33.5, 4 Michigan +31.3, 5 St. John's +29.4.
+  Early season, and Illinois at rank 1 is still mostly blowouts
+  plus a small sample, not a real claim, even though 2026-27 now
+  uses the real noshrinkw600 preseason prior (see `write_ratings.py`),
   not the league-average prior the prototype used.
 
 ## Honest limits (read this before trusting the ranking)
 
-1. 1-2 games per team, no preseason prior. KenPom leans on
-   priors early in the season for exactly this reason.
-2. One-pass adjustment, not a full linear-system solve.
-   I tried iterating to convergence first: it diverges on
-   1-2 game blowouts, a bad team's adjusted defense explodes
-   and collapses its opponents' offense. The one-pass version
-   is stable, but it has a known flaw: a team with only one
-   game, against an opponent who also played only that game,
-   gets AdjO = AdjD = league average and Net 0, because
-   there is no other information to adjust with. Those teams
-   all tie in the middle of the table. That is the math
-   telling you it does not know yet.
-3. ESPN's scoreboard in this window lists only a subset of
-   D1 games (77 events Nov 2-9), so this is not the full
-   360-team universe. A real version needs a full-season
-   game log, a preseason prior, and a proper solve.
+1. Early season, 1-7 games per team. The noshrinkw600 preseason
+   prior helps, and KenPom leans on priors early in the season
+   for exactly this reason, but the top of the table is still
+   mostly blowout noise, not a real ranking. Big early wins are
+   counted at full value, so blowouts move teams a lot.
+2. The prototype one-pass adjustment (v1) is not the current
+   method. The current solver (v2, damped Gauss-Seidel) does
+   converge, 36 iterations on Nov 20, but on 1-2 game blowouts
+   an early version diverged: a bad team's adjusted defense
+   explodes and collapses its opponents' offense. The one-pass
+   version was stable, but it had a known flaw: a team with only
+   one game, against an opponent who also played only that game,
+   gets AdjO = AdjD = league average and Net 0, because there
+   is no other information to adjust with. Those teams all tie
+   in the middle of the table. That is the math telling you it
+   does not know yet.
+3. Non-D1 games are excluded from the ratings solve (263 skipped
+   on Nov 20), and 6 games were skipped for zero possessions.
+   ESPN's scoreboard with groups=50 returns the full slate,
+   unlike the default scoreboard which returns only featured games.
 
-Next step if you want to take it further: pull a full
-season of games (or last season, 2025-26, complete), add
-a preseason prior, and solve the AdjO/AdjD system properly.
+Next step if you want to take it further: keep updating daily as
+the sample grows, and re-check the prior and the solve against
+KenPom's published numbers as the season fills in.
 
 ## Data grab (full, Nov 2026)
 
 `fetch_full.py` pulls three seasons from the free ESPN endpoints
 (scoreboard with groups=50, full summary JSON per game):
 2024-25 (Nov 4, 2024 to Apr 7, 2025), 2025-26 (Nov 3, 2025 to
-Apr 6, 2026), and 2026-27 to date (Nov 2-18, 2026, 963 events).
+Apr 6, 2026), and 2026-27 to date (Nov 2-20, 2026, 1,070 events).
 Raw summaries
 live in `data/raw/summary/{event_id}.json`, parsed games in
 `data/games_2024_25.json`, `data/games_2025_26.json`,
@@ -153,13 +175,12 @@ above about 5 MB). Per-40 can be recomputed from totals and
 minutes, and the headshot URL is deterministic from the ESPN
 athlete id.
 
-Current state (Nov 18, 2026, 12:00 files; the Nov 10 numbers
-below are superseded):
+Current state (Nov 20, 2026; the Nov 18 numbers below are superseded):
 2024-25: 6,298 events in `data/games_2024_25.json`, 5,759 D1
 games used, 9,812 players in `data/players_2024_25.csv`.
 2025-26: 6,318 events, 5,752 D1 games used, 10,027 players.
-2026-27 to date: 963 events in `data/games_2026_27.json`, 711
-D1 games used, 7,721 players (7,683 with minutes), up to 7 GP.
+2026-27 to date: 1,070 events in `data/games_2026_27.json`, 801
+D1 games used, 7,962 players, up to 7 GP.
 Re-run `python3 player_profiles.py` to rebuild all three files
 from the raw summaries on disk.
 Tests: `python3 test_player_profiles.py`.
