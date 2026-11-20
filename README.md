@@ -7,6 +7,11 @@ Last updated: Nov 20, 2026. Current season: 2026-27, 1,070 events,
 801 D1 games used, 365 teams, 1-7 games per team. Illinois #1,
 Net +37.6 (AdjO 130.8, AdjD 93.2, AdjT 74.7, 5 GP). Daily update
 runs 6:00 AM Chicago time; the site and CSVs update with it.
+Predictions are wired into the daily update too: predict.py
+runs after the ratings rebuild, so the predictions file is
+fresh each morning (current file: Nov 20). If the file ever
+lags the ratings, the site labels it stale instead of
+presenting it as current.
 
 ## Method (current)
 
@@ -27,52 +32,49 @@ weight 600 possessions scaled by informed returning-minutes share,
 no minutes fade (see `build_prior_2026.py` and `write_ratings.py`).
 2024-25 and 2025-26 still use a league-average prior.
 
-The one-pass additive adjustment below was the prototype (v1).
-It is kept here as history, not the current method:
+The one-pass additive adjustment (v1) was the prototype; it is
+kept in the history note below, not the current method.
+
+## History: the Nov 2-8 prototype
+
+The first version ran on 57 games, 84 teams, Nov 2-8, 2026, from
+ESPN's public scoreboard/summary endpoints (`fetch_games.py`).
+Excluded: not-yet-played games (Nov 9, 0-0), and obvious non-D1
+opponents. League avg OffEff 104.2, tempo 72.4. Illinois: AdjO
+106.6, AdjD 96.5, Net +10.1, AdjT 74.1, rank 18 of 84
+(120-45 vs Fairleigh Dickinson, 112-70 vs Penn).
+
+The prototype used a one-pass additive adjustment (v1):
   AdjO = RawO + (league_avg - avg opponent RawD)
   AdjD = RawD + (league_avg - avg opponent RawO)
   AdjT = RawT + (league_avg_tempo - avg opponent RawT)
 
-## Data (prototype, Nov 2-8, 2026)
+On the same 57 games, solver v2 gave Illinois AdjO 115.3, AdjD
+94.4, Net +20.9, AdjT 75.9, rank 1 of 84 (v1: 106.6, 96.5,
++10.1, 74.1, rank 18). Spearman rank correlation v1 vs v2 was
+only 0.496, mean absolute rank change 19.2. The biggest v2 fix
+was Chattanooga: v1 ranked it 1st (Net +25.9) after losing its
+only game, v2 had it at Net -1.4. The 17-way tie at Net 0 in v1
+is gone. But v2 was still noisy on that tiny sample: Illinois
+at rank 1 said more about two blowouts of weak teams than about
+Illinois, and a prior on one team in a tiny component could even
+push its Net the "wrong" way (see solver.py). The real prior
+from last season is now in place for 2026-27 (noshrinkw600, see
+Method above), so that caveat no longer applies in the same way.
 
-57 games, 84 teams, Nov 2-8, 2026, from ESPN's public
-scoreboard/summary endpoints (`fetch_games.py`).
-Excluded: not-yet-played games (Nov 9, 0-0), and obvious
-non-D1 opponents (KenPom excludes those too).
+## Solver (current)
 
-## Results, prototype early season
-
-League avg OffEff 104.2, tempo 72.4.
-Illinois: AdjO 106.6, AdjD 96.5, Net +10.1, AdjT 74.1, rank 18 of 84.
-  120-45 vs Fairleigh Dickinson, 112-70 vs Penn.
-
-## Solver v2 (new)
-
-`python3 solver.py` replaces the one-pass adjustment with a proper
-solve: damped Gauss-Seidel on the system y_ij = AdjO_i + AdjD_j
-- league_avg, with a prior (default: league average, 300
-possessions, about 4 games of weight) and home court off by
-default (pass `--home-court 1.5` to enable it). Converges in 33
-iterations on the prototype. `prior.py` builds a preseason prior
-from last season's ratings plus returning minutes (formula in
-that file, no minutes data invented). `rubric.md` defines how to
-compare to KenPom without scraping or using his paywall.
-
-Results on the same 57 games: Illinois AdjO 115.3, AdjD 94.4,
-Net +20.9, AdjT 75.9, rank 1 of 84 (v1: 106.6, 96.5, +10.1,
-74.1, rank 18). Spearman rank correlation v1 vs v2 is only
-0.496, mean absolute rank change 19.2. The biggest v2 fix is
-Chattanooga: v1 ranked it 1st (Net +25.9) after losing its only
-game, v2 has it at Net -1.4. The 17-way tie at Net 0 in v1 is
-gone. But v2 is still noisy on that tiny sample: Illinois at rank 1
-says more about two blowouts of weak teams than about Illinois,
-and a prior on one team in a tiny component can even push its Net
-the "wrong" way (see solver.py). The real prior from last season
-is now in place for 2026-27 (noshrinkw600, see Method above),
-so that caveat no longer applies in the same way. Run
-`python3 test_solver.py` for the full check, including a synthetic
-8-team season where the solver recovers the true ordering
-(Spearman 0.9 or better).
+`python3 solver.py` runs the solve: damped Gauss-Seidel on the
+system y_ij = AdjO_i + AdjD_j - league_avg, with a prior
+(default: league average, 300 possessions, about 4 games of
+weight) and home court off by default (pass `--home-court 1.5`
+to enable it). It converged in 33 iterations on the prototype.
+`prior.py` builds a preseason prior from last season's ratings
+plus returning minutes (formula in that file, no minutes data
+invented). `rubric.md` defines how to compare to KenPom without
+scraping or using his paywall. Run `python3 test_solver.py` for
+the full check, including a synthetic 8-team season where the
+solver recovers the true ordering (Spearman 0.9 or better).
 
 ## Team ratings (full seasons)
 
@@ -175,7 +177,7 @@ above about 5 MB). Per-40 can be recomputed from totals and
 minutes, and the headshot URL is deterministic from the ESPN
 athlete id.
 
-Current state (Nov 20, 2026; the Nov 18 numbers below are superseded):
+Current state (Nov 20, 2026):
 2024-25: 6,298 events in `data/games_2024_25.json`, 5,759 D1
 games used, 9,812 players in `data/players_2024_25.csv`.
 2025-26: 6,318 events, 5,752 D1 games used, 10,027 players.
@@ -193,8 +195,8 @@ by that doc; Phase 1 is not built yet.
 Honest limits: no height, weight, or class year until rosters run
 (`fetch_rosters.py`, not started yet), so profiles have no bio fields.
 Early-season numbers are 1-2 game samples, so per-game leaders are
-noise (top 2026-27 scorer at min 2 games is Dior Johnson, UCF,
-34.5 PPG on 2 games). eFG% and TS% can read over 100% on tiny
+noise (top 2026-27 scorer at min 2 games and 40% of team minutes
+is Dior Johnson, UCF, 28.8 PPG on 5 games). eFG% and TS% can read over 100% on tiny
 samples when a player scores almost only on threes; that is the
 standard formula, not a bug. One data quirk: athlete id 5325549
 (Jeremiah White) appears for two non-D1 teams in 2025-26 (Paine
@@ -216,12 +218,62 @@ from his public rankings page on that date, not a scrape.
 
 ## Run it
 
+The real pipeline, in order. Stdlib only, no dependencies.
+`fetch_full.py` and `predict.py` are the only steps that touch
+the network; the rest read local files only.
+
 ```
-python3 fetch_games.py   # re-pull ESPN games, saves data/games.json
-python3 ratings.py       # compute ratings, save kenpom.db
-python3 ratings.py Illinois
-python3 test_ratings.py
-sqlite3 kenpom.db "SELECT * FROM ratings ORDER BY net DESC LIMIT 10;"
+python3 fetch_full.py --season 2026-27 --start 20261117 --end 20261120
+    # re-pull ESPN scoreboards and summaries for a date window;
+    # checkpointed, so a re-run resumes where it left off
+python3 player_profiles.py --season 2026-27
+    # rebuild data/players_2026_27.json and .csv from the raw summaries
+python3 build_prior_2026.py
+    # rebuild the noshrinkw600 preseason prior, data/prior_2026_27.json
+python3 write_ratings.py 2026-27
+    # solve and write data/ratings_2026_27.csv
+python3 build_page.py
+    # rebuild index.html and every teams/*.html page
+python3 predict.py --days 3
+    # upcoming-game spreads, writes data/predictions_YYYY_MM_DD.csv
+python3 score_predictions.py
+    # score finished predictions into data/prediction_scores.csv
 ```
 
-Stdlib only, no dependencies.
+`daily_update.sh` runs the pipeline every morning at
+6:00 AM Chicago time (fetch the last 3 days, profiles, prior,
+ratings, site), then runs `predict.py --days 3` and
+`score_predictions.py` from the fresh ratings, and pushes the
+rebuilt files to GitHub after one approval tap. If the
+predictions file ever lags the ratings, the site labels it
+stale instead of presenting it as current.
+
+Tests: `python3 test_solver.py` (solver and prior checks),
+`python3 test_player_profiles.py`, `python3 test_predict.py`,
+and the rest of `test_*.py`. Run them all with:
+
+```
+for f in test_*.py; do python3 "$f" || exit 1; done
+```
+
+## What is local-only (reproducibility)
+
+The repo is a curated subset, not a full rebuild kit. These
+files are intentionally local-only and are covered by
+`.gitignore`, so a fresh clone cannot rebuild the site without
+re-fetching:
+
+- `data/raw/` (about 5.9 GB): the raw ESPN summary JSONs.
+- `data/games_*.json` (about 15 MB per full season): parsed games.
+- `data/players_*.json` (about 7-9 MB each): full player profiles.
+- `data/teams.json`, `data/recruits_*.json`: team and recruit lists.
+- `kenpom.db`: SQLite database from the prototype pipeline.
+
+What the repo does carry: the derived CSVs
+(`data/ratings_*.csv`, `data/players_*.csv`), the prior
+(`data/prior_2026_27.json`), the built site (`index.html`,
+`teams/*.html`), and all the code. With the local data files
+present, the pipeline in "Run it" rebuilds everything. From
+scratch, `fetch_full.py` re-pulls all three seasons from the
+free ESPN endpoints, then the rest of the pipeline runs on
+local files. No KenPom data is used anywhere.

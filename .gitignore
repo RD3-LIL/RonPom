@@ -1,0 +1,23 @@
+# Local-only data and build artifacts. These files are needed to
+# rebuild the site, but they are too large (or private) for the
+# repo, so they live only on the machine that runs the daily
+# update. The repo keeps the small derived files instead: the
+# ratings and players CSVs, the prior JSON, index.html, and the
+# team pages. See the "Reproducibility" note in README.md.
+
+# Raw ESPN summaries, about 5.9 GB.
+data/raw/
+
+# Large parsed JSONs (games, players, teams, recruits).
+# The CSVs derived from them ARE in the repo.
+data/games_*.json
+data/players_*.json
+data/teams.json
+data/recruits_*.json
+
+# Local SQLite database from the prototype pipeline.
+kenpom.db
+
+# Python bytecode caches.
+__pycache__/
+*.pyc

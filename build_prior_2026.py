@@ -1,30 +1,49 @@
 """Build the real 2026-27 preseason prior from 2025-26 ratings.
 
-The prior is built from where this season's players played
-last season, using the player profiles we already have, no new
-data pull. For each team, this season's minutes split into:
-  returning: same athlete id on the same team last season,
-  transfer: same athlete id on a different D1 team last season,
-  new: no D1 profile last season (freshmen, DNPs, walk-ons).
-The prior rating is the minutes-weighted average of the source
-teams' 2025-26 ratings (returning players contribute their own
-team's rating, transfers contribute their old team's rating,
-new players contribute the league average), faded toward the
-league average by the informed share (returning + transfer)
-times the 0.85 regression, exactly as prior.build_prior fades
-a returning-only prior. The prior weight is
-300 * (0.25 + 0.75 * informed_share). A transfer counts for
-the NEW team, not the old one: a team that rebuilt through the
-portal (LSU: 64% of minutes from transfers in Nov 2026) gets
-a real prior instead of the league average.
+ADOPTED Nov 14, 2026 (comparisons/mend_2026-11-14.md, Ron's
+pick: "whatever you think is best"): the no-shrink own-team
+prior, base weight 600 possessions.
 
-Known limit: DNP players are excluded from the profiles, so a
-returning or transfer player who has not appeared yet in
-2026-27 is missed and the shares read low. With 2-3 games
-played that is mostly deep-bench players, but it is a real
-undercount, not a guess. The full roster pull
-(fetch_rosters.py) would fix it; until then this is the
-measured value from the profiles on disk. Minutes weights
+For each team, the prior VALUE is its own 2025-26 rating,
+regressed 0.85 toward the league average:
+
+    prior_o = L_o + 0.85 * (own_last_o - L_o)
+    prior_d = L_o + 0.85 * (own_last_d - L_o)
+
+The prior WEIGHT still scales with the informed share
+(returning + transfer minutes, from the player profiles):
+
+    prior_weight = 600 * (0.25 + 0.75 * informed_share)
+
+so a rebuilt team gets a weaker anchor, but the anchor value
+is the program's own last rating, not a minutes average.
+
+Why this replaced the transfer-blended prior: the old prior
+was a minutes-weighted average of the SOURCE teams' ratings,
+so a star transfer from a weak team dragged the prior down,
+freshmen with no profile counted as league average, and then
+the whole thing was faded again by informed share times 0.85.
+Arizona was +33.9 last season but its old prior was only
++9.3, with prior defense 104.6 against its own last-season
+91.8. That is what put Arizona 35th, Iowa State 40th,
+Alabama 39th, and Texas Tech 37th against KenPom's 9th,
+15th, 17th, and 16th. The no-shrink prior puts those teams
+at 10th, 17th, 21st, and 24th, with KenPom rho 0.779 on
+Nov 14 (0.893 on the Nov 10 list) and mean rank gap 4.5,
+and it also improved rolling-origin prediction (Brier
+-0.0061, accuracy 0.731 to 0.750, spread MAE 10.70 to
+10.13 on 308 pooled game-slots, though the Brier CI
+includes zero, so the prediction gain is promising, not
+confirmed). The old transfer-blended builder is kept below
+as build_transfer_prior for reference; main() no longer
+calls it. Re-check this prior when the season finishes:
+if a genuinely rebuilt team is badly misrated, revisit it.
+
+Known limit, unchanged: DNP players are excluded from the
+profiles, so a returning or transfer player who has not
+appeared yet in 2026-27 is missed and the shares read low.
+With 2-3 games played that is mostly deep-bench players,
+but it is a real undercount, not a guess. Minutes weights
 are this season's minutes, the best measure of who is
 actually on the floor now.
 
@@ -48,7 +67,7 @@ LEAGUE_O_2025_26 = 109.3
 LEAGUE_T_2025_26 = 68.2
 REGRESSION = 0.85
 TEMPO_REGRESSION = 0.70
-BASE_PRIOR_WEIGHT = 300.0
+BASE_PRIOR_WEIGHT = 600.0  # adopted Nov 14, 2026, was 300.0
 
 
 def load_profiles(season):
@@ -147,11 +166,113 @@ def load_last_ratings(season="2025-26"):
                         "adj_t": float(r["adj_t"])} for r in rows}
 
 
+def build_prior_noshrink(last_ratings, profiles_last, profiles_this,
+                         league_o=LEAGUE_O_2025_26,
+                         league_t=LEAGUE_T_2025_26,
+                         value_shrink=False):
+    """Adopted prior (Nov 14, 2026): no-shrink own-team value.
+
+    Prior value: the team's own last-season rating, regressed
+    0.85 toward the league average. No minutes fade on the
+    value, so freshmen and transfers do not drag it toward
+    league average or toward a weak source team.
+    Prior weight: BASE_PRIOR_WEIGHT * (0.25 + 0.75 * info),
+    where info is the returning + transfer minutes share from
+    the profiles, so a rebuilt team still gets a weaker anchor.
+    Teams with no last-season rating get the league average.
+    Returns the same shape as build_transfer_prior.
+
+    value_shrink (default False, the adopted behavior): when
+    True, the prior VALUE is also faded toward the league
+    average when info is low, mirroring the weight factor:
+    the deviation multiplier becomes 0.85 * (0.25 + 0.75 *
+    info) for offense/defense and 0.70 * (0.25 + 0.75 * info)
+    for tempo, so a team with info 1.0 is unchanged and a
+    team with info 0.0 keeps only a quarter of its deviation.
+    This is the Nov 20, 2026 experiment: it is NOT adopted
+    yet, because the Nov 14 decision deliberately removed the
+    value fade (the old transfer prior faded the value twice,
+    by info and by 0.85), and a value fade needs its own
+    out-of-sample win first. Info is measured from this
+    season's minutes played to date, split by whether the
+    player has a last-season profile (returning or transfer)
+    or not (new). Minutes to date is the honest measure of
+    who is actually on the floor now; full roster membership
+    would count deep-bench players who never play and
+    overstate how much of last season's team is really back.
+    The known undercount (DNP players excluded from the
+    profiles) still applies and reads info low, never high.
+    """
+    last_team = {}
+    for p in profiles_last:
+        last_team[p["athlete_id"]] = p["team"]
+    info_share = {}
+    for p in profiles_this:
+        team = p["team"]
+        mins = float(p["totals"]["min"])
+        src = last_team.get(p["athlete_id"])
+        entry = info_share.setdefault(team, {"total": 0.0, "info": 0.0,
+                                             "ret": 0.0, "tr": 0.0})
+        entry["total"] += mins
+        if src is None:
+            continue
+        entry["info"] += mins
+        if src == team:
+            entry["ret"] += mins
+        else:
+            entry["tr"] += mins
+    prior = {}
+    for team in set(last_ratings) | set(info_share):
+        entry = info_share.get(team)
+        total = entry["total"] if entry else 0.0
+        if total <= 0:
+            prior[team] = {
+                "prior_o": league_o, "prior_d": league_o,
+                "prior_t": league_t, "returning_share": None,
+                "transfer_share": None, "has_prior": False,
+                "prior_weight": BASE_PRIOR_WEIGHT * 0.5,
+                "reason": "no current roster in profiles, "
+                          "league average",
+            }
+            continue
+        ret_share = entry["ret"] / total
+        tr_share = entry["tr"] / total
+        info = ret_share + tr_share
+        own = last_ratings.get(team)
+        if own is None:
+            prior[team] = {
+                "prior_o": league_o, "prior_d": league_o,
+                "prior_t": league_t,
+                "returning_share": round(ret_share, 4),
+                "transfer_share": round(tr_share, 4),
+                "has_prior": False,
+                "prior_weight": BASE_PRIOR_WEIGHT * (0.25 + 0.75 * info),
+                "reason": "no last season rating, league average",
+            }
+            continue
+        # Value shrink (experiment only, off by default): fade
+        # the deviation toward league average when info is low.
+        shrink = (0.25 + 0.75 * info) if value_shrink else 1.0
+        prior[team] = {
+            "prior_o": league_o + REGRESSION * shrink * (float(own["adj_o"]) - league_o),
+            "prior_d": league_o + REGRESSION * shrink * (float(own["adj_d"]) - league_o),
+            "prior_t": league_t + TEMPO_REGRESSION * shrink * (float(own["adj_t"]) - league_t),
+            "returning_share": round(ret_share, 4),
+            "transfer_share": round(tr_share, 4),
+            "has_prior": True,
+            "prior_weight": BASE_PRIOR_WEIGHT * (0.25 + 0.75 * info),
+            "reason": (f"noshrink own-team prior, Nov 14 2026: "
+                       f"returning share {ret_share:.2f}, "
+                       f"transfer share {tr_share:.2f}"),
+        }
+    return prior
+
+
 def main():
     profiles_last = load_profiles("2025-26")
     profiles_this = load_profiles("2026-27")
     last_ratings = load_last_ratings("2025-26")
-    prior = build_transfer_prior(
+    prior = build_prior_noshrink(
         last_ratings, profiles_last, profiles_this,
         league_o=LEAGUE_O_2025_26, league_t=LEAGUE_T_2025_26)
     out = DATA / "prior_2026_27.json"

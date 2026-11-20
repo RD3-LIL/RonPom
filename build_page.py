@@ -292,6 +292,47 @@ def season_rosters(season, rated_teams):
     return out
 
 
+def _sortable_th(label, data_t):
+    """A sortable table header: keyboard-focusable, with
+    aria-sort for screen readers. The JS click handler also
+    fires on Enter/Space and updates aria-sort."""
+    return (f"<th data-t=\"{data_t}\" tabindex=\"0\" role=\"button\" "
+            f"aria-sort=\"none\">{label}</th>")
+
+
+def _clean_zero_disp(disp):
+    """'-0.0' -> '0.0' for display.
+
+    The ratings CSVs carry negative zero (Utah Valley SOS,
+    Nicholls Luck), and small RPR values round to '-0.0' at
+    one decimal. The sortable data-v keeps the raw value."""
+    try:
+        if float(disp) == 0:
+            return "0.0"
+    except (TypeError, ValueError):
+        pass
+    return disp
+
+
+def _fmt1(v):
+    """One decimal, with negative zero normalized to 0.0.
+
+    Roster RPR values like -0.04 used to render as '-0.0'."""
+    r = round(float(v), 1)
+    if r == 0:
+        r = 0.0
+    return f"{r:.1f}"
+
+
+def _fmt_signed3(v):
+    """Signed three decimals, with negative zero normalized
+    ('-0.000' -> '+0.000')."""
+    r = round(float(v), 3)
+    if r == 0:
+        r = 0.0
+    return f"{r:+.3f}"
+
+
 def top_players_section():
     """Full top-150 players table for 2026-27, by RPR.
 
@@ -308,7 +349,8 @@ def top_players_section():
                  reverse=True)[:150]
 
     def num(v, disp):
-        return (f"<td data-v=\"{v}\">{disp}</td>" if v not in (None, "")
+        return (f"<td data-v=\"{v}\">{_clean_zero_disp(disp)}</td>"
+                if v not in (None, "")
                 else "<td data-v=\"0\">&mdash;</td>")
 
     out = ["<section id=\"top-players\"><h2>Top players</h2>",
@@ -319,19 +361,20 @@ def top_players_section():
            "own page.</p>",
            "<input class=\"filter\" type=\"search\" "
            "placeholder=\"Filter players...\" data-table=\"top-players\">",
+           "<div class=\"table-scroll\">"
            "<table class=\"ratings\" id=\"top-players\">"
            "<thead><tr>"
-           "<th data-t=\"num\">Rk</th>"
-           "<th data-t=\"text\">Player</th>"
-           "<th data-t=\"text\">Team</th>"
-           "<th data-t=\"text\">Pos</th>"
-           "<th data-t=\"num\">GP</th>"
-           "<th data-t=\"num\">PPG</th>"
-           "<th data-t=\"num\">ORtg</th>"
-           "<th data-t=\"num\">%Poss</th>"
-           "<th data-t=\"num\">%Min</th>"
-           "<th data-t=\"num\">RPR</th>"
-           "</tr></thead><tbody>"]
+           + _sortable_th("Rk", "num")
+           + _sortable_th("Player", "text")
+           + _sortable_th("Team", "text")
+           + _sortable_th("Pos", "text")
+           + _sortable_th("GP", "num")
+           + _sortable_th("PPG", "num")
+           + _sortable_th("ORtg", "num")
+           + _sortable_th("%Poss", "num")
+           + _sortable_th("%Min", "num")
+           + _sortable_th("RPR", "num")
+           + "</tr></thead><tbody>"]
     for rank, p in enumerate(top, 1):
         pos = p["position"] if p["position"] not in ("", "NA") else ""
         out.append(
@@ -351,7 +394,7 @@ def top_players_section():
             f"{num(p['min_pct'], p['min_pct'])}"
             f"{num(p['rpr'], p['rpr'])}"
             f"</tr>")
-    out.append("</tbody></table>")
+    out.append("</tbody></table></div>")
     out.append(
         "<p class=\"note\">ORtg is approximate (no assist credit); "
         "read it with %Poss. RPR is our own single-number rating, "
@@ -394,7 +437,9 @@ def metric_ranks(rows):
 def _metric_cell(data_v, disp, rank):
     """A metric table cell: value on top, small rank underneath.
     data-v keeps the sortable value; data-r feeds the JS detail
-    panel. No rank (missing value) renders a plain cell."""
+    panel. No rank (missing value) renders a plain cell.
+    Display values are cleaned of negative zero ('-0.0')."""
+    disp = _clean_zero_disp(disp)
     if rank is None:
         return f"<td data-v=\"{data_v}\">{disp}</td>"
     return (f"<td data-v=\"{data_v}\" data-r=\"{rank}\">{disp}"
@@ -405,6 +450,10 @@ def team_table(season, rows, records, conf_names, log_idx):
     ranks = metric_ranks(rows)
     SEASON_RANKS[season] = ranks
     tid = season.replace("-", "_")
+    # NCSOS is hidden until conference play starts: with only a
+    # handful of conference games it duplicates SOS for nearly
+    # every team (see SHOW_NCSOS / NCSOS_MIN_CONF_GAMES).
+    show_ncsos = SHOW_NCSOS[season]
     confs = sorted({conf_names.get(r["team"], "") for r in rows} - {""})
     tabs = [f"<div class=\"conftabs\" data-table=\"teams-{tid}\">"
             "<button class=\"conf-tab active\" data-conf=\"\">All</button>"]
@@ -416,26 +465,31 @@ def team_table(season, rows, records, conf_names, log_idx):
     out = ["\n".join(tabs),
            f"<input class=\"filter\" type=\"search\" "
            f"placeholder=\"Filter teams...\" data-table=\"teams-{tid}\">"]
-    out.append(f"<table class=\"ratings\" id=\"teams-{tid}\">"
-               "<thead><tr>"
-               "<th data-t=\"num\">Rk</th>"
-               "<th data-t=\"text\">Team</th>"
-               "<th data-t=\"text\">Conf</th>"
-               "<th data-t=\"wl\">W-L</th>"
-               "<th data-t=\"num\">AdjO</th>"
-               "<th data-t=\"num\">AdjD</th>"
-               "<th data-t=\"num\">Net</th>"
-               "<th data-t=\"num\">AdjT</th>"
-               "<th data-t=\"num\">Luck</th>"
-               "<th data-t=\"num\">SOS</th>"
-               "<th data-t=\"num\">NCSOS</th>"
-               "</tr></thead><tbody>")
+    header = ("<div class=\"table-scroll\">"
+              f"<table class=\"ratings\" id=\"teams-{tid}\">"
+              "<thead><tr>"
+              + _sortable_th("Rk", "num")
+              + _sortable_th("Team", "text")
+              + _sortable_th("Conf", "text")
+              + _sortable_th("W-L", "wl")
+              + _sortable_th("AdjO", "num")
+              + _sortable_th("AdjD", "num")
+              + _sortable_th("Net", "num")
+              + _sortable_th("AdjT", "num")
+              + _sortable_th("Luck", "num")
+              + _sortable_th("SOS", "num")
+              + (_sortable_th("NCSOS", "num") if show_ncsos else "")
+              + "</tr></thead><tbody>")
+    out.append(header)
     for r in rows:
         w, l = records.get(r["team"], [0, 0])
         conf = conf_names.get(r["team"], "")
         cls = ("team ill" if r["team"] == "Illinois Fighting Illini"
                else "team")
-        luck_disp = f"{float(r['luck']):+.3f}"
+        luck_disp = _fmt_signed3(r["luck"])
+        ncsos_cell = (
+            f"{_metric_cell(r['ncsos'] or '0', r['ncsos'] or '-', ranks['ncsos'].get(r['team']))}"
+            if show_ncsos else "")
         out.append(
             f"<tr class=\"{cls}\" data-conf=\"{html.escape(conf.lower())}\" "
             f"data-season=\"{season}\" data-tidx=\"{log_idx.get(r['team'], '')}\">"
@@ -449,12 +503,12 @@ def team_table(season, rows, records, conf_names, log_idx):
             f"<td data-v=\"{w * 100 - l}\">{w}-{l}</td>"
             f"{_metric_cell(r['adj_o'], r['adj_o'], ranks['adj_o'].get(r['team']))}"
             f"{_metric_cell(r['adj_d'], r['adj_d'], ranks['adj_d'].get(r['team']))}"
-            f"<td class=\"net\" data-v=\"{r['net']}\">{r['net']}</td>"
+            f"<td class=\"net\" data-v=\"{r['net']}\">{_clean_zero_disp(r['net'])}</td>"
             f"{_metric_cell(r['adj_t'], r['adj_t'], ranks['adj_t'].get(r['team']))}"
             f"{_metric_cell(r['luck'], luck_disp, ranks['luck'].get(r['team']))}"
             f"{_metric_cell(r['sos'], r['sos'], ranks['sos'].get(r['team']))}"
-            f"{_metric_cell(r['ncsos'] or '0', r['ncsos'] or '-', ranks['ncsos'].get(r['team']))}</tr>")
-    out.append("</tbody></table>")
+            f"{ncsos_cell}</tr>")
+    out.append("</tbody></table></div>")
     out.append(
         f"<p class=\"note\">Full table above ({len(rows)} teams). "
         f"Download the CSV: <a href=\"data/ratings_"
@@ -462,6 +516,14 @@ def team_table(season, rows, records, conf_names, log_idx):
         f"{season.replace('-', '_')}.csv</a>. W-L is the record in "
         f"the D1 games these ratings are built from; non-D1 games "
         f"are excluded, same as the ratings.</p>")
+    if not show_ncsos:
+        out.append(
+            f"<p class=\"note\">NCSOS is hidden until conference play "
+            f"starts: only {CONF_GAME_COUNTS[season]} conference "
+            f"games are in the data so far, so NCSOS duplicates SOS "
+            f"for nearly every team. It returns once "
+            f"{NCSOS_MIN_CONF_GAMES} conference games have been "
+            f"played.</p>")
     return "\n".join(out)
 
 
@@ -521,11 +583,12 @@ def season_section(season, conf_by_id):
     tid = season.replace("-", "_")
     warn = ""
     if season == "2026-27":
-        warn = ("<p class=\"warn\">Early season: 2-3 games per team. "
+        warn = ("<p class=\"warn\">Early season: most teams have only "
+                "a few games so far. "
                 "The ratings start from last season's ratings faded by "
                 "returning minutes, so the top of the table is still "
                 "mostly blowout noise, not a real ranking.</p>")
-    # 2026-27 has at most 2-3 games per player, so the usual
+    # 2026-27 has only a few games per player, so the usual
     # 20-game floor would leave the leaders tables empty.
     min_games = 2 if season == "2026-27" else 20
     leaders = player_leaders(season, players, min_games)
@@ -535,7 +598,8 @@ def season_section(season, conf_by_id):
         leaders = f"<div id=\"players\">{leaders}</div>"
     return (f"<section id=\"season-{tid}\"><h2>{season}</h2>{warn}"
             f"<p>{len(ratings)} teams rated, {len(players)} players. "
-            f"Click a column header to sort. Click a team name for "
+            f"Click a column header to sort (or focus it and press "
+            f"Enter). Click a team name for "
             f"that team's own page, or a team row to see its game "
             f"log and roster here.</p>"
             f"<h3>Team ratings</h3>"
@@ -654,7 +718,32 @@ def predictions_section():
                 "recomputes them from the current ratings. No "
                 "predictions file has been generated yet.</p></section>")
     rows = read_csv(PREDICTIONS_CSV)
+    total_rows = len(rows)
+    # Drop games that already tipped: a date before today, or a
+    # final score already in the data, means it is not upcoming.
+    rows = [r for r in rows if _is_upcoming_prediction(r)]
     rows.sort(key=lambda r: (r["date"], r["tipoff"] or ""))
+    stale_note = ""
+    if PREDICTIONS_STALE:
+        stale_note = (
+            "<p class=\"warn\"><strong>Stale predictions.</strong> "
+            f"This file was generated {_fmt_date(PREDICTIONS_DATE)}; "
+            f"it is {_fmt_date(TODAY_STR)} now. Fresh predictions "
+            f"come from predict.py; wiring that step into the "
+            f"daily run is in progress. "
+            "Games that already tipped are hidden below.</p>")
+    if not rows:
+        return ("<section id=\"predictions\"><h2>Predictions</h2>"
+                + stale_note +
+                "<p>No upcoming games in the current predictions "
+                "file"
+                + (f" (generated {_fmt_date(PREDICTIONS_DATE)}, "
+                   f"{total_rows} games, all already played)"
+                   if PREDICTIONS_DATE else "")
+                + ". Fresh predictions come from predict.py; "
+                "wiring that step into the daily run is in "
+                "progress.</p>"
+                + _scorecard_html() + "</section>")
     dates = sorted({r["date"] for r in rows})
     date_range = ""
     if dates:
@@ -670,6 +759,7 @@ def predictions_section():
         gen = (f"generated {m.group(2)}/{m.group(3)} "
                f"by predict.py from the 2026-27 ratings: ")
     out = ["<section id=\"predictions\"><h2>Predictions</h2>",
+           stale_note,
            "<p>Predicted spreads for the next three days, "
            + gen +
            "model-consistent margin plus 4.69 home court (none on "
@@ -776,26 +866,39 @@ def team_page_html(team, slug_by_team, upcoming):
              f"<p class=\"subtitle\">"
              f"{html.escape(conf) if conf else 'College basketball'}"
              f" &middot; <a href=\"../index.html\">&larr; College "
-             f"Ratings</a></p>"]
+             f"Ratings</a></p>",
+             f"<p class=\"datestamp\">{DATASTAMP}</p>"]
     for season in DISPLAY_SEASONS:
         if season not in seasons_data:
             continue
         d = seasons_data[season]
         r = d["row"]
         w, l = d["record"]
+        cutoff, events, d1_used = CUTOFFS[season]
         parts.append(f"<section><h2>{season}</h2>")
         parts.append(
-            f"<p>Net rank #{r['rank']} &middot; AdjO {r['adj_o']}"
+            f"<p class=\"datestamp\">Data through "
+            f"{_fmt_date(cutoff)} games: {events:,} events, "
+            f"{d1_used:,} D1 games used.</p>")
+        ncsos_txt = ""
+        if SHOW_NCSOS[season]:
+            ncsos_txt = (f" &middot; NCSOS "
+                         f"{_clean_zero_disp(r['ncsos']) or '-'}"
+                         f"{_rank_str(season, team, 'ncsos')}")
+        parts.append(
+            f"<p>Net rank #{r['rank']} &middot; AdjO "
+            f"{_clean_zero_disp(r['adj_o'])}"
             f"{_rank_str(season, team, 'adj_o')} "
-            f"&middot; AdjD {r['adj_d']}"
-            f"{_rank_str(season, team, 'adj_d')} &middot; Net {r['net']} "
-            f"&middot; AdjT {r['adj_t']}"
+            f"&middot; AdjD {_clean_zero_disp(r['adj_d'])}"
+            f"{_rank_str(season, team, 'adj_d')} &middot; Net "
+            f"{_clean_zero_disp(r['net'])} "
+            f"&middot; AdjT {_clean_zero_disp(r['adj_t'])}"
             f"{_rank_str(season, team, 'adj_t')} &middot; Luck "
-            f"{float(r['luck']):+.3f}"
-            f"{_rank_str(season, team, 'luck')} &middot; SOS {r['sos']}"
-            f"{_rank_str(season, team, 'sos')} "
-            f"&middot; NCSOS {r['ncsos'] or '-'}"
-            f"{_rank_str(season, team, 'ncsos')} &middot; {w}-{l} "
+            f"{_fmt_signed3(r['luck'])}"
+            f"{_rank_str(season, team, 'luck')} &middot; SOS "
+            f"{_clean_zero_disp(r['sos'])}"
+            f"{_rank_str(season, team, 'sos')}"
+            f"{ncsos_txt} &middot; {w}-{l} "
             f"(D1 games)</p>")
         entry = LOGS.get(season)
         tidx = LOG_IDX.get(season, {}).get(team)
@@ -803,6 +906,7 @@ def team_page_html(team, slug_by_team, upcoming):
             games = entry["logs"].get(tidx, [])
             names = entry["teams"]
             parts.append("<h3>Game log</h3>"
+                         "<div class=\"table-scroll\">"
                          '<table class="gamelog"><thead><tr><th>Date</th>'
                          "<th>Opponent</th><th>Venue</th><th>Result</th>"
                          "<th>Score</th></tr></thead><tbody>")
@@ -818,13 +922,14 @@ def team_page_html(team, slug_by_team, upcoming):
                     f"<td>{opp_html}</td><td>{g[2]}</td>"
                     f"<td>{'W' if f_pts > a_pts else 'L'}</td>"
                     f"<td>{f_pts}-{a_pts}</td></tr>")
-            parts.append("</tbody></table>")
+            parts.append("</tbody></table></div>")
         else:
             parts.append("<p>No game log for this season.</p>")
         roster = (ROSTERS.get(season) or {}).get(team)
         parts.append("<h3>Roster</h3>")
         if roster:
-            parts.append('<table class="roster"><thead><tr><th>Player</th>'
+            parts.append("<div class=\"table-scroll\">"
+                         '<table class="roster"><thead><tr><th>Player</th>'
                          "<th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th>"
                          "<th>%Poss</th><th>%Min</th><th>RPR</th>"
                          "</tr></thead><tbody>")
@@ -833,10 +938,10 @@ def team_page_html(team, slug_by_team, upcoming):
                        else "&mdash;")
                 cells = [html.escape(p[0]), pos, str(p[2])]
                 for v in p[3:]:
-                    cells.append("\u2014" if v is None else f"{v:.1f}")
+                    cells.append("\u2014" if v is None else _fmt1(v))
                 parts.append("<tr>" + "".join(
                     f"<td>{c}</td>" for c in cells) + "</tr>")
-            parts.append("</tbody></table>")
+            parts.append("</tbody></table></div>")
             parts.append('<p class="note">Sorted by minutes. ORtg is '
                          "approximate (no assist credit); RPR is our own "
                          "rating, not KenPom\u2019s kPOY."
@@ -857,6 +962,7 @@ def team_page_html(team, slug_by_team, upcoming):
                      "Trap marks a trap game for the favorite; see "
                      "the Predictions section on the main page for "
                      "the rules and the backtest.</p>"
+                     "<div class=\"table-scroll\">"
                      '<table class="preds"><thead><tr><th>Tip-off</th>'
                      "<th>Opponent</th><th>Venue</th>"
                      "<th>Predicted spread</th><th>Team win%</th>"
@@ -895,7 +1001,7 @@ def team_page_html(team, slug_by_team, upcoming):
                 f"<td>{market}</td>"
                 f"<td>{f'{edge_team:+.1f}' if edge_team is not None else '-'}</td>"
                 f"<td>{trap_cell}</td></tr>")
-        parts.append("</tbody></table>"
+        parts.append("</tbody></table></div>"
                      '<p class="note">Market is the home team\u2019s line. '
                      "Edge is from this team\u2019s perspective: positive "
                      "means the model likes this team more than the "
@@ -932,7 +1038,12 @@ def build_team_pages():
     teams_dir.mkdir(exist_ok=True)
     upcoming = {}
     if PREDICTIONS_CSV is not None and PREDICTIONS_CSV.exists():
+        # Only games that have not tipped yet: a date before
+        # today, or a final score already in the data, is not
+        # upcoming (see _is_upcoming_prediction).
         for r in read_csv(PREDICTIONS_CSV):
+            if not _is_upcoming_prediction(r):
+                continue
             for key in (r["home"], r["away"]):
                 upcoming.setdefault(key, []).append(r)
     seen = {}
@@ -1019,6 +1130,8 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders td:nth-child(n+3) { text-align: right; }
 @media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
 .note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
 .warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
   border-radius: 6px; }
 footer { margin-top: 48px; color: #656d76; font-size: 14px;
@@ -1037,7 +1150,11 @@ function esc(s) {
     .replace(/>/g, "&gt;");
 }
 function fmt1(v) {
-  return (v === null || v === undefined) ? "\u2014" : v.toFixed(1);
+  if (v === null || v === undefined) return "\u2014";
+  // Normalize negative zero: -0.04 would render as "-0.0".
+  var r = Math.round(v * 10) / 10;
+  if (r === 0) r = 0;
+  return r.toFixed(1);
 }
 function closeDetails(table) {
   table.querySelectorAll("tbody tr.detail").forEach(function (d) {
@@ -1107,7 +1224,7 @@ function openDetail(table, row) {
   var tr = document.createElement("tr");
   tr.className = "detail";
   var td = document.createElement("td");
-  td.colSpan = 8;
+  td.colSpan = table.querySelectorAll("thead th").length;
   td.innerHTML = html;
   tr.appendChild(td);
   row.after(tr);
@@ -1120,8 +1237,10 @@ document.querySelectorAll("table.ratings").forEach(function (table) {
       var asc = !th.classList.contains("sorted-asc");
       headers.forEach(function (h) {
         h.classList.remove("sorted-asc", "sorted-desc");
+        h.setAttribute("aria-sort", "none");
       });
       th.classList.add(asc ? "sorted-asc" : "sorted-desc");
+      th.setAttribute("aria-sort", asc ? "ascending" : "descending");
       var rows = Array.from(table.querySelectorAll("tbody tr:not(.detail)"));
       var numeric = th.dataset.t === "num" || th.dataset.t === "wl";
       rows.sort(function (a, b) {
@@ -1132,6 +1251,13 @@ document.querySelectorAll("table.ratings").forEach(function (table) {
       });
       var body = table.querySelector("tbody");
       rows.forEach(function (r) { body.appendChild(r); });
+    });
+    // Keyboard: Enter or Space sorts, same as a click.
+    th.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        th.click();
+      }
     });
   });
   table.querySelectorAll("tbody tr.team").forEach(function (row) {
@@ -1198,6 +1324,98 @@ LOG_IDX = {}
 TEAM_SEASONS = {}
 SEASON_RANKS = {}
 
+# Date stamp, staleness, and NCSOS visibility, computed here
+# from the data files on disk. Nothing below is a hardcoded
+# date: the stamp, the cutoff, and the stale label all follow
+# whatever the data files actually contain on this run.
+TODAY_CT = datetime.now(ZoneInfo("America/Chicago"))
+TODAY_STR = TODAY_CT.strftime("%Y%m%d")
+BUILT_FULL = TODAY_CT.strftime("%B %-d, %Y, %-I:%M %p CT")
+
+
+def _fmt_date(ds):
+    """'20261119' -> 'Nov 19'."""
+    return datetime.strptime(ds, "%Y%m%d").strftime("%b %-d")
+
+
+def _season_cutoff(season):
+    """(latest played date, events, D1 games used) for a season.
+
+    Events and the cutoff date come from the games file. D1
+    games used comes from the ratings CSV (sum of GP / 2),
+    because that is the game set the displayed ratings were
+    actually solved on. The two usually agree, but they can
+    differ: on Nov 20 the games file holds 803 D1 games while
+    the ratings were solved on 801, because the Nov 10
+    Vanderbilt-Memphis and Iowa-Virginia Tech box scores were
+    cached empty when the ratings were built (known stale-cache
+    issue, fix pending Ron's go-ahead). The stamp must match
+    the ratings on display, so the CSV is the source here."""
+    games = season_games(season)
+    played = [g for g in games
+              if g["home_score"] or g["away_score"]]
+    cutoff = max((g["date"] for g in played), default="")
+    ratings = read_csv(DATA / f"ratings_{season.replace('-', '_')}.csv")
+    d1 = sum(int(r["gp"]) for r in ratings) // 2
+    return cutoff, len(games), d1
+
+
+CUTOFFS = {s: _season_cutoff(s) for s in SEASONS}
+
+
+def _conf_game_count(season):
+    """Played D1 games where both teams share a conference id."""
+    return sum(1 for g in season_games(season)
+               if (g["home_score"] or g["away_score"])
+               and is_d1_game(g) and not g.get("stats_missing")
+               and g.get("home_conf_id")
+               and g.get("home_conf_id") == g.get("away_conf_id"))
+
+
+CONF_GAME_COUNTS = {s: _conf_game_count(s) for s in SEASONS}
+
+# NCSOS duplicates SOS until conference play starts. On Nov 20
+# only 2 conference games had been played and NCSOS equalled
+# SOS for 362 of 365 teams, so the column is hidden while
+# conference games are scarce. 50 games is the threshold,
+# roughly a week into conference play.
+NCSOS_MIN_CONF_GAMES = 50
+SHOW_NCSOS = {s: CONF_GAME_COUNTS[s] >= NCSOS_MIN_CONF_GAMES
+              for s in SEASONS}
+
+# Predictions staleness: the file is named for the day
+# predict.py generated it. If that day is before today, the
+# games in it have tipped and the section is labelled stale.
+PREDICTIONS_DATE = None
+if PREDICTIONS_CSV is not None:
+    _m = re.search(r"(\d{4})_(\d{2})_(\d{2})",
+                   PREDICTIONS_CSV.name)
+    if _m:
+        PREDICTIONS_DATE = f"{_m.group(1)}{_m.group(2)}{_m.group(3)}"
+PREDICTIONS_STALE = (PREDICTIONS_DATE is not None
+                     and PREDICTIONS_DATE < TODAY_STR)
+
+# Played games in 2026-27, keyed (home, away, date).
+PLAYED_KEYS = {(g["home"], g["away"], g["date"])
+               for g in season_games("2026-27")
+               if g["home_score"] or g["away_score"]}
+
+
+def _is_upcoming_prediction(r):
+    """True only if the predicted game has not tipped yet: its
+    date is today or later, and no final score for it is in
+    the data."""
+    return (r["date"] >= TODAY_STR
+            and (r["home"], r["away"], r["date"]) not in PLAYED_KEYS)
+
+
+# Current-season stamp, e.g. "Ratings through Nov 19 games,
+# built Nov 20, 2026, 2:54 PM CT. 1,070 events, 801 D1 games
+# used". Shown at the top of the index and every team page.
+_cut, _ev, _d1 = CUTOFFS["2026-27"]
+DATASTAMP = (f"Ratings through {_fmt_date(_cut)} games, built "
+             f"{BUILT_FULL} · {_ev:,} events, {_d1:,} D1 games used")
+
 SECTIONS = "\n".join(season_section(s, CONF_BY_ID)
                      for s in DISPLAY_SEASONS)
 LOGS_JSON = json.dumps(LOGS, separators=(",", ":"))
@@ -1216,6 +1434,7 @@ PAGE = f"""<!DOCTYPE html>
 </head>
 <body>
 <h1>College Ratings</h1>
+<p class="datestamp">{DATASTAMP}</p>
 <p class="subtitle">College basketball ratings in the style of KenPom,
 built from free ESPN data. Adjusted offense and defense per 100
 possessions, solved properly (damped Gauss-Seidel), starting from
@@ -1264,7 +1483,9 @@ uses a correlated-Gaussian method on per-game margins.
 <strong>SOS</strong> is the average Net rating of a team's
 opponents, positive means a harder schedule than average.
 <strong>NCSOS</strong> is the same average over non-conference
-games only, where a team chooses its difficulty.</p>
+games only, where a team chooses its difficulty. NCSOS is
+hidden from the tables until conference play starts, since
+it duplicates SOS before then.</p>
 <p><strong>ORtg</strong> (players) is a simplified approximation:
 points per 100 possessions used, with no assist credit, so it
 underrates playmakers. Read it with %Poss. <strong>RPR</strong> is

@@ -82,6 +82,65 @@ def test_non_d1_games_ignored():
     assert extra["A"]["luck"] == 0.0 - extra["A"]["exp_wpct"]
 
 
+def test_unplayed_zero_zero_game_ignored():
+    # A postponed 0-0 game must not count for either team, and
+    # must not count the away team as a winner (0 > 0 is False,
+    # so the old code credited the away team with a win).
+    games = [_game("A", "B", 0, 0)]
+    extra = compute_extra(_ratings(), games)
+    assert extra["A"]["gp"] == 0
+    assert extra["B"]["gp"] == 0
+    assert extra["B"]["wins"] == 0
+    assert extra["A"]["luck"] == 0.0 - extra["A"]["exp_wpct"]
+
+
+def test_stats_missing_games_excluded():
+    # A played game whose boxscore never arrived (Nov 10, 2026:
+    # Vanderbilt beat Memphis 105-81 with empty stats) is in
+    # the solver's skip set, so Luck must skip it too.
+    games = [_game("A", "B", 70, 60), _game("B", "A", 60, 70)]
+    games[0]["stats_missing"] = True
+    extra = compute_extra(_ratings(), games)
+    assert extra["A"]["gp"] == 1
+    assert extra["B"]["gp"] == 1
+    # Only the second game counts: A won it on the road, B lost.
+    assert extra["A"]["wins"] == 1
+    assert extra["B"]["wins"] == 0
+
+
+def test_luck_gp_matches_solver_gp():
+    # Synthetic set: every D1 game with stats counts once per
+    # team, so Luck GP equals the games each team played.
+    games = [_game("A", "B", 70, 60), _game("B", "C", 60, 70),
+             _game("C", "A", 70, 60), _game("A", "B", 0, 0),
+             _game("B", "C", 80, 70)]
+    games[3]["stats_missing"] = True  # also skipped either way
+    extra = compute_extra(_ratings(), games)
+    assert extra["A"]["gp"] == 2
+    assert extra["B"]["gp"] == 3
+    assert extra["C"]["gp"] == 3
+
+
+def test_luck_gp_matches_solver_gp_real_data():
+    # Real 2026-27 data: Luck GP must equal solver GP for
+    # every team. This is the regression test for the Nov 2026
+    # bug, where 12 teams had Luck GP one higher than solver GP
+    # (Air Force Luck +0.428 on 5 counted games vs 4 played).
+    import json
+    from solver import solve
+    from write_ratings import load_prior
+    data_dir = Path(__file__).parent / "data"
+    games = json.loads(
+        (data_dir / "games_2026_27.json").read_text())
+    prior, _ = load_prior("2026-27")
+    ratings, _, _, _ = solve(games, prior=prior, return_info=True)
+    extra = compute_extra(ratings, games)
+    bad = [(name, extra[name]["gp"], ratings[name]["games"])
+           for name in ratings
+           if extra[name]["gp"] != ratings[name]["games"]]
+    assert not bad, f"Luck GP != solver GP: {bad[:5]}"
+
+
 def main():
     tests = [v for k, v in sorted(globals().items())
              if k.startswith("test_")]

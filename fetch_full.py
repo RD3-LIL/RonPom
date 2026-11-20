@@ -28,7 +28,14 @@ Checkpointing: the unit of work is one date. Per date we save
   data/parsed/{season}/{YYYYMMDD}.json           (parsed games)
   data/raw/summary/{event_id}.json               (FULL raw summary)
 A date with a parsed file is skipped on re-run. A summary file that
-already exists and parses is reused, not re-fetched. Failures are
+already exists and parses is reused, not re-fetched, but only if it
+is usable: both teams must have non-empty statistics arrays and
+non-empty athlete lists. A cached summary that fails that check
+(ESPN sometimes returns a final score with an empty boxscore) is
+deleted and re-fetched, never reused forever. A freshly fetched
+summary that is still empty is kept on disk and flagged
+stats_missing in the parsed game, so the game is never silently
+dropped; it is re-checked on the next run. Failures are
 logged to data/fetch_failures.jsonl and retried on the next run.
 State is in data/fetch_state.json, updated after every date.
 
@@ -166,6 +173,36 @@ def fetch_teams():
     return slim
 
 
+def is_usable_summary(summary):
+    """True only if a cached summary has real boxscore data.
+
+    Both teams need a non-empty statistics array (the ratings
+    path needs team stats for possessions) and at least one
+    athlete row per team (the player path needs athlete lists).
+    ESPN sometimes returns a final score with an empty boxscore,
+    e.g. 401918987 and 401920378 on 2026-11-10, and 401917950 /
+    401924949 have athlete rows but empty team statistics, so
+    either half missing makes the summary unusable. A summary
+    with no boxscore at all is unusable too.
+    """
+    box = (summary or {}).get('boxscore') or {}
+    teams = box.get('teams') or []
+    if len(teams) != 2:
+        return False
+    if any(not t.get('statistics') for t in teams):
+        return False
+    players = box.get('players') or []
+    if len(players) != 2:
+        return False
+    for team_entry in players:
+        n_athletes = sum(
+            len(g.get('athletes') or [])
+            for g in (team_entry.get('statistics') or []))
+        if n_athletes == 0:
+            return False
+    return True
+
+
 def parse_team_stats(box_team):
     """Full stat dict + convenience ints from a summary boxscore team."""
     stats = {x['name']: x['displayValue'] for x in box_team.get('statistics', [])}
@@ -248,10 +285,22 @@ def fetch_season(season, start, end):
             summary = None
             if sum_path.exists():
                 try:
-                    summary = json.loads(sum_path.read_text())
-                    if not summary.get('boxscore', {}).get('teams'):
-                        summary = None
+                    cached = json.loads(sum_path.read_text())
                 except Exception:
+                    cached = None
+                if cached is not None and is_usable_summary(cached):
+                    summary = cached
+                else:
+                    # Stale-cache bug fix (Nov 2026): an empty cached
+                    # summary was reused forever, so the game stayed
+                    # stats_missing and its players stayed missing.
+                    # Delete it and re-fetch below.
+                    print(f'  {ds} {eid} cached summary empty, '
+                          f'deleting and re-fetching', flush=True)
+                    try:
+                        sum_path.unlink()
+                    except OSError:
+                        pass
                     summary = None
             if summary is None:
                 try:
@@ -259,6 +308,12 @@ def fetch_season(season, start, end):
                     RAW_SUM.mkdir(parents=True, exist_ok=True)
                     sum_path.write_text(json.dumps(summary))
                     fetched += 1
+                    if not is_usable_summary(summary):
+                        print(f'  {ds} {eid} SUMMARY STILL EMPTY after '
+                              f're-fetch, keeping stats_missing flag',
+                              flush=True)
+                        log_failure(eid, season, ds,
+                                    'summary empty after re-fetch')
                 except Exception as e:
                     log_failure(eid, season, ds, e)
                     failed += 1
@@ -304,6 +359,12 @@ def fetch_season(season, start, end):
                 'venue': (comp.get('venue') or {}).get('fullName'),
                 'status': stype.get('description'),
                 'home_stats': hs, 'away_stats': aws,
+                # ESPN sometimes has a final score but an empty boxscore
+                # (e.g. 401921153, Warren Wilson at NC A&T, Nov 3 2026:
+                # both teams' statistics arrays are empty). Keep the
+                # game and its score, flag it, never feed it to a
+                # ratings solve (possessions would be 0).
+                'stats_missing': (not hs['all']) or (not aws['all']),
                 'spread': spread, 'over_under': ou,
                 'home_win_prob_final': home_wp_final,
                 'odds': summary.get('odds'),
@@ -319,7 +380,8 @@ def fetch_season(season, start, end):
         sstate['done_dates'] = sorted(done)
         save_state(state)
         print(f'{season} {ds}: {len(events)} events, {len(games)} games parsed '
-              f'(fetched {fetched}, reused {reused}, skipped {skipped}, failed {failed})', flush=True)
+              f'(fetched {fetched}, reused {reused}, skipped {skipped}, failed {failed}, '
+              f'stats_missing {sum(1 for g in games if g.get("stats_missing"))})', flush=True)
     # build consolidated file for the season
     all_games = []
     parsed_dir = PARSED / season

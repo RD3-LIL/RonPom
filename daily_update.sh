@@ -1,13 +1,22 @@
 #!/bin/bash
 # College Ratings daily updater.
 #
-# Fetches the last few days of 2026-27 games, rebuilds player
-# profiles, the returning-minutes prior, the team ratings, and
-# the site (index.html plus one page per team under teams/),
-# then pushes all of those files to GitHub: the two rebuilt
-# CSVs, the prior, the index, and every teams/*.html page.
+# Fetches the last few days of 2026-27 games, validates the
+# fetched games (fails without pushing on a bad D1 stat row),
+# rebuilds player profiles, the returning-minutes prior, the
+# team ratings, and the site (index.html plus one page per
+# team under teams/), then generates fresh predictions for
+# the next 3 days and scores finished predictions, and pushes
+# all of those files to GitHub: the two rebuilt CSVs, the
+# prior, the index, the fresh predictions file, the prediction
+# scores, and every teams/*.html page.
 # The sync record lists exactly the paths in the manifest, so
 # it never lies about what a push contained.
+#
+# Rebuild trigger: the sha256 of data/games_2026_27.json
+# before and after the fetch, not the game count, so a
+# corrected game (same count, different content) still
+# triggers a rebuild.
 #
 # Why the last 3 days, not just yesterday: a date fetched in
 # the morning is marked done, but games played that evening
@@ -45,8 +54,10 @@ START=$(date -d "$TODAY -3 days" +%Y%m%d)
 echo "$(date -Iseconds) daily update: window $START..$TODAY"
 
 GAMES_BEFORE=0
+HASH_BEFORE=""
 if [ -f data/games_2026_27.json ]; then
   GAMES_BEFORE=$(python3 -c "import json; print(len(json.load(open('data/games_2026_27.json'))))")
+  HASH_BEFORE=$(sha256sum data/games_2026_27.json | cut -d' ' -f1)
 fi
 
 # Clear the window's cached scoreboards and done_dates so the
@@ -83,10 +94,55 @@ python3 fetch_full.py --season 2026-27 --start "$START" --end "$TODAY" || {
   exit 1
 }
 
+# Validation gate: validate_full.py prints the per-season
+# summary, then the gate below fails the run (without pushing)
+# if any D1-vs-D1 game has a bad stat row. A bad row is a
+# D1 game that is not flagged stats_missing but has bad
+# fga/fta/orb/tov, or a played D1 game (not 0-0) that is
+# flagged stats_missing, which is the Nov 10, 2026 bug
+# recurring. Postponed 0-0 D1 games are expected to have no
+# stats, so they do not fail the gate.
+python3 validate_full.py 2026-27 || exit 1
+python3 - <<'PYEOF'
+import json, sys
+games = json.load(open('data/games_2026_27.json'))
+bad = []
+n_missing = 0
+for g in games:
+    if not (g.get('home_conf_id') and g.get('away_conf_id')):
+        continue
+    if g.get('stats_missing'):
+        n_missing += 1
+        if not (g.get('home_score') == 0 and g.get('away_score') == 0):
+            bad.append((g['event_id'], 'stats_missing but played'))
+        continue
+    for side in ('home_stats', 'away_stats'):
+        s = g[side]
+        if not (isinstance(s.get('fga'), int) and s['fga'] > 0
+                and isinstance(s.get('fta'), int) and s['fta'] > 0):
+            bad.append((g['event_id'], side, 'bad fga/fta'))
+        if s.get('orb') is None or s.get('tov') is None:
+            bad.append((g['event_id'], side, 'missing orb/tov'))
+print(f'validation gate: {len(bad)} bad D1 rows, '
+      f'{n_missing} stats_missing D1 games')
+if bad:
+    print(f'bad D1 rows: {bad[:10]}')
+    sys.exit(1)
+PYEOF
+if [ "$?" -ne 0 ]; then
+  echo "validation gate failed, stopping without pushing"
+  exit 1
+fi
+
 GAMES_AFTER=$(python3 -c "import json; print(len(json.load(open('data/games_2026_27.json'))))")
-echo "games: $GAMES_BEFORE -> $GAMES_AFTER"
-if [ "$GAMES_AFTER" -eq "$GAMES_BEFORE" ]; then
-  echo "no new games, nothing to rebuild or push"
+HASH_AFTER=$(sha256sum data/games_2026_27.json | cut -d' ' -f1)
+STATS_MISSING=$(python3 -c "import json; print(sum(1 for g in json.load(open('data/games_2026_27.json')) if g.get('stats_missing')))")
+echo "games: $GAMES_BEFORE -> $GAMES_AFTER (stats_missing: $STATS_MISSING) hash ${HASH_BEFORE:0:8} -> ${HASH_AFTER:0:8}"
+# Hash gate, not length only: a corrected game (same count,
+# different content, e.g. a re-fetched boxscore) must still
+# trigger a rebuild, so compare the file hash, not the count.
+if [ "$GAMES_AFTER" -eq "$GAMES_BEFORE" ] && [ "$HASH_AFTER" = "$HASH_BEFORE" ]; then
+  echo "no changes to games file, nothing to rebuild or push"
   exit 0
 fi
 
@@ -95,18 +151,32 @@ python3 build_prior_2026.py || exit 1
 python3 write_ratings.py 2026-27 || exit 1
 python3 build_page.py || exit 1
 
+# Fresh predictions for the next 3 days, from the ratings
+# just built, plus scoring of any predictions whose games
+# have now finished. A scoring failure stops the run without
+# pushing, so a stale or broken predictions file never goes
+# live. The predictions file is dated by run date, matching
+# the existing data/predictions_YYYY_MM_DD.csv names.
+PRED_FILE="data/predictions_$(date +%Y_%m_%d).csv"
+python3 predict.py --days 3 --date "$TODAY" --out "$PRED_FILE" || exit 1
+python3 score_predictions.py || {
+  echo "prediction scoring failed, stopping without pushing"
+  exit 1
+}
+
 if [ "$NO_PUSH" -eq 1 ]; then
   echo "push skipped (--no-push), files rebuilt locally"
   exit 0
 fi
 
 # The manifest is the two rebuilt CSVs, the prior, the index,
-# and every team page build_page.py just wrote. nullglob so an
+# the fresh predictions file and the prediction scores, and
+# every team page build_page.py just wrote. nullglob so an
 # (impossible after a successful build) empty teams/ dir would
 # expand to nothing instead of a literal "teams/*.html".
 shopt -s nullglob
 TEAM_PAGES=(teams/*.html)
-printf '%s\0' data/players_2026_27.csv data/ratings_2026_27.csv data/prior_2026_27.json index.html "${TEAM_PAGES[@]}" > /home/hatch/workspace/ronpom-push-manifest.bin
+printf '%s\0' data/players_2026_27.csv data/ratings_2026_27.csv data/prior_2026_27.json index.html "$PRED_FILE" data/prediction_scores.csv "${TEAM_PAGES[@]}" > /home/hatch/workspace/ronpom-push-manifest.bin
 
 # Sync-base check: the branch head must match the last sync
 # record entry, or someone else pushed since our last run.

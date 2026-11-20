@@ -318,35 +318,14 @@ def test_prior_returning_share_helpers():
     assert la["X"]["prior_o"] == 104.0 and la["X"]["has_prior"] is False
 
 
-def test_prior_rosters_from_profiles():
-    from build_prior_2026 import build_rosters_from_profiles
-    last = [
-        {"athlete_id": 1, "name": "A", "team": "X",
-         "totals": {"min": 1200}},
-        {"athlete_id": 2, "name": "B", "team": "X",
-         "totals": {"min": 800}},
-        {"athlete_id": 3, "name": "C", "team": "Y",
-         "totals": {"min": 1000}},
-    ]
-    this = [
-        # A returns to X; B transferred to Y (same athlete id, new
-        # team) so he counts for neither team's returning minutes;
-        # C left entirely. A new freshman D has no last-season row.
-        {"athlete_id": 1, "name": "A", "team": "X",
-         "totals": {"min": 60}},
-        {"athlete_id": 2, "name": "B", "team": "Y",
-         "totals": {"min": 55}},
-        {"athlete_id": 4, "name": "D", "team": "X",
-         "totals": {"min": 40}},
-    ]
-    rosters = build_rosters_from_profiles(last, this)
-    assert rosters["X"][0]["returning"] is True
-    assert rosters["X"][1]["returning"] is False
-    assert rosters["Y"][0]["returning"] is False
-    assert compute_returning_share(rosters["X"]) == 1200 / 2000
-    assert compute_returning_share(rosters["Y"]) == 0.0
-
-
+# NOTE (Nov 20, 2026): test_prior_rosters_from_profiles was
+# deleted, not restored. It tested build_rosters_from_profiles,
+# which no longer exists in build_prior_2026.py: the prior
+# builder was replaced by the transfer-blended builder and then
+# by the adopted no-shrink builder (build_prior_noshrink, base
+# weight 600). The returning-share logic it exercised is still
+# covered by test_prior_returning_share_helpers above, and the
+# current prior builder is covered by test_prior_2026.py.
 def test_prior_plugs_into_solver():
     games = load_games()
     last = {"Illinois Fighting Illini": {"adj_o": 110.0, "adj_d": 100.0, "adj_t": 72.0}}
@@ -379,6 +358,53 @@ def test_prior_plugs_into_solver():
         return sum(abs(ts[t]["adj_o"] - true_o[t])
                    + abs(ts[t]["adj_d"] - true_d[t]) for t in true_o) / 16
     assert mae(s_with) < mae(s_base), (mae(s_with), mae(s_base))
+
+
+def test_margin_cap_splits_excess_evenly():
+    from solver import cap_game_margins
+    games = [_game("A", "B", 100, 57, conf=True)]
+    capped = cap_game_margins(games, 20)
+    # 43-point margin, excess 23, half 11.5 each way.
+    assert capped[0]["home_score"] == 88.5
+    assert capped[0]["away_score"] == 68.5
+    # Total points and the winner are unchanged.
+    assert capped[0]["home_score"] + capped[0]["away_score"] == 157
+    assert capped[0]["home_score"] > capped[0]["away_score"]
+    # The caller's game is untouched.
+    assert games[0]["home_score"] == 100
+    assert games[0]["away_score"] == 57
+
+
+def test_margin_cap_leaves_small_margins_alone():
+    from solver import cap_game_margins
+    games = [_game("A", "B", 70, 60, conf=True),
+             _game("A", "B", 60, 70, conf=True)]
+    capped = cap_game_margins(games, 20)
+    assert capped[0]["home_score"] == 70
+    assert capped[1]["away_score"] == 70
+
+
+def test_margin_cap_rejects_non_positive():
+    from solver import cap_game_margins
+    try:
+        cap_game_margins([], 0)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("cap 0 must raise")
+
+
+def test_margin_cap_shrinks_blowout_team_in_solve():
+    # A blows out B by 50, then loses close games to C and B.
+    # With no prior, the 50-point win inflates A's Net; the cap
+    # pulls it back down.
+    games = [_game("A", "B", 100, 50, conf=True),
+             _game("B", "C", 70, 60, conf=True),
+             _game("C", "A", 70, 60, conf=True)]
+    base, _, _ = solve(games, prior_weight=0)
+    capped, _, _ = solve(games, prior_weight=0, margin_cap=20)
+    assert capped["A"]["net"] < base["A"]["net"]
+    assert capped["B"]["net"] > base["B"]["net"]
 
 
 def _comparison_report():
@@ -419,9 +445,9 @@ if __name__ == "__main__":
             try:
                 fn()
                 print(name, "passed")
-            except AssertionError as e:
+            except Exception as e:
                 failed += 1
-                print(name, "FAILED:", e)
+                print(name, "FAILED:", type(e).__name__, e)
     _comparison_report()
     if failed:
         print(f"{failed} test(s) failed")

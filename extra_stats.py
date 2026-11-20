@@ -23,8 +23,16 @@ logs we already have. No new data pull is needed.
 Rules:
 - D1-vs-D1 games only (solver.is_d1_game), matching the
   ratings and the site's W-L.
-- An opponent with no rating (non-D1) counts as the mean Net
-  of the rated teams, so it neither helps nor hurts SOS.
+- Games with no stats (stats_missing) are excluded: the
+  solver skips them too (zero possessions), so counting them
+  here inflated GP and, for a 0-0 postponed game, counted the
+  away team as a winner. Unplayed 0-0 games are skipped
+  outright for the same reason.
+- A game whose opponent has no rating is skipped outright
+  for both teams (the ratings dict has no entry to average),
+  so it contributes nothing to Luck or SOS. The mean-Net
+  fallback only applies to a team with no counted D1 games
+  at all, whose SOS defaults to the mean Net.
 - A team with no non-conference games yet gets NCSOS None.
 
 Usage:
@@ -64,7 +72,10 @@ def compute_extra(ratings, games):
 
     ratings: solver output, team name -> values with adj_o,
     adj_d, net. games: consolidated season game records.
-    Returns team -> {"luck", "exp_wpct", "sos", "ncsos"}.
+    Returns team -> {"luck", "exp_wpct", "sos", "ncsos", "gp",
+    "wins"}. gp is the number of games counted here; it must
+    equal the solver's games for the same team, since both
+    count the same D1-vs-D1 games with real stats.
     """
     mean_net = _mean_net(ratings)
     wins = {name: 0 for name in ratings}
@@ -75,6 +86,14 @@ def compute_extra(ratings, games):
     nc_n = {name: 0 for name in ratings}
     for g in games:
         if not is_d1_game(g):
+            continue
+        # Stats-missing games are not in the solver either
+        # (zero possessions), so they must not count here.
+        # That also covers the postponed 0-0 games, which
+        # would otherwise count the away team as a winner.
+        if g.get("stats_missing"):
+            continue
+        if g.get("home_score") == 0 and g.get("away_score") == 0:
             continue
         home, away = g["home"], g["away"]
         if home not in ratings or away not in ratings:
@@ -101,6 +120,8 @@ def compute_extra(ratings, games):
                     if sos_n[name] else mean_net),
             "ncsos": (nc_sum[name] / nc_n[name]
                       if nc_n[name] else None),
+            "gp": gp[name],
+            "wins": wins[name],
         }
     return out
 

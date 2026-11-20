@@ -80,9 +80,18 @@ def estimate_home_court(ratings, league_o, league_t, games):
     (actual home margin - predicted margin at hc=0) per 100
     possessions; the estimate is the mean. The ratings are
     fitted with home_court=0, so the mean residual is the
-    home court effect, not a fitting artifact."""
+    home court effect, not a fitting artifact.
+
+    Neutral-site and overtime games are excluded (Nov 20,
+    2026): a neutral "home" team is usually the better seed,
+    so its residual is team quality, not a floor effect
+    (neutral home win rate 60.9% in 2024-25 despite no home
+    floor), and OT games carry extra possessions and a
+    different margin distribution."""
     implied = []
     for g in games:
+        if g.get("neutral_site") or g.get("overtime"):
+            continue
         actual = g["home_score"] - g["away_score"]
         pred0 = margin_model(ratings, league_o, league_t, g, 0.0)
         poss = expected_poss(ratings, g["home"], g["away"], league_t)
@@ -133,7 +142,9 @@ def margin_model(ratings, league_o, league_t, g, home_court):
     oh, dh, _ = _rating(ratings, g["home"], league_o, league_t)
     oa, da, _ = _rating(ratings, g["away"], league_o, league_t)
     poss = expected_poss(ratings, g["home"], g["away"], league_t)
-    per_100 = (oh + da - league_o) - (oa + dh - league_o) + home_court
+    # No home court on a neutral floor, same as predict.py.
+    hc = 0.0 if g.get("neutral_site") else home_court
+    per_100 = (oh + da - league_o) - (oa + dh - league_o) + hc
     return per_100 * poss / 100.0
 
 
@@ -147,7 +158,10 @@ def margin_rubric_literal(ratings, league_o, league_t, g, home_court):
     oh, dh, _ = _rating(ratings, g["home"], league_o, league_t)
     oa, da, _ = _rating(ratings, g["away"], league_o, league_t)
     poss = expected_poss(ratings, g["home"], g["away"], league_t)
-    per_100 = (oh - da) - (oa - dh) + home_court
+    # No home court on a neutral floor, same as margin_model,
+    # so the diagnostic gets the same treatment as the headline.
+    hc = 0.0 if g.get("neutral_site") else home_court
+    per_100 = (oh - da) - (oa - dh) + hc
     return per_100 * poss / 100.0
 
 
@@ -167,7 +181,9 @@ def margin_net(ratings, league_o, league_t, g, home_court):
     roh, rdh = _raw_rating(ratings, g["home"], league_o)
     roa, rda = _raw_rating(ratings, g["away"], league_o)
     poss = expected_poss(ratings, g["home"], g["away"], league_t)
-    return ((roh - rdh) - (roa - rda) + home_court) * poss / 100.0
+    # No home court on a neutral floor, same as margin_model.
+    hc = 0.0 if g.get("neutral_site") else home_court
+    return ((roh - rdh) - (roa - rda) + hc) * poss / 100.0
 
 
 def fit_logistic(margins, outcomes, iters=100):
@@ -207,7 +223,8 @@ def win_prob(margin, a, b):
 
 
 def cross_fitted_margins(fit_games, margin_fn, solver_home_court, hc,
-                         prior_weight=300.0):
+                         prior_weight=300.0, margin_cap=None,
+                         margin_cap_per_poss=None):
     """(margin, outcome) pairs with no in-sample leakage.
 
     Split the fit season chronologically in half. Ratings fit
@@ -226,6 +243,8 @@ def cross_fitted_margins(fit_games, margin_fn, solver_home_court, hc,
     for train, test in ((first, second), (second, first)):
         r, lo, lt, _ = solve(train, home_court=solver_home_court,
                              prior_weight=prior_weight,
+                             margin_cap=margin_cap,
+                             margin_cap_per_poss=margin_cap_per_poss,
                              return_info=True)
         for g in test:
             out.append((margin_fn(r, lo, lt, g, hc),
@@ -258,11 +277,12 @@ def score(probs, outcomes):
 
 
 def run(solver_home_court=0.0, calibration="crossfit",
-        prior_weight=300.0):
+        prior_weight=300.0, margin_cap=None, margin_cap_per_poss=None):
     fit_games = played_d1(load_games(FIT_SEASON))
     test_games = played_d1(load_games(TEST_SEASON))
     ratings, league_o, league_t, info = solve(
         load_games(FIT_SEASON), prior_weight=prior_weight,
+        margin_cap=margin_cap, margin_cap_per_poss=margin_cap_per_poss,
         return_info=True)
     print(f"Fit: {FIT_SEASON}, {info['n_games']} games, "
           f"{info['n_teams']} teams, league OffEff {league_o:.1f}, "
@@ -291,7 +311,9 @@ def run(solver_home_court=0.0, calibration="crossfit",
     if solver_home_court:
         ratings, league_o, league_t, info = solve(
             load_games(FIT_SEASON), home_court=solver_home_court,
-            prior_weight=prior_weight, return_info=True)
+            prior_weight=prior_weight, margin_cap=margin_cap,
+            margin_cap_per_poss=margin_cap_per_poss,
+            return_info=True)
         print(f"Fit ratings re-solved with solver home court "
               f"{solver_home_court} pts/100 poss")
     def predictor_logistic(margin_fn):
@@ -308,7 +330,8 @@ def run(solver_home_court=0.0, calibration="crossfit",
         if calibration == "crossfit":
             pairs = cross_fitted_margins(
                 fit_games, margin_fn, solver_home_court, hc,
-                prior_weight=prior_weight)
+                prior_weight=prior_weight, margin_cap=margin_cap,
+                margin_cap_per_poss=margin_cap_per_poss)
             return fit_logistic([m for m, _ in pairs],
                                 [y for _, y in pairs])
         margins = [margin_fn(ratings, league_o, league_t, g, hc)
@@ -351,6 +374,8 @@ def run(solver_home_court=0.0, calibration="crossfit",
     return {"home_court": hc, "logistic": (a, b),
             "solver_home_court": solver_home_court,
             "prior_weight": prior_weight,
+            "margin_cap": margin_cap,
+            "margin_cap_per_poss": margin_cap_per_poss,
             "calibration": calibration,
             "home_rate_fit": home_rate_fit,
             "home_rate_test": home_rate_test,
@@ -364,11 +389,18 @@ def report(res):
     lines = []
     lines.append(f"# Backtest: fit {FIT_SEASON}, predict {TEST_SEASON}")
     lines.append("")
+    cap_note = ""
+    if res["margin_cap"] is not None:
+        cap_note = ("; margins capped at +/-"
+                    f"{res['margin_cap']:.0f} pts")
+    if res.get("margin_cap_per_poss") is not None:
+        cap_note += (f"; margins capped at +/-"
+                     f"{res['margin_cap_per_poss']:.2f} pts/poss")
     lines.append(f"Fit on {res['n_fit']} {FIT_SEASON} games "
                  f"(league-average prior, no 2023-24 data exists for "
                  f"a real prior; prior weight "
-                 f"{res['prior_weight']:.0f} possessions). Solver "
-                 f"home court "
+                 f"{res['prior_weight']:.0f} possessions{cap_note}). "
+                 f"Solver home court "
                  f"{res['solver_home_court']:.2f} pts/100 poss inside "
                  f"the fit. Prediction home court "
                  f"{res['home_court']:.2f} pts/100 poss, estimated "
@@ -514,10 +546,19 @@ def main():
                              "(default 300.0, the published "
                              "baseline; lower lets ratings spread "
                              "out more)")
+    parser.add_argument("--blowout-cap", type=float, default=None,
+                        help="cap final margins at +/-cap points "
+                             "before solving (default: no cap)")
+    parser.add_argument("--margin-cap-per-poss", type=float, default=None,
+                        help="cap final margins at +/-cap points per "
+                             "possession before solving (default: no "
+                             "per-possession cap)")
     args = parser.parse_args()
     res = run(solver_home_court=args.solver_home_court,
               calibration=args.calibration,
-              prior_weight=args.prior_weight)
+              prior_weight=args.prior_weight,
+              margin_cap=args.blowout_cap,
+              margin_cap_per_poss=args.margin_cap_per_poss)
     text = report(res)
     print(text)
     out = HERE / args.out

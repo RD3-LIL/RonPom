@@ -72,7 +72,11 @@ to score about h more and allow about h less, per 100. The
 default is 0.0 because the prototype data cannot identify it
 (1-2 games per team, almost every team at home in its first
 games) and a hidden nonzero value would silently tilt every
-rating. Pass it explicitly if you want it on.
+rating. Pass it explicitly if you want it on. Neutral-site
+games (neutral_site true) get no home-court term even when
+home_court is nonzero, same as predict.py: the designated
+"home" team on a neutral floor is usually the better seed,
+not a team with a floor advantage.
 
 What v2 fixes vs v1, and what it does not fix
 ---------------------------------------------
@@ -126,6 +130,17 @@ NON_D1 = {
 
 DEFAULT_PRIOR_WEIGHT = 300.0  # possessions, about 4.3 games at 70 poss/game
 DEFAULT_DAMPING = 0.5
+# Home court stays 0.0 (off) in the solver. Nov 20, 2026: the
+# re-estimated home court (5.33 pts/100 poss, neutral-site and
+# OT games excluded) was tested inside the solver against the
+# 0.0 baseline on the 2024-25 fit / 2025-26 test backtest and
+# lost on Brier and log loss (0.2124 / 0.6132 vs 0.2102 /
+# 0.6074), the same verdict as the Nov 10 test at every value
+# tried. Consequence, stated plainly: published ratings are
+# home-schedule-biased early in the season, because teams play
+# most of their first games at home and no home-court effect
+# is removed from the ratings. Home court lives only in the
+# prediction step (predict.py), not in the ratings.
 DEFAULT_HOME_COURT = 0.0
 DEFAULT_MAX_ITER = 500
 DEFAULT_TOL = 1e-6
@@ -182,9 +197,92 @@ def _normalize_prior_entry(entry):
     return prior_o, prior_d, prior_t, weight
 
 
+def cap_game_margins(games, cap):
+    """Games with final margins capped at +/-cap points.
+
+    A blowout carries less information about the true quality
+    gap than the score suggests: benches clear, teams stop
+    trying. So a win by more than cap counts as a win by cap,
+    with the adjustment split evenly between the two teams
+    (winner's score down by half the excess, loser's up by
+    half), keeping total points and the winner unchanged.
+    Possessions come from the boxscore stats, so they are
+    untouched; only the efficiencies move. Returns new game
+    dicts; the caller's games are never modified.
+
+    Experiment Nov 20, 2026 (comparisons/cap_experiment_
+    2026-11-20.md): caps of 20, 15, and a per-possession cap
+    of 0.30 were tested on the 2024-25 fit / 2025-26 test
+    backtest. All three lost to no-cap on Brier and log loss
+    and won only spread MAE by 0.04 points, so no cap is live.
+    """
+    if cap <= 0:
+        raise ValueError("margin cap must be > 0")
+    out = []
+    for g in games:
+        margin = g["home_score"] - g["away_score"]
+        if abs(margin) <= cap:
+            out.append(g)
+            continue
+        excess = (abs(margin) - cap) / 2.0
+        capped = dict(g)
+        if margin > 0:
+            capped["home_score"] = g["home_score"] - excess
+            capped["away_score"] = g["away_score"] + excess
+        else:
+            capped["home_score"] = g["home_score"] + excess
+            capped["away_score"] = g["away_score"] - excess
+        out.append(capped)
+    return out
+
+
+def cap_game_margins_per_poss(games, cap_pp):
+    """Games with final margins capped at +/-cap_pp points per
+    possession.
+
+    Same idea as cap_game_margins, but the cap scales with the
+    game's pace: a 25-point win in a 60-possession grinder is
+    a bigger statement than the same margin in an 85-possession
+    track meet, so the cap is cap_pp * poss points. The
+    adjustment is split evenly between the two teams, keeping
+    total points and the winner unchanged, and possessions
+    (from the boxscore stats) are untouched. Returns new game
+    dicts; the caller's games are never modified. Games with
+    no usable possessions are returned unchanged.
+    """
+    if cap_pp <= 0:
+        raise ValueError("per-possession margin cap must be > 0")
+    out = []
+    for g in games:
+        margin = g["home_score"] - g["away_score"]
+        try:
+            poss = (possessions(g["home_stats"])
+                    + possessions(g["away_stats"])) / 2
+        except (KeyError, TypeError):
+            poss = 0
+        if poss <= 0:
+            out.append(g)
+            continue
+        cap = cap_pp * poss
+        if abs(margin) <= cap:
+            out.append(g)
+            continue
+        excess = (abs(margin) - cap) / 2.0
+        capped = dict(g)
+        if margin > 0:
+            capped["home_score"] = g["home_score"] - excess
+            capped["away_score"] = g["away_score"] + excess
+        else:
+            capped["home_score"] = g["home_score"] + excess
+            capped["away_score"] = g["away_score"] - excess
+        out.append(capped)
+    return out
+
+
 def solve(games, prior=None, prior_weight=DEFAULT_PRIOR_WEIGHT,
           home_court=DEFAULT_HOME_COURT, damping=DEFAULT_DAMPING,
           max_iter=DEFAULT_MAX_ITER, tol=DEFAULT_TOL,
+          margin_cap=None, margin_cap_per_poss=None,
           return_info=False):
     """Solve AdjO/AdjD/AdjT by damped Gauss-Seidel with a prior.
 
@@ -199,6 +297,14 @@ def solve(games, prior=None, prior_weight=DEFAULT_PRIOR_WEIGHT,
     prior_weight: global prior strength, in possessions.
         A per-team "prior_weight" in a prior entry overrides it
         for that team.
+    margin_cap: cap final margins at +/-cap points before
+        solving (see cap_game_margins). None (default) means
+        no cap: every point counts at full value.
+    margin_cap_per_poss: cap final margins at +/-cap points
+        per possession before solving (see
+        cap_game_margins_per_poss). None (default) means no
+        per-possession cap. If both caps are given, the point
+        cap applies first, then the per-possession cap.
     home_court: points per 100 possessions, default 0.0 (off).
     damping: relaxation factor, 0 < damping <= 1. 0.5 is the
         default; 1.0 is plain Gauss-Seidel and can oscillate
@@ -217,6 +323,10 @@ def solve(games, prior=None, prior_weight=DEFAULT_PRIOR_WEIGHT,
         raise ValueError("prior_weight must be >= 0")
     if not 0 < damping <= 1:
         raise ValueError("damping must be in (0, 1]")
+    if margin_cap is not None:
+        games = cap_game_margins(games, margin_cap)
+    if margin_cap_per_poss is not None:
+        games = cap_game_margins_per_poss(games, margin_cap_per_poss)
 
     # Per-team raw totals, same definitions as ratings.py.
     teams = {}
@@ -225,7 +335,16 @@ def solve(games, prior=None, prior_weight=DEFAULT_PRIOR_WEIGHT,
     tempo_obs = {}  # team -> [(opp, game_poss)]
     skipped_zero_poss = 0
     skipped_non_d1 = 0
+    skipped_unplayed = 0
     for g in games:
+        if g["home_score"] == 0 and g["away_score"] == 0:
+            # Not played yet (scheduled, postponed): no result
+            # and no efficiency information, even if a stats
+            # block is present. Skip before possessions, so a
+            # 0-0 record with stale stats can never inject
+            # zero-efficiency observations.
+            skipped_unplayed += 1
+            continue
         if not is_d1_game(g):
             # KenPom rates D1 teams only; non-D1 games are excluded.
             skipped_non_d1 += 1
@@ -237,7 +356,12 @@ def solve(games, prior=None, prior_weight=DEFAULT_PRIOR_WEIGHT,
             # efficiency information. Skip it, never crash on it.
             skipped_zero_poss += 1
             continue
+        # Neutral-site games have no home floor: the home-court
+        # term is zero for them, same as predict.py does. This
+        # only matters when home_court is nonzero (default 0.0).
+        neutral = bool(g.get("neutral_site"))
         for side, opp_side, s in (("home", "away", 1), ("away", "home", -1)):
+            s_eff = 0 if neutral else s
             name = g[side]
             opp_name = g[opp_side]
             pts = g[f"{side}_score"]
@@ -252,8 +376,8 @@ def solve(games, prior=None, prior_weight=DEFAULT_PRIOR_WEIGHT,
             t["pts"] += pts
             t["opp_pts"] += opp_pts
             t["opponents"].append(opp_name)
-            off_obs.setdefault(name, []).append((opp_name, eff, poss, s))
-            def_obs.setdefault(opp_name, []).append((name, eff, poss, s))
+            off_obs.setdefault(name, []).append((opp_name, eff, poss, s_eff))
+            def_obs.setdefault(opp_name, []).append((name, eff, poss, s_eff))
             tempo_obs.setdefault(name, []).append((opp_name, poss))
             tempo_obs.setdefault(opp_name, []).append((name, poss))
 
@@ -262,7 +386,8 @@ def solve(games, prior=None, prior_weight=DEFAULT_PRIOR_WEIGHT,
                 "prior_weight": prior_weight, "home_court": home_court,
                 "damping": damping, "n_games": 0, "n_teams": 0,
                 "n_skipped_zero_poss": skipped_zero_poss,
-                "n_skipped_non_d1": skipped_non_d1}
+                "n_skipped_non_d1": skipped_non_d1,
+                "n_skipped_unplayed": skipped_unplayed}
         if return_info:
             return teams, 0.0, 0.0, info
         return teams, 0.0, 0.0
@@ -355,10 +480,12 @@ def solve(games, prior=None, prior_weight=DEFAULT_PRIOR_WEIGHT,
             "max_change": max_change, "prior_weight": prior_weight,
             "home_court": home_court, "damping": damping,
             "league_o": league_o, "league_t": league_t,
-            "n_games": len(games) - skipped_zero_poss - skipped_non_d1,
+            "n_games": len(games) - skipped_zero_poss - skipped_non_d1
+                         - skipped_unplayed,
             "n_teams": len(teams),
             "n_skipped_zero_poss": skipped_zero_poss,
-            "n_skipped_non_d1": skipped_non_d1}
+            "n_skipped_non_d1": skipped_non_d1,
+            "n_skipped_unplayed": skipped_unplayed}
     if return_info:
         return teams, league_o, league_t, info
     return teams, league_o, league_t

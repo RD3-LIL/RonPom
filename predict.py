@@ -26,6 +26,23 @@ tip-off (the day before, 0 of 67 games had one), so the market
 column is often empty for games two or three days out. That is
 missing data, not a bug.
 
+Each prediction row therefore carries market provenance, so
+the page (and any reader) can tell a missing line from a
+stale one instead of showing a blank Edge column:
+  - market_captured_at: UTC ISO timestamp of the scoreboard
+    fetch that produced the line (or the run time when the
+    row was built without a fetch stamp). Empty only when no
+    line was captured at all.
+  - market_coverage: fraction of rows in this file that have
+    a market line, 0.0 to 1.0, the same value on every row.
+    When it is 0.0 the file has no market lines at all, so the
+    Edge column must be hidden or flagged as unavailable, not
+    shown blank.
+  - edge_available: True when this row has a market line and
+    edge is a real number, False otherwise. Edge is a
+    model-minus-market disagreement, not a betting pick: do
+    not present it as one, and there is no best-bets view.
+
 Usage:
     python3 predict.py [--days 3] [--date YYYYMMDD] [--out FILE.csv]
 """
@@ -166,7 +183,13 @@ def fetch_upcoming(start_date, days):
         except Exception as e:
             print(f"{ds}: scoreboard failed: {e}", flush=True)
             continue
-        games.extend(parse_upcoming(payload, ds))
+        # Stamp the fetch time on every game from this date, so
+        # a market line in the output can be traced to when it
+        # was captured, not just to the game date.
+        captured_at = datetime.now(timezone.utc).isoformat()
+        for g in parse_upcoming(payload, ds):
+            g["market_captured_at"] = captured_at
+            games.append(g)
         time.sleep(SCOREBOARD_SLEEP)
     return games
 
@@ -196,6 +219,14 @@ def predict_all(ratings, league_o, league_t, games,
         ranks = rank_map(ratings)
     if history is None:
         history = {}
+    # File-level market coverage, stamped on every row so a
+    # reader of one row can tell whether the file had any
+    # market lines at all. Rows built without a fetch (tests,
+    # or a hand-built game list) fall back to the run time.
+    run_captured_at = datetime.now(timezone.utc).isoformat()
+    with_market = sum(1 for g in games
+                      if g.get("market_spread") is not None)
+    coverage = (with_market / len(games)) if games else 0.0
     rows = []
     for g in games:
         margin = predict_margin(ratings, league_o, league_t, g)
@@ -218,6 +249,11 @@ def predict_all(ratings, league_o, league_t, games,
             # home margin is -market. Edge = model margin minus
             # implied market margin = margin + market.
             "edge": (margin + market) if market is not None else None,
+            "market_captured_at": (
+                (g.get("market_captured_at") or run_captured_at)
+                if market is not None else ""),
+            "market_coverage": coverage,
+            "edge_available": market is not None,
             "trap": trap["trap"],
             "trap_score": trap["score"],
             "trap_flags": ";".join(trap["flags"]),
@@ -244,6 +280,10 @@ def print_table(rows):
     n_trap = sum(1 for r in rows if r.get("trap"))
     print(f"{len(rows)} upcoming D1 games, {with_market} with a "
           f"market line so far, {n_trap} trap games")
+    if rows and with_market == 0:
+        print("No market lines in this file (coverage 0.0): "
+              "the Edge column is unavailable, hide or flag it "
+              "instead of showing it blank.")
     print(f"{'Tip-off':<14} {'Matchup':<44} {'Spread':<20} "
           f"{'Home win%':<9} {'Market':<9} {'Edge':<6} {'Trap':<5}")
     for r in rows:
@@ -292,6 +332,8 @@ def main():
                 "date", "tipoff", "home", "away", "home_short",
                 "away_short", "neutral_site", "margin", "spread",
                 "home_win_prob", "market_spread", "edge",
+                "market_captured_at", "market_coverage",
+                "edge_available",
                 "trap", "trap_score", "trap_flags",
                 "trap_reasons", "trap_favorite"])
             writer.writeheader()
