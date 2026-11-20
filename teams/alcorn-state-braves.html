@@ -65,6 +65,8 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders td:nth-child(n+3) { text-align: right; }
 @media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
 .note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
 .warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
   border-radius: 6px; }
 footer { margin-top: 48px; color: #656d76; font-size: 14px;
@@ -74,18 +76,20 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>Alcorn State Braves</h1>
 <p class="subtitle">SWAC &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 3:06 PM CT · 1,070 events, 803 D1 games used</p>
 <section><h2>2026-27</h2>
-<p>Net rank #364 &middot; AdjO 91.7 (#362) &middot; AdjD 121.9 (#362) &middot; Net -30.2 &middot; AdjT 71.3 (#73) &middot; Luck -0.037 (#206) &middot; SOS 8.4 (#51) &middot; NCSOS 8.4 (#49) &middot; 0-6 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
+<p>Net rank #364 &middot; AdjO 91.8 (#362) &middot; AdjD 121.9 (#363) &middot; Net -30.2 &middot; AdjT 71.3 (#73) &middot; Luck -0.037 (#208) &middot; SOS 8.4 (#51) &middot; 0-6 (D1 games)</p>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="ole-miss-rebels.html">Ole Miss Rebels</a></td><td>A</td><td>L</td><td>58-99</td></tr>
 <tr><td>11/05</td><td><a href="howard-bison.html">Howard Bison</a></td><td>H</td><td>L</td><td>83-94</td></tr>
 <tr><td>11/10</td><td><a href="murray-state-racers.html">Murray State Racers</a></td><td>A</td><td>L</td><td>57-94</td></tr>
 <tr><td>11/13</td><td><a href="tarleton-state-texans.html">Tarleton State Texans</a></td><td>A</td><td>L</td><td>69-73</td></tr>
 <tr><td>11/16</td><td><a href="maryland-terrapins.html">Maryland Terrapins</a></td><td>A</td><td>L</td><td>57-117</td></tr>
 <tr><td>11/18</td><td><a href="missouri-tigers.html">Missouri Tigers</a></td><td>A</td><td>L</td><td>41-102</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Calvin Sirmans III</td><td>G</td><td>6</td><td>9.2</td><td>79.6</td><td>23.2</td><td>56.7</td><td>0.6</td></tr>
 <tr><td>Trey Thomas</td><td>G</td><td>5</td><td>16.0</td><td>72.3</td><td>37.4</td><td>56.2</td><td>-4.2</td></tr>
 <tr><td>Jahseem Felton</td><td>G</td><td>6</td><td>4.0</td><td>48.1</td><td>19.4</td><td>48.8</td><td>-4.3</td></tr>
@@ -97,16 +101,17 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Ethan Griffin</td><td>G</td><td>6</td><td>2.5</td><td>76.4</td><td>13.2</td><td>28.3</td><td>1.0</td></tr>
 <tr><td>Josh Powell</td><td>G</td><td>6</td><td>4.5</td><td>95.1</td><td>19.3</td><td>27.9</td><td>0.6</td></tr>
 <tr><td>Nigel Thomas</td><td>F</td><td>6</td><td>1.2</td><td>47.8</td><td>10.8</td><td>25.8</td><td>-1.1</td></tr>
-<tr><td>Christian Richardson</td><td>C</td><td>5</td><td>3.4</td><td>94.0</td><td>15.9</td><td>21.7</td><td>-0.0</td></tr>
+<tr><td>Christian Richardson</td><td>C</td><td>5</td><td>3.4</td><td>94.0</td><td>15.9</td><td>21.7</td><td>0.0</td></tr>
 <tr><td>Jaylin Craine</td><td>G</td><td>4</td><td>1.8</td><td>44.1</td><td>16.1</td><td>18.8</td><td>-1.8</td></tr>
 <tr><td>Jayan Walker</td><td>F</td><td>2</td><td>2.0</td><td>80.0</td><td>19.0</td><td>5.0</td><td>0.5</td></tr>
 <tr><td>Cameron Zeigler</td><td>G</td><td>2</td><td>0.5</td><td>25.8</td><td>22.1</td><td>3.3</td><td>-0.9</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
 </section>
 <section><h2>2025-26</h2>
+<p class="datestamp">Data through Apr 6 games: 6,318 events, 5,752 D1 games used.</p>
 <p>Net rank #357 &middot; AdjO 96.1 (#355) &middot; AdjD 118.9 (#345) &middot; Net -22.8 &middot; AdjT 68.3 (#171) &middot; Luck +0.201 (#31) &middot; SOS -7.1 (#321) &middot; NCSOS 8.1 (#30) &middot; 9-23 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/04</td><td><a href="florida-state-seminoles.html">Florida State Seminoles</a></td><td>A</td><td>L</td><td>76-108</td></tr>
 <tr><td>11/06</td><td><a href="south-alabama-jaguars.html">South Alabama Jaguars</a></td><td>A</td><td>L</td><td>70-76</td></tr>
 <tr><td>11/08</td><td><a href="minnesota-golden-gophers.html">Minnesota Golden Gophers</a></td><td>A</td><td>L</td><td>50-95</td></tr>
@@ -139,23 +144,24 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/05</td><td><a href="arkansas-pine-bluff-golden-lions.html">Arkansas-Pine Bluff Golden Lions</a></td><td>H</td><td>L</td><td>48-83</td></tr>
 <tr><td>03/09</td><td><a href="alabama-state-hornets.html">Alabama State Hornets</a></td><td>N</td><td>W</td><td>77-65</td></tr>
 <tr><td>03/10</td><td><a href="prairie-view-a-m-panthers.html">Prairie View A&amp;M Panthers</a></td><td>N</td><td>L</td><td>56-65</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Nick Woodard</td><td>SF</td><td>32</td><td>8.6</td><td>82.5</td><td>18.6</td><td>71.6</td><td>0.1</td></tr>
 <tr><td>Shane Lancaster</td><td>G</td><td>32</td><td>10.8</td><td>101.7</td><td>19.1</td><td>71.6</td><td>2.5</td></tr>
 <tr><td>Jameel Morris</td><td>G</td><td>30</td><td>11.2</td><td>88.7</td><td>21.9</td><td>69.1</td><td>1.8</td></tr>
 <tr><td>Tycen McDaniels</td><td>F</td><td>32</td><td>12.0</td><td>93.4</td><td>24.1</td><td>68.1</td><td>2.5</td></tr>
-<tr><td>Davian Williams</td><td>G</td><td>32</td><td>7.8</td><td>79.0</td><td>19.1</td><td>66.0</td><td>-0.0</td></tr>
+<tr><td>Davian Williams</td><td>G</td><td>32</td><td>7.8</td><td>79.0</td><td>19.1</td><td>66.0</td><td>0.0</td></tr>
 <tr><td>Omari Hamilton</td><td>F</td><td>32</td><td>7.8</td><td>91.3</td><td>20.5</td><td>53.5</td><td>0.7</td></tr>
 <tr><td>Travis Roberts</td><td>SG</td><td>31</td><td>3.6</td><td>75.5</td><td>14.7</td><td>40.1</td><td>-0.3</td></tr>
 <tr><td>Bryson Calamese</td><td>PG</td><td>31</td><td>3.0</td><td>67.5</td><td>20.7</td><td>27.0</td><td>-0.6</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <section><h2>2024-25</h2>
+<p class="datestamp">Data through Apr 7 games: 6,298 events, 5,759 D1 games used.</p>
 <p>Net rank #338 &middot; AdjO 97.6 (#336) &middot; AdjD 113.4 (#311) &middot; Net -15.9 &middot; AdjT 65.5 (#310) &middot; Luck +0.204 (#25) &middot; SOS -7.7 (#345) &middot; NCSOS 7.8 (#29) &middot; 11-20 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/04</td><td><a href="utah-utes.html">Utah Utes</a></td><td>A</td><td>L</td><td>59-100</td></tr>
 <tr><td>11/06</td><td><a href="utah-state-aggies.html">Utah State Aggies</a></td><td>A</td><td>L</td><td>46-101</td></tr>
 <tr><td>11/11</td><td><a href="tulane-green-wave.html">Tulane Green Wave</a></td><td>A</td><td>L</td><td>51-84</td></tr>
@@ -187,9 +193,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/06</td><td><a href="mississippi-valley-state-delta-devils.html">Mississippi Valley State Delta Devils</a></td><td>A</td><td>W</td><td>72-64</td></tr>
 <tr><td>03/08</td><td><a href="arkansas-pine-bluff-golden-lions.html">Arkansas-Pine Bluff Golden Lions</a></td><td>A</td><td>W</td><td>65-63</td></tr>
 <tr><td>03/13</td><td><a href="bethune-cookman-wildcats.html">Bethune-Cookman Wildcats</a></td><td>N</td><td>L</td><td>60-69</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Marcus Tankersley</td><td>G</td><td>32</td><td>10.6</td><td>86.3</td><td>22.7</td><td>69.5</td><td>-0.6</td></tr>
 <tr><td>Jalyke Gaines-Wyatt</td><td>G</td><td>30</td><td>11.5</td><td>80.0</td><td>25.8</td><td>67.3</td><td>-1.1</td></tr>
 <tr><td>Michael Pajeaud</td><td>G</td><td>29</td><td>6.7</td><td>77.3</td><td>15.8</td><td>63.8</td><td>1.3</td></tr>
@@ -200,7 +206,7 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Josh Mitchell</td><td>F</td><td>29</td><td>0.8</td><td>71.5</td><td>5.4</td><td>23.8</td><td>0.9</td></tr>
 <tr><td>Omari Hamilton</td><td>F</td><td>17</td><td>7.3</td><td>79.8</td><td>27.4</td><td>22.8</td><td>-0.9</td></tr>
 <tr><td>Kameron Foman</td><td>F</td><td>30</td><td>1.4</td><td>101.2</td><td>7.3</td><td>22.4</td><td>1.2</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <footer>
