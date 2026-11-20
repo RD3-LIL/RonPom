@@ -65,6 +65,8 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders td:nth-child(n+3) { text-align: right; }
 @media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
 .note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
 .warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
   border-radius: 6px; }
 footer { margin-top: 48px; color: #656d76; font-size: 14px;
@@ -74,33 +76,36 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>Merrimack Warriors</h1>
 <p class="subtitle">Metro &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 3:06 PM CT · 1,070 events, 803 D1 games used</p>
 <section><h2>2026-27</h2>
-<p>Net rank #247 &middot; AdjO 101.9 (#281) &middot; AdjD 109.2 (#178) &middot; Net -7.3 &middot; AdjT 64.4 (#363) &middot; Luck -0.112 (#253) &middot; SOS 0.6 (#164) &middot; NCSOS 0.6 (#164) &middot; 1-4 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
+<p>Net rank #247 &middot; AdjO 101.9 (#281) &middot; AdjD 109.2 (#178) &middot; Net -7.3 &middot; AdjT 64.4 (#363) &middot; Luck -0.112 (#253) &middot; SOS 0.6 (#165) &middot; 1-4 (D1 games)</p>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="app-state-mountaineers.html">App State Mountaineers</a></td><td>N</td><td>L</td><td>49-63</td></tr>
 <tr><td>11/05</td><td><a href="umass-lowell-river-hawks.html">UMass Lowell River Hawks</a></td><td>H</td><td>L</td><td>61-71</td></tr>
 <tr><td>11/08</td><td><a href="ualbany-great-danes.html">UAlbany Great Danes</a></td><td>A</td><td>W</td><td>73-60</td></tr>
 <tr><td>11/13</td><td><a href="florida-gators.html">Florida Gators</a></td><td>A</td><td>L</td><td>54-83</td></tr>
 <tr><td>11/18</td><td><a href="boston-university-terriers.html">Boston University Terriers</a></td><td>H</td><td>L</td><td>60-65</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>AJ Lesburt Jr.</td><td>G</td><td>5</td><td>14.6</td><td>100.8</td><td>23.9</td><td>87.0</td><td>2.4</td></tr>
 <tr><td>Denver Anglin</td><td>G</td><td>5</td><td>12.4</td><td>86.7</td><td>28.2</td><td>73.0</td><td>-1.0</td></tr>
 <tr><td>Todd Brogna</td><td>F</td><td>5</td><td>4.4</td><td>73.6</td><td>11.9</td><td>72.0</td><td>1.9</td></tr>
 <tr><td>Ayden Johnson</td><td>G</td><td>5</td><td>6.6</td><td>79.7</td><td>17.4</td><td>68.5</td><td>0.6</td></tr>
 <tr><td>Jeremiah Anderson</td><td>G</td><td>5</td><td>7.2</td><td>74.7</td><td>26.4</td><td>52.5</td><td>0.2</td></tr>
-<tr><td>Elijah Wilborn</td><td>F</td><td>5</td><td>5.2</td><td>73.5</td><td>22.9</td><td>44.5</td><td>-0.0</td></tr>
+<tr><td>Elijah Wilborn</td><td>F</td><td>5</td><td>5.2</td><td>73.5</td><td>22.9</td><td>44.5</td><td>0.0</td></tr>
 <tr><td>Jacob Moore</td><td>F</td><td>5</td><td>2.2</td><td>79.9</td><td>9.8</td><td>40.5</td><td>1.8</td></tr>
 <tr><td>Dylan Veillette</td><td>F</td><td>5</td><td>2.6</td><td>131.6</td><td>12.1</td><td>23.5</td><td>1.2</td></tr>
 <tr><td>JP Skoric</td><td>F</td><td>5</td><td>3.0</td><td>99.5</td><td>18.9</td><td>23.0</td><td>0.9</td></tr>
 <tr><td>Rocco Westfield</td><td>G</td><td>5</td><td>1.2</td><td>120.0</td><td>9.3</td><td>15.5</td><td>1.0</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
 </section>
 <section><h2>2025-26</h2>
+<p class="datestamp">Data through Apr 6 games: 6,318 events, 5,752 D1 games used.</p>
 <p>Net rank #186 &middot; AdjO 106.7 (#223) &middot; AdjD 108.0 (#143) &middot; Net -1.3 &middot; AdjT 64.7 (#348) &middot; Luck +0.210 (#26) &middot; SOS -4.8 (#275) &middot; NCSOS 0.8 (#180) &middot; 23-11 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/03</td><td><a href="south-dakota-state-jackrabbits.html">South Dakota State Jackrabbits</a></td><td>N</td><td>L</td><td>66-75</td></tr>
 <tr><td>11/06</td><td><a href="auburn-tigers.html">Auburn Tigers</a></td><td>A</td><td>L</td><td>57-95</td></tr>
 <tr><td>11/11</td><td><a href="tarleton-state-texans.html">Tarleton State Texans</a></td><td>A</td><td>L</td><td>62-76</td></tr>
@@ -135,21 +140,22 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/06</td><td><a href="sacred-heart-pioneers.html">Sacred Heart Pioneers</a></td><td>N</td><td>W</td><td>70-48</td></tr>
 <tr><td>03/08</td><td><a href="marist-red-foxes.html">Marist Red Foxes</a></td><td>N</td><td>W</td><td>58-57</td></tr>
 <tr><td>03/10</td><td><a href="siena-saints.html">Siena Saints</a></td><td>N</td><td>L</td><td>54-64</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Ernest Shelton</td><td>G</td><td>34</td><td>15.9</td><td>108.8</td><td>22.4</td><td>92.1</td><td>3.7</td></tr>
 <tr><td>Kevair Kennedy</td><td>G</td><td>34</td><td>18.4</td><td>95.6</td><td>29.5</td><td>92.0</td><td>2.9</td></tr>
 <tr><td>Tye Dorset</td><td>G</td><td>34</td><td>11.7</td><td>97.1</td><td>18.7</td><td>90.8</td><td>3.2</td></tr>
 <tr><td>Todd Brogna</td><td>F</td><td>34</td><td>6.1</td><td>84.6</td><td>13.8</td><td>73.1</td><td>2.7</td></tr>
 <tr><td>Andrés Marrero</td><td>G</td><td>34</td><td>7.9</td><td>101.1</td><td>16.1</td><td>68.5</td><td>2.4</td></tr>
 <tr><td>KC Ugwuakazi</td><td>F</td><td>32</td><td>5.2</td><td>101.9</td><td>15.1</td><td>44.4</td><td>4.2</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <section><h2>2024-25</h2>
+<p class="datestamp">Data through Apr 7 games: 6,298 events, 5,759 D1 games used.</p>
 <p>Net rank #182 &middot; AdjO 100.4 (#299) &middot; AdjD 102.2 (#80) &middot; Net -1.9 &middot; AdjT 65.4 (#315) &middot; Luck +0.098 (#106) &middot; SOS -4.4 (#272) &middot; NCSOS 4.8 (#57) &middot; 18-15 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/09</td><td><a href="vermont-catamounts.html">Vermont Catamounts</a></td><td>H</td><td>W</td><td>65-51</td></tr>
 <tr><td>11/13</td><td><a href="vcu-rams.html">VCU Rams</a></td><td>A</td><td>L</td><td>42-63</td></tr>
 <tr><td>11/17</td><td><a href="princeton-tigers.html">Princeton Tigers</a></td><td>H</td><td>L</td><td>57-68</td></tr>
@@ -183,9 +189,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/06</td><td><a href="marist-red-foxes.html">Marist Red Foxes</a></td><td>A</td><td>W</td><td>75-53</td></tr>
 <tr><td>03/12</td><td><a href="sacred-heart-pioneers.html">Sacred Heart Pioneers</a></td><td>N</td><td>W</td><td>66-62</td></tr>
 <tr><td>03/14</td><td><a href="mount-st-marys-mountaineers.html">Mount St. Mary&#x27;s Mountaineers</a></td><td>N</td><td>L</td><td>55-57</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Adam Clark</td><td>G</td><td>33</td><td>19.8</td><td>87.1</td><td>34.6</td><td>92.5</td><td>2.3</td></tr>
 <tr><td>Sean Trumper</td><td>F</td><td>33</td><td>8.5</td><td>89.4</td><td>16.4</td><td>81.7</td><td>2.5</td></tr>
 <tr><td>Devon Savage</td><td>G</td><td>33</td><td>9.0</td><td>98.6</td><td>16.8</td><td>76.4</td><td>2.4</td></tr>
@@ -193,7 +199,7 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Bryan Etumnu</td><td>F</td><td>32</td><td>8.4</td><td>109.7</td><td>14.2</td><td>74.2</td><td>5.5</td></tr>
 <tr><td>Tye Dorset</td><td>G</td><td>33</td><td>2.9</td><td>91.5</td><td>12.0</td><td>37.7</td><td>0.9</td></tr>
 <tr><td>Malik Edmead</td><td>G</td><td>30</td><td>4.0</td><td>73.8</td><td>24.1</td><td>28.8</td><td>0.2</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <footer>

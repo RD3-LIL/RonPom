@@ -65,6 +65,8 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders td:nth-child(n+3) { text-align: right; }
 @media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
 .note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
 .warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
   border-radius: 6px; }
 footer { margin-top: 48px; color: #656d76; font-size: 14px;
@@ -74,16 +76,18 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>Le Moyne Dolphins</h1>
 <p class="subtitle">NEC &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 3:06 PM CT · 1,070 events, 803 D1 games used</p>
 <section><h2>2026-27</h2>
-<p>Net rank #301 &middot; AdjO 100.4 (#302) &middot; AdjD 113.6 (#284) &middot; Net -13.2 &middot; AdjT 70.1 (#124) &middot; Luck +0.056 (#146) &middot; SOS 3.2 (#126) &middot; NCSOS 3.2 (#125) &middot; 1-3 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
+<p>Net rank #301 &middot; AdjO 100.4 (#302) &middot; AdjD 113.6 (#285) &middot; Net -13.3 &middot; AdjT 70.1 (#126) &middot; Luck +0.056 (#146) &middot; SOS 3.2 (#125) &middot; 1-3 (D1 games)</p>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="nebraska-cornhuskers.html">Nebraska Cornhuskers</a></td><td>A</td><td>L</td><td>64-106</td></tr>
 <tr><td>11/05</td><td><a href="creighton-bluejays.html">Creighton Bluejays</a></td><td>A</td><td>L</td><td>55-83</td></tr>
 <tr><td>11/14</td><td><a href="manhattan-jaspers.html">Manhattan Jaspers</a></td><td>H</td><td>W</td><td>76-62</td></tr>
 <tr><td>11/17</td><td><a href="evansville-purple-aces.html">Evansville Purple Aces</a></td><td>A</td><td>L</td><td>65-79</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Trevor Roe</td><td>F</td><td>5</td><td>12.0</td><td>84.7</td><td>26.2</td><td>66.5</td><td>1.1</td></tr>
 <tr><td>Jayden Teat</td><td>G</td><td>5</td><td>7.6</td><td>58.9</td><td>24.4</td><td>65.0</td><td>-2.0</td></tr>
 <tr><td>Leandro Gysel</td><td>G</td><td>5</td><td>6.2</td><td>80.0</td><td>15.4</td><td>62.0</td><td>0.1</td></tr>
@@ -99,12 +103,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Isaiah Brown</td><td>F</td><td>1</td><td>7.0</td><td>116.7</td><td>19.7</td><td>7.5</td><td>2.8</td></tr>
 <tr><td>Cullen Schreiner</td><td>F</td><td>2</td><td>3.5</td><td>175.0</td><td>17.9</td><td>5.5</td><td>2.8</td></tr>
 <tr><td>Isaiah Brown</td><td>G</td><td>1</td><td>4.0</td><td>106.4</td><td>18.5</td><td>5.0</td><td>0.7</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
 </section>
 <section><h2>2025-26</h2>
+<p class="datestamp">Data through Apr 6 games: 6,318 events, 5,752 D1 games used.</p>
 <p>Net rank #285 &middot; AdjO 103.1 (#294) &middot; AdjD 113.1 (#254) &middot; Net -10.0 &middot; AdjT 69.4 (#104) &middot; Luck +0.196 (#33) &middot; SOS -9.3 (#349) &middot; NCSOS -3.0 (#305) &middot; 14-17 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/06</td><td><a href="xavier-musketeers.html">Xavier Musketeers</a></td><td>A</td><td>L</td><td>69-74</td></tr>
 <tr><td>11/09</td><td><a href="bowling-green-falcons.html">Bowling Green Falcons</a></td><td>A</td><td>L</td><td>60-83</td></tr>
 <tr><td>11/13</td><td><a href="massachusetts-minutemen.html">Massachusetts Minutemen</a></td><td>A</td><td>L</td><td>80-94</td></tr>
@@ -136,9 +141,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>02/26</td><td><a href="fairleigh-dickinson-knights.html">Fairleigh Dickinson Knights</a></td><td>H</td><td>W</td><td>76-59</td></tr>
 <tr><td>02/28</td><td><a href="new-haven-chargers.html">New Haven Chargers</a></td><td>A</td><td>L</td><td>59-66</td></tr>
 <tr><td>03/04</td><td><a href="stonehill-skyhawks.html">Stonehill Skyhawks</a></td><td>H</td><td>L</td><td>71-81</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Trent Mosquera</td><td>G</td><td>32</td><td>13.5</td><td>93.5</td><td>23.6</td><td>79.6</td><td>2.7</td></tr>
 <tr><td>Deng Garang</td><td>G</td><td>32</td><td>10.8</td><td>96.7</td><td>19.2</td><td>75.2</td><td>2.3</td></tr>
 <tr><td>Jakai Sanders</td><td>G</td><td>29</td><td>10.7</td><td>86.7</td><td>21.3</td><td>67.8</td><td>1.1</td></tr>
@@ -147,12 +152,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Jakob Blakley</td><td>G</td><td>32</td><td>4.2</td><td>91.4</td><td>14.8</td><td>40.2</td><td>0.1</td></tr>
 <tr><td>Samuel Hincapie</td><td>G</td><td>30</td><td>4.9</td><td>89.5</td><td>18.4</td><td>36.5</td><td>0.2</td></tr>
 <tr><td>Eli Greenberg</td><td>G</td><td>31</td><td>2.6</td><td>68.6</td><td>14.1</td><td>34.0</td><td>-0.1</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <section><h2>2024-25</h2>
+<p class="datestamp">Data through Apr 7 games: 6,298 events, 5,759 D1 games used.</p>
 <p>Net rank #350 &middot; AdjO 101.5 (#282) &middot; AdjD 119.9 (#359) &middot; Net -18.4 &middot; AdjT 70.2 (#57) &middot; Luck +0.105 (#98) &middot; SOS -7.4 (#340) &middot; NCSOS -1.5 (#246) &middot; 7-23 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/04</td><td><a href="syracuse-orange.html">Syracuse Orange</a></td><td>A</td><td>L</td><td>82-86</td></tr>
 <tr><td>11/06</td><td><a href="cal-state-northridge-matadors.html">Cal State Northridge Matadors</a></td><td>H</td><td>L</td><td>75-97</td></tr>
 <tr><td>11/13</td><td><a href="uconn-huskies.html">UConn Huskies</a></td><td>A</td><td>L</td><td>49-90</td></tr>
@@ -183,9 +189,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>02/27</td><td><a href="central-connecticut-blue-devils.html">Central Connecticut Blue Devils</a></td><td>A</td><td>L</td><td>75-84</td></tr>
 <tr><td>03/01</td><td><a href="stonehill-skyhawks.html">Stonehill Skyhawks</a></td><td>A</td><td>L</td><td>79-85</td></tr>
 <tr><td>03/05</td><td><a href="central-connecticut-blue-devils.html">Central Connecticut Blue Devils</a></td><td>A</td><td>L</td><td>67-86</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>AJ Dancler</td><td>G</td><td>30</td><td>15.1</td><td>96.4</td><td>25.4</td><td>75.0</td><td>2.0</td></tr>
 <tr><td>Dwayne Koroma</td><td>F</td><td>31</td><td>11.5</td><td>106.0</td><td>19.9</td><td>68.5</td><td>3.7</td></tr>
 <tr><td>Nate Fouts</td><td>F</td><td>32</td><td>8.7</td><td>91.1</td><td>18.7</td><td>65.9</td><td>1.7</td></tr>
@@ -196,12 +202,12 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Will Amica</td><td>G</td><td>25</td><td>5.2</td><td>79.8</td><td>20.3</td><td>32.5</td><td>-0.1</td></tr>
 <tr><td>Deng Garang</td><td>G</td><td>13</td><td>7.5</td><td>113.7</td><td>14.7</td><td>23.7</td><td>2.4</td></tr>
 <tr><td>Jakob Blakley</td><td>G</td><td>24</td><td>2.9</td><td>75.6</td><td>18.5</td><td>20.3</td><td>-0.3</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
-<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file. Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not. Trap marks a trap game for the favorite; see the Predictions section on the main page for the rules and the backtest.</p><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th><th>Trap</th></tr></thead><tbody>
-<tr><td>Tue 07:00 PM</td><td><a href="evansville-purple-aces.html">Evansville</a></td><td>A</td><td>Evansville -5.0</td><td>29.0%</td><td>-</td><td>-</td><td>0</td></tr>
-</tbody></table><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
+<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file. Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not. Trap marks a trap game for the favorite; see the Predictions section on the main page for the rules and the backtest.</p><div class="table-scroll"><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th><th>Trap</th></tr></thead><tbody>
+<tr class="trap-row"><td>Fri 07:00 PM</td><td><a href="missouri-tigers.html">Missouri</a></td><td>A</td><td>Missouri -29.4</td><td>1.1%</td><td>-36.5</td><td>+7.1</td><td><strong>Trap 3</strong></td></tr>
+</tbody></table></div><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
 <footer>
 <p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
 <a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 20, 2026.

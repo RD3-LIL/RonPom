@@ -65,6 +65,8 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders td:nth-child(n+3) { text-align: right; }
 @media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
 .note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
 .warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
   border-radius: 6px; }
 footer { margin-top: 48px; color: #656d76; font-size: 14px;
@@ -74,17 +76,19 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>Furman Paladins</h1>
 <p class="subtitle">SoCon &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 3:06 PM CT · 1,070 events, 803 D1 games used</p>
 <section><h2>2026-27</h2>
-<p>Net rank #144 &middot; AdjO 109.3 (#150) &middot; AdjD 107.6 (#148) &middot; Net 1.7 &middot; AdjT 68.7 (#216) &middot; Luck +0.255 (#41) &middot; SOS -5.1 (#273) &middot; NCSOS -5.1 (#273) &middot; 4-1 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
+<p>Net rank #144 &middot; AdjO 109.3 (#150) &middot; AdjD 107.6 (#148) &middot; Net 1.7 &middot; AdjT 68.7 (#216) &middot; Luck +0.255 (#40) &middot; SOS -5.1 (#273) &middot; 4-1 (D1 games)</p>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="bethune-cookman-wildcats.html">Bethune-Cookman Wildcats</a></td><td>N</td><td>W</td><td>79-70</td></tr>
 <tr><td>11/07</td><td><a href="northern-iowa-panthers.html">Northern Iowa Panthers</a></td><td>H</td><td>W</td><td>98-83</td></tr>
 <tr><td>11/11</td><td><a href="holy-cross-crusaders.html">Holy Cross Crusaders</a></td><td>A</td><td>W</td><td>80-67</td></tr>
 <tr><td>11/14</td><td><a href="belmont-bruins.html">Belmont Bruins</a></td><td>A</td><td>L</td><td>62-72</td></tr>
 <tr><td>11/18</td><td><a href="radford-highlanders.html">Radford Highlanders</a></td><td>A</td><td>W</td><td>78-71</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Tom House</td><td>G</td><td>6</td><td>16.8</td><td>113.7</td><td>25.7</td><td>70.8</td><td>3.0</td></tr>
 <tr><td>Luka Toews</td><td>G</td><td>6</td><td>10.5</td><td>115.9</td><td>17.3</td><td>64.6</td><td>4.9</td></tr>
 <tr><td>Charles Johnston</td><td>F</td><td>6</td><td>11.3</td><td>118.3</td><td>18.4</td><td>64.2</td><td>5.8</td></tr>
@@ -98,12 +102,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Jerrin Samuel</td><td>G</td><td>5</td><td>3.8</td><td>184.1</td><td>9.6</td><td>22.1</td><td>2.7</td></tr>
 <tr><td>Nikos Koulisianis</td><td>F</td><td>1</td><td>5.0</td><td>74.0</td><td>25.6</td><td>5.4</td><td>-0.3</td></tr>
 <tr><td>Nate Wilbourne</td><td>G</td><td>1</td><td>2.0</td><td>200.0</td><td>12.3</td><td>1.7</td><td>1.2</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
 </section>
 <section><h2>2025-26</h2>
+<p class="datestamp">Data through Apr 6 games: 6,318 events, 5,752 D1 games used.</p>
 <p>Net rank #172 &middot; AdjO 108.9 (#176) &middot; AdjD 109.1 (#164) &middot; Net -0.2 &middot; AdjT 66.9 (#256) &middot; Luck +0.098 (#112) &middot; SOS -3.9 (#251) &middot; NCSOS 3.4 (#100) &middot; 19-13 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/03</td><td><a href="high-point-panthers.html">High Point Panthers</a></td><td>N</td><td>L</td><td>71-97</td></tr>
 <tr><td>11/07</td><td><a href="troy-trojans.html">Troy Trojans</a></td><td>H</td><td>L</td><td>61-64</td></tr>
 <tr><td>11/14</td><td><a href="northern-iowa-panthers.html">Northern Iowa Panthers</a></td><td>A</td><td>L</td><td>54-70</td></tr>
@@ -136,9 +141,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/08</td><td><a href="unc-greensboro-spartans.html">UNC Greensboro Spartans</a></td><td>N</td><td>W</td><td>81-75</td></tr>
 <tr><td>03/09</td><td><a href="east-tennessee-state-buccaneers.html">East Tennessee State Buccaneers</a></td><td>N</td><td>W</td><td>76-61</td></tr>
 <tr><td>03/20</td><td><a href="uconn-huskies.html">UConn Huskies</a></td><td>N</td><td>L</td><td>71-82</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Alex Wilkins</td><td>G</td><td>35</td><td>17.8</td><td>92.4</td><td>33.8</td><td>74.3</td><td>0.4</td></tr>
 <tr><td>Charles Johnston</td><td>F</td><td>35</td><td>9.8</td><td>99.3</td><td>18.3</td><td>70.7</td><td>3.8</td></tr>
 <tr><td>Ben Vander Wal</td><td>F</td><td>34</td><td>7.2</td><td>105.0</td><td>12.8</td><td>67.8</td><td>3.6</td></tr>
@@ -147,12 +152,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Cooper Bowser</td><td>F</td><td>25</td><td>13.8</td><td>131.5</td><td>18.5</td><td>52.8</td><td>6.7</td></tr>
 <tr><td>Eddrin Bronson</td><td>G</td><td>34</td><td>5.4</td><td>84.5</td><td>17.5</td><td>46.6</td><td>0.2</td></tr>
 <tr><td>Cole Bowser</td><td>G</td><td>20</td><td>5.2</td><td>99.5</td><td>12.0</td><td>32.3</td><td>2.0</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <section><h2>2024-25</h2>
+<p class="datestamp">Data through Apr 7 games: 6,298 events, 5,759 D1 games used.</p>
 <p>Net rank #140 &middot; AdjO 109.9 (#110) &middot; AdjD 107.8 (#190) &middot; Net 2.1 &middot; AdjT 66.7 (#239) &middot; Luck +0.132 (#67) &middot; SOS -2.1 (#188) &middot; NCSOS 1.0 (#149) &middot; 22-10 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/08</td><td><a href="belmont-bruins.html">Belmont Bruins</a></td><td>A</td><td>W</td><td>76-74</td></tr>
 <tr><td>11/11</td><td><a href="jacksonville-dolphins.html">Jacksonville Dolphins</a></td><td>H</td><td>W</td><td>78-69</td></tr>
 <tr><td>11/15</td><td><a href="tulane-green-wave.html">Tulane Green Wave</a></td><td>H</td><td>W</td><td>75-67</td></tr>
@@ -185,9 +191,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/09</td><td><a href="chattanooga-mocs.html">Chattanooga Mocs</a></td><td>N</td><td>W</td><td>80-77</td></tr>
 <tr><td>03/10</td><td><a href="wofford-terriers.html">Wofford Terriers</a></td><td>N</td><td>L</td><td>85-92</td></tr>
 <tr><td>03/19</td><td><a href="north-texas-mean-green.html">North Texas Mean Green</a></td><td>A</td><td>L</td><td>64-75</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Nick Anderson</td><td>G</td><td>35</td><td>14.6</td><td>114.6</td><td>21.2</td><td>78.4</td><td>4.0</td></tr>
 <tr><td>PJay Smith Jr.</td><td>G</td><td>33</td><td>17.6</td><td>107.5</td><td>26.8</td><td>75.2</td><td>4.9</td></tr>
 <tr><td>Cooper Bowser</td><td>F</td><td>35</td><td>8.3</td><td>109.3</td><td>15.5</td><td>64.1</td><td>4.5</td></tr>
@@ -197,7 +203,7 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Tom House</td><td>G</td><td>34</td><td>7.2</td><td>106.6</td><td>18.9</td><td>44.9</td><td>1.8</td></tr>
 <tr><td>Charles Johnston</td><td>F</td><td>31</td><td>5.3</td><td>104.3</td><td>21.8</td><td>26.9</td><td>1.6</td></tr>
 <tr><td>Davis Molnar</td><td>F</td><td>33</td><td>3.5</td><td>90.7</td><td>18.9</td><td>24.9</td><td>1.0</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <footer>
