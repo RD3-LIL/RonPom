@@ -65,6 +65,8 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders td:nth-child(n+3) { text-align: right; }
 @media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
 .note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
 .warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
   border-radius: 6px; }
 footer { margin-top: 48px; color: #656d76; font-size: 14px;
@@ -74,17 +76,19 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>South Dakota Coyotes</h1>
 <p class="subtitle">Summit &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 3:06 PM CT · 1,070 events, 803 D1 games used</p>
 <section><h2>2026-27</h2>
-<p>Net rank #284 &middot; AdjO 104.8 (#240) &middot; AdjD 115.8 (#321) &middot; Net -11.0 &middot; AdjT 70.9 (#89) &middot; Luck -0.241 (#331) &middot; SOS 1.4 (#151) &middot; NCSOS 1.4 (#151) &middot; 0-5 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
+<p>Net rank #284 &middot; AdjO 104.8 (#240) &middot; AdjD 115.8 (#321) &middot; Net -11.0 &middot; AdjT 70.9 (#89) &middot; Luck -0.241 (#330) &middot; SOS 1.4 (#152) &middot; 0-5 (D1 games)</p>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/04</td><td><a href="northern-kentucky-norse.html">Northern Kentucky Norse</a></td><td>H</td><td>L</td><td>94-102</td></tr>
 <tr><td>11/07</td><td><a href="cal-state-fullerton-titans.html">Cal State Fullerton Titans</a></td><td>H</td><td>L</td><td>85-87</td></tr>
 <tr><td>11/10</td><td><a href="houston-christian-huskies.html">Houston Christian Huskies</a></td><td>H</td><td>L</td><td>76-87</td></tr>
 <tr><td>11/13</td><td><a href="drake-bulldogs.html">Drake Bulldogs</a></td><td>A</td><td>L</td><td>72-81</td></tr>
 <tr><td>11/18</td><td><a href="nebraska-cornhuskers.html">Nebraska Cornhuskers</a></td><td>A</td><td>L</td><td>47-73</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Cade Kelderman</td><td>G</td><td>7</td><td>5.4</td><td>73.8</td><td>13.2</td><td>69.3</td><td>-0.7</td></tr>
 <tr><td>Vince Buzelis</td><td>G</td><td>7</td><td>14.6</td><td>115.7</td><td>23.0</td><td>68.2</td><td>4.4</td></tr>
 <tr><td>Kajus Kublickas</td><td>G</td><td>7</td><td>13.0</td><td>117.8</td><td>21.0</td><td>65.4</td><td>3.6</td></tr>
@@ -99,12 +103,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Melo Sanchez</td><td>G</td><td>3</td><td>1.7</td><td>100.0</td><td>13.8</td><td>6.4</td><td>0.4</td></tr>
 <tr><td>Marvin Richard III</td><td>G</td><td>3</td><td>2.7</td><td>136.1</td><td>22.5</td><td>4.6</td><td>1.6</td></tr>
 <tr><td>Brandon Domsch</td><td>F</td><td>3</td><td>0.7</td><td>200.0</td><td>5.5</td><td>3.2</td><td>0.8</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
 </section>
 <section><h2>2025-26</h2>
+<p class="datestamp">Data through Apr 6 games: 6,318 events, 5,752 D1 games used.</p>
 <p>Net rank #280 &middot; AdjO 105.7 (#245) &middot; AdjD 115.2 (#298) &middot; Net -9.5 &middot; AdjT 71.2 (#27) &middot; Luck +0.177 (#47) &middot; SOS -5.6 (#288) &middot; NCSOS -4.0 (#328) &middot; 13-16 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/03</td><td><a href="utah-tech-trailblazers.html">Utah Tech Trailblazers</a></td><td>H</td><td>L</td><td>79-81</td></tr>
 <tr><td>11/05</td><td><a href="creighton-bluejays.html">Creighton Bluejays</a></td><td>A</td><td>L</td><td>76-92</td></tr>
 <tr><td>11/12</td><td><a href="southern-indiana-screaming-eagles.html">Southern Indiana Screaming Eagles</a></td><td>H</td><td>W</td><td>89-74</td></tr>
@@ -134,9 +139,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>02/25</td><td><a href="omaha-mavericks.html">Omaha Mavericks</a></td><td>H</td><td>W</td><td>89-72</td></tr>
 <tr><td>02/28</td><td><a href="south-dakota-state-jackrabbits.html">South Dakota State Jackrabbits</a></td><td>H</td><td>W</td><td>75-70</td></tr>
 <tr><td>03/06</td><td><a href="omaha-mavericks.html">Omaha Mavericks</a></td><td>N</td><td>L</td><td>62-76</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Jordan Crawford</td><td>G</td><td>32</td><td>14.4</td><td>100.7</td><td>22.7</td><td>77.9</td><td>2.1</td></tr>
 <tr><td>Uzziah Buntyn</td><td>G</td><td>31</td><td>12.1</td><td>92.5</td><td>21.2</td><td>73.4</td><td>1.6</td></tr>
 <tr><td>Cameron Fens</td><td>C</td><td>32</td><td>14.4</td><td>104.7</td><td>26.8</td><td>63.1</td><td>4.3</td></tr>
@@ -147,12 +152,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Evan Anderson</td><td>G</td><td>28</td><td>2.7</td><td>96.4</td><td>9.2</td><td>32.7</td><td>0.8</td></tr>
 <tr><td>Jesse McIntosh</td><td>G</td><td>20</td><td>7.5</td><td>93.7</td><td>22.3</td><td>27.5</td><td>1.3</td></tr>
 <tr><td>Jake Brack</td><td>F</td><td>25</td><td>2.2</td><td>93.1</td><td>8.4</td><td>26.6</td><td>1.0</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <section><h2>2024-25</h2>
+<p class="datestamp">Data through Apr 7 games: 6,298 events, 5,759 D1 games used.</p>
 <p>Net rank #240 &middot; AdjO 109.9 (#110) &middot; AdjD 115.6 (#340) &middot; Net -5.7 &middot; AdjT 73.9 (#3) &middot; Luck +0.175 (#34) &middot; SOS -3.5 (#244) &middot; NCSOS -3.6 (#311) &middot; 16-14 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/04</td><td><a href="southern-jaguars.html">Southern Jaguars</a></td><td>H</td><td>W</td><td>93-79</td></tr>
 <tr><td>11/06</td><td><a href="east-texas-a-m-lions.html">East Texas A&amp;M Lions</a></td><td>H</td><td>W</td><td>91-83</td></tr>
 <tr><td>11/12</td><td><a href="iowa-hawkeyes.html">Iowa Hawkeyes</a></td><td>A</td><td>L</td><td>77-96</td></tr>
@@ -183,9 +189,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/01</td><td><a href="north-dakota-fighting-hawks.html">North Dakota Fighting Hawks</a></td><td>H</td><td>W</td><td>92-79</td></tr>
 <tr><td>03/07</td><td><a href="north-dakota-state-bison.html">North Dakota State Bison</a></td><td>N</td><td>W</td><td>85-84</td></tr>
 <tr><td>03/08</td><td><a href="omaha-mavericks.html">Omaha Mavericks</a></td><td>N</td><td>L</td><td>75-100</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Chase Forte</td><td>G</td><td>33</td><td>17.9</td><td>97.2</td><td>32.0</td><td>67.3</td><td>3.2</td></tr>
 <tr><td>Paul Bruns</td><td>G</td><td>33</td><td>8.7</td><td>104.0</td><td>15.2</td><td>64.4</td><td>2.7</td></tr>
 <tr><td>Isaac Bruns</td><td>G</td><td>33</td><td>14.6</td><td>105.9</td><td>27.4</td><td>58.7</td><td>2.4</td></tr>
@@ -196,9 +202,12 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Ashton Smith</td><td>F</td><td>33</td><td>4.8</td><td>112.6</td><td>13.4</td><td>37.0</td><td>2.1</td></tr>
 <tr><td>Cameron Fens</td><td>C</td><td>19</td><td>8.6</td><td>105.4</td><td>20.6</td><td>26.5</td><td>2.9</td></tr>
 <tr><td>Mayuom Buom</td><td>F</td><td>28</td><td>4.4</td><td>128.3</td><td>13.9</td><td>24.3</td><td>2.1</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
+<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file. Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not. Trap marks a trap game for the favorite; see the Predictions section on the main page for the rules and the backtest.</p><div class="table-scroll"><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th><th>Trap</th></tr></thead><tbody>
+<tr><td>Sun 01:00 PM</td><td><a href="utah-tech-trailblazers.html">Utah Tech</a></td><td>N</td><td>Utah Tech -1.8</td><td>39.6%</td><td>-</td><td>-</td><td>0</td></tr>
+</tbody></table></div><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
 <footer>
 <p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
 <a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 20, 2026.

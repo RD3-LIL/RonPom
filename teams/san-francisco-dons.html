@@ -65,6 +65,8 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders td:nth-child(n+3) { text-align: right; }
 @media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
 .note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
 .warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
   border-radius: 6px; }
 footer { margin-top: 48px; color: #656d76; font-size: 14px;
@@ -74,20 +76,22 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>San Francisco Dons</h1>
 <p class="subtitle">WCC &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 3:06 PM CT · 1,070 events, 803 D1 games used</p>
 <section><h2>2026-27</h2>
-<p>Net rank #132 &middot; AdjO 108.2 (#167) &middot; AdjD 105.4 (#110) &middot; Net 2.8 &middot; AdjT 67.9 (#262) &middot; Luck +0.225 (#54) &middot; SOS -7.5 (#313) &middot; NCSOS -7.5 (#313) &middot; 4-1 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
+<p>Net rank #132 &middot; AdjO 108.2 (#167) &middot; AdjD 105.4 (#109) &middot; Net 2.8 &middot; AdjT 67.9 (#262) &middot; Luck +0.225 (#53) &middot; SOS -7.5 (#313) &middot; 4-1 (D1 games)</p>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="radford-highlanders.html">Radford Highlanders</a></td><td>H</td><td>W</td><td>76-62</td></tr>
 <tr><td>11/06</td><td><a href="north-dakota-state-bison.html">North Dakota State Bison</a></td><td>H</td><td>W</td><td>79-70</td></tr>
 <tr><td>11/10</td><td><a href="montana-grizzlies.html">Montana Grizzlies</a></td><td>H</td><td>W</td><td>63-58</td></tr>
 <tr><td>11/14</td><td><a href="portland-state-vikings.html">Portland State Vikings</a></td><td>H</td><td>L</td><td>68-84</td></tr>
 <tr><td>11/18</td><td><a href="louisiana-ragin-cajuns.html">Louisiana Ragin&#x27; Cajuns</a></td><td>H</td><td>W</td><td>77-56</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Gustav Knudsen</td><td>F</td><td>5</td><td>14.6</td><td>110.5</td><td>20.3</td><td>82.5</td><td>5.7</td></tr>
 <tr><td>Ben Oosterbaan</td><td>F</td><td>5</td><td>13.4</td><td>109.5</td><td>18.9</td><td>82.0</td><td>3.9</td></tr>
-<tr><td>Dylan Bordon</td><td>G</td><td>5</td><td>9.6</td><td>72.8</td><td>22.4</td><td>74.5</td><td>-0.0</td></tr>
+<tr><td>Dylan Bordon</td><td>G</td><td>5</td><td>9.6</td><td>72.8</td><td>22.4</td><td>74.5</td><td>0.0</td></tr>
 <tr><td>Yoav Vitlem</td><td>G</td><td>5</td><td>9.8</td><td>90.5</td><td>21.2</td><td>64.5</td><td>1.5</td></tr>
 <tr><td>Ismaila Diagne</td><td>C</td><td>4</td><td>10.0</td><td>98.0</td><td>20.6</td><td>50.0</td><td>3.5</td></tr>
 <tr><td>Ndewedo Newbury</td><td>F</td><td>5</td><td>6.2</td><td>83.2</td><td>22.7</td><td>41.5</td><td>0.4</td></tr>
@@ -98,12 +102,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Abdul Bashir</td><td>G</td><td>2</td><td>0.0</td><td>0.0</td><td>10.8</td><td>7.0</td><td>-1.0</td></tr>
 <tr><td>Ziga Daneu</td><td>F</td><td>2</td><td>1.0</td><td>100.0</td><td>20.2</td><td>2.5</td><td>0.0</td></tr>
 <tr><td>Adam Tyson</td><td>F</td><td>2</td><td>0.0</td><td>—</td><td>—</td><td>1.5</td><td>—</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
 </section>
 <section><h2>2025-26</h2>
+<p class="datestamp">Data through Apr 6 games: 6,318 events, 5,752 D1 games used.</p>
 <p>Net rank #125 &middot; AdjO 113.0 (#104) &middot; AdjD 109.2 (#167) &middot; Net 3.8 &middot; AdjT 66.7 (#268) &middot; Luck -0.096 (#264) &middot; SOS 3.9 (#102) &middot; NCSOS 0.7 (#185) &middot; 16-16 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/08</td><td><a href="memphis-tigers.html">Memphis Tigers</a></td><td>A</td><td>L</td><td>70-76</td></tr>
 <tr><td>11/12</td><td><a href="portland-state-vikings.html">Portland State Vikings</a></td><td>H</td><td>W</td><td>80-70</td></tr>
 <tr><td>11/15</td><td><a href="bradley-braves.html">Bradley Braves</a></td><td>H</td><td>W</td><td>75-64</td></tr>
@@ -136,24 +141,25 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>02/28</td><td><a href="pacific-tigers.html">Pacific Tigers</a></td><td>A</td><td>W</td><td>72-61</td></tr>
 <tr><td>03/07</td><td><a href="portland-pilots.html">Portland Pilots</a></td><td>N</td><td>W</td><td>82-65</td></tr>
 <tr><td>03/08</td><td><a href="oregon-state-beavers.html">Oregon State Beavers</a></td><td>N</td><td>L</td><td>77-78</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Ryan Beasley</td><td>G</td><td>31</td><td>13.6</td><td>98.3</td><td>21.6</td><td>78.0</td><td>3.1</td></tr>
 <tr><td>Tyrone Riley IV</td><td>G</td><td>31</td><td>12.2</td><td>105.0</td><td>19.0</td><td>74.8</td><td>3.5</td></tr>
-<tr><td>Vukasin Masic</td><td>G</td><td>33</td><td>5.3</td><td>82.2</td><td>15.6</td><td>54.2</td><td>-0.0</td></tr>
+<tr><td>Vukasin Masic</td><td>G</td><td>33</td><td>5.3</td><td>82.2</td><td>15.6</td><td>54.2</td><td>0.0</td></tr>
 <tr><td>Legend Smiley</td><td>G</td><td>33</td><td>8.1</td><td>112.4</td><td>17.5</td><td>53.3</td><td>1.9</td></tr>
 <tr><td>David Fuchs</td><td>F</td><td>29</td><td>12.7</td><td>100.4</td><td>27.4</td><td>52.7</td><td>2.6</td></tr>
 <tr><td>Junjie Wang</td><td>F</td><td>33</td><td>8.5</td><td>98.5</td><td>22.1</td><td>50.6</td><td>1.2</td></tr>
 <tr><td>Guillermo Diaz-Graham</td><td>F</td><td>33</td><td>5.2</td><td>97.0</td><td>16.2</td><td>42.9</td><td>1.9</td></tr>
 <tr><td>Mookie Cook</td><td>F</td><td>25</td><td>7.6</td><td>90.2</td><td>21.1</td><td>39.5</td><td>1.6</td></tr>
 <tr><td>Veniamin Abosi</td><td>F</td><td>24</td><td>5.0</td><td>88.9</td><td>16.7</td><td>32.0</td><td>1.2</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <section><h2>2024-25</h2>
+<p class="datestamp">Data through Apr 7 games: 6,298 events, 5,759 D1 games used.</p>
 <p>Net rank #64 &middot; AdjO 112.0 (#83) &middot; AdjD 99.5 (#45) &middot; Net 12.5 &middot; AdjT 68.1 (#170) &middot; Luck -0.090 (#272) &middot; SOS 4.5 (#92) &middot; NCSOS 1.3 (#141) &middot; 24-10 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/05</td><td><a href="cal-poly-mustangs.html">Cal Poly Mustangs</a></td><td>H</td><td>W</td><td>86-78</td></tr>
 <tr><td>11/09</td><td><a href="boise-state-broncos.html">Boise State Broncos</a></td><td>H</td><td>W</td><td>84-73</td></tr>
 <tr><td>11/13</td><td><a href="long-beach-state-beach.html">Long Beach State Beach</a></td><td>H</td><td>W</td><td>84-54</td></tr>
@@ -188,9 +194,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/10</td><td><a href="gonzaga-bulldogs.html">Gonzaga Bulldogs</a></td><td>N</td><td>L</td><td>76-85</td></tr>
 <tr><td>03/19</td><td><a href="utah-valley-wolverines.html">Utah Valley Wolverines</a></td><td>H</td><td>W</td><td>79-70</td></tr>
 <tr><td>03/23</td><td><a href="loyola-chicago-ramblers.html">Loyola Chicago Ramblers</a></td><td>H</td><td>L</td><td>76-77</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Malik Thomas</td><td>G</td><td>34</td><td>19.9</td><td>106.5</td><td>29.8</td><td>77.1</td><td>3.9</td></tr>
 <tr><td>Tyrone Riley IV</td><td>G</td><td>34</td><td>9.7</td><td>107.0</td><td>16.2</td><td>68.6</td><td>3.7</td></tr>
 <tr><td>Marcus Williams</td><td>G</td><td>31</td><td>15.1</td><td>101.1</td><td>24.7</td><td>68.0</td><td>3.8</td></tr>
@@ -200,7 +206,7 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>James O&#x27;Donnell</td><td>F</td><td>35</td><td>2.1</td><td>78.9</td><td>11.0</td><td>31.4</td><td>0.6</td></tr>
 <tr><td>Robby Beasley</td><td>G</td><td>32</td><td>1.9</td><td>82.8</td><td>9.9</td><td>27.5</td><td>0.4</td></tr>
 <tr><td>Veniamin Abosi</td><td>F</td><td>30</td><td>2.4</td><td>70.6</td><td>13.6</td><td>27.2</td><td>0.1</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <footer>

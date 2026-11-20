@@ -65,6 +65,8 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders td:nth-child(n+3) { text-align: right; }
 @media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
 .note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
 .warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
   border-radius: 6px; }
 footer { margin-top: 48px; color: #656d76; font-size: 14px;
@@ -74,17 +76,19 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>South Carolina Gamecocks</h1>
 <p class="subtitle">SEC &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 3:06 PM CT · 1,070 events, 803 D1 games used</p>
 <section><h2>2026-27</h2>
-<p>Net rank #87 &middot; AdjO 113.5 (#95) &middot; AdjD 103.3 (#84) &middot; Net 10.2 &middot; AdjT 66.9 (#309) &middot; Luck +0.253 (#42) &middot; SOS -13.1 (#357) &middot; NCSOS -13.1 (#357) &middot; 5-0 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
+<p>Net rank #86 &middot; AdjO 113.5 (#95) &middot; AdjD 103.3 (#84) &middot; Net 10.2 &middot; AdjT 66.9 (#310) &middot; Luck +0.253 (#41) &middot; SOS -13.1 (#357) &middot; 5-0 (D1 games)</p>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/03</td><td><a href="stetson-hatters.html">Stetson Hatters</a></td><td>H</td><td>W</td><td>81-55</td></tr>
 <tr><td>11/08</td><td><a href="southeast-missouri-state-redhawks.html">Southeast Missouri State Redhawks</a></td><td>H</td><td>W</td><td>78-68</td></tr>
 <tr><td>11/11</td><td><a href="saint-peters-peacocks.html">Saint Peter&#x27;s Peacocks</a></td><td>H</td><td>W</td><td>77-41</td></tr>
 <tr><td>11/14</td><td><a href="gardner-webb-runnin-bulldogs.html">Gardner-Webb Runnin&#x27; Bulldogs</a></td><td>H</td><td>W</td><td>79-62</td></tr>
 <tr><td>11/18</td><td><a href="elon-phoenix.html">Elon Phoenix</a></td><td>H</td><td>W</td><td>80-72</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Kory Mincy</td><td>G</td><td>5</td><td>8.2</td><td>79.5</td><td>19.3</td><td>71.5</td><td>1.0</td></tr>
 <tr><td>Jakub Necas</td><td>F</td><td>5</td><td>12.0</td><td>128.2</td><td>17.6</td><td>71.0</td><td>5.0</td></tr>
 <tr><td>Aleksas Bieliauskas</td><td>F</td><td>5</td><td>12.0</td><td>124.9</td><td>21.2</td><td>60.5</td><td>4.6</td></tr>
@@ -97,12 +101,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Hugo Lopez</td><td>F</td><td>5</td><td>2.2</td><td>152.8</td><td>13.3</td><td>14.5</td><td>1.7</td></tr>
 <tr><td>Hayden Assemian</td><td>F</td><td>3</td><td>1.3</td><td>80.0</td><td>14.8</td><td>9.0</td><td>0.1</td></tr>
 <tr><td>Ford Wilder</td><td>G</td><td>2</td><td>0.0</td><td>—</td><td>—</td><td>1.0</td><td>—</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
 </section>
 <section><h2>2025-26</h2>
+<p class="datestamp">Data through Apr 6 games: 6,318 events, 5,752 D1 games used.</p>
 <p>Net rank #100 &middot; AdjO 112.7 (#106) &middot; AdjD 106.1 (#106) &middot; Net 6.6 &middot; AdjT 67.3 (#235) &middot; Luck -0.260 (#341) &middot; SOS 9.7 (#64) &middot; NCSOS -3.7 (#321) &middot; 13-19 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/04</td><td><a href="north-carolina-a-t-aggies.html">North Carolina A&amp;T Aggies</a></td><td>H</td><td>W</td><td>91-72</td></tr>
 <tr><td>11/09</td><td><a href="southern-miss-golden-eagles.html">Southern Miss Golden Eagles</a></td><td>H</td><td>W</td><td>83-79</td></tr>
 <tr><td>11/12</td><td><a href="presbyterian-blue-hose.html">Presbyterian Blue Hose</a></td><td>H</td><td>W</td><td>81-61</td></tr>
@@ -135,9 +140,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/03</td><td><a href="tennessee-volunteers.html">Tennessee Volunteers</a></td><td>H</td><td>L</td><td>59-78</td></tr>
 <tr><td>03/07</td><td><a href="ole-miss-rebels.html">Ole Miss Rebels</a></td><td>A</td><td>W</td><td>64-61</td></tr>
 <tr><td>03/11</td><td><a href="oklahoma-sooners.html">Oklahoma Sooners</a></td><td>N</td><td>L</td><td>74-86</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Meechie Johnson</td><td>G</td><td>32</td><td>17.2</td><td>99.7</td><td>28.7</td><td>78.7</td><td>3.1</td></tr>
 <tr><td>Kobe Knox</td><td>G</td><td>32</td><td>10.8</td><td>105.0</td><td>18.1</td><td>74.8</td><td>3.1</td></tr>
 <tr><td>Mike Sharavjamts</td><td>G</td><td>32</td><td>10.9</td><td>105.7</td><td>18.2</td><td>74.2</td><td>4.0</td></tr>
@@ -146,12 +151,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Elijah Strong</td><td>F</td><td>32</td><td>10.0</td><td>95.4</td><td>32.0</td><td>42.8</td><td>0.7</td></tr>
 <tr><td>Grant Polk</td><td>G</td><td>30</td><td>3.8</td><td>101.0</td><td>15.2</td><td>30.3</td><td>0.6</td></tr>
 <tr><td>EJ Walker</td><td>F</td><td>22</td><td>2.9</td><td>77.3</td><td>12.2</td><td>27.3</td><td>0.1</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <section><h2>2024-25</h2>
+<p class="datestamp">Data through Apr 7 games: 6,298 events, 5,759 D1 games used.</p>
 <p>Net rank #85 &middot; AdjO 109.8 (#113) &middot; AdjD 100.7 (#59) &middot; Net 9.1 &middot; AdjT 66.1 (#277) &middot; Luck -0.356 (#364) &middot; SOS 12.8 (#20) &middot; NCSOS 0.6 (#164) &middot; 12-20 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/04</td><td><a href="north-florida-ospreys.html">North Florida Ospreys</a></td><td>H</td><td>L</td><td>71-74</td></tr>
 <tr><td>11/08</td><td><a href="south-carolina-state-bulldogs.html">South Carolina State Bulldogs</a></td><td>H</td><td>W</td><td>86-64</td></tr>
 <tr><td>11/12</td><td><a href="towson-tigers.html">Towson Tigers</a></td><td>H</td><td>W</td><td>80-54</td></tr>
@@ -184,9 +190,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/04</td><td><a href="georgia-bulldogs.html">Georgia Bulldogs</a></td><td>H</td><td>L</td><td>64-73</td></tr>
 <tr><td>03/08</td><td><a href="tennessee-volunteers.html">Tennessee Volunteers</a></td><td>A</td><td>L</td><td>65-75</td></tr>
 <tr><td>03/12</td><td><a href="arkansas-razorbacks.html">Arkansas Razorbacks</a></td><td>N</td><td>L</td><td>68-72</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Collin Murray-Boyles</td><td>F</td><td>32</td><td>16.8</td><td>107.9</td><td>26.6</td><td>76.7</td><td>6.1</td></tr>
 <tr><td>Jacobi Wright</td><td>G</td><td>32</td><td>7.7</td><td>83.6</td><td>16.7</td><td>72.3</td><td>0.1</td></tr>
 <tr><td>Zach Davis</td><td>G</td><td>32</td><td>8.2</td><td>80.3</td><td>20.4</td><td>65.8</td><td>0.2</td></tr>
@@ -196,7 +202,7 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Myles Stute</td><td>G</td><td>14</td><td>5.4</td><td>83.0</td><td>13.7</td><td>27.3</td><td>0.4</td></tr>
 <tr><td>Arden Conyers</td><td>F</td><td>23</td><td>4.3</td><td>89.1</td><td>18.6</td><td>24.5</td><td>0.1</td></tr>
 <tr><td>Cam Scott</td><td>G</td><td>26</td><td>2.5</td><td>63.9</td><td>20.8</td><td>20.4</td><td>-1.1</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <footer>
