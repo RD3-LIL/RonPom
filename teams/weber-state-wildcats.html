@@ -65,6 +65,8 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders td:nth-child(n+3) { text-align: right; }
 @media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
 .note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
 .warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
   border-radius: 6px; }
 footer { margin-top: 48px; color: #656d76; font-size: 14px;
@@ -74,16 +76,18 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>Weber State Wildcats</h1>
 <p class="subtitle">Big Sky &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 3:06 PM CT · 1,070 events, 803 D1 games used</p>
 <section><h2>2026-27</h2>
-<p>Net rank #295 &middot; AdjO 105.5 (#229) &middot; AdjD 117.9 (#339) &middot; Net -12.5 &middot; AdjT 72.3 (#41) &middot; Luck -0.217 (#320) &middot; SOS 11.3 (#24) &middot; NCSOS 11.3 (#23) &middot; 0-4 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
+<p>Net rank #295 &middot; AdjO 105.5 (#229) &middot; AdjD 117.9 (#339) &middot; Net -12.5 &middot; AdjT 72.3 (#41) &middot; Luck -0.217 (#319) &middot; SOS 11.3 (#24) &middot; 0-4 (D1 games)</p>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="oregon-state-beavers.html">Oregon State Beavers</a></td><td>A</td><td>L</td><td>61-102</td></tr>
 <tr><td>11/07</td><td><a href="utah-valley-wolverines.html">Utah Valley Wolverines</a></td><td>H</td><td>L</td><td>93-101</td></tr>
 <tr><td>11/10</td><td><a href="utah-utes.html">Utah Utes</a></td><td>A</td><td>L</td><td>64-85</td></tr>
 <tr><td>11/18</td><td><a href="utah-state-aggies.html">Utah State Aggies</a></td><td>A</td><td>L</td><td>71-101</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Dylan Warlick</td><td>F</td><td>5</td><td>11.4</td><td>92.5</td><td>20.1</td><td>71.5</td><td>1.5</td></tr>
 <tr><td>Augustine Ekwe</td><td>C</td><td>5</td><td>13.0</td><td>109.2</td><td>19.9</td><td>70.0</td><td>2.8</td></tr>
 <tr><td>Gavin Lowe</td><td>G</td><td>5</td><td>8.2</td><td>70.6</td><td>21.9</td><td>62.0</td><td>0.0</td></tr>
@@ -97,12 +101,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Declan Cutler</td><td>C</td><td>2</td><td>0.5</td><td>25.8</td><td>12.1</td><td>7.5</td><td>-0.4</td></tr>
 <tr><td>Hunter Hansen</td><td>G</td><td>2</td><td>3.5</td><td>137.8</td><td>23.7</td><td>5.0</td><td>1.1</td></tr>
 <tr><td>Maximillian Russell</td><td>G</td><td>2</td><td>1.0</td><td>28.6</td><td>46.8</td><td>3.5</td><td>-3.0</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
 </section>
 <section><h2>2025-26</h2>
+<p class="datestamp">Data through Apr 6 games: 6,318 events, 5,752 D1 games used.</p>
 <p>Net rank #210 &middot; AdjO 110.7 (#145) &middot; AdjD 113.7 (#273) &middot; Net -3.0 &middot; AdjT 69.6 (#92) &middot; Luck +0.043 (#163) &middot; SOS -3.2 (#229) &middot; NCSOS -2.4 (#285) &middot; 14-16 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/08</td><td><a href="utah-utes.html">Utah Utes</a></td><td>A</td><td>L</td><td>89-92</td></tr>
 <tr><td>11/12</td><td><a href="utah-state-aggies.html">Utah State Aggies</a></td><td>A</td><td>L</td><td>73-83</td></tr>
 <tr><td>11/15</td><td><a href="uc-irvine-anteaters.html">UC Irvine Anteaters</a></td><td>A</td><td>L</td><td>70-79</td></tr>
@@ -133,9 +138,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>02/28</td><td><a href="idaho-state-bengals.html">Idaho State Bengals</a></td><td>A</td><td>W</td><td>83-73</td></tr>
 <tr><td>03/02</td><td><a href="portland-state-vikings.html">Portland State Vikings</a></td><td>A</td><td>L</td><td>60-84</td></tr>
 <tr><td>03/09</td><td><a href="eastern-washington-eagles.html">Eastern Washington Eagles</a></td><td>N</td><td>L</td><td>79-84</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Tijan Saine Jr.</td><td>G</td><td>32</td><td>17.5</td><td>108.9</td><td>24.3</td><td>81.5</td><td>4.3</td></tr>
 <tr><td>Malek Gomma</td><td>C</td><td>32</td><td>8.0</td><td>94.1</td><td>16.6</td><td>62.7</td><td>2.2</td></tr>
 <tr><td>Viljami Vartiainen</td><td>G</td><td>26</td><td>12.8</td><td>119.2</td><td>17.6</td><td>60.9</td><td>4.0</td></tr>
@@ -145,12 +150,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Jace Whiting</td><td>G</td><td>20</td><td>11.2</td><td>96.6</td><td>18.5</td><td>48.0</td><td>2.5</td></tr>
 <tr><td>ArDarius Grayson</td><td>G</td><td>31</td><td>3.8</td><td>72.7</td><td>19.6</td><td>31.6</td><td>-0.1</td></tr>
 <tr><td>Duce Paschal</td><td>G</td><td>31</td><td>3.7</td><td>77.1</td><td>18.4</td><td>30.9</td><td>0.6</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <section><h2>2024-25</h2>
+<p class="datestamp">Data through Apr 7 games: 6,298 events, 5,759 D1 games used.</p>
 <p>Net rank #301 &middot; AdjO 101.7 (#279) &middot; AdjD 113.1 (#303) &middot; Net -11.4 &middot; AdjT 66.2 (#271) &middot; Luck +0.062 (#143) &middot; SOS -3.2 (#230) &middot; NCSOS 1.6 (#128) &middot; 9-22 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/08</td><td><a href="oregon-state-beavers.html">Oregon State Beavers</a></td><td>A</td><td>L</td><td>48-76</td></tr>
 <tr><td>11/13</td><td><a href="nevada-wolf-pack.html">Nevada Wolf Pack</a></td><td>A</td><td>L</td><td>58-88</td></tr>
 <tr><td>11/17</td><td><a href="hawaii-rainbow-warriors.html">Hawai&#x27;i Rainbow Warriors</a></td><td>A</td><td>L</td><td>68-73</td></tr>
@@ -182,9 +188,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/03</td><td><a href="northern-colorado-bears.html">Northern Colorado Bears</a></td><td>H</td><td>L</td><td>63-68</td></tr>
 <tr><td>03/08</td><td><a href="sacramento-state-hornets.html">Sacramento State Hornets</a></td><td>N</td><td>W</td><td>83-70</td></tr>
 <tr><td>03/09</td><td><a href="northern-colorado-bears.html">Northern Colorado Bears</a></td><td>N</td><td>L</td><td>52-76</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Blaise Threatt</td><td>G</td><td>32</td><td>20.0</td><td>103.0</td><td>29.6</td><td>82.7</td><td>5.2</td></tr>
 <tr><td>Viljami Vartiainen</td><td>G</td><td>34</td><td>8.9</td><td>103.1</td><td>18.2</td><td>63.5</td><td>1.5</td></tr>
 <tr><td>Nigel Burris</td><td>F</td><td>33</td><td>6.2</td><td>88.7</td><td>15.9</td><td>57.0</td><td>1.2</td></tr>
@@ -195,7 +201,7 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Vasilije Vucinic</td><td>C</td><td>32</td><td>6.0</td><td>103.9</td><td>18.4</td><td>39.6</td><td>1.6</td></tr>
 <tr><td>Saadiq Moore</td><td>G</td><td>34</td><td>1.4</td><td>60.7</td><td>11.5</td><td>27.6</td><td>-0.1</td></tr>
 <tr><td>Declan Cutler</td><td>C</td><td>30</td><td>1.8</td><td>83.9</td><td>12.0</td><td>21.1</td><td>0.4</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <footer>

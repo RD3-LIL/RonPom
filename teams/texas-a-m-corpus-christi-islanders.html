@@ -65,6 +65,8 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders td:nth-child(n+3) { text-align: right; }
 @media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
 .note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
 .warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
   border-radius: 6px; }
 footer { margin-top: 48px; color: #656d76; font-size: 14px;
@@ -74,22 +76,24 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>Texas A&amp;M-Corpus Christi Islanders</h1>
 <p class="subtitle">Southland &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 3:06 PM CT · 1,070 events, 803 D1 games used</p>
 <section><h2>2026-27</h2>
-<p>Net rank #239 &middot; AdjO 100.4 (#302) &middot; AdjD 107.2 (#143) &middot; Net -6.8 &middot; AdjT 67.7 (#276) &middot; Luck -0.071 (#226) &middot; SOS 0.2 (#173) &middot; NCSOS 0.2 (#173) &middot; 1-3 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
+<p>Net rank #239 &middot; AdjO 100.4 (#302) &middot; AdjD 107.2 (#143) &middot; Net -6.8 &middot; AdjT 67.7 (#276) &middot; Luck -0.071 (#228) &middot; SOS 0.2 (#174) &middot; 1-3 (D1 games)</p>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="texas-state-bobcats.html">Texas State Bobcats</a></td><td>A</td><td>L</td><td>55-67</td></tr>
 <tr><td>11/06</td><td><a href="louisiana-ragin-cajuns.html">Louisiana Ragin&#x27; Cajuns</a></td><td>A</td><td>W</td><td>67-60</td></tr>
 <tr><td>11/13</td><td><a href="florida-state-seminoles.html">Florida State Seminoles</a></td><td>A</td><td>L</td><td>60-84</td></tr>
 <tr><td>11/17</td><td><a href="rice-owls.html">Rice Owls</a></td><td>A</td><td>L</td><td>74-81</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Daniel Michelini-Jackson</td><td>G</td><td>5</td><td>9.4</td><td>96.7</td><td>20.3</td><td>59.5</td><td>1.3</td></tr>
 <tr><td>Dan Mukuna</td><td>F</td><td>5</td><td>4.6</td><td>87.5</td><td>11.9</td><td>55.0</td><td>0.3</td></tr>
 <tr><td>Desmond Kent Jr.</td><td>G</td><td>5</td><td>9.4</td><td>114.1</td><td>22.0</td><td>46.5</td><td>3.6</td></tr>
 <tr><td>Bryson Wheatfall</td><td>G</td><td>5</td><td>6.4</td><td>71.9</td><td>24.0</td><td>46.0</td><td>-0.5</td></tr>
 <tr><td>Bin Basil</td><td>F</td><td>5</td><td>4.2</td><td>79.9</td><td>15.0</td><td>43.5</td><td>0.5</td></tr>
-<tr><td>Sebastian Robinson</td><td>G</td><td>5</td><td>4.6</td><td>83.9</td><td>16.0</td><td>42.5</td><td>-0.0</td></tr>
+<tr><td>Sebastian Robinson</td><td>G</td><td>5</td><td>4.6</td><td>83.9</td><td>16.0</td><td>42.5</td><td>0.0</td></tr>
 <tr><td>Damarion Winston</td><td>G</td><td>5</td><td>3.2</td><td>41.7</td><td>23.0</td><td>41.5</td><td>-3.0</td></tr>
 <tr><td>CJ Worsham</td><td>F</td><td>4</td><td>9.5</td><td>115.7</td><td>21.8</td><td>37.5</td><td>2.2</td></tr>
 <tr><td>Isaiah Lewis</td><td>G</td><td>5</td><td>3.0</td><td>52.4</td><td>20.9</td><td>34.0</td><td>-2.2</td></tr>
@@ -98,12 +102,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Lamin Foon</td><td>C</td><td>2</td><td>5.5</td><td>112.7</td><td>16.7</td><td>14.5</td><td>2.4</td></tr>
 <tr><td>Jordan Mizell</td><td>G</td><td>4</td><td>2.2</td><td>86.2</td><td>18.5</td><td>14.0</td><td>1.2</td></tr>
 <tr><td>Jacori Jones</td><td>G</td><td>2</td><td>3.5</td><td>116.7</td><td>18.6</td><td>8.0</td><td>1.8</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
 </section>
 <section><h2>2025-26</h2>
+<p class="datestamp">Data through Apr 6 games: 6,318 events, 5,752 D1 games used.</p>
 <p>Net rank #200 &middot; AdjO 103.9 (#281) &middot; AdjD 106.5 (#117) &middot; Net -2.6 &middot; AdjT 66.6 (#275) &middot; Luck +0.055 (#150) &middot; SOS -1.9 (#193) &middot; NCSOS 10.1 (#14) &middot; 14-15 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/06</td><td><a href="smu-mustangs.html">SMU Mustangs</a></td><td>A</td><td>L</td><td>58-69</td></tr>
 <tr><td>11/08</td><td><a href="tarleton-state-texans.html">Tarleton State Texans</a></td><td>A</td><td>L</td><td>77-85</td></tr>
 <tr><td>11/11</td><td><a href="kansas-jayhawks.html">Kansas Jayhawks</a></td><td>A</td><td>L</td><td>46-77</td></tr>
@@ -133,9 +138,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/02</td><td><a href="east-texas-a-m-lions.html">East Texas A&amp;M Lions</a></td><td>H</td><td>W</td><td>84-71</td></tr>
 <tr><td>03/09</td><td><a href="lsu-new-orleans-privateers.html">LSU New Orleans Privateers</a></td><td>N</td><td>W</td><td>74-61</td></tr>
 <tr><td>03/10</td><td><a href="stephen-f-austin-lumberjacks.html">Stephen F. Austin Lumberjacks</a></td><td>N</td><td>L</td><td>58-60</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Sheldon Williams</td><td>F</td><td>33</td><td>11.8</td><td>103.3</td><td>22.8</td><td>63.6</td><td>3.0</td></tr>
 <tr><td>Nick Shogbonyo</td><td>G</td><td>28</td><td>11.9</td><td>105.0</td><td>21.5</td><td>57.0</td><td>2.3</td></tr>
 <tr><td>Mason Gibson</td><td>G</td><td>30</td><td>9.4</td><td>96.2</td><td>23.2</td><td>48.9</td><td>1.4</td></tr>
@@ -147,12 +152,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Kam Parker</td><td>G</td><td>26</td><td>4.4</td><td>79.1</td><td>16.3</td><td>34.0</td><td>0.1</td></tr>
 <tr><td>Bryson Wheatfall</td><td>G</td><td>26</td><td>3.6</td><td>77.9</td><td>20.6</td><td>22.3</td><td>0.3</td></tr>
 <tr><td>Kobi Pearson</td><td>F</td><td>31</td><td>3.1</td><td>89.3</td><td>19.9</td><td>20.8</td><td>0.3</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <section><h2>2024-25</h2>
+<p class="datestamp">Data through Apr 7 games: 6,298 events, 5,759 D1 games used.</p>
 <p>Net rank #158 &middot; AdjO 107.5 (#165) &middot; AdjD 107.2 (#178) &middot; Net 0.3 &middot; AdjT 67.5 (#204) &middot; Luck +0.027 (#182) &middot; SOS -3.2 (#230) &middot; NCSOS 2.5 (#111) &middot; 16-14 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/04</td><td><a href="purdue-boilermakers.html">Purdue Boilermakers</a></td><td>A</td><td>L</td><td>73-90</td></tr>
 <tr><td>11/12</td><td><a href="new-mexico-lobos.html">New Mexico Lobos</a></td><td>N</td><td>L</td><td>81-100</td></tr>
 <tr><td>11/14</td><td><a href="new-mexico-state-aggies.html">New Mexico State Aggies</a></td><td>A</td><td>L</td><td>82-83</td></tr>
@@ -183,9 +189,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/03</td><td><a href="lsu-new-orleans-privateers.html">LSU New Orleans Privateers</a></td><td>H</td><td>W</td><td>95-62</td></tr>
 <tr><td>03/09</td><td><a href="houston-christian-huskies.html">Houston Christian Huskies</a></td><td>N</td><td>W</td><td>62-48</td></tr>
 <tr><td>03/10</td><td><a href="northwestern-state-demons.html">Northwestern State Demons</a></td><td>N</td><td>L</td><td>63-66</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Garry Clark</td><td>F</td><td>34</td><td>14.9</td><td>103.6</td><td>25.4</td><td>71.3</td><td>3.4</td></tr>
 <tr><td>Owen Dease</td><td>F</td><td>30</td><td>9.8</td><td>101.6</td><td>19.0</td><td>56.5</td><td>2.2</td></tr>
 <tr><td>Jaden Walker</td><td>G</td><td>30</td><td>5.8</td><td>85.6</td><td>16.6</td><td>45.8</td><td>1.8</td></tr>
@@ -197,12 +203,12 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Kam Parker</td><td>G</td><td>29</td><td>4.7</td><td>94.9</td><td>15.9</td><td>33.8</td><td>1.6</td></tr>
 <tr><td>Leo Torbor</td><td>G</td><td>26</td><td>3.6</td><td>77.2</td><td>15.5</td><td>29.5</td><td>0.7</td></tr>
 <tr><td>Sheldon Williams</td><td>F</td><td>19</td><td>6.5</td><td>102.8</td><td>19.7</td><td>22.6</td><td>2.5</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
-<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file. Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not. Trap marks a trap game for the favorite; see the Predictions section on the main page for the rules and the backtest.</p><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th><th>Trap</th></tr></thead><tbody>
-<tr><td>Tue 07:00 PM</td><td><a href="rice-owls.html">Rice</a></td><td>A</td><td>Rice -4.0</td><td>32.2%</td><td>-</td><td>-</td><td>0</td></tr>
-</tbody></table><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
+<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file. Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not. Trap marks a trap game for the favorite; see the Predictions section on the main page for the rules and the backtest.</p><div class="table-scroll"><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th><th>Trap</th></tr></thead><tbody>
+<tr><td>Sat 07:00 PM</td><td><a href="oral-roberts-golden-eagles.html">Oral Roberts</a></td><td>A</td><td>Oral Roberts -0.3</td><td>45.1%</td><td>-</td><td>-</td><td>0</td></tr>
+</tbody></table></div><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
 <footer>
 <p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
 <a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 20, 2026.

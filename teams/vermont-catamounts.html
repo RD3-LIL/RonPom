@@ -65,6 +65,8 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders td:nth-child(n+3) { text-align: right; }
 @media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
 .note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
 .warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
   border-radius: 6px; }
 footer { margin-top: 48px; color: #656d76; font-size: 14px;
@@ -74,16 +76,18 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>Vermont Catamounts</h1>
 <p class="subtitle">Am. East &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 3:06 PM CT · 1,070 events, 803 D1 games used</p>
 <section><h2>2026-27</h2>
-<p>Net rank #194 &middot; AdjO 108.0 (#174) &middot; AdjD 111.1 (#233) &middot; Net -3.1 &middot; AdjT 66.0 (#348) &middot; Luck -0.169 (#296) &middot; SOS -5.6 (#282) &middot; NCSOS -5.6 (#282) &middot; 1-3 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
+<p>Net rank #194 &middot; AdjO 108.0 (#174) &middot; AdjD 111.1 (#233) &middot; Net -3.1 &middot; AdjT 66.0 (#348) &middot; Luck -0.169 (#295) &middot; SOS -5.6 (#282) &middot; 1-3 (D1 games)</p>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="iona-gaels.html">Iona Gaels</a></td><td>A</td><td>L</td><td>55-56</td></tr>
 <tr><td>11/05</td><td><a href="fairfield-stags.html">Fairfield Stags</a></td><td>A</td><td>W</td><td>79-67</td></tr>
 <tr><td>11/08</td><td><a href="quinnipiac-bobcats.html">Quinnipiac Bobcats</a></td><td>H</td><td>L</td><td>76-79</td></tr>
 <tr><td>11/18</td><td><a href="yale-bulldogs.html">Yale Bulldogs</a></td><td>A</td><td>L</td><td>74-76</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>John Broom</td><td>G</td><td>5</td><td>8.6</td><td>94.8</td><td>15.4</td><td>77.5</td><td>3.0</td></tr>
 <tr><td>Will Davies</td><td>G</td><td>5</td><td>16.2</td><td>106.1</td><td>27.1</td><td>74.5</td><td>3.6</td></tr>
 <tr><td>Noah Barnett</td><td>F</td><td>5</td><td>8.8</td><td>127.2</td><td>14.2</td><td>64.5</td><td>3.7</td></tr>
@@ -99,12 +103,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Mario Brunetto</td><td>F</td><td>1</td><td>0.0</td><td>0.0</td><td>26.4</td><td>3.0</td><td>-2.2</td></tr>
 <tr><td>Zach Romich</td><td>G</td><td>1</td><td>0.0</td><td>0.0</td><td>17.6</td><td>3.0</td><td>-1.5</td></tr>
 <tr><td>Sincere Clemons</td><td>G</td><td>1</td><td>0.0</td><td>0.0</td><td>21.1</td><td>2.5</td><td>-3.0</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
 </section>
 <section><h2>2025-26</h2>
+<p class="datestamp">Data through Apr 6 games: 6,318 events, 5,752 D1 games used.</p>
 <p>Net rank #216 &middot; AdjO 108.1 (#195) &middot; AdjD 111.8 (#230) &middot; Net -3.7 &middot; AdjT 65.8 (#307) &middot; Luck +0.221 (#17) &middot; SOS -9.6 (#353) &middot; NCSOS -2.4 (#285) &middot; 20-12 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/09</td><td><a href="brown-bears.html">Brown Bears</a></td><td>A</td><td>W</td><td>89-84</td></tr>
 <tr><td>11/15</td><td><a href="northeastern-huskies.html">Northeastern Huskies</a></td><td>A</td><td>W</td><td>85-74</td></tr>
 <tr><td>11/18</td><td><a href="buffalo-bulls.html">Buffalo Bulls</a></td><td>A</td><td>L</td><td>90-94</td></tr>
@@ -137,9 +142,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/07</td><td><a href="bryant-bulldogs.html">Bryant Bulldogs</a></td><td>H</td><td>W</td><td>77-57</td></tr>
 <tr><td>03/10</td><td><a href="njit-highlanders.html">NJIT Highlanders</a></td><td>H</td><td>W</td><td>63-54</td></tr>
 <tr><td>03/14</td><td><a href="umbc-retrievers.html">UMBC Retrievers</a></td><td>A</td><td>L</td><td>59-74</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>TJ Hurley</td><td>G</td><td>34</td><td>15.0</td><td>117.6</td><td>22.7</td><td>77.4</td><td>4.2</td></tr>
 <tr><td>Sean Blake</td><td>G</td><td>34</td><td>9.9</td><td>86.3</td><td>22.0</td><td>71.6</td><td>1.2</td></tr>
 <tr><td>TJ Long</td><td>G</td><td>29</td><td>12.1</td><td>95.5</td><td>23.6</td><td>63.0</td><td>1.7</td></tr>
@@ -149,12 +154,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Lucas Mari</td><td>G</td><td>30</td><td>4.9</td><td>80.8</td><td>16.6</td><td>44.0</td><td>0.8</td></tr>
 <tr><td>Benjamin Michaels</td><td>F</td><td>31</td><td>2.0</td><td>71.3</td><td>11.6</td><td>29.8</td><td>0.1</td></tr>
 <tr><td>Momo Nkugwa</td><td>G</td><td>30</td><td>2.9</td><td>95.2</td><td>13.3</td><td>27.9</td><td>1.3</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <section><h2>2024-25</h2>
+<p class="datestamp">Data through Apr 7 games: 6,298 events, 5,759 D1 games used.</p>
 <p>Net rank #237 &middot; AdjO 100.1 (#307) &middot; AdjD 105.7 (#140) &middot; Net -5.6 &middot; AdjT 63.2 (#358) &middot; Luck +0.265 (#6) &middot; SOS -5.9 (#309) &middot; NCSOS -0.4 (#209) &middot; 19-12 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/04</td><td><a href="uab-blazers.html">UAB Blazers</a></td><td>A</td><td>W</td><td>67-62</td></tr>
 <tr><td>11/06</td><td><a href="auburn-tigers.html">Auburn Tigers</a></td><td>A</td><td>L</td><td>43-94</td></tr>
 <tr><td>11/09</td><td><a href="merrimack-warriors.html">Merrimack Warriors</a></td><td>A</td><td>L</td><td>51-65</td></tr>
@@ -186,9 +192,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/04</td><td><a href="ualbany-great-danes.html">UAlbany Great Danes</a></td><td>H</td><td>W</td><td>79-71</td></tr>
 <tr><td>03/08</td><td><a href="new-hampshire-wildcats.html">New Hampshire Wildcats</a></td><td>H</td><td>W</td><td>64-57</td></tr>
 <tr><td>03/11</td><td><a href="maine-black-bears.html">Maine Black Bears</a></td><td>H</td><td>L</td><td>42-57</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>TJ Hurley</td><td>G</td><td>31</td><td>15.8</td><td>107.2</td><td>25.1</td><td>75.7</td><td>2.6</td></tr>
 <tr><td>Ileri Ayo-Faleye</td><td>F</td><td>33</td><td>11.2</td><td>99.3</td><td>20.5</td><td>75.2</td><td>3.7</td></tr>
 <tr><td>Nick Fiorillo</td><td>F</td><td>29</td><td>10.3</td><td>96.3</td><td>19.4</td><td>66.4</td><td>2.0</td></tr>
@@ -197,9 +203,12 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Jace Roquemore</td><td>G</td><td>27</td><td>4.8</td><td>91.4</td><td>12.9</td><td>46.5</td><td>1.1</td></tr>
 <tr><td>Sean Blake</td><td>G</td><td>33</td><td>4.2</td><td>69.8</td><td>21.6</td><td>37.8</td><td>-0.4</td></tr>
 <tr><td>Noah Barnett</td><td>F</td><td>30</td><td>3.1</td><td>123.6</td><td>11.0</td><td>28.4</td><td>1.6</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
+<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file. Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not. Trap marks a trap game for the favorite; see the Predictions section on the main page for the rules and the backtest.</p><div class="table-scroll"><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th><th>Trap</th></tr></thead><tbody>
+<tr><td>Sat 06:00 PM</td><td><a href="brown-bears.html">Brown</a></td><td>H</td><td>Vermont -7.1</td><td>77.0%</td><td>-</td><td>-</td><td>0</td></tr>
+</tbody></table></div><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
 <footer>
 <p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
 <a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 20, 2026.

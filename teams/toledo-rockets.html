@@ -65,6 +65,8 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders td:nth-child(n+3) { text-align: right; }
 @media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
 .note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
 .warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
   border-radius: 6px; }
 footer { margin-top: 48px; color: #656d76; font-size: 14px;
@@ -74,18 +76,20 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>Toledo Rockets</h1>
 <p class="subtitle">MAC &middot; <a href="../index.html">&larr; College Ratings</a></p>
+<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 3:06 PM CT · 1,070 events, 803 D1 games used</p>
 <section><h2>2026-27</h2>
-<p>Net rank #151 &middot; AdjO 109.5 (#148) &middot; AdjD 108.6 (#168) &middot; Net 0.9 &middot; AdjT 70.0 (#129) &middot; Luck -0.024 (#198) &middot; SOS 2.2 (#140) &middot; NCSOS 2.2 (#139) &middot; 3-3 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
+<p>Net rank #151 &middot; AdjO 109.5 (#148) &middot; AdjD 108.6 (#168) &middot; Net 0.9 &middot; AdjT 70.0 (#130) &middot; Luck -0.024 (#200) &middot; SOS 2.2 (#140) &middot; 3-3 (D1 games)</p>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="arkansas-state-red-wolves.html">Arkansas State Red Wolves</a></td><td>A</td><td>L</td><td>70-71</td></tr>
 <tr><td>11/05</td><td><a href="michigan-state-spartans.html">Michigan State Spartans</a></td><td>A</td><td>L</td><td>61-91</td></tr>
 <tr><td>11/07</td><td><a href="marshall-thundering-herd.html">Marshall Thundering Herd</a></td><td>A</td><td>W</td><td>81-76</td></tr>
 <tr><td>11/10</td><td><a href="wright-state-raiders.html">Wright State Raiders</a></td><td>H</td><td>L</td><td>68-76</td></tr>
 <tr><td>11/14</td><td><a href="detroit-mercy-titans.html">Detroit Mercy Titans</a></td><td>A</td><td>W</td><td>85-72</td></tr>
 <tr><td>11/19</td><td><a href="robert-morris-colonials.html">Robert Morris Colonials</a></td><td>H</td><td>W</td><td>83-76</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Mynor Strong</td><td>G</td><td>6</td><td>18.2</td><td>106.5</td><td>24.4</td><td>83.8</td><td>6.1</td></tr>
 <tr><td>Sean Jones</td><td>G</td><td>6</td><td>9.7</td><td>78.4</td><td>18.4</td><td>80.4</td><td>2.7</td></tr>
 <tr><td>Jaylan Ouwinga</td><td>F</td><td>6</td><td>13.7</td><td>97.9</td><td>22.2</td><td>75.4</td><td>2.7</td></tr>
@@ -99,12 +103,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Manny Johnson</td><td>G</td><td>1</td><td>3.0</td><td>150.0</td><td>48.0</td><td>0.8</td><td>0.5</td></tr>
 <tr><td>Toby Nwokolo</td><td>F</td><td>1</td><td>0.0</td><td>0.0</td><td>48.0</td><td>0.4</td><td>-1.0</td></tr>
 <tr><td>Marco Mattucci</td><td>G</td><td>1</td><td>0.0</td><td>—</td><td>—</td><td>0.4</td><td>—</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY.</p>
 </section>
 <section><h2>2025-26</h2>
+<p class="datestamp">Data through Apr 6 games: 6,318 events, 5,752 D1 games used.</p>
 <p>Net rank #133 &middot; AdjO 114.1 (#89) &middot; AdjD 111.4 (#224) &middot; Net 2.8 &middot; AdjT 68.2 (#179) &middot; Luck -0.039 (#233) &middot; SOS -0.3 (#152) &middot; NCSOS 2.3 (#136) &middot; 17-15 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/03</td><td><a href="south-alabama-jaguars.html">South Alabama Jaguars</a></td><td>H</td><td>L</td><td>74-76</td></tr>
 <tr><td>11/08</td><td><a href="marshall-thundering-herd.html">Marshall Thundering Herd</a></td><td>H</td><td>L</td><td>73-85</td></tr>
 <tr><td>11/11</td><td><a href="wright-state-raiders.html">Wright State Raiders</a></td><td>A</td><td>W</td><td>81-71</td></tr>
@@ -137,9 +142,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/12</td><td><a href="bowling-green-falcons.html">Bowling Green Falcons</a></td><td>N</td><td>W</td><td>77-76</td></tr>
 <tr><td>03/13</td><td><a href="massachusetts-minutemen.html">Massachusetts Minutemen</a></td><td>N</td><td>W</td><td>77-67</td></tr>
 <tr><td>03/14</td><td><a href="akron-zips.html">Akron Zips</a></td><td>N</td><td>L</td><td>76-79</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Sonny Wilson</td><td>G</td><td>34</td><td>17.0</td><td>102.5</td><td>23.0</td><td>90.5</td><td>4.2</td></tr>
 <tr><td>Leroy Blyden Jr.</td><td>G</td><td>34</td><td>16.4</td><td>105.6</td><td>23.4</td><td>83.6</td><td>5.3</td></tr>
 <tr><td>Sean Craig</td><td>F</td><td>34</td><td>11.7</td><td>106.3</td><td>17.4</td><td>79.0</td><td>3.7</td></tr>
@@ -148,12 +153,13 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Jaylan Ouwinga</td><td>F</td><td>34</td><td>6.3</td><td>94.9</td><td>17.9</td><td>46.5</td><td>1.8</td></tr>
 <tr><td>Mynor Strong</td><td>G</td><td>33</td><td>5.2</td><td>94.4</td><td>15.8</td><td>42.9</td><td>1.3</td></tr>
 <tr><td>Will James Jr.</td><td>G</td><td>34</td><td>3.1</td><td>94.1</td><td>17.3</td><td>23.6</td><td>0.8</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <section><h2>2024-25</h2>
+<p class="datestamp">Data through Apr 7 games: 6,298 events, 5,759 D1 games used.</p>
 <p>Net rank #235 &middot; AdjO 110.9 (#98) &middot; AdjD 116.4 (#348) &middot; Net -5.5 &middot; AdjT 68.7 (#126) &middot; Luck +0.167 (#40) &middot; SOS -1.5 (#171) &middot; NCSOS 3.3 (#92) &middot; 17-15 (D1 games)</p>
-<h3>Game log</h3><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
+<h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/04</td><td><a href="troy-trojans.html">Troy Trojans</a></td><td>A</td><td>L</td><td>74-84</td></tr>
 <tr><td>11/09</td><td><a href="marshall-thundering-herd.html">Marshall Thundering Herd</a></td><td>A</td><td>W</td><td>90-80</td></tr>
 <tr><td>11/13</td><td><a href="wright-state-raiders.html">Wright State Raiders</a></td><td>H</td><td>W</td><td>86-77</td></tr>
@@ -186,9 +192,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>03/07</td><td><a href="ohio-bobcats.html">Ohio Bobcats</a></td><td>H</td><td>W</td><td>96-82</td></tr>
 <tr><td>03/13</td><td><a href="ohio-bobcats.html">Ohio Bobcats</a></td><td>N</td><td>W</td><td>90-85</td></tr>
 <tr><td>03/14</td><td><a href="akron-zips.html">Akron Zips</a></td><td>N</td><td>L</td><td>90-100</td></tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Roster</h3>
-<table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
+<div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
 <tr><td>Sonny Wilson</td><td>G</td><td>33</td><td>15.3</td><td>101.2</td><td>22.6</td><td>84.0</td><td>3.1</td></tr>
 <tr><td>Sam Lewis</td><td>G</td><td>33</td><td>16.2</td><td>106.2</td><td>24.4</td><td>78.6</td><td>3.2</td></tr>
 <tr><td>Isaiah Adams</td><td>G</td><td>33</td><td>11.1</td><td>85.3</td><td>21.8</td><td>75.0</td><td>1.6</td></tr>
@@ -197,7 +203,7 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <tr><td>Seth Hubbard</td><td>G</td><td>33</td><td>8.4</td><td>90.6</td><td>22.0</td><td>52.7</td><td>1.1</td></tr>
 <tr><td>Andre Lorentsson</td><td>F</td><td>33</td><td>3.1</td><td>96.8</td><td>12.2</td><td>32.9</td><td>0.7</td></tr>
 <tr><td>Jaylan Ouwinga</td><td>F</td><td>32</td><td>2.9</td><td>94.8</td><td>13.6</td><td>27.7</td><td>1.0</td></tr>
-</tbody></table>
+</tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
 <footer>
