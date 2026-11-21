@@ -186,9 +186,16 @@ function render() {
   var vals = valuesFor(current);
   var nums = vals.map(function (d) { return d.v; }).sort(function (a, b) { return a - b; });
   var n = nums.length;
-  var lo = nums[0], hi = nums[n - 1];
+  // Chart range is capped at the 1st and 99th percentiles so a handful of
+  // tiny-sample outliers (ORtg 300, TS% 150) do not squash the bulk of
+  // players into a spike. Summary, top 5, and ranks still use all players.
+  var pLo = quantile(nums, 0.01), pHi = quantile(nums, 0.99);
+  var aboveHi = nums.filter(function (v) { return v > pHi; }).length;
+  var belowLo = nums.filter(function (v) { return v < pLo; }).length;
+  var lo = pLo, hi = pHi;
   var pad = (hi - lo) * 0.02 || 1;
   lo -= pad; hi += pad;
+  if (nums[0] >= 0) lo = Math.max(0, lo);
   var mean = nums.reduce(function (a, b) { return a + b; }, 0) / n;
   var median = quantile(nums, 0.5);
   var sd = Math.sqrt(nums.reduce(function (a, b) { return a + (b - mean) * (b - mean); }, 0) / n);
@@ -200,7 +207,7 @@ function render() {
   var bins = [];
   for (var b = 0; b < NB; b++) bins.push({lo: lo + b * bw, hi: lo + (b + 1) * bw, items: []});
   vals.forEach(function (d) {
-    var idx = Math.min(NB - 1, Math.floor((d.v - lo) / bw));
+    var idx = Math.max(0, Math.min(NB - 1, Math.floor((d.v - lo) / bw)));
     bins[idx].items.push(d);
   });
   bins.forEach(function (bin) { bin.items.sort(function (a, b) { return b.v - a.v; }); });
@@ -279,7 +286,7 @@ function render() {
       markerInfo.innerHTML = "<p><strong>" + esc(marker.name) + "</strong> has no value for " + stat.label + " (for example, SHARP needs 5 games and 20 minutes per game).</p><button class='clear' id='clear-marker'>Clear</button>";
     } else {
       var rank = 1 + nums.filter(function (v) { return v > mv; }).length;
-      var kx = X(mv), ky = Y(kdeAt(mv, nums, h) * n * bw);
+      var kx = Math.min(Math.max(X(mv), ML), ML + PW), ky = Y(kdeAt(mv, nums, h) * n * bw);
       svg.appendChild(svgEl("line", {x1: kx, y1: MT, x2: kx, y2: MT + PH, "class": "marker-line"}));
       svg.appendChild(svgEl("circle", {cx: kx, cy: ky, r: 6, fill: "#f59e0b", stroke: "#fff", "stroke-width": 2}));
       var label = svgEl("text", {x: (kx > ML + PW - 220 ? kx - 8 : kx + 8), y: Math.max(ky - 10, MT + 12), "class": "axis-label", fill: "#b45309", "text-anchor": (kx > ML + PW - 220 ? "end" : "start")});
@@ -288,7 +295,7 @@ function render() {
       markerInfo.innerHTML = "<p><strong>" + esc(marker.name) + "</strong> (" + esc(marker.team) + "): " + stat.label + " " + fmt(mv, stat) + ", rank #" + rank + " of " + n + ".</p><button class='clear' id='clear-marker'>Clear</button>";
     }
     var cb = document.getElementById("clear-marker");
-    if (cb) cb.addEventListener("click", function () { marker = null; markerInfo.innerHTML = ""; render(); });
+    if (cb) cb.addEventListener("click", function () { marker = null; markerInfo.innerHTML = ""; document.getElementById("search").value = ""; render(); });
   } else {
     markerInfo.innerHTML = "";
   }
@@ -303,7 +310,9 @@ function render() {
     "<p><strong>" + stat.label + ":</strong> " + n + " players &middot; mean " + fmt(mean, stat) +
     " &middot; median " + fmt(median, stat) + " &middot; min " + fmt(nums[0], stat) +
     " &middot; max " + fmt(nums[n - 1], stat) + "</p>" +
-    "<p>" + esc(stat.desc) + "</p><ol>" + topHtml + "</ol>";
+    "<p>" + esc(stat.desc) + "</p>" +
+    ((aboveHi || belowLo) ? "<p>Chart shows the 1st to 99th percentile (" + fmt(pLo, stat) + " to " + fmt(pHi, stat) + "); " + (belowLo + aboveHi) + " players outside that range are grouped in the end bins.</p>" : "") +
+    "<ol>" + topHtml + "</ol>";
 
   document.getElementById("stat-desc").textContent = stat.label + ": " + stat.desc;
   document.querySelectorAll("#stat-buttons button").forEach(function (btn) {
