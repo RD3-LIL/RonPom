@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Darius Bivins | College Ratings</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; color: #1f2328;
+  line-height: 1.5; }
+h1 { font-size: 2em; margin-bottom: 0; }
+h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin-top: 40px; }
+h3 { margin-top: 28px; }
+.subtitle { color: #656d76; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; }
+th { background: #f6f8fa; }
+nav.topnav { position: sticky; top: 0; z-index: 20; background: #fff;
+  border-bottom: 1px solid #d0d7de; padding: 8px 0; display: flex;
+  gap: 4px; flex-wrap: wrap; }
+nav.topnav a { padding: 4px 10px; border-radius: 6px; color: #0969da;
+  text-decoration: none; font-weight: 600; font-size: 14px; }
+nav.topnav a:hover { background: #eaeef2; }
+section, div[id] { scroll-margin-top: 54px; }
+table.ratings { font-size: 13px; }
+table.ratings th, table.ratings td { padding: 3px 8px; }
+table.ratings thead th { position: sticky; top: 40px; cursor: pointer;
+  user-select: none; }
+table.ratings thead th:hover { background: #eaeef2; }
+table.ratings thead th.sorted-asc::after { content: " \\25B2"; }
+table.ratings thead th.sorted-desc::after { content: " \\25BC"; }
+table.ratings tbody tr:nth-child(even) td { background: #f6f8fa; }
+table.ratings tbody tr.team { cursor: pointer; }
+table.ratings tbody tr.team:hover td { background: #eef4ff; }
+table.ratings td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+table.ratings td.net { font-weight: 700; }
+table.ratings td .sub-rank { display: block; font-size: 10px;
+  line-height: 1.1; color: #656d76; font-weight: 400; }
+tr.ill td { background: #fff8e6 !important; font-weight: 600; }
+tr.trap-row td { background: #fff8e6; }
+tr.detail td { background: #fff; padding: 10px 14px; cursor: default; }
+.detail-box { margin-bottom: 8px; }
+table.gamelog { font-size: 13px; width: auto; margin: 0; }
+table.gamelog th, table.gamelog td { padding: 2px 10px; }
+table.gamelog td:nth-child(n+3) { text-align: right; }
+.detail-box h4 { margin: 14px 0 4px; }
+table.roster { font-size: 13px; width: auto; margin: 0; }
+table.roster th, table.roster td { padding: 2px 10px; }
+table.roster td:nth-child(n+3) { text-align: right; }
+a.team-link, a.team-page-link { color: #0969da; text-decoration: none; }
+a.team-link:hover, a.team-page-link:hover { text-decoration: underline; }
+.conftabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 4px; }
+button.conf-tab { padding: 3px 9px; font-size: 12px;
+  border: 1px solid #d0d7de; border-radius: 999px; background: #fff;
+  cursor: pointer; }
+button.conf-tab.active { background: #1f2328; color: #fff;
+  border-color: #1f2328; }
+table.preds { font-size: 14px; }
+table.preds td:nth-child(n+3) { text-align: right;
+  font-variant-numeric: tabular-nums; }
+input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
+  border: 1px solid #d0d7de; border-radius: 6px; margin: 4px 0; }
+.leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.leaders table { font-size: 15px; }
+.leaders td:nth-child(n+3) { text-align: right; }
+@media (max-width: 700px) {
+  .leaders { grid-template-columns: 1fr; }
+  /* Phone: the sticky nav wraps to several lines tall (about 145px),
+     far more than the 40px the sticky table header assumes, so the
+     header sticks underneath the nav and covers the first row
+     (SHARP rank 1, Curry, was blanked out on NBA). Unstick both on
+     phones; nothing can overlap a row then. Desktop keeps sticky. */
+  nav.topnav { position: static; }
+  table.ratings thead th { position: static; }
+}
+.note { color: #656d76; font-size: 14px; }
+.datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
+.table-scroll { overflow-x: auto; }
+.warn { background: #fff8e6; border: 1px solid #e3b341; padding: 10px 14px;
+  border-radius: 6px; }
+footer { margin-top: 48px; color: #656d76; font-size: 14px;
+  border-top: 1px solid #d0d7de; padding-top: 16px; }
+
+.profile-head { display: flex; gap: 16px; align-items: flex-start; margin: 12px 0; }
+.profile-head img { width: 96px; height: 96px; object-fit: cover; border-radius: 8px; border: 1px solid #d0d7de; background: #f6f8fa; }
+.profile-head .bio { color: #656d76; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #eaeef2; font-size: 12px; font-weight: 600; margin-right: 4px; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 12px 0; }
+.stat-card { border: 1px solid #d0d7de; border-radius: 8px; padding: 10px 12px; }
+.stat-card .label { font-size: 12px; color: #656d76; text-transform: uppercase; letter-spacing: 0.04em; }
+.tip { cursor: help; border-bottom: 1px dotted #656d76; position: relative; }
+.tip::after { content: attr(data-tip); display: none; position: absolute; bottom: 125%; left: 0; width: 220px; background: #1f2328; color: #fff; padding: 8px; border-radius: 6px; font-size: 13px; line-height: 1.4; text-transform: none; letter-spacing: normal; font-weight: 400; z-index: 10; white-space: normal; }
+.tip:hover::after, .tip:focus::after, .tip:active::after { display: block; }
+.shoot-row .tip { border-bottom: 1px dotted #656d76; }
+.stat-card .value { font-size: 26px; font-weight: 700; line-height: 1.2; }
+.stat-card .rank { font-size: 13px; color: #656d76; }
+.rank-bar { height: 6px; background: #eaeef2; border-radius: 999px; overflow: hidden; margin-top: 6px; }
+.rank-bar span { display: block; height: 100%; background: #38bdf8; }
+.comp-chart { max-width: 640px; margin: 8px 0; }
+.comp-row { display: grid; grid-template-columns: 110px 1fr 56px; align-items: center; gap: 10px; margin: 8px 0; }
+.comp-track { position: relative; height: 16px; background: #eaeef2; border-radius: 999px; }
+.comp-center { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 2px; background: #656d76; }
+.comp-fill { position: absolute; top: 0; bottom: 0; border-radius: 999px; }
+.comp-fill.pos { background: #38bdf8; left: 50%; }
+.comp-fill.neg { background: #f59e0b; right: 50%; }
+.comp-value { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+.shoot-row { display: grid; grid-template-columns: 90px 1fr 110px; align-items: center; gap: 10px; margin: 8px 0; max-width: 640px; }
+.shoot-track { position: relative; height: 16px; background: #eaeef2; border-radius: 999px; }
+.shoot-fill { display: block; height: 100%; background: #38bdf8; border-radius: 999px; }
+.shoot-league { position: absolute; top: -3px; bottom: -3px; width: 2px; background: #656d76; }
+.stacked { display: flex; height: 22px; border-radius: 999px; overflow: hidden; max-width: 640px; margin: 8px 0; }
+.stacked span { display: block; height: 100%; }
+.stack-2s { background: #38bdf8; }
+.stack-3s { background: #1d4ed8; }
+.stack-ft { background: #93c5fd; }
+.legend { font-size: 13px; color: #656d76; }
+.legend b { color: #1f2328; }
+table.profile { font-size: 14px; width: auto; }
+table.profile th, table.profile td { padding: 4px 12px; }
+table.profile td:nth-child(n+2) { text-align: right; font-variant-numeric: tabular-nums; }
+table.gamelog { font-size: 13px; }
+</style>
+</head>
+<body>
+<h1>Darius Bivins</h1>
+<p class="subtitle"><a href="../teams/saint-marys-gaels.html">Saint Mary&#x27;s Gaels</a>
+&middot; Data through November 20, 2026 (1124 games)
+&middot; <a href="../index.html">&larr; College Ratings</a>
+&middot; <a href="index.html">Top-25 players</a></p>
+<div class="profile-head"><img src="https://a.espncdn.com/i/headshots/mens-college-basketball/players/full/5210403.png" alt="Darius Bivins headshot"><div><div class="bio">G &middot; #1 &middot; 6 GP, 0 GS</div>
+<p>Team Net rank #24 &middot; 24.8 MPG, 62.1% of team minutes</p>
+<p class="note">Height, weight, and class year are not in this data yet (the roster pull has not run), so they are not shown here.</p></div></div>
+
+<h2>At a glance</h2>
+<div class="stat-grid"><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Our single-number rating for how much a player helps his team, where a star scores about +6 to +10 and an average rotation player scores about +1 to +3.">RPR</span></div><div class="value">5.64</div><div class="rank">#290 of 7695 in the NCAA</div><div class="rank-bar"><span style="width:96%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Points scored per game.">PPG</span></div><div class="value">12.5</div><div class="rank">#821 of 8105 in the NCAA</div><div class="rank-bar"><span style="width:90%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Rebounds grabbed per game.">RPG</span></div><div class="value">2.0</div><div class="rank">#3650 of 8105 in the NCAA</div><div class="rank-bar"><span style="width:55%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Assists per game.">APG</span></div><div class="value">3.8</div><div class="rank">#333 of 8105 in the NCAA</div><div class="rank-bar"><span style="width:96%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Points the player produces per 100 possessions he uses, using the simplified formula with no assist credit.">ORtg</span></div><div class="value">113.4</div><div class="rank">#1434 of 7695 in the NCAA</div><div class="rank-bar"><span style="width:81%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Points scored per shooting attempt, counting twos, threes, and free throws together.">TS%</span></div><div class="value">63.4%</div><div class="rank">#1778 of 7551 in the NCAA</div><div class="rank-bar"><span style="width:76%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Steals per game.">SPG</span></div><div class="value">2.2</div><div class="rank">#184 of 8105 in the NCAA</div><div class="rank-bar"><span style="width:98%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Blocks per game.">BPG</span></div><div class="value">0.2</div><div class="rank">#2728 of 8105 in the NCAA</div><div class="rank-bar"><span style="width:66%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Extra points per game from threes and free throws above league average.">SHARP</span></div><div class="value">0.28</div><div class="rank">#336 of 1543 in the NCAA</div><div class="rank-bar"><span style="width:78%"></span></div></div></div>
+<p class="note">RPR is our own single-number rating (a star is about +6 to +10, an average rotation player about +1 to +3), not KenPom's proprietary kPOY. ORtg is the simplified approximation (points per 100 possessions used, no assist credit), so it underrates playmakers; read it with %Poss. Ranks are among all players with a value for that stat; the bar shows the percentile (100% is best in the country).</p>
+
+<h2>Season line</h2>
+<table class="profile"><thead><tr><th></th><th>PTS</th><th>REB</th><th>AST</th><th>STL</th><th>BLK</th><th>TO</th><th>PF</th></tr></thead><tbody>
+<tr><td>Totals</td><td>75</td><td>12</td><td>23</td><td>13</td><td>1</td><td>7</td><td>19</td></tr>
+<tr><td>Per game</td><td>12.5</td><td>2.0</td><td>3.8</td><td>2.2</td><td>0.2</td><td>1.2</td><td>3.2</td></tr>
+<tr><td>Per 40</td><td>20.1</td><td>3.2</td><td>6.2</td><td>3.5</td><td>0.3</td><td>1.9</td><td>5.1</td></tr>
+</tbody></table>
+<p class="note">27-53 FG, 8-18 3P, 13-14 FT. 149 minutes in 6 games. College games are 40 minutes, so per 40 is the standard rate here, not per 36.</p>
+
+<h2>Shooting</h2>
+<div class="shoot-row"><span><span class="tip" tabindex="0" data-tip="Share of all field goal attempts made.">FG%</span></span><span class="shoot-track"><span class="shoot-fill" style="width:50.9%"></span><span class="shoot-league" style="left:43.8%"></span></span><span>50.9% (league 43.8%)</span></div><div class="shoot-row"><span><span class="tip" tabindex="0" data-tip="Share of three point attempts made.">3P%</span></span><span class="shoot-track"><span class="shoot-fill" style="width:44.4%"></span><span class="shoot-league" style="left:32.7%"></span></span><span>44.4% (league 32.7%)</span></div><div class="shoot-row"><span><span class="tip" tabindex="0" data-tip="Share of free throw attempts made.">FT%</span></span><span class="shoot-track"><span class="shoot-fill" style="width:92.9%"></span><span class="shoot-league" style="left:70.0%"></span></span><span>92.9% (league 70.0%)</span></div><div class="shoot-row"><span><span class="tip" tabindex="0" data-tip="Field goal percentage adjusted so a three counts more than a two, since it is worth more points.">eFG%</span></span><span class="shoot-track"><span class="shoot-fill" style="width:58.5%"></span><span class="shoot-league" style="left:50.6%"></span></span><span>58.5% (league 50.6%)</span></div><div class="shoot-row"><span><span class="tip" tabindex="0" data-tip="Points scored per shooting attempt, counting twos, threes, and free throws together.">TS%</span></span><span class="shoot-track"><span class="shoot-fill" style="width:63.4%"></span><span class="shoot-league" style="left:54.4%"></span></span><span>63.4% (league 54.4%)</span></div>
+<p class="note">Bars are the player's rate; the grey tick is the league average.</p>
+<div class="comp-chart"><div class="comp-row"><span><span class="tip" tabindex="0" data-tip="Extra points per game from threes and free throws above league average.">SHARP</span></span><span class="comp-track"><span class="comp-center"></span><span class="comp-fill pos" style="width:5.6%"></span></span><span class="comp-value">+0.28</span></div></div>
+<p>SHARP <strong>+0.28</strong>. SHARP counts threes and free throws only, not midrange or layups, and it is points per game added above league average by shooting. Darius Bivins shoots 44.4% from three on 3.0 attempts per game and 92.9% from the line, against league averages of 32.7% from three and 70.0% from the line.</p>
+
+<h2>Where the points come from</h2>
+<div class="stacked"><span class="stack-2s" style="width:50.7%"></span><span class="stack-3s" style="width:32.0%"></span><span class="stack-ft" style="width:17.3%"></span></div>
+<p class="legend"><b>2s</b> 50.7% &middot; <b>3s</b> 32.0% &middot; <b>FTs</b> 17.3%</p>
+
+<h2>RPR</h2>
+<p>RPR <strong>5.64</strong>. Formula: (ORtg - 100) &times; possessions used per game / 100 + 0.5 &times; (AST - TO) per game + (STL + BLK) per game + 0.25 &times; REB per game. That is 113.4 ORtg, 11.0 possessions used per game, 3.8 AST, 1.2 TO, 2.3 STL+BLK, 2.0 REB per game.</p>
+<p class="note">This is the v1 RPR, uncentered: an average rotation player scores about +1 to +3, so almost everyone gets some credit just for playing. The NBA site's RPR v1.2 recenters the counting terms on league averages so an average player scores about 0; that recentering has not been applied here, so the two sites' RPRs are not on the same scale. There is no component breakdown in this data. Usage 21.9% of team possessions.</p>
+
+<h2>Defense</h2>
+<table class="profile"><thead><tr><th></th><th>STL</th><th>BLK</th><th>STL+BLK</th><th>DREB</th><th>PF</th></tr></thead><tbody>
+<tr><td>Totals</td><td>13</td><td>1</td><td>14</td><td>11</td><td>19</td></tr>
+<tr><td>Per game</td><td>2.2</td><td>0.2</td><td>2.3</td><td>1.8</td><td>3.2</td></tr>
+<tr><td>Per 40</td><td>3.5</td><td>0.3</td><td>3.8</td><td>3.0</td><td>5.1</td></tr>
+</tbody></table>
+<p>STL 2.2 per game (#184 of 8105 in the NCAA) &middot; BLK 0.2 per game (#2728 of 8105) &middot; STL+BLK 2.3 per game (#444 of 8105) &middot; DREB 1.8 per game (#3257 of 8105).</p>
+<div class="shoot-row"><span>STL /40</span><span class="shoot-track"><span class="shoot-fill" style="width:100.0%"></span><span class="shoot-league" style="left:49.8%"></span></span><span>3.5 (league 1.5)</span></div><div class="shoot-row"><span>BLK /40</span><span class="shoot-track"><span class="shoot-fill" style="width:8.9%"></span><span class="shoot-league" style="left:22.7%"></span></span><span>0.3 (league 0.7)</span></div><div class="shoot-row"><span>DREB /40</span><span class="shoot-track"><span class="shoot-fill" style="width:24.6%"></span><span class="shoot-league" style="left:38.1%"></span></span><span>3.0 (league 4.6)</span></div>
+<p class="note">Bars are the player's per-40 rate; the grey tick is the league per-40 average. In the v1 RPR this defense is worth 2.3 (STL+BLK per game) + 0.5 (0.25 &times; REB per game) = 2.8 points of the RPR total.</p>
+<p class="note">Box-score defense only. Steals, blocks, defensive boards and fouls are what the ESPN box scores carry; there is no DRtg, opponent shooting or tracking in this data, so none is shown or invented.</p>
+
+<h2>Playmaking and rebounding</h2>
+<p>AST/TO ratio 3.29 &middot; REB per 40 3.2 (OREB 0.3, DREB 3.0). Full defensive line is in the Defense section above.</p>
+
+<h2>Consistency and trending</h2>
+<p>Points per game std dev 4.8 (CV 0.39) &middot; 1 games with 20+ points, 0 with 30+ &middot; Last 7 days: 13.5 PPG in 2 games, trend 1.0 PPG vs season (12.5 PPG).</p>
+
+<h2>Game log</h2>
+<div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th><th>MIN</th><th>FG</th><th>PTS</th><th>REB</th><th>AST</th><th>TO</th><th>STL</th><th>BLK</th></tr></thead><tbody><tr><td>11/20</td><td>Saint Louis Billikens</td><td>H</td><td>W</td><td>95-78</td><td>28</td><td>3-10</td><td>13</td><td>2</td><td>4</td><td>1</td><td>3</td><td>0</td></tr><tr><td>11/16</td><td>Portland State Vikings</td><td>H</td><td>W</td><td>94-78</td><td>30</td><td>5-11</td><td>14</td><td>2</td><td>4</td><td>3</td><td>4</td><td>0</td></tr><tr><td>11/13</td><td>UIC Flames</td><td>H</td><td>W</td><td>84-61</td><td>27</td><td>9-12</td><td>20</td><td>5</td><td>4</td><td>1</td><td>1</td><td>0</td></tr><tr><td>11/08</td><td>Nevada Wolf Pack</td><td>N</td><td>L</td><td>95-96</td><td>20</td><td>1-3</td><td>5</td><td>0</td><td>2</td><td>0</td><td>1</td><td>0</td></tr><tr><td>11/04</td><td>North Dakota State Bison</td><td>H</td><td>W</td><td>105-64</td><td>22</td><td>5-7</td><td>12</td><td>1</td><td>6</td><td>1</td><td>1</td><td>1</td></tr><tr><td>11/02</td><td>Illinois State Redbirds</td><td>H</td><td>W</td><td>90-85</td><td>22</td><td>4-10</td><td>11</td><td>2</td><td>3</td><td>1</td><td>3</td><td>0</td></tr></tbody></table></div>
+<p class="note">Most recent first. FG is made-attempted.</p>
+
+<h2>Teammates on the Saint Mary&#x27;s Gaels</h2>
+<ul><li><a href="mantas-juzenas-5313030-saint-marys-gaels.html">Mantas Juzenas</a> (G, 20.7 PPG, RPR 6.70)</li><li><a href="joshua-dent-5183875-saint-marys-gaels.html">Joshua Dent</a> (G, 15.0 PPG, RPR 6.48)</li><li><a href="vangelis-zougris-5311969-saint-marys-gaels.html">Vangelis Zougris</a> (F, 14.7 PPG, RPR 6.42)</li><li><a href="jeremy-dent-smith-5189814-saint-marys-gaels.html">Jeremy Dent-Smith</a> (G, 9.5 PPG, RPR 1.12)</li><li><a href="jazz-gardner-4685682-saint-marys-gaels.html">Jazz Gardner</a> (C, 4.7 PPG, RPR 1.54)</li><li><a href="rory-hawke-5123978-saint-marys-gaels.html">Rory Hawke</a> (G, 3.7 PPG, RPR 0.42)</li><li><a href="thomas-ndong-5175014-saint-marys-gaels.html">Thomas Ndong</a> (F, 5.2 PPG, RPR 1.73)</li><li><a href="kevin-gad-5105421-saint-marys-gaels.html">Kevin Gad</a> (F, 3.0 PPG, RPR 1.56)</li><li><a href="luke-fennell-5311847-saint-marys-gaels.html">Luke Fennell</a> (G, 2.2 PPG, RPR 0.70)</li><li><a href="flynn-pavely-5458431-saint-marys-gaels.html">Flynn Pavely</a> (C, 1.3 PPG, RPR 0.75)</li><li><a href="cooper-lewis-5458432-saint-marys-gaels.html">Cooper Lewis</a> (G, 2.0 PPG, RPR 0.17)</li><li><a href="trent-maclean-5313032-saint-marys-gaels.html">Trent MacLean</a> (F, 3.0 PPG, RPR 1.67)</li><li><a href="sam-curvy-5351500-saint-marys-gaels.html">Sam Curvy</a> (NA, 0.0 PPG, RPR -0.50)</li></ul>
+
+<footer>
+<p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Data through November 20, 2026
+(1124 games). Built November 21, 2026. Not affiliated with KenPom.</p>
+</footer>
+</body>
+</html>
