@@ -269,10 +269,12 @@ function render() {
   mt.textContent = "Mean " + fmt(mean, stat);
   svg.appendChild(mt);
 
-  // Search marker.
+  // Search marker. Recompute the value from the player's row on every
+  // render, so switching stats after searching shows the new stat's value
+  // instead of the stale value captured when the player was picked.
   var markerInfo = document.getElementById("marker-info");
   if (marker) {
-    var mv = marker.value;
+    var mv = DATA[marker.rowIndex][3 + statIndex(current)];
     if (mv === null) {
       markerInfo.innerHTML = "<p><strong>" + esc(marker.name) + "</strong> has no value for " + stat.label + " (for example, SHARP needs 5 games and 20 minutes per game).</p><button class='clear' id='clear-marker'>Clear</button>";
     } else {
@@ -280,7 +282,7 @@ function render() {
       var kx = X(mv), ky = Y(kdeAt(mv, nums, h) * n * bw);
       svg.appendChild(svgEl("line", {x1: kx, y1: MT, x2: kx, y2: MT + PH, "class": "marker-line"}));
       svg.appendChild(svgEl("circle", {cx: kx, cy: ky, r: 6, fill: "#f59e0b", stroke: "#fff", "stroke-width": 2}));
-      var label = svgEl("text", {x: Math.min(Math.max(kx + 8, ML), ML + PW - 180), y: Math.max(ky - 10, MT + 12), "class": "axis-label", fill: "#b45309"});
+      var label = svgEl("text", {x: (kx > ML + PW - 220 ? kx - 8 : kx + 8), y: Math.max(ky - 10, MT + 12), "class": "axis-label", fill: "#b45309", "text-anchor": (kx > ML + PW - 220 ? "end" : "start")});
       label.textContent = marker.name + " " + fmt(mv, stat) + " (#" + rank + " of " + n + ")";
       svg.appendChild(label);
       markerInfo.innerHTML = "<p><strong>" + esc(marker.name) + "</strong> (" + esc(marker.team) + "): " + stat.label + " " + fmt(mv, stat) + ", rank #" + rank + " of " + n + ".</p><button class='clear' id='clear-marker'>Clear</button>";
@@ -371,8 +373,7 @@ function esc(s) {
       div.addEventListener("click", function () {
         input.value = row[0];
         results.style.display = "none";
-        var i = 3 + statIndex(current);
-        marker = {name: row[0], team: row[1], value: row[i]};
+        marker = {name: row[0], team: row[1], rowIndex: DATA.indexOf(row)};
         render();
       });
       results.appendChild(div);
