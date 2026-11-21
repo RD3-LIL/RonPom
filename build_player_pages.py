@@ -30,8 +30,8 @@ version (same site shape, college data):
   weight, or class year: the roster pull (fetch_rosters.py)
   has not run yet, so those fields do not exist in the data
   and are not invented. The page says so.
-- At a glance: RPR, PPG, RPG, APG, ORtg (approx), TS%, SHARP, each
-  with its rank among ALL 8,015 players with a value for
+- At a glance: RPR, PPG, RPG, APG, ORtg (approx), TS%, SPG, BPG,
+  SHARP, each with its rank among ALL 8,015 players with a value for
   that stat (denominator shown). Ranks are competition ranks
   (1, 2, 2, 4). A small-sample note appears when a player is
   under 40% of team minutes or has played 2 or fewer games:
@@ -343,6 +343,8 @@ TIPS = {
     "APG": "Assists per game.",
     "ORtg": "Points the player produces per 100 possessions he uses, using the simplified formula with no assist credit.",
     "TS%": "Points scored per shooting attempt, counting twos, threes, and free throws together.",
+    "SPG": "Steals per game.",
+    "BPG": "Blocks per game.",
     "SHARP": "Extra points per game from threes and free throws above league average.",
     "FG%": "Share of all field goal attempts made.",
     "3P%": "Share of three point attempts made.",
@@ -363,6 +365,8 @@ def rank_rows(p, ranks):
         ("APG", p["per_game"]["ast"], "ast_pg", 1),
         ("ORtg", r.get("ortg"), "ortg", 1),
         ("TS%", s.get("ts_pct"), "ts_pct", 1),
+        ("SPG", p["per_game"]["stl"], "stl_pg", 1),
+        ("BPG", p["per_game"]["blk"], "blk_pg", 1),
         ("SHARP", p.get("sharp"), "sharp", 2),
     ]
     out = []
