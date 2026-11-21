@@ -63,7 +63,16 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .leaders table { font-size: 15px; }
 .leaders td:nth-child(n+3) { text-align: right; }
-@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .leaders { grid-template-columns: 1fr; }
+  /* Phone: the sticky nav wraps to several lines tall (about 145px),
+     far more than the 40px the sticky table header assumes, so the
+     header sticks underneath the nav and covers the first row
+     (SHARP rank 1, Curry, was blanked out on NBA). Unstick both on
+     phones; nothing can overlap a row then. Desktop keeps sticky. */
+  nav.topnav { position: static; }
+  table.ratings thead th { position: static; }
+}
 .note { color: #656d76; font-size: 14px; }
 .datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
 .table-scroll { overflow-x: auto; }
@@ -76,32 +85,33 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>Campbell Fighting Camels</h1>
 <p class="subtitle">CAA &middot; <a href="../index.html">&larr; College Ratings</a></p>
-<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 11:38 PM CT · 1,070 events, 803 D1 games used</p>
+<p class="datestamp">Ratings through Nov 20 games, built November 21, 2026, 9:50 AM CT · 1,129 events, 854 D1 games used</p>
 <section><h2>2026-27</h2>
-<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
-<p>Net rank #233 &middot; AdjO 110.4 (#130) &middot; AdjD 117.0 (#335) &middot; Net -6.6 &middot; AdjT 67.7 (#276) &middot; Luck -0.140 (#271) &middot; SOS 2.6 (#135) &middot; 1-4 (D1 games)</p>
+<p class="datestamp">Data through Nov 20 games: 1,129 events, 854 D1 games used.</p>
+<p>Net rank #199 &middot; AdjO 111.2 (#118) &middot; AdjD 114.9 (#306) &middot; Net -3.6 &middot; AdjT 67.6 (#282) &middot; Luck -0.075 (#233) &middot; SOS 3.6 (#118) &middot; 2-4 (D1 games)</p>
 <h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="nc-state-wolfpack.html">NC State Wolfpack</a></td><td>A</td><td>L</td><td>64-83</td></tr>
 <tr><td>11/08</td><td><a href="western-michigan-broncos.html">Western Michigan Broncos</a></td><td>A</td><td>L</td><td>71-87</td></tr>
 <tr><td>11/11</td><td><a href="east-tennessee-state-buccaneers.html">East Tennessee State Buccaneers</a></td><td>A</td><td>L</td><td>53-68</td></tr>
 <tr><td>11/14</td><td><a href="south-carolina-upstate-spartans.html">South Carolina Upstate Spartans</a></td><td>H</td><td>W</td><td>93-77</td></tr>
 <tr><td>11/18</td><td><a href="oklahoma-sooners.html">Oklahoma Sooners</a></td><td>A</td><td>L</td><td>78-87</td></tr>
+<tr><td>11/20</td><td><a href="kansas-state-wildcats.html">Kansas State Wildcats</a></td><td>A</td><td>W</td><td>80-70</td></tr>
 </tbody></table></div>
 <h3>Roster</h3>
 <div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
-<tr><td>Lance Waddles</td><td>G</td><td>5</td><td>18.8</td><td>112.5</td><td>24.6</td><td>91.0</td><td>5.2</td></tr>
-<tr><td>Rashawn Inglemon</td><td>G</td><td>5</td><td>20.4</td><td>119.6</td><td>25.6</td><td>89.5</td><td>6.6</td></tr>
-<tr><td>AJ Wright Jr.</td><td>G</td><td>5</td><td>5.0</td><td>53.2</td><td>15.2</td><td>83.0</td><td>-1.6</td></tr>
-<tr><td>Nordin Kapic</td><td>F</td><td>5</td><td>13.0</td><td>95.3</td><td>24.9</td><td>73.5</td><td>2.5</td></tr>
-<tr><td>Sentinel Moore</td><td>F</td><td>5</td><td>4.8</td><td>101.0</td><td>12.4</td><td>51.5</td><td>2.9</td></tr>
-<tr><td>Caleb McAbee</td><td>G</td><td>5</td><td>2.8</td><td>70.0</td><td>14.1</td><td>38.0</td><td>-0.7</td></tr>
-<tr><td>Karim Rtail</td><td>G</td><td>3</td><td>8.0</td><td>111.9</td><td>19.8</td><td>29.0</td><td>2.6</td></tr>
-<tr><td>Luka Savanovic</td><td>G</td><td>4</td><td>1.2</td><td>50.0</td><td>12.5</td><td>21.5</td><td>-0.6</td></tr>
-<tr><td>Ben Ritger</td><td>G</td><td>3</td><td>1.3</td><td>80.0</td><td>20.6</td><td>6.5</td><td>0.1</td></tr>
-<tr><td>Emilis Butkus</td><td>G</td><td>1</td><td>0.0</td><td>0.0</td><td>4.1</td><td>6.5</td><td>0.2</td></tr>
-<tr><td>Karson Rogers</td><td>F</td><td>2</td><td>0.0</td><td>0.0</td><td>6.0</td><td>4.5</td><td>-0.4</td></tr>
-<tr><td>Sincere Folk</td><td>G</td><td>3</td><td>0.7</td><td>60.2</td><td>29.7</td><td>3.0</td><td>-0.8</td></tr>
-<tr><td>John Angau</td><td>G</td><td>2</td><td>0.0</td><td>—</td><td>—</td><td>2.5</td><td>—</td></tr>
+<tr><td>Rashawn Inglemon</td><td>G</td><td>6</td><td>20.8</td><td>121.3</td><td>26.0</td><td>89.2</td><td>7.3</td></tr>
+<tr><td>Lance Waddles</td><td>G</td><td>6</td><td>19.5</td><td>115.2</td><td>25.8</td><td>88.3</td><td>5.1</td></tr>
+<tr><td>AJ Wright Jr.</td><td>G</td><td>6</td><td>6.5</td><td>66.3</td><td>15.7</td><td>84.2</td><td>0.1</td></tr>
+<tr><td>Nordin Kapic</td><td>F</td><td>6</td><td>11.2</td><td>90.4</td><td>23.5</td><td>70.8</td><td>1.9</td></tr>
+<tr><td>Sentinel Moore</td><td>F</td><td>6</td><td>5.3</td><td>108.0</td><td>12.2</td><td>54.6</td><td>3.6</td></tr>
+<tr><td>Karim Rtail</td><td>G</td><td>4</td><td>7.0</td><td>95.5</td><td>18.2</td><td>36.2</td><td>1.2</td></tr>
+<tr><td>Caleb McAbee</td><td>G</td><td>6</td><td>2.3</td><td>63.6</td><td>14.5</td><td>34.2</td><td>-0.8</td></tr>
+<tr><td>Luka Savanovic</td><td>G</td><td>5</td><td>2.2</td><td>91.7</td><td>11.6</td><td>23.3</td><td>0.3</td></tr>
+<tr><td>Ben Ritger</td><td>G</td><td>3</td><td>1.3</td><td>80.0</td><td>20.8</td><td>5.4</td><td>0.1</td></tr>
+<tr><td>Emilis Butkus</td><td>G</td><td>1</td><td>0.0</td><td>0.0</td><td>4.2</td><td>5.4</td><td>0.2</td></tr>
+<tr><td>Karson Rogers</td><td>F</td><td>2</td><td>0.0</td><td>0.0</td><td>6.0</td><td>3.8</td><td>-0.4</td></tr>
+<tr><td>Sincere Folk</td><td>G</td><td>3</td><td>0.7</td><td>60.2</td><td>29.9</td><td>2.5</td><td>-0.8</td></tr>
+<tr><td>John Angau</td><td>G</td><td>2</td><td>0.0</td><td>—</td><td>—</td><td>2.1</td><td>—</td></tr>
 </tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Click a player name to open their profile page, when their team is in the top 25.</p>
 </section>
@@ -203,12 +213,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 </tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
-<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file. Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not. Trap marks a trap game for the favorite; see the Predictions section on the main page for the rules and the backtest.</p><div class="table-scroll"><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th><th>Trap</th></tr></thead><tbody>
-<tr><td>Fri 07:00 PM</td><td><a href="kansas-state-wildcats.html">Kansas St</a></td><td>A</td><td>Kansas St -16.1</td><td>7.3%</td><td>-17.5</td><td>+1.4</td><td>1</td></tr>
-</tbody></table></div><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
 <footer>
 <p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
-<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 20, 2026.
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 21, 2026.
 Not affiliated with KenPom.</p>
 </footer>
 </body>

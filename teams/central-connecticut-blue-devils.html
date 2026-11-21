@@ -63,7 +63,16 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .leaders table { font-size: 15px; }
 .leaders td:nth-child(n+3) { text-align: right; }
-@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .leaders { grid-template-columns: 1fr; }
+  /* Phone: the sticky nav wraps to several lines tall (about 145px),
+     far more than the 40px the sticky table header assumes, so the
+     header sticks underneath the nav and covers the first row
+     (SHARP rank 1, Curry, was blanked out on NBA). Unstick both on
+     phones; nothing can overlap a row then. Desktop keeps sticky. */
+  nav.topnav { position: static; }
+  table.ratings thead th { position: static; }
+}
 .note { color: #656d76; font-size: 14px; }
 .datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
 .table-scroll { overflow-x: auto; }
@@ -76,10 +85,10 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>Central Connecticut Blue Devils</h1>
 <p class="subtitle">NEC &middot; <a href="../index.html">&larr; College Ratings</a></p>
-<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 11:38 PM CT · 1,070 events, 803 D1 games used</p>
+<p class="datestamp">Ratings through Nov 20 games, built November 21, 2026, 9:50 AM CT · 1,129 events, 854 D1 games used</p>
 <section><h2>2026-27</h2>
-<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
-<p>Net rank #296 &middot; AdjO 103.1 (#267) &middot; AdjD 115.6 (#319) &middot; Net -12.5 &middot; AdjT 66.0 (#348) &middot; Luck +0.389 (#11) &middot; SOS -2.8 (#233) &middot; 3-2 (D1 games)</p>
+<p class="datestamp">Data through Nov 20 games: 1,129 events, 854 D1 games used.</p>
+<p>Net rank #296 &middot; AdjO 103.0 (#272) &middot; AdjD 115.5 (#316) &middot; Net -12.4 &middot; AdjT 66.0 (#349) &middot; Luck +0.388 (#8) &middot; SOS -2.6 (#228) &middot; 3-2 (D1 games)</p>
 <h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="temple-owls.html">Temple Owls</a></td><td>A</td><td>L</td><td>56-68</td></tr>
 <tr><td>11/05</td><td><a href="syracuse-orange.html">Syracuse Orange</a></td><td>A</td><td>L</td><td>49-102</td></tr>
@@ -205,7 +214,7 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 </section>
 <footer>
 <p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
-<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 20, 2026.
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 21, 2026.
 Not affiliated with KenPom.</p>
 </footer>
 </body>
