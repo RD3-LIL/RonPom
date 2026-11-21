@@ -45,6 +45,10 @@ STATS = [
     ("ft", "FT%", 1, True, "Share of free throw attempts made."),
     ("efg", "eFG%", 1, True,
      "Field goal percentage adjusted so a three counts more than a two, since it is worth more points."),
+    ("spg", "SPG", 1, False, "Steals per game."),
+    ("bpg", "BPG", 1, False, "Blocks per game."),
+    ("stlblk", "STL+BLK", 1, False, "Steals plus blocks per game."),
+    ("dreb", "DREB", 1, False, "Defensive rebounds per game."),
 ]
 
 
@@ -113,6 +117,10 @@ def main():
             _round(100 * p["shooting"]["fg3_pct"]) if p.get("shooting", {}).get("fg3_pct") is not None else None,
             _round(100 * p["shooting"]["ft_pct"]) if p.get("shooting", {}).get("ft_pct") is not None else None,
             _round(100 * p["shooting"]["efg_pct"]) if p.get("shooting", {}).get("efg_pct") is not None else None,
+            _round(p.get("per_game", {}).get("stl")),
+            _round(p.get("per_game", {}).get("blk")),
+            _round(p.get("per_game", {}).get("stl") + p.get("per_game", {}).get("blk")) if p.get("per_game", {}).get("stl") is not None and p.get("per_game", {}).get("blk") is not None else None,
+            _round(p.get("per_game", {}).get("dreb")),
         ])
 
     counts = {}
@@ -202,7 +210,7 @@ player without a profile shows as plain text in the bin lists.</p>
 <script>
 var STATS = __STATS_JSON__;
 var DATA = __DATA_JSON__;
-var COLS = ["rpr","ppg","rpg","apg","ortg","ts","sharp","fg","fg3","ft","efg"];
+var COLS = ["rpr","ppg","rpg","apg","ortg","ts","sharp","fg","fg3","ft","efg","spg","bpg","stlblk","dreb"];
 var current = "ppg";
 var selectedBin = -1;
 var marker = null;
