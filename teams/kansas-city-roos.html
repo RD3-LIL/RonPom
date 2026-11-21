@@ -63,7 +63,16 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .leaders table { font-size: 15px; }
 .leaders td:nth-child(n+3) { text-align: right; }
-@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .leaders { grid-template-columns: 1fr; }
+  /* Phone: the sticky nav wraps to several lines tall (about 145px),
+     far more than the 40px the sticky table header assumes, so the
+     header sticks underneath the nav and covers the first row
+     (SHARP rank 1, Curry, was blanked out on NBA). Unstick both on
+     phones; nothing can overlap a row then. Desktop keeps sticky. */
+  nav.topnav { position: static; }
+  table.ratings thead th { position: static; }
+}
 .note { color: #656d76; font-size: 14px; }
 .datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
 .table-scroll { overflow-x: auto; }
@@ -76,33 +85,34 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>Kansas City Roos</h1>
 <p class="subtitle">Summit &middot; <a href="../index.html">&larr; College Ratings</a></p>
-<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 11:38 PM CT · 1,070 events, 803 D1 games used</p>
+<p class="datestamp">Ratings through Nov 20 games, built November 21, 2026, 9:50 AM CT · 1,129 events, 854 D1 games used</p>
 <section><h2>2026-27</h2>
-<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
-<p>Net rank #310 &middot; AdjO 101.0 (#294) &middot; AdjD 115.1 (#310) &middot; Net -14.1 &middot; AdjT 70.0 (#130) &middot; Luck +0.217 (#55) &middot; SOS -3.7 (#250) &middot; 2-3 (D1 games)</p>
+<p class="datestamp">Data through Nov 20 games: 1,129 events, 854 D1 games used.</p>
+<p>Net rank #307 &middot; AdjO 101.5 (#290) &middot; AdjD 115.2 (#311) &middot; Net -13.7 &middot; AdjT 68.5 (#223) &middot; Luck +0.144 (#87) &middot; SOS -4.2 (#267) &middot; 2-4 (D1 games)</p>
 <h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="creighton-bluejays.html">Creighton Bluejays</a></td><td>A</td><td>L</td><td>61-76</td></tr>
 <tr><td>11/06</td><td><a href="southern-illinois-salukis.html">Southern Illinois Salukis</a></td><td>H</td><td>W</td><td>100-93</td></tr>
 <tr><td>11/09</td><td><a href="jacksonville-dolphins.html">Jacksonville Dolphins</a></td><td>A</td><td>L</td><td>61-79</td></tr>
 <tr><td>11/11</td><td><a href="florida-a-m-rattlers.html">Florida A&amp;M Rattlers</a></td><td>N</td><td>W</td><td>87-65</td></tr>
 <tr><td>11/12</td><td><a href="george-mason-patriots.html">George Mason Patriots</a></td><td>N</td><td>L</td><td>68-76</td></tr>
+<tr><td>11/20</td><td><a href="iona-gaels.html">Iona Gaels</a></td><td>A</td><td>L</td><td>61-62</td></tr>
 </tbody></table></div>
 <h3>Roster</h3>
 <div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
-<tr><td>Jaylen Smith</td><td>G</td><td>6</td><td>14.7</td><td>106.6</td><td>24.3</td><td>74.6</td><td>3.0</td></tr>
-<tr><td>Assane Diop</td><td>F</td><td>6</td><td>10.5</td><td>108.3</td><td>21.9</td><td>58.3</td><td>3.6</td></tr>
-<tr><td>Lincoln Goodwin</td><td>G</td><td>5</td><td>8.8</td><td>89.7</td><td>18.9</td><td>57.1</td><td>1.4</td></tr>
-<tr><td>Carl Daughtery Jr.</td><td>G</td><td>6</td><td>7.8</td><td>89.3</td><td>20.6</td><td>56.2</td><td>-0.1</td></tr>
-<tr><td>Jibbe Sicking</td><td>F</td><td>6</td><td>9.7</td><td>105.4</td><td>22.3</td><td>54.2</td><td>1.2</td></tr>
-<tr><td>Sebastian Hartmann</td><td>F</td><td>5</td><td>8.4</td><td>130.1</td><td>13.5</td><td>52.5</td><td>5.4</td></tr>
-<tr><td>Matija Samar</td><td>G</td><td>6</td><td>7.2</td><td>84.4</td><td>24.0</td><td>46.7</td><td>0.1</td></tr>
-<tr><td>Atuka Bakhtadze</td><td>F</td><td>6</td><td>5.2</td><td>105.4</td><td>15.2</td><td>42.5</td><td>2.0</td></tr>
-<tr><td>Cameron Love</td><td>G</td><td>6</td><td>1.5</td><td>57.1</td><td>14.8</td><td>23.3</td><td>0.1</td></tr>
-<tr><td>Josh Kori</td><td>G</td><td>3</td><td>3.3</td><td>102.5</td><td>18.4</td><td>11.7</td><td>0.4</td></tr>
-<tr><td>DJ Jackson Jr.</td><td>G</td><td>3</td><td>1.7</td><td>62.5</td><td>21.1</td><td>8.3</td><td>-1.2</td></tr>
-<tr><td>Elliot Moskowitz</td><td>G</td><td>5</td><td>0.6</td><td>50.0</td><td>18.6</td><td>7.1</td><td>-0.5</td></tr>
-<tr><td>Raivo Butirins</td><td>F</td><td>4</td><td>0.5</td><td>75.8</td><td>11.6</td><td>5.0</td><td>0.7</td></tr>
-<tr><td>Mykel Bruce-McCrommon</td><td>F</td><td>2</td><td>0.0</td><td>—</td><td>—</td><td>2.1</td><td>—</td></tr>
+<tr><td>Jaylen Smith</td><td>G</td><td>7</td><td>13.3</td><td>99.4</td><td>23.6</td><td>75.4</td><td>2.0</td></tr>
+<tr><td>Assane Diop</td><td>F</td><td>7</td><td>11.1</td><td>111.4</td><td>21.7</td><td>61.4</td><td>3.8</td></tr>
+<tr><td>Lincoln Goodwin</td><td>G</td><td>6</td><td>10.5</td><td>94.0</td><td>21.2</td><td>60.0</td><td>1.4</td></tr>
+<tr><td>Jibbe Sicking</td><td>F</td><td>7</td><td>9.0</td><td>99.9</td><td>21.2</td><td>56.4</td><td>1.2</td></tr>
+<tr><td>Sebastian Hartmann</td><td>F</td><td>6</td><td>7.5</td><td>104.3</td><td>14.7</td><td>55.7</td><td>3.9</td></tr>
+<tr><td>Carl Daughtery Jr.</td><td>G</td><td>7</td><td>8.0</td><td>97.4</td><td>20.7</td><td>52.9</td><td>0.5</td></tr>
+<tr><td>Atuka Bakhtadze</td><td>F</td><td>7</td><td>4.7</td><td>97.5</td><td>15.0</td><td>42.9</td><td>1.7</td></tr>
+<tr><td>Matija Samar</td><td>G</td><td>7</td><td>6.1</td><td>82.8</td><td>23.4</td><td>42.1</td><td>-0.1</td></tr>
+<tr><td>Cameron Love</td><td>G</td><td>7</td><td>1.7</td><td>71.6</td><td>13.5</td><td>23.6</td><td>0.6</td></tr>
+<tr><td>Josh Kori</td><td>G</td><td>3</td><td>3.3</td><td>102.5</td><td>18.5</td><td>10.0</td><td>0.4</td></tr>
+<tr><td>DJ Jackson Jr.</td><td>G</td><td>3</td><td>1.7</td><td>62.5</td><td>21.3</td><td>7.1</td><td>-1.2</td></tr>
+<tr><td>Elliot Moskowitz</td><td>G</td><td>5</td><td>0.6</td><td>50.0</td><td>18.8</td><td>6.1</td><td>-0.5</td></tr>
+<tr><td>Raivo Butirins</td><td>F</td><td>4</td><td>0.5</td><td>75.8</td><td>11.7</td><td>4.3</td><td>0.7</td></tr>
+<tr><td>Mykel Bruce-McCrommon</td><td>F</td><td>2</td><td>0.0</td><td>—</td><td>—</td><td>1.8</td><td>—</td></tr>
 <tr><td>Dovydas Jencius</td><td>F</td><td>1</td><td>0.0</td><td>—</td><td>—</td><td>0.4</td><td>—</td></tr>
 </tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Click a player name to open their profile page, when their team is in the top 25.</p>
@@ -203,12 +213,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 </tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
-<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file. Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not. Trap marks a trap game for the favorite; see the Predictions section on the main page for the rules and the backtest.</p><div class="table-scroll"><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th><th>Trap</th></tr></thead><tbody>
-<tr><td>Fri 06:00 PM</td><td><a href="iona-gaels.html">Iona</a></td><td>A</td><td>Iona -8.8</td><td>18.9%</td><td>-4.5</td><td>-4.3</td><td>0</td></tr>
-</tbody></table></div><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
 <footer>
 <p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
-<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 20, 2026.
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 21, 2026.
 Not affiliated with KenPom.</p>
 </footer>
 </body>

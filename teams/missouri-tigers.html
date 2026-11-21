@@ -63,7 +63,16 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .leaders table { font-size: 15px; }
 .leaders td:nth-child(n+3) { text-align: right; }
-@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .leaders { grid-template-columns: 1fr; }
+  /* Phone: the sticky nav wraps to several lines tall (about 145px),
+     far more than the 40px the sticky table header assumes, so the
+     header sticks underneath the nav and covers the first row
+     (SHARP rank 1, Curry, was blanked out on NBA). Unstick both on
+     phones; nothing can overlap a row then. Desktop keeps sticky. */
+  nav.topnav { position: static; }
+  table.ratings thead th { position: static; }
+}
 .note { color: #656d76; font-size: 14px; }
 .datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
 .table-scroll { overflow-x: auto; }
@@ -76,32 +85,33 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>Missouri Tigers</h1>
 <p class="subtitle">SEC &middot; <a href="../index.html">&larr; College Ratings</a></p>
-<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 11:38 PM CT · 1,070 events, 803 D1 games used</p>
+<p class="datestamp">Ratings through Nov 20 games, built November 21, 2026, 9:50 AM CT · 1,129 events, 854 D1 games used</p>
 <section><h2>2026-27</h2>
-<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
-<p>Net rank #20 &middot; AdjO 121.7 (#21) &middot; AdjD 97.5 (#29) &middot; Net 24.2 &middot; AdjT 69.5 (#164) &middot; Luck -0.128 (#262) &middot; SOS -3.6 (#248) &middot; 4-1 (D1 games)</p>
+<p class="datestamp">Data through Nov 20 games: 1,129 events, 854 D1 games used.</p>
+<p>Net rank #22 &middot; AdjO 122.3 (#19) &middot; AdjD 98.1 (#29) &middot; Net 24.2 &middot; AdjT 69.0 (#195) &middot; Luck -0.094 (#244) &middot; SOS -5.6 (#289) &middot; 5-1 (D1 games)</p>
 <h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/03</td><td><a href="cleveland-state-vikings.html">Cleveland State Vikings</a></td><td>H</td><td>W</td><td>111-50</td></tr>
 <tr><td>11/06</td><td><a href="saint-louis-billikens.html">Saint Louis Billikens</a></td><td>N</td><td>L</td><td>84-90</td></tr>
 <tr><td>11/09</td><td><a href="siu-edwardsville-cougars.html">SIU Edwardsville Cougars</a></td><td>H</td><td>W</td><td>96-58</td></tr>
 <tr><td>11/15</td><td><a href="marquette-golden-eagles.html">Marquette Golden Eagles</a></td><td>N</td><td>W</td><td>69-64</td></tr>
 <tr><td>11/18</td><td><a href="alcorn-state-braves.html">Alcorn State Braves</a></td><td>H</td><td>W</td><td>102-41</td></tr>
+<tr><td>11/20</td><td><a href="le-moyne-dolphins.html">Le Moyne Dolphins</a></td><td>H</td><td>W</td><td>91-64</td></tr>
 </tbody></table></div>
 <h3>Roster</h3>
 <div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
-<tr><td><a href="../players/jason-crowe-jr-5142715-missouri-tigers.html">Jason Crowe Jr.</a></td><td>G</td><td>5</td><td>19.2</td><td>98.6</td><td>30.6</td><td>77.0</td><td>1.9</td></tr>
-<tr><td><a href="../players/bryson-tiller-5041958-missouri-tigers.html">Bryson Tiller</a></td><td>F</td><td>5</td><td>14.4</td><td>103.2</td><td>24.7</td><td>68.5</td><td>5.3</td></tr>
-<tr><td><a href="../players/kennard-davis-jr-4685654-missouri-tigers.html">Kennard Davis Jr.</a></td><td>G</td><td>5</td><td>12.0</td><td>135.1</td><td>15.9</td><td>67.5</td><td>6.2</td></tr>
-<tr><td><a href="../players/toni-bryant-5144572-missouri-tigers.html">Toni Bryant</a></td><td>F</td><td>5</td><td>11.4</td><td>153.9</td><td>14.2</td><td>63.0</td><td>8.5</td></tr>
-<tr><td><a href="../players/trent-pierce-5037881-missouri-tigers.html">Trent Pierce</a></td><td>G</td><td>5</td><td>7.8</td><td>84.2</td><td>17.8</td><td>63.0</td><td>3.1</td></tr>
-<tr><td><a href="../players/jamier-jones-5041949-missouri-tigers.html">Jamier Jones</a></td><td>G</td><td>5</td><td>10.8</td><td>123.6</td><td>22.0</td><td>48.0</td><td>5.3</td></tr>
-<tr><td><a href="../players/mark-mitchell-jr-4433285-missouri-tigers.html">Mark Mitchell Jr.</a></td><td>G</td><td>4</td><td>12.0</td><td>145.8</td><td>19.9</td><td>40.0</td><td>8.0</td></tr>
-<tr><td><a href="../players/cord-stansberry-5105455-missouri-tigers.html">Cord Stansberry</a></td><td>G</td><td>5</td><td>2.8</td><td>125.0</td><td>12.9</td><td>21.0</td><td>1.6</td></tr>
-<tr><td><a href="../players/trent-burns-5169569-missouri-tigers.html">Trent Burns</a></td><td>C</td><td>4</td><td>2.8</td><td>92.0</td><td>15.2</td><td>19.0</td><td>1.7</td></tr>
-<tr><td><a href="../players/aaron-rowe-5041957-missouri-tigers.html">Aaron Rowe</a></td><td>G</td><td>4</td><td>0.5</td><td>33.3</td><td>9.4</td><td>15.5</td><td>0.2</td></tr>
-<tr><td><a href="../players/nicholas-randall-5144151-missouri-tigers.html">Nicholas Randall</a></td><td>F</td><td>3</td><td>0.3</td><td>53.2</td><td>6.5</td><td>7.0</td><td>0.1</td></tr>
-<tr><td><a href="../players/jordan-crawford-5105758-missouri-tigers.html">Jordan Crawford</a></td><td>G</td><td>4</td><td>2.0</td><td>114.3</td><td>28.2</td><td>6.0</td><td>0.6</td></tr>
-<tr><td><a href="../players/luke-northweather-5106269-missouri-tigers.html">Luke Northweather</a></td><td>F</td><td>3</td><td>0.0</td><td>0.0</td><td>14.5</td><td>5.0</td><td>-1.1</td></tr>
+<tr><td><a href="../players/jason-crowe-jr-5142715-missouri-tigers.html">Jason Crowe Jr.</a></td><td>G</td><td>6</td><td>19.0</td><td>101.7</td><td>30.4</td><td>75.4</td><td>2.3</td></tr>
+<tr><td><a href="../players/kennard-davis-jr-4685654-missouri-tigers.html">Kennard Davis Jr.</a></td><td>G</td><td>6</td><td>12.2</td><td>125.3</td><td>16.9</td><td>70.4</td><td>5.1</td></tr>
+<tr><td><a href="../players/bryson-tiller-5041958-missouri-tigers.html">Bryson Tiller</a></td><td>F</td><td>6</td><td>15.0</td><td>107.6</td><td>25.2</td><td>67.9</td><td>6.0</td></tr>
+<tr><td><a href="../players/toni-bryant-5144572-missouri-tigers.html">Toni Bryant</a></td><td>F</td><td>6</td><td>11.2</td><td>155.7</td><td>14.0</td><td>62.9</td><td>7.8</td></tr>
+<tr><td><a href="../players/trent-pierce-5037881-missouri-tigers.html">Trent Pierce</a></td><td>G</td><td>6</td><td>8.0</td><td>88.6</td><td>18.0</td><td>61.7</td><td>3.8</td></tr>
+<tr><td><a href="../players/jamier-jones-5041949-missouri-tigers.html">Jamier Jones</a></td><td>G</td><td>6</td><td>10.8</td><td>126.7</td><td>22.1</td><td>47.5</td><td>5.0</td></tr>
+<tr><td><a href="../players/mark-mitchell-jr-4433285-missouri-tigers.html">Mark Mitchell Jr.</a></td><td>G</td><td>5</td><td>10.6</td><td>137.0</td><td>17.1</td><td>46.2</td><td>8.1</td></tr>
+<tr><td><a href="../players/cord-stansberry-5105455-missouri-tigers.html">Cord Stansberry</a></td><td>G</td><td>6</td><td>3.2</td><td>125.0</td><td>14.1</td><td>22.1</td><td>2.0</td></tr>
+<tr><td><a href="../players/trent-burns-5169569-missouri-tigers.html">Trent Burns</a></td><td>C</td><td>4</td><td>2.8</td><td>92.0</td><td>15.5</td><td>15.8</td><td>1.7</td></tr>
+<tr><td><a href="../players/aaron-rowe-5041957-missouri-tigers.html">Aaron Rowe</a></td><td>G</td><td>5</td><td>0.4</td><td>28.6</td><td>10.4</td><td>13.8</td><td>-0.1</td></tr>
+<tr><td><a href="../players/nicholas-randall-5144151-missouri-tigers.html">Nicholas Randall</a></td><td>F</td><td>4</td><td>0.2</td><td>53.2</td><td>5.8</td><td>6.7</td><td>0.1</td></tr>
+<tr><td><a href="../players/jordan-crawford-5105758-missouri-tigers.html">Jordan Crawford</a></td><td>G</td><td>5</td><td>2.0</td><td>126.9</td><td>27.6</td><td>5.8</td><td>0.7</td></tr>
+<tr><td><a href="../players/luke-northweather-5106269-missouri-tigers.html">Luke Northweather</a></td><td>F</td><td>3</td><td>0.0</td><td>0.0</td><td>14.7</td><td>4.2</td><td>-1.1</td></tr>
 </tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Click a player name to open their profile page, when their team is in the top 25.</p>
 </section>
@@ -209,12 +219,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 </tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
-<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file. Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not. Trap marks a trap game for the favorite; see the Predictions section on the main page for the rules and the backtest.</p><div class="table-scroll"><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th><th>Trap</th></tr></thead><tbody>
-<tr class="trap-row"><td>Fri 07:00 PM</td><td><a href="le-moyne-dolphins.html">Le Moyne</a></td><td>H</td><td>Missouri -29.4</td><td>98.9%</td><td>-36.5</td><td>-7.1</td><td><strong>Trap 3</strong></td></tr>
-</tbody></table></div><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
 <footer>
 <p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
-<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 20, 2026.
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 21, 2026.
 Not affiliated with KenPom.</p>
 </footer>
 </body>
