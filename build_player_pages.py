@@ -30,7 +30,7 @@ version (same site shape, college data):
   weight, or class year: the roster pull (fetch_rosters.py)
   has not run yet, so those fields do not exist in the data
   and are not invented. The page says so.
-- At a glance: RPR, PPG, RPG, APG, ORtg (approx), TS%, each
+- At a glance: RPR, PPG, RPG, APG, ORtg (approx), TS%, SHARP, each
   with its rank among ALL 8,015 players with a value for
   that stat (denominator shown). Ranks are competition ranks
   (1, 2, 2, 4). A small-sample note appears when a player is
@@ -296,10 +296,22 @@ EXTRA_CSS = """
 .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 12px 0; }
 .stat-card { border: 1px solid #d0d7de; border-radius: 8px; padding: 10px 12px; }
 .stat-card .label { font-size: 12px; color: #656d76; text-transform: uppercase; letter-spacing: 0.04em; }
+.tip { cursor: help; border-bottom: 1px dotted #656d76; position: relative; }
+.tip::after { content: attr(data-tip); display: none; position: absolute; bottom: 125%; left: 0; width: 220px; background: #1f2328; color: #fff; padding: 8px; border-radius: 6px; font-size: 13px; line-height: 1.4; text-transform: none; letter-spacing: normal; font-weight: 400; z-index: 10; white-space: normal; }
+.tip:hover::after, .tip:focus::after, .tip:active::after { display: block; }
+.shoot-row .tip { border-bottom: 1px dotted #656d76; }
 .stat-card .value { font-size: 26px; font-weight: 700; line-height: 1.2; }
 .stat-card .rank { font-size: 13px; color: #656d76; }
 .rank-bar { height: 6px; background: #eaeef2; border-radius: 999px; overflow: hidden; margin-top: 6px; }
 .rank-bar span { display: block; height: 100%; background: #38bdf8; }
+.comp-chart { max-width: 640px; margin: 8px 0; }
+.comp-row { display: grid; grid-template-columns: 110px 1fr 56px; align-items: center; gap: 10px; margin: 8px 0; }
+.comp-track { position: relative; height: 16px; background: #eaeef2; border-radius: 999px; }
+.comp-center { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 2px; background: #656d76; }
+.comp-fill { position: absolute; top: 0; bottom: 0; border-radius: 999px; }
+.comp-fill.pos { background: #38bdf8; left: 50%; }
+.comp-fill.neg { background: #f59e0b; right: 50%; }
+.comp-value { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 .shoot-row { display: grid; grid-template-columns: 90px 1fr 110px; align-items: center; gap: 10px; margin: 8px 0; max-width: 640px; }
 .shoot-track { position: relative; height: 16px; background: #eaeef2; border-radius: 999px; }
 .shoot-fill { display: block; height: 100%; background: #38bdf8; border-radius: 999px; }
@@ -318,6 +330,21 @@ table.gamelog { font-size: 13px; }
 """
 
 
+TIPS = {
+    "RPR": "Our single-number rating for how much a player helps his team, where a star scores about +6 to +10 and an average rotation player scores about +1 to +3.",
+    "PPG": "Points scored per game.",
+    "RPG": "Rebounds grabbed per game.",
+    "APG": "Assists per game.",
+    "ORtg": "Points the player produces per 100 possessions he uses, using the simplified formula with no assist credit.",
+    "TS%": "Points scored per shooting attempt, counting twos, threes, and free throws together.",
+    "SHARP": "Extra points per game from threes and free throws above league average.",
+    "FG%": "Share of all field goal attempts made.",
+    "3P%": "Share of three point attempts made.",
+    "FT%": "Share of free throw attempts made.",
+    "eFG%": "Field goal percentage adjusted so a three counts more than a two, since it is worth more points.",
+}
+
+
 def rank_rows(p, ranks):
     """(label, value, rank, denominator, decimals) for at-a-glance."""
     key = (p["athlete_id"], p["team"])
@@ -330,6 +357,7 @@ def rank_rows(p, ranks):
         ("APG", p["per_game"]["ast"], "ast_pg", 1),
         ("ORtg", r.get("ortg"), "ortg", 1),
         ("TS%", s.get("ts_pct"), "ts_pct", 1),
+        ("SHARP", p.get("sharp"), "sharp", 2),
     ]
     out = []
     for label, value, rank_key, nd in defs:
@@ -361,9 +389,12 @@ def profile_html(p, ranks, league, logs, teammates, team_net_rank,
 
     cards = []
     for label, value, rank, denom, nd in rank_rows(p, ranks):
+        tip = html.escape(TIPS.get(label, ""), quote=True)
+        label_html = (f'<span class="tip" tabindex="0" data-tip="{tip}">{label}</span>'
+                      if tip else label)
         if value is None:
             cards.append(
-                f'<div class="stat-card"><div class="label">{label}</div>'
+                f'<div class="stat-card"><div class="label">{label_html}</div>'
                 f'<div class="value">-</div>'
                 f'<div class="rank">No value in this data</div></div>')
             continue
@@ -377,7 +408,7 @@ def profile_html(p, ranks, league, logs, teammates, team_net_rank,
                    f'{pct_top:.0f}%"></span></div>')
         val = _pct(value) if label == "TS%" else _fmt(value, nd)
         cards.append(
-            f'<div class="stat-card"><div class="label">{label}</div>'
+            f'<div class="stat-card"><div class="label">{label_html}</div>'
             f'<div class="value">{val}</div>'
             f'<div class="rank">{rank_s}</div>{bar}</div>')
 
@@ -388,16 +419,19 @@ def profile_html(p, ranks, league, logs, teammates, team_net_rank,
             ("FT%", s.get("ft_pct"), league["ft_pct"]),
             ("eFG%", s.get("efg_pct"), league["efg_pct"]),
             ("TS%", s.get("ts_pct"), league["ts_pct"])]:
+        tip = html.escape(TIPS.get(label, ""), quote=True)
+        label_html = (f'<span class="tip" tabindex="0" data-tip="{tip}">{label}</span>'
+                      if tip else label)
         if value is None:
             shoot_rows.append(
-                f'<div class="shoot-row"><span>{label}</span>'
+                f'<div class="shoot-row"><span>{label_html}</span>'
                 f'<span class="shoot-track"></span>'
                 f'<span>- (no attempts)</span></div>')
             continue
         width = max(0.0, min(100.0, 100 * float(value)))
         league_x = max(0.0, min(100.0, 100 * float(league_v)))
         shoot_rows.append(
-            f'<div class="shoot-row"><span>{label}</span>'
+            f'<div class="shoot-row"><span>{label_html}</span>'
             f'<span class="shoot-track"><span class="shoot-fill" '
             f'style="width:{width:.1f}%"></span>'
             f'<span class="shoot-league" style="left:{league_x:.1f}%"></span>'
@@ -469,6 +503,43 @@ def profile_html(p, ranks, league, logs, teammates, team_net_rank,
 
     rpr = r.get("rpr")
     poss_pg = (t["fga"] + 0.44 * t["fta"] + t["to"]) / gp if gp else 0.0
+    sharp = p.get("sharp")
+    sharp_tip = html.escape(TIPS["SHARP"], quote=True)
+    sharp_label = (f'<span class="tip" tabindex="0" '
+                   f'data-tip="{sharp_tip}">SHARP</span>')
+    if sharp is not None:
+        sharp_width = min(50.0, abs(float(sharp)) / 2.5 * 50.0)
+        sharp_cls = "pos" if sharp >= 0 else "neg"
+        sharp_bar = (
+            f'<div class="comp-chart"><div class="comp-row">'
+            f"<span>{sharp_label}</span>"
+            f'<span class="comp-track"><span class="comp-center"></span>'
+            f'<span class="comp-fill {sharp_cls}" '
+            f'style="width:{sharp_width:.1f}%"></span></span>'
+            f'<span class="comp-value">{sharp:+.2f}</span></div></div>')
+    else:
+        sharp_bar = (
+            f'<div class="comp-chart"><div class="comp-row">'
+            f"<span>{sharp_label}</span>"
+            f'<span class="comp-track"><span class="comp-center"></span></span>'
+            f'<span class="comp-value">-</span></div></div>')
+    if sharp is not None:
+        fg3a_pg = t["fg3a"] / gp if gp else 0.0
+        sharp_para = (
+            f"<p>SHARP <strong>{sharp:+.2f}</strong>. SHARP counts "
+            f"threes and free throws only, not midrange or layups, "
+            f"and it is points per game added above league average "
+            f"by shooting. {html.escape(p['name'])} shoots "
+            f"{_pct(s.get('fg3_pct'))} from three on "
+            f"{fg3a_pg:.1f} attempts per game and "
+            f"{_pct(s.get('ft_pct'))} from the line, against league "
+            f"averages of {_pct(league['fg3_pct'])} from three and "
+            f"{_pct(league['ft_pct'])} from the line.</p>")
+    else:
+        sharp_para = (
+            "<p>SHARP has no value here because the player is below "
+            "the floor of 5 games and 20 minutes per game, so a "
+            "small sample would move the number too much.</p>")
     body = f"""<h1>{html.escape(p["name"])}</h1>
 <p class="subtitle"><a href="../teams/{tslug}.html">{html.escape(p["team"])}</a>
 &middot; Data through {through} ({n_games} games)
@@ -493,6 +564,8 @@ def profile_html(p, ranks, league, logs, teammates, team_net_rank,
 <h2>Shooting</h2>
 {''.join(shoot_rows)}
 <p class="note">Bars are the player's rate; the grey tick is the league average.</p>
+{sharp_bar}
+{sharp_para}
 
 <h2>Where the points come from</h2>
 <div class="stacked">{stack}</div>
@@ -588,6 +661,14 @@ def main():
     top_list, team_net_rank = top_teams()
     top_set = {team for team, _, _ in top_list}
     all_players = json.loads((DATA / "players_2026_27.json").read_text())["players"]
+    sharp_path = DATA / "sharp_2026_27.json"
+    sharp_map = {}
+    if sharp_path.exists():
+        sharp_data = json.loads(sharp_path.read_text())
+        sharp_map = {(str(row["athlete_id"]), row["team"]): row["sharp"]
+                     for row in sharp_data["players"]}
+    for p in all_players:
+        p["sharp"] = sharp_map.get((str(p["athlete_id"]), p["team"]))
     players = [p for p in all_players if p["team"] in top_set]
     if len(players) != sum(1 for p in all_players if p["team"] in top_set):
         raise SystemExit("top-25 filter mismatch")
@@ -614,6 +695,7 @@ def main():
         "ast_pg": _rank_map(all_players, lambda p: p["per_game"]["ast"]),
         "ortg": _rank_map(all_players, lambda p: (p.get("ratings") or {}).get("ortg")),
         "ts_pct": _rank_map(all_players, lambda p: p["shooting"].get("ts_pct")),
+        "sharp": _rank_map(all_players, lambda p: p.get("sharp")),
     }
 
     logs = load_game_logs()

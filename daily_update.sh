@@ -150,6 +150,7 @@ python3 player_profiles.py --season 2026-27 || exit 1
 python3 build_prior_2026.py || exit 1
 python3 write_ratings.py 2026-27 || exit 1
 python3 build_page.py || exit 1
+python3 sharp_rating.py || exit 1
 python3 build_player_pages.py || exit 1
 
 # Fresh predictions for the next 3 days, from the ratings
