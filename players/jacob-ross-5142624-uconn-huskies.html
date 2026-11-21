@@ -79,10 +79,22 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 12px 0; }
 .stat-card { border: 1px solid #d0d7de; border-radius: 8px; padding: 10px 12px; }
 .stat-card .label { font-size: 12px; color: #656d76; text-transform: uppercase; letter-spacing: 0.04em; }
+.tip { cursor: help; border-bottom: 1px dotted #656d76; position: relative; }
+.tip::after { content: attr(data-tip); display: none; position: absolute; bottom: 125%; left: 0; width: 220px; background: #1f2328; color: #fff; padding: 8px; border-radius: 6px; font-size: 13px; line-height: 1.4; text-transform: none; letter-spacing: normal; font-weight: 400; z-index: 10; white-space: normal; }
+.tip:hover::after, .tip:focus::after, .tip:active::after { display: block; }
+.shoot-row .tip { border-bottom: 1px dotted #656d76; }
 .stat-card .value { font-size: 26px; font-weight: 700; line-height: 1.2; }
 .stat-card .rank { font-size: 13px; color: #656d76; }
 .rank-bar { height: 6px; background: #eaeef2; border-radius: 999px; overflow: hidden; margin-top: 6px; }
 .rank-bar span { display: block; height: 100%; background: #38bdf8; }
+.comp-chart { max-width: 640px; margin: 8px 0; }
+.comp-row { display: grid; grid-template-columns: 110px 1fr 56px; align-items: center; gap: 10px; margin: 8px 0; }
+.comp-track { position: relative; height: 16px; background: #eaeef2; border-radius: 999px; }
+.comp-center { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 2px; background: #656d76; }
+.comp-fill { position: absolute; top: 0; bottom: 0; border-radius: 999px; }
+.comp-fill.pos { background: #38bdf8; left: 50%; }
+.comp-fill.neg { background: #f59e0b; right: 50%; }
+.comp-value { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 .shoot-row { display: grid; grid-template-columns: 90px 1fr 110px; align-items: center; gap: 10px; margin: 8px 0; max-width: 640px; }
 .shoot-track { position: relative; height: 16px; background: #eaeef2; border-radius: 999px; }
 .shoot-fill { display: block; height: 100%; background: #38bdf8; border-radius: 999px; }
@@ -111,7 +123,7 @@ table.gamelog { font-size: 13px; }
 <p class="note">Height, weight, and class year are not in this data yet (the roster pull has not run), so they are not shown here.</p></div></div>
 <p class="warn">Small sample: 4 games, 3.5% of team minutes. Ranks on this page are among every player who appeared this season, so a hot few games can rank high. The leaderboards on the main page use a 40% minutes floor for exactly this reason.</p>
 <h2>At a glance</h2>
-<div class="stat-grid"><div class="stat-card"><div class="label">RPR</div><div class="value">0.12</div><div class="rank">#4278 of 7607 in the NCAA</div><div class="rank-bar"><span style="width:44%"></span></div></div><div class="stat-card"><div class="label">PPG</div><div class="value">0.5</div><div class="rank">#6535 of 8015 in the NCAA</div><div class="rank-bar"><span style="width:18%"></span></div></div><div class="stat-card"><div class="label">RPG</div><div class="value">0.5</div><div class="rank">#6412 of 8015 in the NCAA</div><div class="rank-bar"><span style="width:20%"></span></div></div><div class="stat-card"><div class="label">APG</div><div class="value">0.0</div><div class="rank">#5361 of 8015 in the NCAA</div><div class="rank-bar"><span style="width:33%"></span></div></div><div class="stat-card"><div class="label">ORtg</div><div class="value">100.0</div><div class="rank">#2408 of 7607 in the NCAA</div><div class="rank-bar"><span style="width:68%"></span></div></div><div class="stat-card"><div class="label">TS%</div><div class="value">50.0%</div><div class="rank">#3879 of 7471 in the NCAA</div><div class="rank-bar"><span style="width:48%"></span></div></div></div>
+<div class="stat-grid"><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Our single-number rating for how much a player helps his team, where a star scores about +6 to +10 and an average rotation player scores about +1 to +3.">RPR</span></div><div class="value">0.12</div><div class="rank">#4278 of 7607 in the NCAA</div><div class="rank-bar"><span style="width:44%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Points scored per game.">PPG</span></div><div class="value">0.5</div><div class="rank">#6535 of 8015 in the NCAA</div><div class="rank-bar"><span style="width:18%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Rebounds grabbed per game.">RPG</span></div><div class="value">0.5</div><div class="rank">#6412 of 8015 in the NCAA</div><div class="rank-bar"><span style="width:20%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Assists per game.">APG</span></div><div class="value">0.0</div><div class="rank">#5361 of 8015 in the NCAA</div><div class="rank-bar"><span style="width:33%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Points the player produces per 100 possessions he uses, using the simplified formula with no assist credit.">ORtg</span></div><div class="value">100.0</div><div class="rank">#2408 of 7607 in the NCAA</div><div class="rank-bar"><span style="width:68%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Points scored per shooting attempt, counting twos, threes, and free throws together.">TS%</span></div><div class="value">50.0%</div><div class="rank">#3879 of 7471 in the NCAA</div><div class="rank-bar"><span style="width:48%"></span></div></div><div class="stat-card"><div class="label"><span class="tip" tabindex="0" data-tip="Extra points per game from threes and free throws above league average.">SHARP</span></div><div class="value">-</div><div class="rank">No value in this data</div></div></div>
 <p class="note">RPR is our own single-number rating (a star is about +6 to +10, an average rotation player about +1 to +3), not KenPom's proprietary kPOY. ORtg is the simplified approximation (points per 100 possessions used, no assist credit), so it underrates playmakers; read it with %Poss. Ranks are among all players with a value for that stat; the bar shows the percentile (100% is best in the country).</p>
 
 <h2>Season line</h2>
@@ -123,8 +135,10 @@ table.gamelog { font-size: 13px; }
 <p class="note">1-2 FG, 0-0 3P, 0-0 FT. 7 minutes in 4 games. College games are 40 minutes, so per 40 is the standard rate here, not per 36.</p>
 
 <h2>Shooting</h2>
-<div class="shoot-row"><span>FG%</span><span class="shoot-track"><span class="shoot-fill" style="width:50.0%"></span><span class="shoot-league" style="left:43.8%"></span></span><span>50.0% (league 43.8%)</span></div><div class="shoot-row"><span>3P%</span><span class="shoot-track"></span><span>- (no attempts)</span></div><div class="shoot-row"><span>FT%</span><span class="shoot-track"></span><span>- (no attempts)</span></div><div class="shoot-row"><span>eFG%</span><span class="shoot-track"><span class="shoot-fill" style="width:50.0%"></span><span class="shoot-league" style="left:50.5%"></span></span><span>50.0% (league 50.5%)</span></div><div class="shoot-row"><span>TS%</span><span class="shoot-track"><span class="shoot-fill" style="width:50.0%"></span><span class="shoot-league" style="left:54.4%"></span></span><span>50.0% (league 54.4%)</span></div>
+<div class="shoot-row"><span><span class="tip" tabindex="0" data-tip="Share of all field goal attempts made.">FG%</span></span><span class="shoot-track"><span class="shoot-fill" style="width:50.0%"></span><span class="shoot-league" style="left:43.8%"></span></span><span>50.0% (league 43.8%)</span></div><div class="shoot-row"><span><span class="tip" tabindex="0" data-tip="Share of three point attempts made.">3P%</span></span><span class="shoot-track"></span><span>- (no attempts)</span></div><div class="shoot-row"><span><span class="tip" tabindex="0" data-tip="Share of free throw attempts made.">FT%</span></span><span class="shoot-track"></span><span>- (no attempts)</span></div><div class="shoot-row"><span><span class="tip" tabindex="0" data-tip="Field goal percentage adjusted so a three counts more than a two, since it is worth more points.">eFG%</span></span><span class="shoot-track"><span class="shoot-fill" style="width:50.0%"></span><span class="shoot-league" style="left:50.5%"></span></span><span>50.0% (league 50.5%)</span></div><div class="shoot-row"><span><span class="tip" tabindex="0" data-tip="Points scored per shooting attempt, counting twos, threes, and free throws together.">TS%</span></span><span class="shoot-track"><span class="shoot-fill" style="width:50.0%"></span><span class="shoot-league" style="left:54.4%"></span></span><span>50.0% (league 54.4%)</span></div>
 <p class="note">Bars are the player's rate; the grey tick is the league average.</p>
+<div class="comp-chart"><div class="comp-row"><span><span class="tip" tabindex="0" data-tip="Extra points per game from threes and free throws above league average.">SHARP</span></span><span class="comp-track"><span class="comp-center"></span></span><span class="comp-value">-</span></div></div>
+<p>SHARP has no value here because the player is below the floor of 5 games and 20 minutes per game, so a small sample would move the number too much.</p>
 
 <h2>Where the points come from</h2>
 <div class="stacked"><span class="stack-2s" style="width:100.0%"></span><span class="stack-3s" style="width:0.0%"></span><span class="stack-ft" style="width:0.0%"></span></div>
@@ -150,7 +164,7 @@ table.gamelog { font-size: 13px; }
 <footer>
 <p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
 <a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Data through November 19, 2026
-(1066 games). Built November 20, 2026. Not affiliated with KenPom.</p>
+(1066 games). Built November 21, 2026. Not affiliated with KenPom.</p>
 </footer>
 </body>
 </html>
