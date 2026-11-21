@@ -63,7 +63,16 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .leaders table { font-size: 15px; }
 .leaders td:nth-child(n+3) { text-align: right; }
-@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .leaders { grid-template-columns: 1fr; }
+  /* Phone: the sticky nav wraps to several lines tall (about 145px),
+     far more than the 40px the sticky table header assumes, so the
+     header sticks underneath the nav and covers the first row
+     (SHARP rank 1, Curry, was blanked out on NBA). Unstick both on
+     phones; nothing can overlap a row then. Desktop keeps sticky. */
+  nav.topnav { position: static; }
+  table.ratings thead th { position: static; }
+}
 .note { color: #656d76; font-size: 14px; }
 .datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
 .table-scroll { overflow-x: auto; }
@@ -76,32 +85,33 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 <body>
 <h1>UCF Knights</h1>
 <p class="subtitle">Big 12 &middot; <a href="../index.html">&larr; College Ratings</a></p>
-<p class="datestamp">Ratings through Nov 19 games, built November 20, 2026, 11:38 PM CT · 1,070 events, 803 D1 games used</p>
+<p class="datestamp">Ratings through Nov 20 games, built November 21, 2026, 9:50 AM CT · 1,129 events, 854 D1 games used</p>
 <section><h2>2026-27</h2>
-<p class="datestamp">Data through Nov 19 games: 1,070 events, 803 D1 games used.</p>
-<p>Net rank #84 &middot; AdjO 118.2 (#41) &middot; AdjD 107.7 (#154) &middot; Net 10.5 &middot; AdjT 69.8 (#147) &middot; Luck +0.055 (#147) &middot; SOS 0.6 (#165) &middot; 4-1 (D1 games)</p>
+<p class="datestamp">Data through Nov 20 games: 1,129 events, 854 D1 games used.</p>
+<p>Net rank #79 &middot; AdjO 117.7 (#46) &middot; AdjD 106.8 (#140) &middot; Net 10.9 &middot; AdjT 70.3 (#117) &middot; Luck -0.086 (#238) &middot; SOS 4.7 (#97) &middot; 4-2 (D1 games)</p>
 <h3>Game log</h3><div class="table-scroll"><table class="gamelog"><thead><tr><th>Date</th><th>Opponent</th><th>Venue</th><th>Result</th><th>Score</th></tr></thead><tbody>
 <tr><td>11/02</td><td><a href="florida-gulf-coast-eagles.html">Florida Gulf Coast Eagles</a></td><td>H</td><td>W</td><td>96-95</td></tr>
 <tr><td>11/06</td><td><a href="yale-bulldogs.html">Yale Bulldogs</a></td><td>H</td><td>W</td><td>87-75</td></tr>
 <tr><td>11/10</td><td><a href="south-alabama-jaguars.html">South Alabama Jaguars</a></td><td>H</td><td>W</td><td>76-69</td></tr>
 <tr><td>11/13</td><td><a href="georgia-southern-eagles.html">Georgia Southern Eagles</a></td><td>H</td><td>W</td><td>84-70</td></tr>
 <tr><td>11/17</td><td><a href="mississippi-state-bulldogs.html">Mississippi State Bulldogs</a></td><td>H</td><td>L</td><td>83-86</td></tr>
+<tr><td>11/20</td><td><a href="vanderbilt-commodores.html">Vanderbilt Commodores</a></td><td>A</td><td>L</td><td>74-82</td></tr>
 </tbody></table></div>
 <h3>Roster</h3>
 <div class="table-scroll"><table class="roster"><thead><tr><th>Player</th><th>Pos</th><th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th><th>%Min</th><th>RPR</th></tr></thead><tbody>
-<tr><td>Dior Johnson</td><td>G</td><td>5</td><td>28.8</td><td>146.6</td><td>29.3</td><td>87.0</td><td>13.4</td></tr>
-<tr><td>Arturo Dean</td><td>G</td><td>5</td><td>14.0</td><td>107.4</td><td>26.0</td><td>65.0</td><td>4.0</td></tr>
-<tr><td>Isaiah Malone</td><td>F</td><td>5</td><td>8.0</td><td>105.7</td><td>18.4</td><td>53.5</td><td>2.9</td></tr>
-<tr><td>Riley Kugel</td><td>G</td><td>5</td><td>6.6</td><td>66.6</td><td>25.0</td><td>51.5</td><td>-1.1</td></tr>
-<tr><td>Lewis Walker</td><td>F</td><td>5</td><td>7.8</td><td>101.0</td><td>19.8</td><td>50.5</td><td>1.2</td></tr>
-<tr><td>John Bol</td><td>C</td><td>5</td><td>4.0</td><td>86.4</td><td>12.3</td><td>49.0</td><td>2.6</td></tr>
-<tr><td>Carmelo Pacheco</td><td>G</td><td>5</td><td>6.2</td><td>119.8</td><td>14.1</td><td>47.5</td><td>0.9</td></tr>
-<tr><td>Cayden Vasko</td><td>G</td><td>5</td><td>2.0</td><td>71.4</td><td>13.5</td><td>27.0</td><td>0.0</td></tr>
-<tr><td>Churchill Abass</td><td>F</td><td>5</td><td>1.8</td><td>142.4</td><td>6.6</td><td>25.0</td><td>1.5</td></tr>
-<tr><td>Elijah Hulsewe</td><td>C</td><td>5</td><td>3.2</td><td>136.1</td><td>15.7</td><td>19.5</td><td>1.9</td></tr>
-<tr><td>Jahda Swann</td><td>G</td><td>4</td><td>0.2</td><td>12.7</td><td>14.6</td><td>14.0</td><td>-1.0</td></tr>
-<tr><td>Mister Dean</td><td>G</td><td>3</td><td>3.7</td><td>130.3</td><td>16.9</td><td>13.0</td><td>1.9</td></tr>
-<tr><td>Jason Asemota</td><td>F</td><td>3</td><td>0.7</td><td>34.0</td><td>15.3</td><td>10.0</td><td>-0.7</td></tr>
+<tr><td>Dior Johnson</td><td>G</td><td>6</td><td>29.0</td><td>135.4</td><td>31.3</td><td>87.5</td><td>11.6</td></tr>
+<tr><td>Arturo Dean</td><td>G</td><td>6</td><td>13.8</td><td>103.8</td><td>24.6</td><td>69.2</td><td>4.6</td></tr>
+<tr><td>Isaiah Malone</td><td>F</td><td>6</td><td>8.2</td><td>106.9</td><td>17.9</td><td>54.6</td><td>2.9</td></tr>
+<tr><td>Carmelo Pacheco</td><td>G</td><td>6</td><td>5.7</td><td>113.8</td><td>12.8</td><td>49.6</td><td>0.6</td></tr>
+<tr><td>John Bol</td><td>C</td><td>6</td><td>4.2</td><td>94.0</td><td>11.8</td><td>47.9</td><td>2.7</td></tr>
+<tr><td>Lewis Walker</td><td>F</td><td>6</td><td>6.8</td><td>98.6</td><td>18.6</td><td>47.5</td><td>0.9</td></tr>
+<tr><td>Riley Kugel</td><td>G</td><td>6</td><td>5.7</td><td>60.3</td><td>25.3</td><td>47.5</td><td>-1.9</td></tr>
+<tr><td>Churchill Abass</td><td>F</td><td>6</td><td>2.2</td><td>126.0</td><td>7.9</td><td>27.9</td><td>1.3</td></tr>
+<tr><td>Cayden Vasko</td><td>G</td><td>5</td><td>2.0</td><td>71.4</td><td>13.2</td><td>22.5</td><td>0.0</td></tr>
+<tr><td>Mister Dean</td><td>G</td><td>4</td><td>4.5</td><td>100.7</td><td>21.8</td><td>17.5</td><td>1.1</td></tr>
+<tr><td>Elijah Hulsewe</td><td>C</td><td>6</td><td>2.7</td><td>136.1</td><td>14.3</td><td>17.5</td><td>1.5</td></tr>
+<tr><td>Jahda Swann</td><td>G</td><td>5</td><td>0.2</td><td>11.3</td><td>14.6</td><td>12.9</td><td>-1.0</td></tr>
+<tr><td>Jason Asemota</td><td>F</td><td>3</td><td>0.7</td><td>34.0</td><td>15.0</td><td>8.3</td><td>-0.7</td></tr>
 </tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Click a player name to open their profile page, when their team is in the top 25.</p>
 </section>
@@ -213,12 +223,9 @@ footer { margin-top: 48px; color: #656d76; font-size: 14px;
 </tbody></table></div>
 <p class="note">Sorted by minutes. ORtg is approximate (no assist credit); RPR is our own rating, not KenPom’s kPOY. Rotation players only (%Min ≥ 20); full profiles in the players CSV.</p>
 </section>
-<section><h2>Upcoming games</h2><p>Predicted spreads for this team from the predictions file. Lines move, and some of these games may already have tipped. The win/loss picks behind these spreads are backtested; the spread magnitudes are not. Trap marks a trap game for the favorite; see the Predictions section on the main page for the rules and the backtest.</p><div class="table-scroll"><table class="preds"><thead><tr><th>Tip-off</th><th>Opponent</th><th>Venue</th><th>Predicted spread</th><th>Team win%</th><th>Market</th><th>Edge</th><th>Trap</th></tr></thead><tbody>
-<tr><td>Fri 07:00 PM</td><td><a href="vanderbilt-commodores.html">Vanderbilt</a></td><td>A</td><td>Vanderbilt -16.7</td><td>6.8%</td><td>-16.5</td><td>-0.2</td><td>2</td></tr>
-</tbody></table></div><p class="note">Market is the home team’s line. Edge is from this team’s perspective: positive means the model likes this team more than the market does.</p></section>
 <footer>
 <p>Data: ESPN public scoreboard and box scores. Code and full CSVs:
-<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 20, 2026.
+<a href="https://github.com/RD3-LIL/RonPom">RD3-LIL/RonPom on GitHub</a>. Built November 21, 2026.
 Not affiliated with KenPom.</p>
 </footer>
 </body>
