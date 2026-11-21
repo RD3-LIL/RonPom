@@ -56,7 +56,13 @@ version (same site shape, college data):
   about 0; that recentering has not been applied here, so
   the two sites' RPRs are not on the same scale. The page
   says so instead of pretending they are.
-- Playmaking / defense / rebounding, consistency (points
+- Defense: its own section with STL, BLK, STL+BLK, DREB and
+  PF as totals, per game and per 40, each with its NCAA rank
+  among all 8,015 players, bars against the league per-40
+  average, and the (STL+BLK) + 0.25*REB contribution to the
+  v1 RPR. Box-score defense only: no DRtg, opponent shooting
+  or tracking exists in the ESPN box scores, so none is invented.
+- Playmaking / rebounding, consistency (points
   std dev, games with 20+ / 30+), and trending (last-7-days
   PPG vs season PPG), all from the game log.
 - Game log: every game in the data, most recent first, with
@@ -366,8 +372,8 @@ def rank_rows(p, ranks):
     return out
 
 
-def profile_html(p, ranks, league, logs, teammates, team_net_rank,
-                 through, n_games, last_date, css):
+def profile_html(p, ranks, league, league_def, logs, teammates,
+                 team_net_rank, through, n_games, last_date, css):
     """One player's full profile page, as an HTML string."""
     t = p["totals"]
     pg = p["per_game"]
@@ -540,6 +546,42 @@ def profile_html(p, ranks, league, logs, teammates, team_net_rank,
             "<p>SHARP has no value here because the player is below "
             "the floor of 5 games and 20 minutes per game, so a "
             "small sample would move the number too much.</p>")
+
+    # Defense section: totals / per game / per 40, NCAA ranks
+    # among all players, and bars against the league per-40
+    # average. Scales are fixed per stat so the bar and the grey
+    # league tick mean the same thing on every profile:
+    # STL 0-3, BLK 0-3, DREB 0-12 per 40.
+    _key = (p["athlete_id"], p["team"])
+    def _def_rank(rank_key):
+        rank_map, denom = ranks[rank_key]
+        rank = rank_map.get(_key)
+        return f"#{rank} of {denom}" if rank else "Unranked"
+    _stl_blk_tot = t["stl"] + t["blk"]
+    _stl_blk_pg = pg["stl"] + pg["blk"]
+    _stl_blk_p40 = p40["stl"] + p40["blk"]
+    _def_bars = []
+    for _label, _val, _lg, _scale in [
+            ("STL /40", p40["stl"], league_def["stl_per40"], 3.0),
+            ("BLK /40", p40["blk"], league_def["blk_per40"], 3.0),
+            ("DREB /40", p40["dreb"], league_def["dreb_per40"], 12.0)]:
+        _w = max(0.0, min(100.0, 100 * float(_val) / _scale))
+        _lx = max(0.0, min(100.0, 100 * float(_lg) / _scale))
+        _def_bars.append(
+            f'<div class="shoot-row"><span>{_label}</span>'
+            f'<span class="shoot-track"><span class="shoot-fill" '
+            f'style="width:{_w:.1f}%"></span>'
+            f'<span class="shoot-league" style="left:{_lx:.1f}%"></span>'
+            f'</span><span>{_fmt(_val)} (league {_fmt(_lg)})</span></div>')
+    _defense = f"""<table class="profile"><thead><tr><th></th><th>STL</th><th>BLK</th><th>STL+BLK</th><th>DREB</th><th>PF</th></tr></thead><tbody>
+<tr><td>Totals</td><td>{t["stl"]}</td><td>{t["blk"]}</td><td>{_stl_blk_tot}</td><td>{t["dreb"]}</td><td>{t["pf"]}</td></tr>
+<tr><td>Per game</td><td>{_fmt(pg["stl"])}</td><td>{_fmt(pg["blk"])}</td><td>{_fmt(_stl_blk_pg)}</td><td>{_fmt(pg["dreb"])}</td><td>{_fmt(pg["pf"])}</td></tr>
+<tr><td>Per 40</td><td>{_fmt(p40["stl"])}</td><td>{_fmt(p40["blk"])}</td><td>{_fmt(_stl_blk_p40)}</td><td>{_fmt(p40["dreb"])}</td><td>{_fmt(p40["pf"])}</td></tr>
+</tbody></table>
+<p>STL {_fmt(pg["stl"])} per game ({_def_rank("stl_pg")} in the NCAA) &middot; BLK {_fmt(pg["blk"])} per game ({_def_rank("blk_pg")}) &middot; STL+BLK {_fmt(_stl_blk_pg)} per game ({_def_rank("stlblk_pg")}) &middot; DREB {_fmt(pg["dreb"])} per game ({_def_rank("dreb_pg")}).</p>
+{''.join(_def_bars)}
+<p class="note">Bars are the player's per-40 rate; the grey tick is the league per-40 average. In the v1 RPR this defense is worth {_fmt(_stl_blk_pg)} (STL+BLK per game) + {_fmt(0.25 * pg["reb"])} (0.25 &times; REB per game) = {_fmt(_stl_blk_pg + 0.25 * pg["reb"])} points of the RPR total.</p>
+<p class="note">Box-score defense only. Steals, blocks, defensive boards and fouls are what the ESPN box scores carry; there is no DRtg, opponent shooting or tracking in this data, so none is shown or invented.</p>"""
     body = f"""<h1>{html.escape(p["name"])}</h1>
 <p class="subtitle"><a href="../teams/{tslug}.html">{html.escape(p["team"])}</a>
 &middot; Data through {through} ({n_games} games)
@@ -575,8 +617,11 @@ def profile_html(p, ranks, league, logs, teammates, team_net_rank,
 <p>RPR <strong>{_fmt(rpr, 2)}</strong>. Formula: (ORtg - 100) &times; possessions used per game / 100 + 0.5 &times; (AST - TO) per game + (STL + BLK) per game + 0.25 &times; REB per game. That is {_fmt(r.get("ortg"))} ORtg, {poss_pg:.1f} possessions used per game, {_fmt(pg["ast"])} AST, {_fmt(pg["to"])} TO, {_fmt(pg["stl"] + pg["blk"])} STL+BLK, {_fmt(pg["reb"])} REB per game.</p>
 <p class="note">This is the v1 RPR, uncentered: an average rotation player scores about +1 to +3, so almost everyone gets some credit just for playing. The NBA site's RPR v1.2 recenters the counting terms on league averages so an average player scores about 0; that recentering has not been applied here, so the two sites' RPRs are not on the same scale. There is no component breakdown in this data. Usage {_fmt(r.get("poss_pct"))}% of team possessions.</p>
 
-<h2>Playmaking, defense, rebounding</h2>
-<p>AST/TO ratio {_fmt(pg["ast"] / pg["to"], 2) if pg["to"] else "-"} &middot; STL+BLK per game {_fmt(pg["stl"] + pg["blk"])}, per 40 {_fmt(p40["stl"] + p40["blk"])} &middot; REB per 40 {_fmt(p40["reb"])} (OREB {_fmt(p40["oreb"])}, DREB {_fmt(p40["dreb"])}) &middot; PF per 40 {_fmt(p40["pf"])}.</p>
+<h2>Defense</h2>
+{_defense}
+
+<h2>Playmaking and rebounding</h2>
+<p>AST/TO ratio {_fmt(pg["ast"] / pg["to"], 2) if pg["to"] else "-"} &middot; REB per 40 {_fmt(p40["reb"])} (OREB {_fmt(p40["oreb"])}, DREB {_fmt(p40["dreb"])}). Full defensive line is in the Defense section above.</p>
 
 <h2>Consistency and trending</h2>
 <p>Points per game std dev {_fmt(pts_std)} (CV {_fmt(pts_std / pg["pts"], 2) if pg["pts"] else "-"}) &middot; {games_20} games with 20+ points, {games_30} with 30+ &middot; Last 7 days: {_fmt(last7_ppg)} PPG in {last7_gp} games, trend {_fmt(trend, 1)} PPG vs season ({_fmt(pg["pts"])} PPG).</p>
@@ -687,7 +732,24 @@ def main():
                    if tot["fga"] + tot["fta"] else None),
     }
 
-    # NCAA ranks, among ALL players with a value for that stat.
+    # League defensive per-40 averages, from every player's totals.
+    _tot_min = sum(p["totals"]["min"] for p in all_players)
+    league_def = {
+        "stl_per40": (sum(p["totals"]["stl"] for p in all_players) / _tot_min * 40
+                      if _tot_min else None),
+        "blk_per40": (sum(p["totals"]["blk"] for p in all_players) / _tot_min * 40
+                      if _tot_min else None),
+        "dreb_per40": (sum(p["totals"]["dreb"] for p in all_players) / _tot_min * 40
+                       if _tot_min else None),
+        "pf_per40": (sum(p["totals"]["pf"] for p in all_players) / _tot_min * 40
+                     if _tot_min else None),
+        "stlblk_per40": (sum(p["totals"]["stl"] + p["totals"]["blk"]
+                             for p in all_players) / _tot_min * 40
+                         if _tot_min else None),
+    }
+
+    # NCAA ranks, among ALL players with a value for that stat,
+    # plus the defensive ranks used in the Defense section.
     ranks = {
         "rpr": _rank_map(all_players, lambda p: (p.get("ratings") or {}).get("rpr")),
         "pts_pg": _rank_map(all_players, lambda p: p["per_game"]["pts"]),
@@ -696,6 +758,11 @@ def main():
         "ortg": _rank_map(all_players, lambda p: (p.get("ratings") or {}).get("ortg")),
         "ts_pct": _rank_map(all_players, lambda p: p["shooting"].get("ts_pct")),
         "sharp": _rank_map(all_players, lambda p: p.get("sharp")),
+        "stl_pg": _rank_map(all_players, lambda p: p["per_game"]["stl"]),
+        "blk_pg": _rank_map(all_players, lambda p: p["per_game"]["blk"]),
+        "stlblk_pg": _rank_map(
+            all_players, lambda p: p["per_game"]["stl"] + p["per_game"]["blk"]),
+        "dreb_pg": _rank_map(all_players, lambda p: p["per_game"]["dreb"]),
     }
 
     logs = load_game_logs()
@@ -713,7 +780,7 @@ def main():
         slug = player_slug(p["name"], p["athlete_id"], p["team"])
         mates = [m for m in by_team[p["team"]] if m is not p]
         text = profile_html(
-            p, ranks, league,
+            p, ranks, league, league_def,
             logs.get((p["athlete_id"], p["team_id"]), []),
             mates, team_net_rank.get(p["team"], 0),
             through, n_games, last_date, css)
