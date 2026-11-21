@@ -1514,6 +1514,7 @@ last season's ratings faded by returning minutes.</p>
 <a href="#season-2025_26">2025-26</a>
 <a href="#season-2024_25">2024-25</a>
 <a href="#players">Players</a>
+<a href="distributions.html">Distributions</a>
 <a href="#top-players">Top players</a>
 <a href="#predictions">Predictions</a>
 <a href="#how-to-read">How to read this</a>

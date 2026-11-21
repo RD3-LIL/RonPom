@@ -152,6 +152,7 @@ python3 write_ratings.py 2026-27 || exit 1
 python3 build_page.py || exit 1
 python3 sharp_rating.py || exit 1
 python3 build_player_pages.py || exit 1
+python3 build_distributions.py || exit 1
 
 # Fresh predictions for the next 3 days, from the ratings
 # just built, plus scoring of any predictions whose games
@@ -187,7 +188,7 @@ fi
 shopt -s nullglob
 TEAM_PAGES=(teams/*.html)
 PLAYER_PAGES=(players/*.html)
-printf '%s\0' data/players_2026_27.csv data/ratings_2026_27.csv data/prior_2026_27.json index.html "$PRED_FILE" data/prediction_scores.csv "${TEAM_PAGES[@]}" "${PLAYER_PAGES[@]}" > /home/hatch/workspace/ronpom-push-manifest.bin
+printf '%s\0' data/players_2026_27.csv data/ratings_2026_27.csv data/prior_2026_27.json index.html distributions.html "$PRED_FILE" data/prediction_scores.csv "${TEAM_PAGES[@]}" "${PLAYER_PAGES[@]}" > /home/hatch/workspace/ronpom-push-manifest.bin
 
 # Sync-base check: the branch head must match the last sync
 # record entry, or someone else pushed since our last run.
