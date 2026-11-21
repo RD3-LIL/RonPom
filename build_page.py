@@ -1194,7 +1194,16 @@ input.filter { padding: 6px 10px; font-size: 14px; width: 240px;
 .leaders { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .leaders table { font-size: 15px; }
 .leaders td:nth-child(n+3) { text-align: right; }
-@media (max-width: 700px) { .leaders { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .leaders { grid-template-columns: 1fr; }
+  /* Phone: the sticky nav wraps to several lines tall (about 145px),
+     far more than the 40px the sticky table header assumes, so the
+     header sticks underneath the nav and covers the first row
+     (SHARP rank 1, Curry, was blanked out on NBA). Unstick both on
+     phones; nothing can overlap a row then. Desktop keeps sticky. */
+  nav.topnav { position: static; }
+  table.ratings thead th { position: static; }
+}
 .note { color: #656d76; font-size: 14px; }
 .datestamp { color: #656d76; font-size: 14px; margin: 4px 0 0; }
 .table-scroll { overflow-x: auto; }
