@@ -4,12 +4,16 @@
 # Fetches the last few days of 2026-27 games, validates the
 # fetched games (fails without pushing on a bad D1 stat row),
 # rebuilds player profiles, the returning-minutes prior, the
-# team ratings, and the site (index.html plus one page per
-# team under teams/), then generates fresh predictions for
-# the next 3 days and scores finished predictions, and pushes
+# team ratings, then generates fresh predictions for the next
+# 3 days and scores finished predictions, then builds the site
+# (index.html plus one page per team under teams/), and pushes
 # all of those files to GitHub: the two rebuilt CSVs, the
 # prior, the index, the fresh predictions file, the prediction
-# scores, and every teams/*.html page.
+# scores, and every teams/*.html page. Predictions and scoring
+# run BEFORE the site build on purpose: build_page.py embeds
+# the newest predictions file and the live scorecard, so
+# generating them after the build left the index showing
+# yesterday's predictions labelled stale (Nov 21, 2026).
 # The sync record lists exactly the paths in the manifest, so
 # it never lies about what a push contained.
 #
@@ -149,14 +153,13 @@ fi
 python3 player_profiles.py --season 2026-27 || exit 1
 python3 build_prior_2026.py || exit 1
 python3 write_ratings.py 2026-27 || exit 1
-python3 build_page.py || exit 1
-python3 sharp_rating.py || exit 1
-python3 build_player_pages.py || exit 1
-python3 build_distributions.py || exit 1
 
 # Fresh predictions for the next 3 days, from the ratings
 # just built, plus scoring of any predictions whose games
-# have now finished. A scoring failure stops the run without
+# have now finished. These run BEFORE build_page.py: the
+# index embeds the newest predictions file and the live
+# scorecard, so generating them after the build left the
+# index a day stale. A scoring failure stops the run without
 # pushing, so a stale or broken predictions file never goes
 # live. The predictions file is dated by run date, matching
 # the existing data/predictions_YYYY_MM_DD.csv names.
@@ -166,6 +169,11 @@ python3 score_predictions.py || {
   echo "prediction scoring failed, stopping without pushing"
   exit 1
 }
+
+python3 build_page.py || exit 1
+python3 sharp_rating.py || exit 1
+python3 build_player_pages.py || exit 1
+python3 build_distributions.py || exit 1
 
 if [ "$NO_PUSH" -eq 1 ]; then
   echo "push skipped (--no-push), files rebuilt locally"

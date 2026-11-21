@@ -3,15 +3,15 @@
 A real database + Python ratings engine, not a scrape of KenPom.
 No KenPom data, no paywall, no login. Free ESPN box scores only.
 
-Last updated: Nov 20, 2026. Current season: 2026-27, 1,070 events,
-801 D1 games used, 365 teams, 1-7 games per team. Illinois #1,
-Net +37.6 (AdjO 130.8, AdjD 93.2, AdjT 74.7, 5 GP). Daily update
+Last updated: Nov 21, 2026. Current season: 2026-27, 1,129 events,
+854 D1 games used, 365 teams, 1-8 games per team. Illinois #1,
+Net +40.0 (AdjO 133.1, AdjD 93.0, AdjT 73.9, 6 GP). Daily update
 runs 6:00 AM Chicago time; the site and CSVs update with it.
 Predictions are wired into the daily update too: predict.py
-runs after the ratings rebuild, so the predictions file is
-fresh each morning (current file: Nov 20). If the file ever
-lags the ratings, the site labels it stale instead of
-presenting it as current.
+runs after the ratings rebuild and before the site build, so
+the predictions file is fresh each morning (current file:
+Nov 21). If the file ever lags the ratings, the site labels
+it stale instead of presenting it as current.
 
 ## Method (current)
 
@@ -87,11 +87,11 @@ JSONs are not, they are about 15 MB per full season.
   2 Houston +34.3, 3 Auburn +32.8. Illinois rank 14, Net +23.3.
 - 2025-26: 5,752 D1 games used, 365 teams. 1 Michigan +37.3,
   2 Duke +36.2, 3 Arizona +33.9. Illinois rank 5, Net +31.1.
-- 2026-27 (current, Nov 20, 2026): 801 D1 games used, 1,070 events,
-  365 teams, 1-7 games per team. League OffEff 107.2, tempo 69.8,
-  solver converged in 36 iterations. 1 Illinois Net +37.6
-  (AdjO 130.8, AdjD 93.2, AdjT 74.7, 5 GP), 2 Duke +33.7,
-  3 Houston +33.5, 4 Michigan +31.3, 5 St. John's +29.4.
+- 2026-27 (current, Nov 21, 2026): 854 D1 games used, 1,129 events,
+  365 teams, 1-8 games per team. League OffEff 107.7, tempo 69.8,
+  solver converged in 36 iterations on Nov 20. 1 Illinois Net +40.0
+  (AdjO 133.1, AdjD 93.0, AdjT 73.9, 6 GP), 2 Duke +33.9,
+  3 Houston +33.5, 4 Michigan +31.0, 5 St. John's +29.3.
   Early season, and Illinois at rank 1 is still mostly blowouts
   plus a small sample, not a real claim, even though 2026-27 now
   uses the real noshrinkw600 preseason prior (see `write_ratings.py`),
@@ -99,7 +99,7 @@ JSONs are not, they are about 15 MB per full season.
 
 ## Honest limits (read this before trusting the ranking)
 
-1. Early season, 1-7 games per team. The noshrinkw600 preseason
+1. Early season, 1-8 games per team. The noshrinkw600 preseason
    prior helps, and KenPom leans on priors early in the season
    for exactly this reason, but the top of the table is still
    mostly blowout noise, not a real ranking. Big early wins are
@@ -115,10 +115,17 @@ JSONs are not, they are about 15 MB per full season.
    is no other information to adjust with. Those teams all tie
    in the middle of the table. That is the math telling you it
    does not know yet.
-3. Non-D1 games are excluded from the ratings solve (263 skipped
-   on Nov 20), and 6 games were skipped for zero possessions.
+3. Non-D1 games are excluded from the ratings solve (271 events
+   involve a non-D1 team), and 4 D1 games were skipped for zero
+   possessions (postponed, 0-0, so no box score exists yet).
    ESPN's scoreboard with groups=50 returns the full slate,
    unlike the default scoreboard which returns only featured games.
+   The ratings are also home-schedule-biased early in the season:
+   home court is off in the solver (a 5.33 pts/100 poss home-court
+   term was tested and lost to 0.0 on Brier and log loss), so
+   teams that have played most of their first games at home get
+   no home-court effect removed from their ratings; home court
+   lives only in the predictions (predict.py).
 
 Next step if you want to take it further: keep updating daily as
 the sample grows, and re-check the prior and the solve against
@@ -129,7 +136,7 @@ KenPom's published numbers as the season fills in.
 `fetch_full.py` pulls three seasons from the free ESPN endpoints
 (scoreboard with groups=50, full summary JSON per game):
 2024-25 (Nov 4, 2024 to Apr 7, 2025), 2025-26 (Nov 3, 2025 to
-Apr 6, 2026), and 2026-27 to date (Nov 2-20, 2026, 1,070 events).
+Apr 6, 2026), and 2026-27 to date (Nov 2-20, 2026, 1,129 events).
 Raw summaries
 live in `data/raw/summary/{event_id}.json`, parsed games in
 `data/games_2024_25.json`, `data/games_2025_26.json`,
@@ -177,29 +184,29 @@ above about 5 MB). Per-40 can be recomputed from totals and
 minutes, and the headshot URL is deterministic from the ESPN
 athlete id.
 
-Current state (Nov 20, 2026):
+Current state (Nov 21, 2026):
 2024-25: 6,298 events in `data/games_2024_25.json`, 5,759 D1
 games used, 9,812 players in `data/players_2024_25.csv`.
 2025-26: 6,318 events, 5,752 D1 games used, 10,027 players.
-2026-27 to date: 1,070 events in `data/games_2026_27.json`, 801
-D1 games used, 7,962 players, up to 7 GP.
+2026-27 to date: 1,129 events in `data/games_2026_27.json`, 854
+D1 games used, 8,105 players, up to 8 GP.
 Re-run `python3 player_profiles.py` to rebuild all three files
 from the raw summaries on disk.
 Tests: `python3 test_player_profiles.py`.
 
-Player profile pages (Nov 20, 2026): `build_player_pages.py`
+Player profile pages (Nov 21, 2026): `build_player_pages.py`
 writes `players/<slug>.html` for every player on a top-25 team
-(354 players, 355 pages with the directory at
+(350 players, 351 pages with the directory at
 `players/index.html`), plus the directory. Each page has the
 headshot and bio, at-a-glance RPR/PPG/RPG/APG/ORtg/TS% with
-ranks among all 8,015 players, season line (totals, per game,
+ranks among all 8,105 players, season line (totals, per game,
 per 40), shooting bars against the league average, points
 breakdown, the RPR formula, playmaking/defense/rebounding,
 consistency and last-7-days trend, the full game log, and
 teammates. Player names link to their profile from the
 leader tables, the top-150 table, and team rosters, only
 when their team is in the top 25. Top 25 only, not all
-players: all 8,015 would be about 8,000 pages and over
+players: all 8,105 would be about 8,000 pages and over
 100 MB, past what the push route can carry. Two honest
 limits, stated on the pages: college RPR is the v1 formula,
 uncentered, so it is not on the same scale as the NBA
@@ -220,7 +227,7 @@ Honest limits: no height, weight, or class year until rosters run
 (`fetch_rosters.py`, not started yet), so profiles have no bio fields.
 Early-season numbers are 1-2 game samples, so per-game leaders are
 noise (top 2026-27 scorer at min 2 games and 40% of team minutes
-is Dior Johnson, UCF, 28.8 PPG on 5 games). eFG% and TS% can read over 100% on tiny
+is Dior Johnson, UCF, 29.0 PPG on 6 games). eFG% and TS% can read over 100% on tiny
 samples when a player scores almost only on threes; that is the
 standard formula, not a bug. One data quirk: athlete id 5325549
 (Jeremiah White) appears for two non-D1 teams in 2025-26 (Paine

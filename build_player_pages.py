@@ -3,17 +3,17 @@ of the College Ratings site (RonPom), in the style of the NBA
 ratings player profiles.
 
 Reads data/ratings_2026_27.csv (top 25 teams by Net),
-data/players_2026_27.json (all 8,015 profiles, 2026-27 only),
+data/players_2026_27.json (all 8,105 profiles, 2026-27 only),
 and the raw ESPN summaries under data/raw/summary/ for a
 per-player game log.
 
 Writes players/<slug>.html for every player on a top-25 team
-(354 players on the Nov 20 run) plus players/index.html, a
+(350 players on the Nov 21 run) plus players/index.html, a
 filterable directory of those profiles. No network, stdlib
 only. Re-run after regenerating the ratings files; stale
 players/*.html files are deleted.
 
-Why top 25 only: all 8,015 players would be about 8,000 pages
+Why top 25 only: all 8,105 players would be about 8,000 pages
 and over 100 MB of HTML, far past what the GitHub snapshot
 push route can carry in reasonable batches, and almost all of
 them are bench players on teams nobody is following yet. The
@@ -31,7 +31,7 @@ version (same site shape, college data):
   has not run yet, so those fields do not exist in the data
   and are not invented. The page says so.
 - At a glance: RPR, PPG, RPG, APG, ORtg (approx), TS%, SPG, BPG,
-  SHARP, each with its rank among ALL 8,015 players with a value for
+  SHARP, each with its rank among ALL 8,105 players with a value for
   that stat (denominator shown). Ranks are competition ranks
   (1, 2, 2, 4). A small-sample note appears when a player is
   under 40% of team minutes or has played 2 or fewer games:
@@ -58,7 +58,7 @@ version (same site shape, college data):
   says so instead of pretending they are.
 - Defense: its own section with STL, BLK, STL+BLK, DREB and
   PF as totals, per game and per 40, each with its NCAA rank
-  among all 8,015 players, bars against the league per-40
+  among all 8,105 players, bars against the league per-40
   average, and the (STL+BLK) + 0.25*REB contribution to the
   v1 RPR. Box-score defense only: no DRtg, opponent shooting
   or tracking exists in the ESPN box scores, so none is invented.
