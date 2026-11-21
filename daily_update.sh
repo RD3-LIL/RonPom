@@ -150,6 +150,7 @@ python3 player_profiles.py --season 2026-27 || exit 1
 python3 build_prior_2026.py || exit 1
 python3 write_ratings.py 2026-27 || exit 1
 python3 build_page.py || exit 1
+python3 build_player_pages.py || exit 1
 
 # Fresh predictions for the next 3 days, from the ratings
 # just built, plus scoring of any predictions whose games
@@ -170,13 +171,22 @@ if [ "$NO_PUSH" -eq 1 ]; then
 fi
 
 # The manifest is the two rebuilt CSVs, the prior, the index,
-# the fresh predictions file and the prediction scores, and
-# every team page build_page.py just wrote. nullglob so an
-# (impossible after a successful build) empty teams/ dir would
-# expand to nothing instead of a literal "teams/*.html".
+# the fresh predictions file and the prediction scores, every
+# team page build_page.py just wrote, and every player profile
+# page build_player_pages.py just wrote (top-25 teams only).
+# nullglob so an (impossible after a successful build) empty
+# dir would expand to nothing instead of a literal "*.html".
+# NOTE: this manifest is now about 730 files / 15 MB. A single
+# push-files call that big already failed with HTTP 413 on
+# Nov 20 (the 370-file team-pages push), so if this push fails
+# with 413, split it into batches of about 90 files / 1.7 MB
+# as the Nov 20 fix did, index plus data first, then team
+# pages, then player pages, recording each confirmed SHA in
+# the sync record before the next batch.
 shopt -s nullglob
 TEAM_PAGES=(teams/*.html)
-printf '%s\0' data/players_2026_27.csv data/ratings_2026_27.csv data/prior_2026_27.json index.html "$PRED_FILE" data/prediction_scores.csv "${TEAM_PAGES[@]}" > /home/hatch/workspace/ronpom-push-manifest.bin
+PLAYER_PAGES=(players/*.html)
+printf '%s\0' data/players_2026_27.csv data/ratings_2026_27.csv data/prior_2026_27.json index.html "$PRED_FILE" data/prediction_scores.csv "${TEAM_PAGES[@]}" "${PLAYER_PAGES[@]}" > /home/hatch/workspace/ronpom-push-manifest.bin
 
 # Sync-base check: the branch head must match the last sync
 # record entry, or someone else pushed since our last run.

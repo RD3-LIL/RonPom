@@ -187,6 +187,30 @@ Re-run `python3 player_profiles.py` to rebuild all three files
 from the raw summaries on disk.
 Tests: `python3 test_player_profiles.py`.
 
+Player profile pages (Nov 20, 2026): `build_player_pages.py`
+writes `players/<slug>.html` for every player on a top-25 team
+(354 players, 355 pages with the directory at
+`players/index.html`), plus the directory. Each page has the
+headshot and bio, at-a-glance RPR/PPG/RPG/APG/ORtg/TS% with
+ranks among all 8,015 players, season line (totals, per game,
+per 40), shooting bars against the league average, points
+breakdown, the RPR formula, playmaking/defense/rebounding,
+consistency and last-7-days trend, the full game log, and
+teammates. Player names link to their profile from the
+leader tables, the top-150 table, and team rosters, only
+when their team is in the top 25. Top 25 only, not all
+players: all 8,015 would be about 8,000 pages and over
+100 MB, past what the push route can carry. Two honest
+limits, stated on the pages: college RPR is the v1 formula,
+uncentered, so it is not on the same scale as the NBA
+site's RPR v1.2, and there is no component breakdown; and
+there is no height, weight, or class year until the roster
+pull runs. `daily_update.sh` rebuilds the pages and includes
+them in the push manifest; the manifest is now about 730
+files / 15 MB, so if the single push fails with HTTP 413,
+split it into about 90-file / 1.7 MB batches as the Nov 20
+fix did.
+
 Player-stats research, corrected after a Nov 18 fresh-context
 review (Block verdict, 7 blockers fixed): see
 `docs/player-stats-research.md`. Research only, no code changed

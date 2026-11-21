@@ -92,6 +92,45 @@ def read_csv(path):
         return list(csv.DictReader(f))
 
 
+def player_slug(name, athlete_id, team):
+    """Player name -> stable URL slug for players/<slug>.html.
+
+    Same formula as build_player_pages.player_slug (duplicated
+    here so the two builders agree without importing each
+    other: build_player_pages cannot import this module, it
+    rebuilds the whole site on import). Name slug + athlete
+    id + team slug.
+    """
+    norm = unicodedata.normalize("NFKD", name)
+    ascii_name = norm.encode("ascii", "ignore").decode("ascii")
+    s = ascii_name.lower().replace("'", "")
+    s = re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+    return f"{s}-{athlete_id}-{team_slug(team)}"
+
+
+def _top25_teams():
+    """Top 25 teams by Net from the 2026-27 ratings CSV.
+
+    These are the teams with player profile pages (see
+    build_player_pages.py). Re-derived from the CSV every
+    run, so the link set follows the ratings.
+    """
+    rows = read_csv(DATA / "ratings_2026_27.csv")
+    rows.sort(key=lambda r: float(r["net"]), reverse=True)
+    return {r["team"] for r in rows[:25]}
+
+
+TOP25_TEAMS = _top25_teams()
+
+
+def profile_slug(name, athlete_id, team):
+    """players/<slug>.html for a player, or '' if the player
+    has no profile page (their team is not in the top 25)."""
+    if team not in TOP25_TEAMS:
+        return ""
+    return player_slug(name, athlete_id, team)
+
+
 def is_d1_game(g):
     """Same D1 filter as solver.is_d1_game."""
     if "home_conf_id" in g or "away_conf_id" in g:
@@ -262,7 +301,10 @@ def season_rosters(season, rated_teams):
     """(team -> roster) for the expandable detail panels.
 
     One compact list per team: [name, position, gp, pts_pg, ortg,
-    poss_pct, min_pct, rpr], sorted by minutes descending.
+    poss_pct, min_pct, rpr, profile_slug], sorted by minutes
+    descending. profile_slug is the players/<slug>.html slug
+    when the player has a profile page (2026-27, top-25 team),
+    '' otherwise.
     2026-27 embeds every player who appeared, all teams in the
     CSV. Older seasons embed rotation players only (%Min >= 20)
     on rated (D1) teams: rosters are only reachable by clicking
@@ -287,7 +329,9 @@ def season_rosters(season, rated_teams):
                       float(p["ortg"]) if p["ortg"] else None,
                       float(p["poss_pct"]) if p["poss_pct"] else None,
                       float(p["min_pct"]) if p["min_pct"] else None,
-                      float(p["rpr"]) if p["rpr"] else None]
+                      float(p["rpr"]) if p["rpr"] else None,
+                      profile_slug(p["name"], p["athlete_id"], p["team"])
+                      if season == "2026-27" else ""]
                      for p in lst]
     return out
 
@@ -358,7 +402,8 @@ def top_players_section():
            "and 40% of team minutes, same as the leader tables. "
            "Click a column header to sort; the filter box searches "
            "player names. Click a team name to open that team's "
-           "own page.</p>",
+           "own page. Click a player name to open their full "
+           "profile, when their team is in the top 25.</p>",
            "<input class=\"filter\" type=\"search\" "
            "placeholder=\"Filter players...\" data-table=\"top-players\">",
            "<div class=\"table-scroll\">"
@@ -377,11 +422,15 @@ def top_players_section():
            + "</tr></thead><tbody>"]
     for rank, p in enumerate(top, 1):
         pos = p["position"] if p["position"] not in ("", "NA") else ""
+        name = html.escape(p["name"])
+        slug = profile_slug(p["name"], p["athlete_id"], p["team"])
+        if slug:
+            name = f"<a href=\"players/{slug}.html\">{name}</a>"
         out.append(
             f"<tr>"
             f"<td data-v=\"{rank}\">{rank}</td>"
             f"<td data-v=\"{html.escape(p['name'].lower())}\">"
-            f"{html.escape(p['name'])}</td>"
+            f"{name}</td>"
             f"<td data-v=\"{html.escape(p['team'].lower())}\">"
             f"<a href=\"teams/{team_slug(p['team'])}.html\">"
             f"{html.escape(p['team'])}</a></td>"
@@ -540,7 +589,12 @@ def player_leaders(season, players, min_games=20):
                "<th>Player</th><th>Team</th><th>RPR</th><th>ORtg</th>"
                "<th>PPG</th></tr></thead><tbody>")
     for p in by_rpr:
-        out.append(f"<tr><td>{html.escape(p['name'])}</td>"
+        name = html.escape(p["name"])
+        slug = (profile_slug(p["name"], p["athlete_id"], p["team"])
+                if season == "2026-27" else "")
+        if slug:
+            name = f"<a href=\"players/{slug}.html\">{name}</a>"
+        out.append(f"<tr><td>{name}</td>"
                    f"<td>{html.escape(p['team'])}</td>"
                    f"<td>{p['rpr']}</td><td>{p['ortg']}</td>"
                    f"<td>{p['pts_pg']}</td></tr>")
@@ -549,7 +603,12 @@ def player_leaders(season, players, min_games=20):
                "<th>Player</th><th>Team</th><th>ORtg</th><th>%Poss</th>"
                "<th>PPG</th></tr></thead><tbody>")
     for p in by_ortg:
-        out.append(f"<tr><td>{html.escape(p['name'])}</td>"
+        name = html.escape(p["name"])
+        slug = (profile_slug(p["name"], p["athlete_id"], p["team"])
+                if season == "2026-27" else "")
+        if slug:
+            name = f"<a href=\"players/{slug}.html\">{name}</a>"
+        out.append(f"<tr><td>{name}</td>"
                    f"<td>{html.escape(p['team'])}</td>"
                    f"<td>{p['ortg']}</td><td>{p['poss_pct']}</td>"
                    f"<td>{p['pts_pg']}</td></tr>")
@@ -936,8 +995,12 @@ def team_page_html(team, slug_by_team, upcoming):
             for p in roster:
                 pos = (p[1] if p[1] not in ("", "NA", None)
                        else "&mdash;")
-                cells = [html.escape(p[0]), pos, str(p[2])]
-                for v in p[3:]:
+                name = html.escape(p[0])
+                if len(p) > 8 and p[8]:
+                    name = (f"<a href=\"../players/{p[8]}.html\">"
+                            f"{name}</a>")
+                cells = [name, pos, str(p[2])]
+                for v in p[3:8]:
                     cells.append("\u2014" if v is None else _fmt1(v))
                 parts.append("<tr>" + "".join(
                     f"<td>{c}</td>" for c in cells) + "</tr>")
@@ -948,6 +1011,9 @@ def team_page_html(team, slug_by_team, upcoming):
                          + ("" if season == "2026-27"
                             else " Rotation players only (%Min \u2265 20); "
                             "full profiles in the players CSV.")
+                         + (" Click a player name to open their profile "
+                            "page, when their team is in the top 25."
+                            if season == "2026-27" else "")
                          + "</p>")
         else:
             parts.append("<p>No roster data for this season.</p>")
@@ -1205,7 +1271,9 @@ function openDetail(table, row) {
       + "<th>GP</th><th>PPG</th><th>ORtg</th><th>%Poss</th>"
       + "<th>%Min</th><th>RPR</th></tr></thead><tbody>";
     roster.forEach(function (p) {
-      html += "<tr><td>" + esc(p[0]) + "</td><td>"
+      var nm = esc(p[0]);
+      if (p[8]) { nm = '<a href="players/' + p[8] + '.html">' + nm + "</a>"; }
+      html += "<tr><td>" + nm + "</td><td>"
         + ((p[1] && p[1] !== "NA") ? esc(p[1]) : "\u2014")
         + "</td><td>" + p[2] + "</td><td>" + fmt1(p[3]) + "</td><td>"
         + fmt1(p[4]) + "</td><td>" + fmt1(p[5]) + "</td><td>"
@@ -1216,7 +1284,8 @@ function openDetail(table, row) {
       + "(no assist credit); RPR is our own rating, not KenPom\u2019s "
       + "kPOY."
       + (row.dataset.season === "2026-27"
-        ? ""
+        ? " Click a player name to open their profile page, "
+          + "when their team is in the top 25."
         : " Rotation players only (%Min \u2265 20); full profiles "
         + "in the players CSV.")
       + "</p>";
@@ -1491,7 +1560,10 @@ points per 100 possessions used, with no assist credit, so it
 underrates playmakers. Read it with %Poss. <strong>RPR</strong> is
 our own single-number player rating, not KenPom's proprietary
 kPOY. Leaderboards only include players with at least 40% of their
-team's minutes, so a two-minute cameo cannot top the list.</p>
+team's minutes, so a two-minute cameo cannot top the list.
+Players on top-25 teams have a full profile page (season line,
+shooting, game log, NCAA ranks); click a player name in the
+leaders, the top-150 table, or a team roster to open it.</p>
 <p><strong>Honest limits</strong>: 2026-27 is two to three games
 per team, so its order is mostly noise. The 2024-25 and 2025-26
 seasons are full seasons. No KenPom data was used or scraped; his
