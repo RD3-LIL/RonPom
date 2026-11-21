@@ -14,7 +14,8 @@ on the distribution.
 
 Only the 354 players on top-25 teams have a profile page under
 players/, so the bin lists link a player only when their slug
-is in that set. The page says so.
+is in that set. The page says so. Per-40 stats are qualified
+only (min 2 games, 40% of team minutes), 2,475 players.
 
 No network, stdlib only.
 """
@@ -49,6 +50,20 @@ STATS = [
     ("bpg", "BPG", 1, False, "Blocks per game."),
     ("stlblk", "STL+BLK", 1, False, "Steals plus blocks per game."),
     ("dreb", "DREB", 1, False, "Defensive rebounds per game."),
+    ("pts40", "PTS/40", 1, False,
+     "Points per 40 minutes, qualified players only (min 2 games, 40% of team minutes)."),
+    ("reb40", "REB/40", 1, False,
+     "Rebounds per 40 minutes, qualified players only (min 2 games, 40% of team minutes)."),
+    ("ast40", "AST/40", 1, False,
+     "Assists per 40 minutes, qualified players only (min 2 games, 40% of team minutes)."),
+    ("stl40", "STL/40", 1, False,
+     "Steals per 40 minutes, qualified players only (min 2 games, 40% of team minutes)."),
+    ("blk40", "BLK/40", 1, False,
+     "Blocks per 40 minutes, qualified players only (min 2 games, 40% of team minutes)."),
+    ("stlblk40", "STL+BLK/40", 1, False,
+     "Steals plus blocks per 40 minutes, qualified players only (min 2 games, 40% of team minutes)."),
+    ("dreb40", "DREB/40", 1, False,
+     "Defensive rebounds per 40 minutes, qualified players only (min 2 games, 40% of team minutes)."),
 ]
 
 
@@ -102,6 +117,13 @@ def main():
     for p in players:
         key = (p["athlete_id"], p["team"])
         slug = player_slug(p["name"], p["athlete_id"], p["team"])
+        # Qualified flag, last column (index 25): min 2 games and 40%
+        # of team minutes. Per-40 stats use qualified players only, so
+        # a one-minute cameo (40 steals per 40) cannot top the chart.
+        min_pct = p.get("ratings", {}).get("min_pct")
+        qualified = bool(p.get("totals", {}).get("gp", 0) >= 2
+                         and min_pct is not None and min_pct >= 40)
+        p40 = p.get("per_40", {})
         rows.append([
             p["name"],
             p["team"],
@@ -121,6 +143,14 @@ def main():
             _round(p.get("per_game", {}).get("blk")),
             _round(p.get("per_game", {}).get("stl") + p.get("per_game", {}).get("blk")) if p.get("per_game", {}).get("stl") is not None and p.get("per_game", {}).get("blk") is not None else None,
             _round(p.get("per_game", {}).get("dreb")),
+            _round(p40.get("pts")),
+            _round(p40.get("reb")),
+            _round(p40.get("ast")),
+            _round(p40.get("stl")),
+            _round(p40.get("blk")),
+            _round(p40.get("stl") + p40.get("blk")) if p40.get("stl") is not None and p40.get("blk") is not None else None,
+            _round(p40.get("dreb")),
+            1 if qualified else 0,
         ])
 
     counts = {}
@@ -191,7 +221,9 @@ The bars are a histogram of the real players, and the dark line is a smooth
 curve that follows the shape of the data. The dashed grey line is the mean.</p>
 <p>These distributions cover every player with a value for that stat, not just
 the top-25 teams. Only players on top-25 teams have a profile page, so a
-player without a profile shows as plain text in the bin lists.</p>
+player without a profile shows as plain text in the bin lists. Per-40 stats
+use qualified players only (min 2 games, 40% of team minutes), 2,475 players,
+so a one-minute cameo cannot top the chart.</p>
 
 <div class="stat-buttons" id="stat-buttons"></div>
 <p id="stat-desc"></p>
@@ -210,7 +242,8 @@ player without a profile shows as plain text in the bin lists.</p>
 <script>
 var STATS = __STATS_JSON__;
 var DATA = __DATA_JSON__;
-var COLS = ["rpr","ppg","rpg","apg","ortg","ts","sharp","fg","fg3","ft","efg","spg","bpg","stlblk","dreb"];
+var COLS = ["rpr","ppg","rpg","apg","ortg","ts","sharp","fg","fg3","ft","efg","spg","bpg","stlblk","dreb","pts40","reb40","ast40","stl40","blk40","stlblk40","dreb40"];
+var QUALIFIED_ONLY = ["pts40","reb40","ast40","stl40","blk40","stlblk40","dreb40"];
 var current = "ppg";
 var selectedBin = -1;
 var marker = null;
@@ -227,10 +260,11 @@ function statIndex(key) { return COLS.indexOf(key); }
 
 function valuesFor(key) {
   var i = 3 + statIndex(key);
+  var qualifiedOnly = QUALIFIED_ONLY.indexOf(key) !== -1;
   var out = [];
   for (var r = 0; r < DATA.length; r++) {
     var v = DATA[r][i];
-    if (v !== null) out.push({name: DATA[r][0], team: DATA[r][1], slug: DATA[r][2], v: v});
+    if (v !== null && (!qualifiedOnly || DATA[r][25])) out.push({name: DATA[r][0], team: DATA[r][1], slug: DATA[r][2], v: v});
   }
   return out;
 }
@@ -363,8 +397,9 @@ function render() {
   var markerInfo = document.getElementById("marker-info");
   if (marker) {
     var mv = DATA[marker.rowIndex][3 + statIndex(current)];
+    if (QUALIFIED_ONLY.indexOf(current) !== -1 && !DATA[marker.rowIndex][25]) mv = null;
     if (mv === null) {
-      markerInfo.innerHTML = "<p><strong>" + esc(marker.name) + "</strong> has no value for " + stat.label + " (for example, SHARP needs 5 games and 20 minutes per game).</p><button class='clear' id='clear-marker'>Clear</button>";
+      markerInfo.innerHTML = "<p><strong>" + esc(marker.name) + "</strong> has no value for " + stat.label + " (for example, SHARP needs 5 games and 20 minutes per game, and per-40 stats need min 2 games and 40% of team minutes).</p><button class='clear' id='clear-marker'>Clear</button>";
     } else {
       var rank = 1 + nums.filter(function (v) { return v > mv; }).length;
       var kx = Math.min(Math.max(X(mv), ML), ML + PW), ky = Y(kdeAt(mv, nums, h) * n * bw);
