@@ -1,0 +1,109 @@
+{
+  "season": "2026-27",
+  "margin_cap": 20,
+  "note": "Sensitivity only, cap NOT adopted live. Backtest: cap-20 wins spread MAE only (10.34 vs 10.38) and loses Brier/log loss.",
+  "live_top10": [
+    {
+      "rank": 2,
+      "team": "Illinois Fighting Illini",
+      "net": 41.3
+    },
+    {
+      "rank": 3,
+      "team": "Houston Cougars",
+      "net": 33.7
+    },
+    {
+      "rank": 4,
+      "team": "Duke Blue Devils",
+      "net": 33.0
+    },
+    {
+      "rank": 5,
+      "team": "Gonzaga Bulldogs",
+      "net": 29.9
+    },
+    {
+      "rank": 6,
+      "team": "Arizona Wildcats",
+      "net": 29.4
+    },
+    {
+      "rank": 7,
+      "team": "Vanderbilt Commodores",
+      "net": 29.3
+    },
+    {
+      "rank": 8,
+      "team": "Florida Gators",
+      "net": 28.1
+    },
+    {
+      "rank": 9,
+      "team": "Utah State Aggies",
+      "net": 28.1
+    },
+    {
+      "rank": 10,
+      "team": "St. John's Red Storm",
+      "net": 27.8
+    },
+    {
+      "rank": 11,
+      "team": "Kansas Jayhawks",
+      "net": 27.2
+    }
+  ],
+  "cap20_top10": [
+    {
+      "rank": 2,
+      "team": "Houston Cougars",
+      "net": 28.3
+    },
+    {
+      "rank": 3,
+      "team": "Arizona Wildcats",
+      "net": 26.7
+    },
+    {
+      "rank": 4,
+      "team": "Illinois Fighting Illini",
+      "net": 25.2
+    },
+    {
+      "rank": 5,
+      "team": "Florida Gators",
+      "net": 24.9
+    },
+    {
+      "rank": 6,
+      "team": "Gonzaga Bulldogs",
+      "net": 24.2
+    },
+    {
+      "rank": 7,
+      "team": "Vanderbilt Commodores",
+      "net": 23.6
+    },
+    {
+      "rank": 8,
+      "team": "Duke Blue Devils",
+      "net": 23.4
+    },
+    {
+      "rank": 9,
+      "team": "Tennessee Volunteers",
+      "net": 22.5
+    },
+    {
+      "rank": 10,
+      "team": "Kansas Jayhawks",
+      "net": 22.5
+    },
+    {
+      "rank": 11,
+      "team": "Iowa State Cyclones",
+      "net": 22.2
+    }
+  ]
+}
